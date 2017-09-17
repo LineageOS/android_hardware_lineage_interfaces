@@ -93,7 +93,6 @@ private:
 
     // extract legacy camera ID/device version from a HIDL device name
     static std::string getLegacyCameraId(const hidl_string& deviceName);
-    static int getCameraDeviceVersion(const hidl_string& deviceName);
 
     // create HIDL device name from camera ID and device version
     static std::string getHidlDeviceName(std::string cameraId, int deviceVersion);
