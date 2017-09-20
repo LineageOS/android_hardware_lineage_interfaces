@@ -33,7 +33,7 @@ namespace V2_1 {
 namespace implementation {
 
 // Supported fingerprint HAL version
-static const uint16_t kVersion = HARDWARE_MODULE_API_VERSION(2, 1);
+static const uint16_t kVersion = HARDWARE_MODULE_API_VERSION(2, 0);
 
 using RequestStatus =
         android::hardware::biometrics::fingerprint::V2_1::RequestStatus;
@@ -176,8 +176,31 @@ Return<RequestStatus> BiometricsFingerprint::cancel() {
     return ErrorFilter(mDevice->cancel(mDevice));
 }
 
+#define MAX_FINGERPRINTS 100
+
+typedef int (*enumerate_2_0)(struct fingerprint_device *dev, fingerprint_finger_id_t *results,
+        uint32_t *max_size);
+
 Return<RequestStatus> BiometricsFingerprint::enumerate()  {
-    return ErrorFilter(mDevice->enumerate(mDevice));
+    fingerprint_finger_id_t results[MAX_FINGERPRINTS];
+    uint32_t n = MAX_FINGERPRINTS;
+    enumerate_2_0 enumerate = (enumerate_2_0) mDevice->enumerate;
+    int ret = enumerate(mDevice, results, &n);
+    Return<RequestStatus> rv = ErrorFilter(ret);
+
+    if (ret == 0) {
+        uint32_t i;
+        fingerprint_msg_t msg;
+
+        msg.type = FINGERPRINT_TEMPLATE_ENUMERATING;
+        for (i = 0; i < n; i++) {
+            msg.data.enumerated.finger = results[i];
+            msg.data.enumerated.remaining_templates = n - i - 1;
+            mDevice->notify(&msg);
+        }
+    }
+
+    return rv;
 }
 
 Return<RequestStatus> BiometricsFingerprint::remove(uint32_t gid, uint32_t fid) {
