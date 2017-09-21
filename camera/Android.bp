@@ -1,4 +1,4 @@
 subdirs = [
-    "device/1.0",
-    "provider/2.4",
+    "device/1.0-legacy",
+    "provider/2.4-legacy",
 ]
