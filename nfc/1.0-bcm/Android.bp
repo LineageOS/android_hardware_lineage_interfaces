@@ -1,5 +1,5 @@
 cc_library_shared {
-    name: "android.hardware.nfc@1.0-impl",
+    name: "android.hardware.nfc@1.0-impl-bcm",
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     proprietary: true,
