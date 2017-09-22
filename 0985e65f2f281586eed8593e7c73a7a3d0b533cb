@@ -22,6 +22,29 @@
       "revId": "0985e65f2f281586eed8593e7c73a7a3d0b533cb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4810b35_863d010c",
+        "filename": "camera/provider/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2017-09-22T06:16:11Z",
+      "side": 1,
+      "message": "You can remove this.",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "0985e65f2f281586eed8593e7c73a7a3d0b533cb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
