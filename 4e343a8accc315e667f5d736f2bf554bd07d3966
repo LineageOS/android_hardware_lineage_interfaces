@@ -40,6 +40,24 @@
       "revId": "4e343a8accc315e667f5d736f2bf554bd07d3966",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de87443d_cdd2d92e",
+        "filename": "nfc/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2017-09-25T18:56:28Z",
+      "side": 1,
+      "message": "Yes, but in the same repo in another commit we have camera ending with .legacy",
+      "parentUuid": "6d3f5c6d_99cef026",
+      "revId": "4e343a8accc315e667f5d736f2bf554bd07d3966",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
