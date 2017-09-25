@@ -22,6 +22,30 @@
       "revId": "2a4c24dbaa95a208d13abe6fb0bd0ece535b937b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba4d9ae9_2441fd6f",
+        "filename": "camera/provider/CameraProvider.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2017-09-25T13:56:55Z",
+      "side": 1,
+      "message": "Yea, it would be more meaningful.",
+      "parentUuid": "52460e3c_fbcdea59",
+      "range": {
+        "startLine": 419,
+        "startChar": 21,
+        "endLine": 419,
+        "endChar": 35
+      },
+      "revId": "2a4c24dbaa95a208d13abe6fb0bd0ece535b937b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
