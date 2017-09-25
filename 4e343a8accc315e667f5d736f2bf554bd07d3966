@@ -22,6 +22,24 @@
       "revId": "4e343a8accc315e667f5d736f2bf554bd07d3966",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d3f5c6d_99cef026",
+        "filename": "nfc/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-09-25T16:44:24Z",
+      "side": 1,
+      "message": "Doesn\u0027t have to be. Google does .$device for example but QTI adds -qti to all their implementations and services",
+      "parentUuid": "765411c1_e44b7112",
+      "revId": "4e343a8accc315e667f5d736f2bf554bd07d3966",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
