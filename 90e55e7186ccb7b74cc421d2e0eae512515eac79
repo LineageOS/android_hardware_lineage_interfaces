@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50239368_fd01469e",
+        "filename": "vibrator/lineage/Vibrator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-10-01T16:43:05Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 8
+      },
+      "revId": "90e55e7186ccb7b74cc421d2e0eae512515eac79",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b0b0717_29ac01de",
+        "filename": "vibrator/lineage/android.hardware.vibrator@1.0-service.lineage.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-10-01T16:43:05Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be lineage",
+      "range": {
+        "startLine": 1,
+        "startChar": 74,
+        "endLine": 1,
+        "endChar": 80
+      },
+      "revId": "90e55e7186ccb7b74cc421d2e0eae512515eac79",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
