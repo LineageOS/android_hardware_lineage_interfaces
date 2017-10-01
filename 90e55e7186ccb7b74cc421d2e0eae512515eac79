@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "99314730_033f4006",
+        "filename": "vibrator/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-10-01T16:49:53Z",
+      "side": 1,
+      "message": "1.0-lineage",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 2,
+        "endChar": 13
+      },
+      "revId": "90e55e7186ccb7b74cc421d2e0eae512515eac79",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50239368_fd01469e",
         "filename": "vibrator/lineage/Vibrator.cpp",
         "patchSetId": 1
