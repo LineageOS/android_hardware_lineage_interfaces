@@ -25,6 +25,40 @@
     },
     {
       "key": {
+        "uuid": "d87ab9b5_422f0b3c",
+        "filename": "vibrator/lineage/Vibrator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-01T16:54:50Z",
+      "side": 1,
+      "message": "new line",
+      "revId": "90e55e7186ccb7b74cc421d2e0eae512515eac79",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bb12411_0aec2d7f",
+        "filename": "vibrator/lineage/Vibrator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-01T16:54:50Z",
+      "side": 1,
+      "message": "tab",
+      "revId": "90e55e7186ccb7b74cc421d2e0eae512515eac79",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50239368_fd01469e",
         "filename": "vibrator/lineage/Vibrator.cpp",
         "patchSetId": 1
