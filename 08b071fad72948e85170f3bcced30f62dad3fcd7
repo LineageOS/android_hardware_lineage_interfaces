@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cfc70f0f_abb83812",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2017-10-05T11:37:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c75ed2_c40141d3",
+      "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db0a4df1_e914fdc3",
         "filename": "vibrator/1.0-lineage/Vibrator.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-05T03:45:29Z",
       "side": 1,
       "message": "You better add a \"fallback\" parameter",
+      "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1a7aacf_bbb7a237",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2017-10-05T11:37:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0a4df1_e914fdc3",
       "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
