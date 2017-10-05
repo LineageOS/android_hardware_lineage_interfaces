@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83c75ed2_c40141d3",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-10-05T02:29:41Z",
+      "side": 1,
+      "message": "copyright, maybe?",
+      "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4be32c5_0dd9c89f",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-10-05T02:29:41Z",
+      "side": 1,
+      "message": "Seems fine, but what happens if these calls fail due to permissions/SELinux/whatever?",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
