@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "425e1d1b_85a4413e",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-05T15:48:50Z",
+      "side": 1,
+      "message": "use c++ style log\n\nLOG(INFO) \u003c\u003c \"failed to read value from \" \u003c\u003c path;",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 60
+      },
+      "revId": "a0bf2f1ad0044235f486da37859d109ec63f8d1f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d7d5e74_0648bf15",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-05T15:48:50Z",
+      "side": 1,
+      "message": "ditto\nLOG(ERROR)",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "a0bf2f1ad0044235f486da37859d109ec63f8d1f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "536718e8_a46cf8c1",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-05T15:48:50Z",
+      "side": 1,
+      "message": "here too?",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "a0bf2f1ad0044235f486da37859d109ec63f8d1f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
