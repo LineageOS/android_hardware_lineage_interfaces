@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "db0a4df1_e914fdc3",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-05T03:45:29Z",
+      "side": 1,
+      "message": "You better add a \"fallback\" parameter",
+      "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f69bfde3_d8d341da",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-05T03:45:29Z",
+      "side": 1,
+      "message": "if (file.is_open()) file \u003e value; else fallback \u003e fallback;",
+      "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4be32c5_0dd9c89f",
         "filename": "vibrator/1.0-lineage/Vibrator.cpp",
         "patchSetId": 4
@@ -36,6 +70,24 @@
         "endLine": 58,
         "endChar": 39
       },
+      "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52f57e34_cde6e25d",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-05T03:45:29Z",
+      "side": 1,
+      "message": "get(MIN_PATH, 255)\nwe better find a better default value",
+      "parentUuid": "a4be32c5_0dd9c89f",
       "revId": "08b071fad72948e85170f3bcced30f62dad3fcd7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
