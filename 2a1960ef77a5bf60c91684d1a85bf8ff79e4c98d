@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b9a05cb_ad9b9081",
+        "filename": "vibrator/1.0/default/Vibrator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-10-15T15:51:23Z",
+      "side": 1,
+      "message": "Add value \u003d defaultValue; on fail",
+      "revId": "2a1960ef77a5bf60c91684d1a85bf8ff79e4c98d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
