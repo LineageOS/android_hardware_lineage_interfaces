@@ -1,8 +1,23 @@
+/*
+ * Copyright (C) 2017 The LineageOS Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 #ifndef VENDOR_LINEAGE_VIBRATOR_V1_0_VIBRATOR_H
 #define VENDOR_LINEAGE_VIBRATOR_V1_0_VIBRATOR_H
 
 #include <vendor/lineage/vibrator/1.0/IVibrator.h>
-#include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
 
 namespace vendor {
@@ -11,22 +26,13 @@ namespace vibrator {
 namespace V1_0 {
 namespace implementation {
 
-using ::android::hidl::base::V1_0::DebugInfo;
-using ::android::hidl::base::V1_0::IBase;
-using ::vendor::lineage::vibrator::V1_0::Effect;
-using ::vendor::lineage::vibrator::V1_0::EffectStrength;
-using ::vendor::lineage::vibrator::V1_0::IVibrator;
-using ::vendor::lineage::vibrator::V1_0::Status;
-using ::android::hardware::hidl_array;
-using ::android::hardware::hidl_memory;
-using ::android::hardware::hidl_string;
-using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
-using ::android::sp;
 
-struct Vibrator : public IVibrator {
-    // Methods from ::vendor::lineage::vibrator::V1_0::IVibrator follow.
+class Vibrator : public IVibrator {
+public:
+    Vibrator();
+
     Return<Status> on(uint32_t timeoutMs) override;
     Return<Status> off() override;
     Return<bool> supportsAmplitudeControl() override;
@@ -34,11 +40,11 @@ struct Vibrator : public IVibrator {
     Return<Status> setAmplitude(uint8_t amplitude) override;
     Return<void> perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 
-    // Methods from ::android::hidl::base::V1_0::IBase follow.
-
+private:
+    uint32_t defaultVoltage;
+    uint32_t minVoltage;
+    uint32_t maxVoltage;
 };
-
-extern "C" IVibrator* HIDL_FETCH_IVibrator(const char* name);
 
 }  // namespace implementation
 }  // namespace V1_0
