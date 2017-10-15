@@ -22,6 +22,11 @@ Return<bool> Vibrator::supportsAmplitudeControl() {
     return bool {};
 }
 
+Return<void> Vibrator::getDefaultAmplitude(getDefaultAmplitude_cb _hidl_cb) {
+    // TODO implement
+    return Void();
+}
+
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
     // TODO implement
     return ::vendor::lineage::vibrator::V1_0::Status {};

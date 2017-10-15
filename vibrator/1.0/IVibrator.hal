@@ -41,6 +41,19 @@ interface IVibrator {
   supportsAmplitudeControl() generates (bool supports);
 
   /**
+   * Gets the motor's default vibrational amplitude.
+   *
+   * @return status Whether the default vibrational amplitude was
+   *                successfully retrieved or not.
+   * @return defaultAmplitude The default vibrational amplitude.
+   *                          Note that this number must be between 1 and 255, inclusive.
+   *                          If the motor does not have exactly 255 steps, it must do
+   *                          it's best to return a value that matches the desired
+   *                          default amplitude.
+   */
+  getDefaultAmplitude() generates (Status status, uint8_t amplitude);
+
+  /**
    * Sets the motor's vibrational amplitude.
    *
    * Changes the force being produced by the underlying motor.

@@ -30,6 +30,7 @@ struct Vibrator : public IVibrator {
     Return<Status> on(uint32_t timeoutMs) override;
     Return<Status> off() override;
     Return<bool> supportsAmplitudeControl() override;
+    Return<void> getDefaultAmplitude(getDefaultAmplitude_cb _hidl_cb) override;
     Return<Status> setAmplitude(uint8_t amplitude) override;
     Return<void> perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 
