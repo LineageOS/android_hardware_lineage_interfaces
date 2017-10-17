@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c1e1cf8_fb51da4e",
+        "filename": "power/1.0/IPower.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2017-10-17T17:06:36Z",
+      "side": 1,
+      "message": "new line",
+      "revId": "3893c14c30aa74c3d42ed123c9e4c4aaa1366cbc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
