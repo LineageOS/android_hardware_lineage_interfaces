@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7beb1b6_922a23fb",
+        "filename": "livedisplay/1.0/ILiveDisplay.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-12-30T01:34:46Z",
+      "side": 1,
+      "message": "This should be ISDMImpl or something to differentiate it from the (hopefully?) other implementations",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "9030d80171b7a55fe8b4fd32ab293c343949fbb2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97a1470b_1c8380d2",
+        "filename": "livedisplay/1.0/default/LiveDisplay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-12-30T01:34:46Z",
+      "side": 1,
+      "message": "Do we even want to try to open the legacy disp-apis blob? Not sure it\u0027ll even work in a hwbinder",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "9030d80171b7a55fe8b4fd32ab293c343949fbb2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e648ad_a2ba55f9",
+        "filename": "livedisplay/1.0/default/LiveDisplay.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2017-12-30T01:34:46Z",
+      "side": 1,
+      "message": "Ahhh!",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 4
+      },
+      "revId": "9030d80171b7a55fe8b4fd32ab293c343949fbb2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
