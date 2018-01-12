@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e815aca4_11ae62c3",
+        "filename": "vibrator/1.0-lineage/Vibrator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2018-01-12T13:09:18Z",
+      "side": 1,
+      "message": "Spacing",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "c94981d5d288cad2222e40f10a5893f93002f839",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
