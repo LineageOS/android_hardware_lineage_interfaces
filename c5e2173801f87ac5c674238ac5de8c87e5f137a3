@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5510105_05aa29d2",
+        "filename": "livedisplay/1.0/sdm/SDMColor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2018-01-27T15:51:32Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 4
+      },
+      "revId": "c5e2173801f87ac5c674238ac5de8c87e5f137a3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
