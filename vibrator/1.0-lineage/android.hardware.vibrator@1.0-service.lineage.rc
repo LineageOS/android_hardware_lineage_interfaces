@@ -1,4 +1,4 @@
-on boot
+on early-boot
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_max
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_min
