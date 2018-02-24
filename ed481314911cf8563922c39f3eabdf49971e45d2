@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "a0d736e9_b60aac30",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2018-02-24T19:21:00Z",
+      "side": 1,
+      "message": "Yeah we can, check android.hardware.neuralnetworks@1.0-service-hvx from my GitHub for an example",
+      "parentUuid": "845ff1eb_17aa60fc",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "850cae35_a16a5043",
         "filename": "livedisplay/1.0/default/impl/SDM.cpp",
         "patchSetId": 6
@@ -200,6 +224,30 @@
       "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c69184f5_b862c993",
+        "filename": "livedisplay/1.0/default/impl/SDM.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2018-02-24T19:21:00Z",
+      "side": 1,
+      "message": "It\u0027s some power saving algorithm; I don\u0027t think anything uses it anymore. Steve poked around with it on OP3 but I think he ended up disabling it",
+      "parentUuid": "54c729d8_1a155f7a",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 26
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     },
     {
       "key": {
