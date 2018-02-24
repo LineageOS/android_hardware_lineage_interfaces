@@ -251,6 +251,30 @@
     },
     {
       "key": {
+        "uuid": "efef380b_39fefeca",
+        "filename": "livedisplay/1.0/default/impl/SDM.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-02-24T19:32:41Z",
+      "side": 1,
+      "message": "I don\u0027t think he disabled it.",
+      "parentUuid": "c69184f5_b862c993",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 26
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8c4d2ed_bef38e95",
         "filename": "livedisplay/1.0/default/impl/Utils.cpp",
         "patchSetId": 6
