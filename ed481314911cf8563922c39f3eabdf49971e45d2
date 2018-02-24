@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dea44287_ed676032",
+        "filename": "livedisplay/1.0/default/Color.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "note that you might want to fully qualify namespaces in headers",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8e79ee3_e0728f52",
+        "filename": "livedisplay/1.0/default/Color.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "Why not a smart pointer?",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7642991b_e3570dcd",
+        "filename": "livedisplay/1.0/default/impl/LiveDisplayBackend.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "note that you might want to fully qualify namespaces in header files",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "845ff1eb_17aa60fc",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "You could probably make a macro for this, it looks like all the dlsym logic follows a set pattern.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "850cae35_a16a5043",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "would a failure in disp_api_get_num_display_modes actually modify count?",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 18
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06cf5d56_ac05e300",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "tabs?",
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a44c322b_ba11e2eb",
+        "filename": "livedisplay/1.0/default/impl/SDM.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "note that you might want to fully qualify namespaces in header files",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9177992_a71142f6",
+        "filename": "livedisplay/1.0/default/impl/SDM.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 4
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54c729d8_1a155f7a",
+        "filename": "livedisplay/1.0/default/impl/SDM.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "What\u0027s FOSS status, specifically?",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 26
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8c4d2ed_bef38e95",
+        "filename": "livedisplay/1.0/default/impl/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "You can constexpr char const* \u003d \"...\" these so they get typechecking and other fun stuff.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b246263_efb3db71",
+        "filename": "livedisplay/1.0/default/impl/Utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-02-24T18:56:50Z",
+      "side": 1,
+      "message": "note that you probably want to fully qualify namespaces in your header files",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
