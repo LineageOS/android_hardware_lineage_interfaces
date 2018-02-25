@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b874e66d_f9033e44",
+        "filename": "livedisplay/1.0/default/Color.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-02-25T00:47:45Z",
+      "side": 1,
+      "message": "There\u0027s only 1 instance, from my point of view smart pointer doesn\u0027t bring more benefits.",
+      "parentUuid": "e8e79ee3_e0728f52",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7642991b_e3570dcd",
         "filename": "livedisplay/1.0/default/impl/LiveDisplayBackend.h",
         "patchSetId": 6
@@ -129,6 +153,30 @@
       "writtenOn": "2018-02-24T18:56:50Z",
       "side": 1,
       "message": "would a failure in disp_api_get_num_display_modes actually modify count?",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 18
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac932ed5_1ea4ce49",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-02-25T00:47:45Z",
+      "side": 1,
+      "message": "IDK how disp_api_get_num_display_modes is implemented, so just set count to 0 once it failed, in case a random value is returned.",
+      "parentUuid": "850cae35_a16a5043",
       "range": {
         "startLine": 204,
         "startChar": 8,
@@ -272,6 +320,30 @@
       "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb111eb_2ea2bc9f",
+        "filename": "livedisplay/1.0/default/impl/SDM.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-02-25T00:47:45Z",
+      "side": 1,
+      "message": "FOSS does the same thing as CABC",
+      "parentUuid": "54c729d8_1a155f7a",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 26
+      },
+      "revId": "ed481314911cf8563922c39f3eabdf49971e45d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     },
     {
       "key": {
