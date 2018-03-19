@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db1ba634_50d5dc03",
+        "filename": "livedisplay/1.0/default/service.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-03-19T02:15:14Z",
+      "side": 1,
+      "message": "No, there should be always 1 backend.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "d839b0704d2adb11877dd1881bc10de3654b8304",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cee0400e_6e70e75e",
+        "filename": "livedisplay/1.0/default/service.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-03-19T02:15:14Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 5
+      },
+      "revId": "d839b0704d2adb11877dd1881bc10de3654b8304",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
