@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.vibrator@1.0-service.lineage"
+#define LOG_TAG "android.hardware.vibrator@1.1-service.lineage"
 
 #include <hidl/HidlTransportSupport.h>
 
@@ -22,8 +22,8 @@
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
-using android::hardware::vibrator::V1_0::IVibrator;
-using android::hardware::vibrator::V1_0::implementation::Vibrator;
+using android::hardware::vibrator::V1_1::IVibrator;
+using android::hardware::vibrator::V1_1::implementation::Vibrator;
 
 using android::OK;
 using android::sp;
