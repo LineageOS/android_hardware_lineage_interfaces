@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,17 @@
 
 #define LOG_TAG "VibratorService"
 
-#include <log/log.h>
-
-#include "Vibrator.h"
-
 #include <cmath>
 #include <fstream>
+
+#include <android-base/logging.h>
+
+#include "Vibrator.h"
 
 namespace android {
 namespace hardware {
 namespace vibrator {
-namespace V1_0 {
+namespace V1_1 {
 namespace implementation {
 
 #define VIBRATOR "/sys/devices/virtual/timed_output/vibrator/"
@@ -36,24 +36,28 @@ namespace implementation {
 #define VTG_MIN     "vtg_min"
 #define VTG_MAX     "vtg_max"
 
-#define CLICK_TIMING_MS 20
+#define CLICK_TIMING_MS 40
+#define TICK_TIMING_MS 20
 
 #define DEFAULT_MIN_VTG 0
 #define DEFAULT_MAX_VTG 255
+
+using Status = ::android::hardware::vibrator::V1_0::Status;
+using EffectStrength = ::android::hardware::vibrator::V1_0::EffectStrength;
 
 static int get(std::string path, int defaultValue) {
     int value = defaultValue;
     std::ifstream file(path);
 
     if (!file) {
-        ALOGE("Failed to open %s", path.c_str());
+        LOG(ERROR) << "Failed to open " << path;
         return value;
     }
 
     file >> value;
 
     if (!file) {
-        ALOGE("Failed to read value from %s", path.c_str());
+        LOG(ERROR) << "Failed to read value from " << path;
     }
 
     return value;
@@ -63,14 +67,14 @@ static int set(std::string path, int value) {
     std::ofstream file(path);
 
     if (!file) {
-        ALOGE("Failed to open %s", path.c_str());
+        LOG(ERROR) << "Failed to open " << path;
         return -1;
     }
 
     file << value;
 
     if (!file) {
-        ALOGE("Failed to write %d to %s", value, path.c_str());
+        LOG(ERROR) << "Failed to write " << value << " to " << path;
         return -1;
     }
 
@@ -82,6 +86,7 @@ Vibrator::Vibrator() {
     maxVoltage = get(VIBRATOR VTG_MAX, DEFAULT_MAX_VTG);
 }
 
+// Methods from ::android::hardware::vibrator::V1_0::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeout_ms) {
     if (set(VIBRATOR ENABLE, timeout_ms)) {
         return Status::UNKNOWN_ERROR;
@@ -123,40 +128,55 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
     return Status::OK;
 }
 
-Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
-    switch (effect) {
-    case Effect::CLICK:
-        uint8_t amplitude;
+static uint8_t convertEffectStrength(EffectStrength strength) {
+    uint8_t amplitude;
 
-        switch (strength) {
-        case EffectStrength::LIGHT:
-            amplitude = 36;
-            break;
-        case EffectStrength::MEDIUM:
-            amplitude = 128;
-            break;
-        case EffectStrength::STRONG:
-            amplitude = 255;
-            break;
-        default:
-            _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
-            return Void();
-        }
-
-        on(CLICK_TIMING_MS);
-        setAmplitude(amplitude);
-        _hidl_cb(Status::OK, CLICK_TIMING_MS);
+    switch (strength) {
+    case EffectStrength::LIGHT:
+        amplitude = 36;
+        break;
+    case EffectStrength::MEDIUM:
+        amplitude = 128;
         break;
     default:
-        _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
+    case EffectStrength::STRONG:
+        amplitude = 255;
         break;
     }
 
+    return amplitude;
+}
+
+Return<void> Vibrator::perform(Effect effect, EffectStrength strength,
+        perform_cb _hidl_cb) {
+    if (effect == Effect::CLICK) {
+        on(CLICK_TIMING_MS);
+        setAmplitude(convertEffectStrength(strength));
+        _hidl_cb(Status::OK, CLICK_TIMING_MS);
+    } else {
+        _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
+    }
     return Void();
 }
 
-} // namespace implementation
-}  // namespace V1_0
+// Methods from ::android::hardware::vibrator::V1_1::IVibrator follow.
+Return<void> Vibrator::perform_1_1(Effect_1_1 effect, EffectStrength strength,
+        perform_cb _hidl_cb) {
+    if (effect == Effect_1_1::TICK) {
+        on(TICK_TIMING_MS);
+        setAmplitude(convertEffectStrength(strength));
+        _hidl_cb(Status::OK, TICK_TIMING_MS);
+        return Void();
+    } else if (effect < Effect_1_1::TICK) {
+        return perform(static_cast<Effect>(effect), strength, _hidl_cb);
+    } else {
+        _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
+        return Void();
+    }
+}
+
+}  // namespace implementation
+}  // namespace V1_1
 }  // namespace vibrator
 }  // namespace hardware
 }  // namespace android
