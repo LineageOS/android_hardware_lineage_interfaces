@@ -93,6 +93,30 @@
       "revId": "d839b0704d2adb11877dd1881bc10de3654b8304",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76122e0c_ba21e28f",
+        "filename": "livedisplay/1.0/default/service.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-03-19T02:33:49Z",
+      "side": 1,
+      "message": "From my point of view it\u0027s never too late to \"expand\" when new backend actually comes. btw ld is an IColor pointer, it can\u0027t handle another instance. You don\u0027t want running 2 IColor instance at the same time.",
+      "parentUuid": "8dd42154_fe0b6418",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 5
+      },
+      "revId": "d839b0704d2adb11877dd1881bc10de3654b8304",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
