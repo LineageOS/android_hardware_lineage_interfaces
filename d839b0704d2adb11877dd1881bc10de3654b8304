@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5cc10e4_87a846c3",
+        "filename": "livedisplay/1.0/default/service.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2018-03-19T02:25:09Z",
+      "side": 1,
+      "message": "What?",
+      "parentUuid": "db1ba634_50d5dc03",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "d839b0704d2adb11877dd1881bc10de3654b8304",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cee0400e_6e70e75e",
         "filename": "livedisplay/1.0/default/service.cpp",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-19T02:15:14Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 5
+      },
+      "revId": "d839b0704d2adb11877dd1881bc10de3654b8304",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd42154_fe0b6418",
+        "filename": "livedisplay/1.0/default/service.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2018-03-19T02:25:09Z",
+      "side": 1,
+      "message": "So you can have multiple Livedisplay instances doing different things? For example sdm instance for IColor and another instace for IBacklight. Planning for future expansion. Already got the logic in lineagehw to handle this don\u0027t worry",
+      "parentUuid": "cee0400e_6e70e75e",
       "range": {
         "startLine": 47,
         "startChar": 0,
