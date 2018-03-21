@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19558938_1496d9a8",
+        "filename": "livedisplay/1.0/default/include/Color.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-03-21T07:20:09Z",
+      "side": 1,
+      "message": "It\u0027s a singleton in the legacy jni, and I actually experienced unexpected behavior without making it a singleton.",
+      "parentUuid": "aad6ef0a_32e9fb00",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "de150a2dcdd28dd1408223f10f47cad864ab2245",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57c74277_a5aa7d94",
         "filename": "livedisplay/1.0/default/include/Color.h",
         "patchSetId": 14
