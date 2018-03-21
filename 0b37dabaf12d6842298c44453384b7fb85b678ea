@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e85414de_432767a0",
+        "filename": "livedisplay/1.0/default/include/Color.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2018-03-21T12:21:31Z",
+      "side": 1,
+      "message": "std::unique_ptr should work as well",
+      "revId": "0b37dabaf12d6842298c44453384b7fb85b678ea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
