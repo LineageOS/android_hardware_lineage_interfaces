@@ -34,6 +34,24 @@
       "revId": "0b37dabaf12d6842298c44453384b7fb85b678ea",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0e4d72c_5229fecf",
+        "filename": "livedisplay/1.0/default/include/Color.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-03-22T02:10:28Z",
+      "side": 1,
+      "message": "unique_ptr has one advantage here, which is that it makes it so you can\u0027t hand ownership of the backend object around, which you could do with android::sp.",
+      "parentUuid": "7d0b5144_71da1b4b",
+      "revId": "0b37dabaf12d6842298c44453384b7fb85b678ea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
