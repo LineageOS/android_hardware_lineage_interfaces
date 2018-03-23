@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97e51d6b_b0713c89",
+        "filename": "light/2.0-aw2013/Light.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-03-23T18:28:13Z",
+      "side": 1,
+      "message": "you can do the same thing with the loop here",
+      "revId": "175c0ba46d45456f6f4650785988e4652e596c2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
