@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba00b39c_5d26cf17",
+        "filename": "light/2.0-aw2013/Light.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-03-23T18:02:04Z",
+      "side": 1,
+      "message": "plz to be putting this inside the for loop statement",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "3116de89e8c596c944102d1fb3ce4d53c35416a9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12a4626c_e0f533d2",
+        "filename": "light/2.0-aw2013/Light.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-03-23T18:02:04Z",
+      "side": 1,
+      "message": "Is this really needed?",
+      "range": {
+        "startLine": 284,
+        "startChar": 33,
+        "endLine": 284,
+        "endChar": 34
+      },
+      "revId": "3116de89e8c596c944102d1fb3ce4d53c35416a9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
