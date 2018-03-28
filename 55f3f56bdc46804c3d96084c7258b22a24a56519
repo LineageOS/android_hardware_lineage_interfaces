@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "876cdcb9_7ce881df",
+        "filename": "vibrator/1.1-lineage/Vibrator.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 17165
+      },
+      "writtenOn": "2018-03-28T13:00:27Z",
+      "side": 1,
+      "message": "There\u0027s an extra space here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "55f3f56bdc46804c3d96084c7258b22a24a56519",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
