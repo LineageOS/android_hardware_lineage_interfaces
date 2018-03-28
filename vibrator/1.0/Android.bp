@@ -46,10 +46,10 @@ cc_library {
         enabled: true,
     },
     shared_libs: [
+        "libbase",
         "libhidlbase",
         "libhidltransport",
         "libhwbinder",
-        "liblog",
         "libutils",
         "libcutils",
         "android.hardware.vibrator@1.0",
@@ -71,10 +71,10 @@ cc_library {
     export_generated_headers: ["vendor.lineage.vibrator@1.0_genc++_headers"],
     vendor: true,
     shared_libs: [
+        "libbase",
         "libhidlbase",
         "libhidltransport",
         "libhwbinder",
-        "liblog",
         "libutils",
         "libcutils",
         "android.hardware.vibrator@1.0",
