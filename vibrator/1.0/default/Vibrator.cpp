@@ -16,8 +16,8 @@
 
 #define LOG_TAG "VibratorService"
 
+#include <android-base/logging.h>
 #include <cutils/properties.h>
-#include <log/log.h>
 
 #include "Vibrator.h"
 
@@ -60,14 +60,14 @@ static int get(std::string path, int defaultValue) {
     std::ifstream file(path);
 
     if (!file) {
-        ALOGE("Failed to open %s", path.c_str());
+        LOG(ERROR) << "Failed to open " << path;
         return value;
     }
 
     file >> value;
 
     if (!file) {
-        ALOGE("Failed to read value from %s", path.c_str());
+        LOG(ERROR) << "Failed to read value from " << path;
     }
 
     return value;
@@ -77,14 +77,14 @@ static int set(std::string path, int value) {
     std::ofstream file(path);
 
     if (!file) {
-        ALOGE("Failed to open %s", path.c_str());
+        LOG(ERROR) << "Failed to open " << path;
         return -1;
     }
 
     file << value;
 
     if (!file) {
-        ALOGE("Failed to write %d to %s", value, path.c_str());
+        LOG(ERROR) << "Failed to write " << value << " to " << path;
         return -1;
     }
 
@@ -133,7 +133,7 @@ Return<Status> Vibrator::setVoltage(uint32_t voltage) {
         return Status::UNKNOWN_ERROR;
     }
 
-    ALOGI("Voltage set to: %u", scaledVoltage);
+    LOG(INFO) << "Voltage set to: " << scaledVoltage;
 
     return Status::OK;
 }
