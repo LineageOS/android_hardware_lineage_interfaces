@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c840c111_4e40a1ee",
+        "filename": "vibrator/1.1-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-03-28T10:35:00Z",
+      "side": 1,
+      "message": "This is terrible and the main reason I don\u0027t use this hal. Back to 14.1 our standard VibratorHW impl has vtg_default to specify the default strength, but this hal simply assumes EffectStrength::MEDIUM(the default one) \u003d\u003d EffectStrength::STRONG/2. From my point of view LIGHT, MEDIUM and STRONG should be exported from kernel, the strength is a non-linear model and it varies from device to device, it makes no sense to use a simple linear function to map it.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "4d2c7a32e65e3dbe5593c50cc6ca2c7edf3f0bbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
