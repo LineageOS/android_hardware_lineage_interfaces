@@ -22,6 +22,30 @@
       "revId": "4d2c7a32e65e3dbe5593c50cc6ca2c7edf3f0bbe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07f5b32_9b58ef43",
+        "filename": "vibrator/1.1-lineage/Vibrator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-03-28T10:47:57Z",
+      "side": 1,
+      "message": "We\u0027ve stopped using it as well on xiaomi 8996 because all devices besides gemini had to strong vibration. Anyway, this can obviously be reworked in a later patch.",
+      "parentUuid": "c840c111_4e40a1ee",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "4d2c7a32e65e3dbe5593c50cc6ca2c7edf3f0bbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
