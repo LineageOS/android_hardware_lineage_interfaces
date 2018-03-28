@@ -19,9 +19,9 @@ cc_binary {
     init_rc: ["vendor.lineage.vibrator@1.0-service.rc"],
     srcs: ["service.cpp", "Vibrator.cpp"],
     shared_libs: [
+        "libbase",
         "libhidlbase",
         "libhidltransport",
-        "liblog",
         "libhwbinder",
         "libutils",
         "libcutils",
