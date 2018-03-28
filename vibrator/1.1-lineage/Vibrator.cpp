@@ -16,12 +16,12 @@
 
 #define LOG_TAG "VibratorService"
 
-#include <log/log.h>
-
-#include "Vibrator.h"
-
 #include <cmath>
 #include <fstream>
+
+#include <android-base/logging.h>
+
+#include "Vibrator.h"
 
 namespace android {
 namespace hardware {
@@ -50,14 +50,14 @@ static int get(std::string path, int defaultValue) {
     std::ifstream file(path);
 
     if (!file) {
-        ALOGE("Failed to open %s", path.c_str());
+        LOG(ERROR) << "Failed to open " << path;
         return value;
     }
 
     file >> value;
 
     if (!file) {
-        ALOGE("Failed to read value from %s", path.c_str());
+        LOG(ERROR) << "Failed to read value from " << path;
     }
 
     return value;
@@ -67,14 +67,14 @@ static int set(std::string path, int value) {
     std::ofstream file(path);
 
     if (!file) {
-        ALOGE("Failed to open %s", path.c_str());
+        LOG(ERROR) << "Failed to open " << path;
         return -1;
     }
 
     file << value;
 
     if (!file) {
-        ALOGE("Failed to write %d to %s", value, path.c_str());
+        LOG(ERROR) << "Failed to write " << value << " to " << path;
         return -1;
     }
 

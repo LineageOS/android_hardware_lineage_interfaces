@@ -15,8 +15,8 @@
  */
 #define LOG_TAG "android.hardware.vibrator@1.1-service.lineage"
 
+#include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>
-
 #include "Vibrator.h"
 
 using android::hardware::configureRpcThreadpool;
@@ -30,20 +30,31 @@ using android::sp;
 using android::status_t;
 
 int main() {
-    android::sp<IVibrator> vibrator = new Vibrator();
+    status_t status;
+    android::sp<IVibrator> service = nullptr;
+
+    LOG(INFO) << "Vibrator HAL Service 1.1 is starting.";
+
+    service = new Vibrator();
+    if (service == nullptr) {
+        LOG(ERROR) << "Can not create an instance of Vibrator HAL Iface, exiting.";
+        goto shutdown;
+    }
 
     configureRpcThreadpool(1, true);
 
-    status_t status = vibrator->registerAsService();
+    status = service->registerAsService();
     if (status != OK) {
-        ALOGE("Cannot register Vibrator HAL service.");
-        return 1;
+        LOG(ERROR) << "Could not register service for Vibrator HAL Iface (" << status << ")";
+        goto shutdown;
     }
 
-    ALOGI("Vibrator HAL service ready.");
-
+    LOG(INFO) << "Vibrator Service is ready.";
     joinRpcThreadpool();
+    // Should not pass this line
 
-    ALOGI("Vibrator HAL service failed to join thread pool.");
+shutdown:
+    // In normal operation, we don't expect the thread pool to exit
+    LOG(ERROR) << "Vibrator HAL Service is shutting down.";
     return 1;
 }
