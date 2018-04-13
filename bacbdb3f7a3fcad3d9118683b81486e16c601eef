@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c817759_3418d0b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-04-13T23:14:31Z",
+      "side": 1,
+      "message": "wat? I realize this was in the commit message for the original OSS libjni_livedisplay, but this is not applicable to this change, seeing as:\n\na. You\u0027re not touching the libjni_livedisplay code\n\nb. You are not the one removing the proprietary IP (nor did you ever have access to such a thing)",
+      "range": {
+        "startLine": 17,
+        "startChar": 50,
+        "endLine": 18,
+        "endChar": 50
+      },
+      "revId": "bacbdb3f7a3fcad3d9118683b81486e16c601eef",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
