@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b1ee04c7_69500e64",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-13T04:19:41Z",
+      "side": 1,
+      "message": "TODO: disable logging before merge",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "0b37dabaf12d6842298c44453384b7fb85b678ea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e85414de_432767a0",
         "filename": "livedisplay/1.0/default/include/Color.h",
         "patchSetId": 15
