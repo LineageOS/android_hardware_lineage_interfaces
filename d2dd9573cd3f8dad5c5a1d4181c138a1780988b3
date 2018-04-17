@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "8754d920_36275c57",
+        "filename": "livedisplay/1.0/default/Android.bp",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "What does \"forced in the makefile\" mean? This flag is used by Color.cpp to determine which backend to instance.",
+      "parentUuid": "2a3e166b_b5af0246",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5af0e6ce_7e78307e",
         "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
         "patchSetId": 19
@@ -53,6 +77,30 @@
       "writtenOn": "2018-04-17T01:06:27Z",
       "side": 1,
       "message": "constexpr const char ... kFileName[]",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "386884e7_c5b79f85",
+        "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5af0e6ce_7e78307e",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "637a9340_f3b0f50c",
+        "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Didn\u0027t get you, do you mean turning mHandle into smart pointer and nuke the custom destructor?",
+      "parentUuid": "486aa955_55a4d2a4",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 1
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86af25fe_5e44e770",
         "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
         "patchSetId": 19
@@ -99,6 +171,30 @@
       "writtenOn": "2018-04-17T01:06:27Z",
       "side": 1,
       "message": "I don\u0027t quite understand why this needs to be a singleton. Why not just have the containing class create one object and destroy it when necessary? It\u0027ll make the rest of the code a lot more flexible.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 1
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf817a08_1bd47ab9",
+        "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Because we don\u0027t want to open multiple libsdm-disp-vndapis.so? Check https://android.googlesource.com/platform/hardware/qcom/neuralnetworks/hvxservice/+/android-p-preview-1/1.0/HexagonController.cpp#101",
+      "parentUuid": "86af25fe_5e44e770",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -157,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "ad4111a3_5f60e505",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dbf29ed_30806caf",
+      "range": {
+        "startLine": 258,
+        "startChar": 17,
+        "endLine": 258,
+        "endChar": 18
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a5dc7ab_e206493c",
         "filename": "livedisplay/1.0/default/impl/SDM.cpp",
         "patchSetId": 19
@@ -203,6 +323,54 @@
     },
     {
       "key": {
+        "uuid": "d76ad418_5f0f4c02",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d90fb2_67e68043",
+      "range": {
+        "startLine": 266,
+        "startChar": 16,
+        "endLine": 266,
+        "endChar": 20
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd0595ff_1c1db366",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a5dc7ab_e206493c",
+      "range": {
+        "startLine": 266,
+        "startChar": 49,
+        "endLine": 266,
+        "endChar": 65
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d2477b5_5b4c7f37",
         "filename": "livedisplay/1.0/default/impl/SDM.cpp",
         "patchSetId": 19
@@ -214,6 +382,30 @@
       "writtenOn": "2018-04-17T01:06:27Z",
       "side": 1,
       "message": "General nit: it\u0027s much easier to read if you check for the invalid values and early exit. It means you don\u0027t need to nest 5 levels of if statements.",
+      "range": {
+        "startLine": 275,
+        "startChar": 8,
+        "endLine": 275,
+        "endChar": 44
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a975fc05_ef5d7979",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d2477b5_5b4c7f37",
       "range": {
         "startLine": 275,
         "startChar": 8,
@@ -249,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "2e614bb5_033199a7",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "C/C++ assignment expression returns the value on the right, 0 in this case.",
+      "parentUuid": "c521343b_f41c028b",
+      "range": {
+        "startLine": 308,
+        "startChar": 45,
+        "endLine": 308,
+        "endChar": 51
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "336e9175_c05cdff2",
         "filename": "livedisplay/1.0/default/include/Color.h",
         "patchSetId": 19
@@ -272,6 +488,30 @@
     },
     {
       "key": {
+        "uuid": "c2511cbd_36e71052",
+        "filename": "livedisplay/1.0/default/include/Color.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "I prefer the currently way, to keep consistency with most AOSP headers.",
+      "parentUuid": "336e9175_c05cdff2",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fefe6fe_9beb0d82",
         "filename": "livedisplay/1.0/default/include/Color.h",
         "patchSetId": 19
@@ -283,6 +523,30 @@
       "writtenOn": "2018-04-17T01:06:27Z",
       "side": 1,
       "message": "These two can be moved to Color.cpp ?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3157b1f_b4999117",
+        "filename": "livedisplay/1.0/default/include/Color.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fefe6fe_9beb0d82",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -387,6 +651,30 @@
     },
     {
       "key": {
+        "uuid": "b5ba9c3b_4c615629",
+        "filename": "livedisplay/1.0/default/include/Utils.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5c4320_95b355c8",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bc5478a_57b3aa85",
         "filename": "livedisplay/1.0/default/include/controller/SDMController.h",
         "patchSetId": 19
@@ -456,6 +744,30 @@
     },
     {
       "key": {
+        "uuid": "c854443a_c66dfd13",
+        "filename": "livedisplay/1.0/default/include/impl/SDM.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bb63a5e_0414192e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cae0edbe_d2df5a73",
         "filename": "livedisplay/1.0/default/include/impl/SDM.h",
         "patchSetId": 19
@@ -467,6 +779,30 @@
       "writtenOn": "2018-04-17T01:06:27Z",
       "side": 1,
       "message": "Can these be moved to SDM.cpp ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b501931_bcce9269",
+        "filename": "livedisplay/1.0/default/include/impl/SDM.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae0edbe_d2df5a73",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -525,6 +861,30 @@
     },
     {
       "key": {
+        "uuid": "5d0ac95f_797e30c2",
+        "filename": "livedisplay/1.0/default/src/Utils.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a4715d6_bcea2d15",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a8cf792_14d40bcb",
         "filename": "livedisplay/1.0/default/src/Utils.cpp",
         "patchSetId": 19
@@ -536,6 +896,30 @@
       "writtenOn": "2018-04-17T01:06:27Z",
       "side": 1,
       "message": "could use fstream for all this file I/O",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a67a34ed_90562691",
+        "filename": "livedisplay/1.0/default/src/Utils.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a8cf792_14d40bcb",
       "range": {
         "startLine": 49,
         "startChar": 15,
@@ -571,6 +955,30 @@
     },
     {
       "key": {
+        "uuid": "a84154eb_f0c9f053",
+        "filename": "livedisplay/1.0/default/src/Utils.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "stoi",
+      "parentUuid": "c240250f_274857e7",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3afcca_3c1a9bc2",
         "filename": "livedisplay/1.0/default/src/Utils.cpp",
         "patchSetId": 19
@@ -582,6 +990,30 @@
       "writtenOn": "2018-04-17T01:06:27Z",
       "side": 1,
       "message": "This else block is not necessary, if sock \u003c 0, this function would return.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c9c95a4_635a6798",
+        "filename": "livedisplay/1.0/default/src/Utils.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-17T07:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3afcca_3c1a9bc2",
       "range": {
         "startLine": 108,
         "startChar": 0,
