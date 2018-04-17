@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a8d7e20_4d325cb2",
+        "filename": "livedisplay/1.0/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-04-17T00:38:34Z",
+      "side": 1,
+      "message": "nit: ordering",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "112bc6c950f5b0df2b2cf1575629358627171545",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d87d0c94_e6b78607",
+        "filename": "livedisplay/1.0/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-04-17T00:38:34Z",
+      "side": 1,
+      "message": "nit: ordering",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "112bc6c950f5b0df2b2cf1575629358627171545",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
