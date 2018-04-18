@@ -184,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "c7bbdf58_8579d268",
+        "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-18T14:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a887161d_0c116760",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 1
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86af25fe_5e44e770",
         "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
         "patchSetId": 19
@@ -525,6 +549,30 @@
       "side": 1,
       "message": "I think you might just want to specify 0 here then, there\u0027s no reason to assign to id at this point, right?",
       "parentUuid": "2e614bb5_033199a7",
+      "range": {
+        "startLine": 308,
+        "startChar": 45,
+        "endLine": 308,
+        "endChar": 51
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "038de942_75b5bec8",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-18T14:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ddfc81_122b43bf",
       "range": {
         "startLine": 308,
         "startChar": 45,
