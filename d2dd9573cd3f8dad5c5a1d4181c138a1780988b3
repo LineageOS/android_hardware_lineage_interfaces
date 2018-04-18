@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "a887161d_0c116760",
+        "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-04-18T05:05:22Z",
+      "side": 1,
+      "message": "You can tie the lifecycle of the pointer pointing to your dlopen\u0027ed shared lib directly to dlclose, so when the pointer goes out of scope, dlclose is automatically called (see: https://stackoverflow.com/questions/12340810/using-custom-deleter-with-stdshared-ptr)\n\nThis means less explicit code to manage your object lifecycles.",
+      "parentUuid": "637a9340_f3b0f50c",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 1
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86af25fe_5e44e770",
         "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
         "patchSetId": 19
@@ -195,6 +219,30 @@
       "side": 1,
       "message": "Because we don\u0027t want to open multiple libsdm-disp-vndapis.so? Check https://android.googlesource.com/platform/hardware/qcom/neuralnetworks/hvxservice/+/android-p-preview-1/1.0/HexagonController.cpp#101",
       "parentUuid": "86af25fe_5e44e770",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 1
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "301a7613_5ac0cc37",
+        "filename": "livedisplay/1.0/default/controller/SDMController.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-04-18T05:05:22Z",
+      "side": 1,
+      "message": "You don\u0027t have to enforce not opening multiple libsdm-disp-vndapis.so explicitly with a singleton. Just don\u0027t instantiate multiple SDMControllers in the object containing it. (even better if you use something like a unique_ptr so ownership doesn\u0027t transfer around accidentally) Using a singleton just makes the object lifecycle a little harder to deal with, since you are now responsible for explicit init/de-init, instead of letting object constructors/destructors handle resource acquisition. (See: RAII - https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization)",
+      "parentUuid": "cf817a08_1bd47ab9",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -453,6 +501,30 @@
       "side": 1,
       "message": "C/C++ assignment expression returns the value on the right, 0 in this case.",
       "parentUuid": "c521343b_f41c028b",
+      "range": {
+        "startLine": 308,
+        "startChar": 45,
+        "endLine": 308,
+        "endChar": 51
+      },
+      "revId": "d2dd9573cd3f8dad5c5a1d4181c138a1780988b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5ddfc81_122b43bf",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-04-18T05:05:22Z",
+      "side": 1,
+      "message": "I think you might just want to specify 0 here then, there\u0027s no reason to assign to id at this point, right?",
+      "parentUuid": "2e614bb5_033199a7",
       "range": {
         "startLine": 308,
         "startChar": 45,
