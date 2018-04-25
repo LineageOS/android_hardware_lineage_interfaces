@@ -20,11 +20,7 @@
 
 #include "Color.h"
 
-#ifdef COLOR_BACKEND_SDM
 #include "impl/SDM.h"
-#else
-#error "Color backend undefined!"
-#endif
 
 namespace vendor {
 namespace lineage {
@@ -38,9 +34,7 @@ using ::android::OK;
 sp<Color> Color::sInstance = nullptr;
 
 Color::Color() : mConnected(false), mBackend(nullptr) {
-#ifdef COLOR_BACKEND_SDM
     mBackend = new SDM();
-#endif
     LOG(DEBUG) << "Loaded LiveDisplay native interface";
 }
 
