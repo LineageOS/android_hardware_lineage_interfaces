@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-#ifdef COLOR_BACKEND_SDM
 #define LOG_TAG "vendor.lineage.livedisplay@1.0-service-sdm"
-#else
-#error "Color backend undefined!"
-#endif
 
 #include <android-base/logging.h>
 #include <binder/ProcessState.h>
