@@ -25,8 +25,13 @@ namespace livedisplay {
 namespace V1_0 {
 namespace implementation {
 
+class LegacyMMController;
+
 class LegacyMM : public ColorBackend {
   public:
+    LegacyMM();
+    ~LegacyMM();
+
     virtual android::status_t setAdaptiveBacklightEnabled(bool /* enabled */) override {
         return android::NO_INIT;
     }
@@ -57,14 +62,13 @@ class LegacyMM : public ColorBackend {
     virtual HSIC getDefaultPictureAdjustment() override;
     virtual android::status_t setPictureAdjustment(const HSIC& hsic) override;
 
-    virtual android::status_t initialize() override;
-    virtual android::status_t deinitialize() override;
     virtual bool hasFeature(Feature feature) override;
 
   private:
     uint32_t getNumDisplayModes();
     android::sp<disp_mode> getDisplayModeById(int32_t id);
 
+    std::unique_ptr<LegacyMMController> mController;
     HSIC mDefaultPictureAdjustment;
 };
 
