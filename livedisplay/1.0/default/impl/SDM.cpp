@@ -291,6 +291,7 @@ bool SDM::hasFeature(Feature feature) {
             break;
         case Feature::PICTURE_ADJUSTMENT:
             id = FEATURE_VER_SW_PA_API;
+            break;
         case Feature::ADAPTIVE_BACKLIGHT:
             if (mFOSSEnabled) {
                 return true;
