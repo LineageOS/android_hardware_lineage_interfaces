@@ -85,9 +85,6 @@ class Color : public IColor {
     }
     void error(const char* msg = NULL);
 
-    DisplayMode modePointerToObj(sp<disp_mode> mode);
-    DisplayMode invalidDisplayMode();
-
     void addFeature(Feature f) {
         mFeatures |= (uint32_t)f;
     };
