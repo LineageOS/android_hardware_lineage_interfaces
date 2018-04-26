@@ -122,7 +122,7 @@ Return<void> Color::getDisplayModes(getDisplayModes_cb _hidl_cb) {
     Mutex::Autolock _l(mLock);
 
     if (check(Feature::DISPLAY_MODES)) {
-        vector<sp<disp_mode>> spProfiles;
+        std::vector<sp<disp_mode>> spProfiles;
         rc = mBackend->getDisplayModes(spProfiles);
         if (rc != OK) {
             error("Unable to fetch display modes!");

@@ -26,8 +26,6 @@ namespace livedisplay {
 namespace V1_0 {
 namespace implementation {
 
-using ::std::shared_ptr;
-
 class SDMController {
   private:
     SDMController();
@@ -40,7 +38,7 @@ class SDMController {
         return reinterpret_cast<Function>(fn);
     }
 
-    shared_ptr<void> openlib();
+    std::shared_ptr<void> openlib();
 
   public:
     static SDMController& getInstance();
@@ -90,7 +88,7 @@ class SDMController {
     typedef int32_t (*disp_api_get_feature_version)(uint64_t, uint32_t, void*, uint32_t*);
 
     static const char kFilename[];
-    shared_ptr<void> mHandle;
+    std::shared_ptr<void> mHandle;
     disp_api_init mFn_init;
     disp_api_deinit mFn_deinit;
     disp_api_get_global_color_balance_range mFn_get_global_color_balance_range;
