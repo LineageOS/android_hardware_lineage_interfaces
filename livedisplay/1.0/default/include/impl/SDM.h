@@ -98,6 +98,8 @@ class SDM : public ColorBackend {
     sp<disp_mode> getLocalSRGBMode();
     sp<disp_mode> getLocalDCIP3Mode();
 
+    std::shared_ptr<SDMController> getController();
+
     uint64_t mHandle;
     bool mFOSSEnabled;
     bool mCachedFOSSStatus;

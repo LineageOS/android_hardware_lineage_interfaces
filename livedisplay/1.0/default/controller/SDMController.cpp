@@ -16,7 +16,7 @@
 
 #include "controller/SDMController.h"
 
-#define LOAD_SDM_FUNCTION(name) mFn_##name = loadFunction<disp_api_##name>("disp_api_" #name);
+#define LOAD_SDM_FUNCTION(name) mFn_##name = loadFunction<disp_api_##name>(mHandle, "disp_api_" #name);
 
 #define CLOSE_SDM_FUNCTION(name) mFn_##name = nullptr;
 
@@ -47,22 +47,26 @@
     }                                      \
     return 0;
 
+namespace {
+constexpr char kFilename[] = "libsdm-disp-vndapis.so";
+
+template <typename Function>
+Function loadFunction(std::shared_ptr<void> handle, const char* name) {
+    void* fn = dlsym(handle.get(), name);
+    if (fn == nullptr) {
+        LOG(ERROR) << "loadFunction -- failed to load function " << name;
+    }
+    return reinterpret_cast<Function>(fn);
+}
+} // anonymous namespace
+
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
 namespace V1_0 {
 namespace implementation {
 
-constexpr char SDMController::kFilename[] = "libsdm-disp-vndapis.so";
-
 SDMController::SDMController() {
-    mHandle = openlib();
-    if (mHandle != nullptr) {
-        FOR_EACH_FUNCTION(LOAD_SDM_FUNCTION)
-    }
-}
-
-std::shared_ptr<void> SDMController::openlib() {
     std::shared_ptr<void> handle(dlopen(kFilename, RTLD_NOW), [this](void* p) {
         FOR_EACH_FUNCTION(CLOSE_SDM_FUNCTION)
         if (p != nullptr) {
@@ -75,14 +79,11 @@ std::shared_ptr<void> SDMController::openlib() {
     });
     if (handle == nullptr) {
         LOG(ERROR) << "DLOPEN failed for " << kFilename << " (" << dlerror() << ")";
-        return nullptr;
+        return;
     }
-    return handle;
-}
+    mHandle = handle;
 
-SDMController& SDMController::getInstance() {
-    static SDMController instance{};
-    return instance;
+    FOR_EACH_FUNCTION(LOAD_SDM_FUNCTION)
 }
 
 int32_t SDMController::init(uint64_t* hctx, uint32_t flags) {
