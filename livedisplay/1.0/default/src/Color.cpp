@@ -60,27 +60,28 @@ using ::android::OK;
 using ::android::sp;
 using ::android::status_t;
 
-sp<Color> Color::sInstance = nullptr;
-
-Color::Color() : mConnected(false), mBackend(nullptr) {
-#if defined(COLOR_BACKEND_SDM)
-    mBackend = std::make_unique<SDM>();
-#elif defined(COLOR_BACKEND_LEGACYMM)
-    mBackend = std::make_unique<LegacyMM>();
-#endif
-    LOG(DEBUG) << "Loaded LiveDisplay native interface";
+Color::Color() : mFeatures(0), mConnected(false), mBackend(nullptr) {
+    connect();
 }
 
 Color::~Color() {
-    reset();
+    disconnect();
 }
 
-void Color::reset() {
+void Color::disconnect() {
     if (mConnected) {
-        mBackend->deinitialize();
+        mBackend = nullptr;
     }
     mFeatures = 0;
     mConnected = false;
+}
+
+bool Color::check(Feature f) {
+    if (!mConnected) {
+        connect();
+    }
+
+    return (mFeatures & (uint32_t)f);
 }
 
 void Color::error(const char* msg) {
@@ -88,23 +89,18 @@ void Color::error(const char* msg) {
         LOG(ERROR) << msg;
     }
 
-    reset();
+    disconnect();
 }
 
-bool Color::connect() {
-    if (mConnected) {
-        return true;
-    }
-
-    mFeatures = 0;
-
+void Color::connect() {
+#if defined(COLOR_BACKEND_SDM)
+    mBackend.reset(new SDM());
+#elif defined(COLOR_BACKEND_LEGACYMM)
+    mBackend.reset(new LegacyMM());
+#endif
     if (mBackend == nullptr) {
-        return false;
-    }
-
-    if (mBackend->initialize() != OK) {
         LOG(ERROR) << "Failed to initialize backend!";
-        return false;
+        return;
     }
 
     for (uint32_t i = 1; i <= (uint32_t)Feature::MAX; i <<= 1) {
@@ -113,20 +109,14 @@ bool Color::connect() {
             addFeature(f);
         }
     }
+
     mConnected = true;
-
-    return mFeatures > 0;
-}
-
-sp<Color> Color::getInstance() {
-    if (sInstance == nullptr) {
-        sInstance = new Color();
-    }
-    return sInstance;
 }
 
 Return<Features> Color::getSupportedFeatures() {
-    connect();
+    if (!mConnected) {
+        connect();
+    }
     return mFeatures;
 }
 

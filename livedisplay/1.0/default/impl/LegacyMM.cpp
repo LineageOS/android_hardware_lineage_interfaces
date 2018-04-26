@@ -63,11 +63,52 @@ using android::OK;
 using android::sp;
 using android::status_t;
 
+LegacyMM::LegacyMM() {
+    mController = std::make_unique<LegacyMMController>();
+    if (mController == nullptr) {
+        LOG(ERROR) << "%s: Failed to create LegacyMMController";
+        return;
+    }
+
+    status_t rc = mController->init(0);
+    if (rc != OK) {
+        LOG(ERROR) << "%s: Failed to initialize LegacyMMController";
+        return;
+    }
+
+    if (hasFeature(Feature::DISPLAY_MODES)) {
+        int32_t id;
+        // Get the initial mode from Utils
+        rc = Utils::readInitialModeId(&id);
+        if (rc != OK || id < 0) {
+            // Get controller default mode and save it
+            rc = mController->get_default_display_mode(0, &id);
+            if (rc == OK && id >= 0) {
+                Utils::writeInitialModeId(id);
+            } else {
+                Utils::writeInitialModeId(0);
+            }
+        }
+
+        auto mode = getDefaultDisplayMode();
+        if (mode != nullptr) {
+            setDisplayMode(mode->id, false);
+        }
+    }
+}
+
+LegacyMM::~LegacyMM() {
+    status_t rc = mController->init(1);
+    if (rc != OK) {
+        LOG(ERROR) << "%s: Failed to deinitialize LegacyMMController";
+    }
+}
+
 status_t LegacyMM::getColorBalanceRange(Range& range) {
     struct mm_range r;
     memset(&r, 0, sizeof(struct mm_range));
 
-    status_t rc = LegacyMMController::getInstance().get_color_balance_range(0, &r);
+    status_t rc = mController->get_color_balance_range(0, &r);
     if (rc == OK) {
         range.min = r.min;
         range.max = r.max;
@@ -76,12 +117,12 @@ status_t LegacyMM::getColorBalanceRange(Range& range) {
 }
 
 status_t LegacyMM::setColorBalance(int32_t balance) {
-    return LegacyMMController::getInstance().set_color_balance(0, balance);
+    return mController->set_color_balance(0, balance);
 }
 
 int32_t LegacyMM::getColorBalance() {
     int32_t value = 0;
-    if (LegacyMMController::getInstance().get_color_balance(0, &value) != 0) {
+    if (mController->get_color_balance(0, &value) != 0) {
         value = 0;
     }
     return value;
@@ -111,7 +152,7 @@ status_t LegacyMM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
 
     d_mode tmp[count];
 
-    rc = LegacyMMController::getInstance().get_display_modes(0, 0, tmp, count);
+    rc = mController->get_display_modes(0, 0, tmp, count);
     if (rc == 0) {
         for (uint32_t i = 0; i < count; i++) {
             const sp<disp_mode> m = new disp_mode;
@@ -136,11 +177,11 @@ status_t LegacyMM::setDisplayMode(int32_t modeID, bool makeDefault) {
         return BAD_VALUE;
     }
 
-    if (LegacyMMController::getInstance().set_active_display_mode(0, modeID) != 0) {
+    if (mController->set_active_display_mode(0, modeID) != 0) {
         return BAD_VALUE;
     }
 
-    if (makeDefault && LegacyMMController::getInstance().set_default_display_mode(0, modeID) != 0) {
+    if (makeDefault && mController->set_default_display_mode(0, modeID) != 0) {
         return BAD_VALUE;
     }
 
@@ -156,7 +197,7 @@ sp<disp_mode> LegacyMM::getCurrentDisplayMode() {
     int32_t id = 0;
     uint32_t mask = 0;
 
-    status_t rc = LegacyMMController::getInstance().get_active_display_mode(0, &id, &mask);
+    status_t rc = mController->get_active_display_mode(0, &id, &mask);
     if (rc == OK && id >= 0) {
         return getDisplayModeById(id);
     }
@@ -174,7 +215,7 @@ sp<disp_mode> LegacyMM::getDefaultDisplayMode() {
         return getDisplayModeById(id);
     }
 
-    status_t rc = LegacyMMController::getInstance().get_default_display_mode(0, &id);
+    status_t rc = mController->get_default_display_mode(0, &id);
     if (rc == OK && id >= 0) {
         return getDisplayModeById(id);
     }
@@ -186,7 +227,7 @@ status_t LegacyMM::getPictureAdjustmentRanges(HSICRanges& ranges) {
     struct mm_pa_range r;
     memset(&r, 0, sizeof(struct mm_pa_range));
 
-    status_t rc = LegacyMMController::getInstance().get_pa_range(0, &r);
+    status_t rc = mController->get_pa_range(0, &r);
     if (rc == OK) {
         ranges.hue.min = r.min.hue;
         ranges.hue.max = r.max.hue;
@@ -211,7 +252,7 @@ status_t LegacyMM::getPictureAdjustment(HSIC& hsic) {
     struct mm_pa_config config;
     memset(&config, 0, sizeof(struct mm_pa_config));
 
-    status_t rc = LegacyMMController::getInstance().get_pa_config(0, &config);
+    status_t rc = mController->get_pa_config(0, &config);
     if (rc == OK) {
         hsic.hue = config.data.hue;
         hsic.saturation = config.data.saturation;
@@ -237,46 +278,7 @@ status_t LegacyMM::setPictureAdjustment(const HSIC& hsic) {
     config.data.contrast = hsic.contrast;
     config.data.saturationThreshold = hsic.saturationThreshold;
 
-    return LegacyMMController::getInstance().set_pa_config(0, &config);
-}
-
-status_t LegacyMM::initialize() {
-    status_t rc = NO_INIT;
-    rc = LegacyMMController::getInstance().init(0);
-    if (rc != OK) {
-        LOG(ERROR) << "%s: Failed to initialize LegacyMMController";
-        return rc;
-    }
-
-    if (hasFeature(Feature::DISPLAY_MODES)) {
-        int32_t id;
-        // Get the initial mode from Utils
-        rc = Utils::readInitialModeId(&id);
-        if (rc != OK || id < 0) {
-            // Get controller default mode and save it
-            rc = LegacyMMController::getInstance().get_default_display_mode(0, &id);
-            if (rc == OK && id >= 0) {
-                Utils::writeInitialModeId(id);
-            } else {
-                Utils::writeInitialModeId(0);
-            }
-        }
-
-        auto mode = getDefaultDisplayMode();
-        if (mode != nullptr) {
-            setDisplayMode(mode->id, false);
-        }
-    }
-    return OK;
-}
-
-status_t LegacyMM::deinitialize() {
-    status_t rc = NO_INIT;
-    rc = LegacyMMController::getInstance().init(1);
-    if (rc != OK) {
-        return rc;
-    }
-    return OK;
+    return mController->set_pa_config(0, &config);
 }
 
 bool LegacyMM::hasFeature(Feature feature) {
@@ -295,7 +297,7 @@ bool LegacyMM::hasFeature(Feature feature) {
             return false;
     }
 
-    if (LegacyMMController::getInstance().supported(0, id)) {
+    if (mController->supported(0, id)) {
         // display modes and color balance depend on each other
         if (feature == Feature::DISPLAY_MODES || feature == Feature::COLOR_BALANCE) {
             if (getNumDisplayModes() > 0) {
@@ -322,7 +324,7 @@ bool LegacyMM::hasFeature(Feature feature) {
 
 uint32_t LegacyMM::getNumDisplayModes() {
     uint32_t count = 0;
-    if (LegacyMMController::getInstance().get_num_display_modes(0, 0, &count) != 0) {
+    if (mController->get_num_display_modes(0, 0, &count) != 0) {
         count = 0;
     }
     return count;
