@@ -107,7 +107,7 @@ uint32_t SDM::getNumDisplayModes() {
 }
 
 sp<disp_mode> SDM::getDisplayModeById(int32_t id) {
-    vector<sp<disp_mode>> profiles;
+    std::vector<sp<disp_mode>> profiles;
     status_t rc = getDisplayModes(profiles);
     if (rc == OK) {
         for (const auto& mode : profiles) {
@@ -144,7 +144,7 @@ status_t SDM::setModeState(sp<disp_mode> mode, bool state) {
     return BAD_VALUE;
 }
 
-status_t SDM::getDisplayModes(vector<sp<disp_mode>>& profiles) {
+status_t SDM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
     status_t rc = OK;
 
     uint32_t count = getNumDisplayModes();

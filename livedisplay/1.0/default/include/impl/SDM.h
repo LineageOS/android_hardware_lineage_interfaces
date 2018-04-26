@@ -21,6 +21,8 @@
 #include "ColorBackend.h"
 #include "controller/SDMController.h"
 
+#include <vector>
+
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
@@ -60,7 +62,7 @@ struct hsic_config {
 
 class SDM : public ColorBackend {
   public:
-    virtual status_t getDisplayModes(vector<sp<disp_mode>>& profiles) override;
+    virtual status_t getDisplayModes(std::vector<sp<disp_mode>>& profiles) override;
     virtual sp<disp_mode> getCurrentDisplayMode() override;
     virtual sp<disp_mode> getDefaultDisplayMode() override;
     virtual status_t setDisplayMode(int32_t modeID, bool makeDefault) override;

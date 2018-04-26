@@ -30,8 +30,6 @@ namespace implementation {
 using ::android::sp;
 using ::android::status_t;
 
-using std::vector;
-
 class ColorBackend : public android::RefBase {
   public:
     virtual status_t setAdaptiveBacklightEnabled(bool enabled) = 0;
@@ -44,7 +42,7 @@ class ColorBackend : public android::RefBase {
     virtual status_t setColorBalance(int32_t balance) = 0;
     virtual int32_t getColorBalance() = 0;
 
-    virtual status_t getDisplayModes(vector<sp<disp_mode>>& profiles) = 0;
+    virtual status_t getDisplayModes(std::vector<sp<disp_mode>>& profiles) = 0;
     virtual status_t setDisplayMode(int32_t modeID, bool makeDefault) = 0;
     virtual sp<disp_mode> getCurrentDisplayMode() = 0;
     virtual sp<disp_mode> getDefaultDisplayMode() = 0;

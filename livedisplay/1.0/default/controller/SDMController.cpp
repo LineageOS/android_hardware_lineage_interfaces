@@ -62,8 +62,8 @@ SDMController::SDMController() {
     }
 }
 
-shared_ptr<void> SDMController::openlib() {
-    shared_ptr<void> handle(dlopen(kFilename, RTLD_NOW), [this](void* p) {
+std::shared_ptr<void> SDMController::openlib() {
+    std::shared_ptr<void> handle(dlopen(kFilename, RTLD_NOW), [this](void* p) {
         FOR_EACH_FUNCTION(CLOSE_SDM_FUNCTION)
         if (p != nullptr) {
             int err = dlclose(p);

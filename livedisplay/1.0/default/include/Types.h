@@ -27,14 +27,12 @@ namespace livedisplay {
 namespace V1_0 {
 namespace implementation {
 
-using std::string;
-
 struct disp_mode : public android::RefBase {
     int32_t id;
-    string name;
+    std::string name;
 
     uint32_t privFlags;
-    string privData;
+    std::string privData;
 
     disp_mode() : id(-1) {
     }
