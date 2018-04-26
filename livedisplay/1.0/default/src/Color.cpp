@@ -22,6 +22,25 @@
 
 #include "impl/SDM.h"
 
+namespace {
+
+using vendor::lineage::livedisplay::V1_0::DisplayMode;
+using vendor::lineage::livedisplay::V1_0::implementation::disp_mode;
+
+DisplayMode modePointerToObj(android::sp<disp_mode> mode) {
+    DisplayMode m;
+    m.id = mode->id;
+    m.name = mode->name;
+    return m;
+}
+
+DisplayMode invalidDisplayMode() {
+    DisplayMode mode;
+    mode.id = -1;
+    return mode;
+}
+} // anonymous namespace
+
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
@@ -90,19 +109,6 @@ sp<Color> Color::getInstance() {
         sInstance = new Color();
     }
     return sInstance;
-}
-
-DisplayMode Color::modePointerToObj(sp<disp_mode> mode) {
-    DisplayMode m;
-    m.id = mode->id;
-    m.name = mode->name;
-    return m;
-}
-
-DisplayMode Color::invalidDisplayMode() {
-    DisplayMode mode;
-    mode.id = -1;
-    return mode;
 }
 
 Return<Features> Color::getSupportedFeatures() {
