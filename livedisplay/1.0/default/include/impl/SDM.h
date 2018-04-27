@@ -75,9 +75,15 @@ class SDM : public ColorBackend {
         return false;
     }
 
-    virtual status_t getColorBalanceRange(Range& range) override;
-    virtual int32_t getColorBalance() override;
-    virtual status_t setColorBalance(int32_t balance) override;
+    virtual status_t getColorBalanceRange(Range& /* range */) override {
+        return NO_INIT;
+    }
+    virtual int32_t getColorBalance() override {
+        return 0;
+    }
+    virtual status_t setColorBalance(int32_t /* balance */) override {
+        return NO_INIT;
+    }
 
     virtual status_t getPictureAdjustmentRanges(HSICRanges& ranges) override;
     virtual status_t setPictureAdjustment(const HSIC& hsic) override;
