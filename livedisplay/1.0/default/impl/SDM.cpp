@@ -29,8 +29,7 @@ constexpr int kDppsBufSize = 64;
 
 enum {
     FEATURE_VER_SW_PA_API = 0x00000001,
-    FEATURE_VER_SW_COLORBAL_API = 0x00000003,
-    FEATURE_VER_SW_SAVEMODES_API,
+    FEATURE_VER_SW_SAVEMODES_API = 0x00000004,
 };
 
 constexpr char kFossProperty[] = "ro.qualcomm.foss";
@@ -285,9 +284,6 @@ bool SDM::hasFeature(Feature feature) {
         case Feature::DISPLAY_MODES:
             id = FEATURE_VER_SW_SAVEMODES_API;
             break;
-        case Feature::COLOR_BALANCE:
-            id = FEATURE_VER_SW_COLORBAL_API;
-            break;
         case Feature::PICTURE_ADJUSTMENT:
             id = FEATURE_VER_SW_PA_API;
             break;
@@ -308,19 +304,8 @@ bool SDM::hasFeature(Feature feature) {
         return false;
     }
 
-    // Color balance depends on calibration data in SDM
-    if (feature == Feature::DISPLAY_MODES || feature == Feature::COLOR_BALANCE) {
-        if (getNumDisplayModes() > 0) {
-            // make sure the range isn't zero
-            if (feature == Feature::COLOR_BALANCE) {
-                Range r;
-                if (getColorBalanceRange(r) == OK && isNonZero(r)) {
-                    return true;
-                }
-                return false;
-            }
-            return true;
-        }
+    if (feature == Feature::DISPLAY_MODES) {
+        return getNumDisplayModes() > 0;
     } else if (feature == Feature::PICTURE_ADJUSTMENT) {
         HSICRanges r;
         if (getPictureAdjustmentRanges(r) == OK && r.isValid()) {
@@ -343,13 +328,6 @@ status_t SDM::saveInitialDisplayMode() {
         }
     }
     return OK;
-}
-
-status_t SDM::getColorBalanceRange(Range& range) {
-    status_t rc = mController->get_global_color_balance_range(mHandle, 0, &range);
-    LOG(VERBOSE) << "getColorBalanceRange: min=" << range.min << " max=" << range.max
-                 << " step=" << range.step;
-    return rc;
 }
 
 status_t SDM::getPictureAdjustment(HSIC& hsic) {
@@ -449,19 +427,6 @@ status_t SDM::setAdaptiveBacklightEnabled(bool enabled) {
 
 bool SDM::isAdaptiveBacklightEnabled() {
     return mCachedFOSSStatus;
-}
-
-int32_t SDM::getColorBalance() {
-    int32_t value = -1;
-    uint32_t flags = 0;
-    if (mController->get_global_color_balance(mHandle, 0, &value, &flags) != 0) {
-        value = 0;
-    }
-    return value;
-}
-
-status_t SDM::setColorBalance(int32_t balance) {
-    return mController->set_global_color_balance(mHandle, 0, balance, 0);
 }
 
 status_t SDM::setPictureAdjustment(const HSIC& hsic) {
