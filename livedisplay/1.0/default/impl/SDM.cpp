@@ -76,7 +76,7 @@ status_t SDM::initialize() {
         }
     }
 
-    mFOSSEnabled = stol(android::base::GetProperty("ro.qualcomm.foss", "0")) > 0;
+    mFOSSEnabled = android::base::GetBoolProperty("ro.qualcomm.foss", false);
 
     return OK;
 }
