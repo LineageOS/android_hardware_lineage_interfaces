@@ -32,7 +32,7 @@ using ::android::status_t;
 
 using std::vector;
 
-class ColorBackend : public android::RefBase {
+class ColorBackend {
   public:
     virtual status_t setAdaptiveBacklightEnabled(bool enabled) = 0;
     virtual bool isAdaptiveBacklightEnabled() = 0;
