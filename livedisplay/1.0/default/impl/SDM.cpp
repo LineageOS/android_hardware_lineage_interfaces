@@ -54,13 +54,8 @@ namespace implementation {
 using ::android::BAD_VALUE;
 using ::android::OK;
 
-static std::shared_ptr<SDMController> sController = nullptr;
+SDM::SDM() {
 
-std::shared_ptr<SDMController> SDM::getController() {
-    if (sController == nullptr) {
-        sController = std::make_shared<SDMController>();
-    }
-    return sController;
 }
 
 status_t SDM::initialize() {

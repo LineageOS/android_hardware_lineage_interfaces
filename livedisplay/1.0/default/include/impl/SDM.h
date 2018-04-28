@@ -60,6 +60,8 @@ struct hsic_config {
 
 class SDM : public ColorBackend {
   public:
+    SDM();
+
     virtual status_t getDisplayModes(vector<sp<disp_mode>>& profiles) override;
     virtual sp<disp_mode> getCurrentDisplayMode() override;
     virtual sp<disp_mode> getDefaultDisplayMode() override;
@@ -97,8 +99,6 @@ class SDM : public ColorBackend {
     status_t setModeState(sp<disp_mode> mode, bool state);
     sp<disp_mode> getLocalSRGBMode();
     sp<disp_mode> getLocalDCIP3Mode();
-
-    std::shared_ptr<SDMController> getController();
 
     uint64_t mHandle;
     bool mFOSSEnabled;
