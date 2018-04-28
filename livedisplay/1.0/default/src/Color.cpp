@@ -58,7 +58,7 @@ sp<Color> Color::sInstance = nullptr;
 
 Color::Color() : mConnected(false), mBackend(nullptr) {
 #ifdef COLOR_BACKEND_SDM
-    mBackend = new SDM();
+    mBackend = std::make_unique<SDM>();
 #endif
     LOG(DEBUG) << "Loaded LiveDisplay native interface";
 }
@@ -90,7 +90,7 @@ bool Color::connect() {
 
     mFeatures = 0;
 
-    if (mBackend == NULL) {
+    if (mBackend == nullptr) {
         return false;
     }
 
