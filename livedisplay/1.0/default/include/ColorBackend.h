@@ -30,7 +30,7 @@ namespace implementation {
 using ::android::sp;
 using ::android::status_t;
 
-class ColorBackend : public android::RefBase {
+class ColorBackend {
   public:
     virtual status_t setAdaptiveBacklightEnabled(bool enabled) = 0;
     virtual bool isAdaptiveBacklightEnabled() = 0;
