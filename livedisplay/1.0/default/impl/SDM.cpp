@@ -24,25 +24,32 @@
 #include "Utils.h"
 #include "impl/SDM.h"
 
-#define DPPS_BUF_SIZE 64
+namespace {
+constexpr int kDppsBufSize = 64;
 
-#define FEATURE_VER_SW_PA_API 0x00000001
-#define FEATURE_VER_SW_SAVEMODES_API 0x00000004
+enum {
+    FEATURE_VER_SW_PA_API = 0x00000001,
+    FEATURE_VER_SW_SAVEMODES_API = 0x00000004,
+};
 
-#define FOSS_ON "foss:on"
-#define FOSS_OFF "foss:off"
+constexpr char kFossProperty[] = "ro.qualcomm.foss";
+constexpr char kFossOn[] = "foss:on";
+constexpr char kFossOff[] = "foss:off";
 
 // For use when only sysfs modes are available
-#define STANDARD_NODE_ID 600
+constexpr int kStandardNodeId = 600;
 
-#define SRGB_NODE "/sys/class/graphics/fb0/srgb"
-#define SRGB_NODE_ID 601
+constexpr char kSrgbNode[] = "/sys/class/graphics/fb0/srgb";
+constexpr int kSrgbNodeId = 601;
 
-#define DCI_P3_NODE "/sys/class/graphics/fb0/dci_p3"
-#define DCI_P3_NODE_ID 602
+constexpr char kDciP3Node[] = "/sys/class/graphics/fb0/dci_p3";
+constexpr int kDciP3NodeId = 602;
 
-#define PRIV_MODE_FLAG_SDM 1
-#define PRIV_MODE_FLAG_SYSFS 2
+enum {
+    PRIV_MODE_FLAG_SDM = 1,
+    PRIV_MODE_FLAG_SYSFS,
+};
+}  // anonymous namespace
 
 namespace vendor {
 namespace lineage {
@@ -75,7 +82,7 @@ status_t SDM::initialize() {
         }
     }
 
-    mFOSSEnabled = android::base::GetBoolProperty("ro.qualcomm.foss", false);
+    mFOSSEnabled = android::base::GetBoolProperty(kFossProperty, false);
 
     return OK;
 }
@@ -124,7 +131,7 @@ status_t SDM::setModeState(sp<disp_mode> mode, bool state) {
     int32_t id = 0;
 
     if (mode->privFlags == PRIV_MODE_FLAG_SYSFS) {
-        if (mode->id != STANDARD_NODE_ID) {
+        if (mode->id != kStandardNodeId) {
             LOG(VERBOSE) << "sysfs node: " << mode->privData << " state=" << state;
             return Utils::writeInt(mode->privData.c_str(), state ? 1 : 0);
         } else {
@@ -155,7 +162,7 @@ status_t SDM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
     if (sdm_count == 0) {
         // sysfs only case, create a dummy standard mode
         const sp<disp_mode> m = new disp_mode;
-        m->id = STANDARD_NODE_ID;
+        m->id = kStandardNodeId;
         m->name = "standard";
         m->privFlags = PRIV_MODE_FLAG_SYSFS;
         m->privData = "";
@@ -220,13 +227,13 @@ sp<disp_mode> SDM::getDefaultDisplayMode() {
 
 sp<disp_mode> SDM::getLocalSRGBMode() {
     char path[PATH_MAX];
-    sprintf(path, "%s", SRGB_NODE);
+    sprintf(path, "%s", kSrgbNode);
 
     if (access(path, W_OK) != 0) {
         return nullptr;
     }
     sp<disp_mode> m = new disp_mode;
-    m->id = SRGB_NODE_ID;
+    m->id = kSrgbNodeId;
     m->name = "srgb";
     m->privFlags = PRIV_MODE_FLAG_SYSFS;
     m->privData = path;
@@ -235,13 +242,13 @@ sp<disp_mode> SDM::getLocalSRGBMode() {
 
 sp<disp_mode> SDM::getLocalDCIP3Mode() {
     char path[PATH_MAX];
-    sprintf(path, "%s", DCI_P3_NODE);
+    sprintf(path, "%s", kDciP3Node);
 
     if (access(path, W_OK) != 0) {
         return nullptr;
     }
     sp<disp_mode> m = new disp_mode;
-    m->id = DCI_P3_NODE_ID;
+    m->id = kDciP3NodeId;
     m->name = "dci_p3";
     m->privFlags = PRIV_MODE_FLAG_SYSFS;
     m->privData = path;
@@ -415,9 +422,9 @@ status_t SDM::setAdaptiveBacklightEnabled(bool enabled) {
     if (enabled == mCachedFOSSStatus) {
         return OK;
     }
-    char* buf = new char[DPPS_BUF_SIZE];
-    sprintf(buf, "%s", enabled ? FOSS_ON : FOSS_OFF);
-    if (Utils::sendDPPSCommand(buf, DPPS_BUF_SIZE) == OK) {
+    char* buf = new char[kDppsBufSize];
+    sprintf(buf, "%s", enabled ? kFossOn : kFossOff);
+    if (Utils::sendDPPSCommand(buf, kDppsBufSize) == OK) {
         if (strncmp(buf, "Success", 7) == 0) {
             rc = OK;
             mCachedFOSSStatus = enabled;
