@@ -82,7 +82,7 @@ status_t SDM::initialize() {
 
 status_t SDM::deinitialize() {
     SDMController::getInstance().deinit(mHandle, 0);
-    mHandle = -1;
+    mHandle = 0;
     return OK;
 }
 
