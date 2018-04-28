@@ -18,7 +18,6 @@
 #define VENDOR_LINEAGE_LIVEDISPLAY_V1_0_SDMCONTROLLER_H
 
 #include <android-base/logging.h>
-#include <dlfcn.h>
 
 namespace vendor {
 namespace lineage {
@@ -29,14 +28,6 @@ namespace implementation {
 class SDMController {
   private:
     SDMController();
-    template <typename Function>
-    Function loadFunction(const char* name) {
-        void* fn = dlsym(mHandle.get(), name);
-        if (fn == nullptr) {
-            LOG(ERROR) << "loadFunction -- failed to load function " << name;
-        }
-        return reinterpret_cast<Function>(fn);
-    }
 
     std::shared_ptr<void> openlib();
 
@@ -87,7 +78,6 @@ class SDMController {
     typedef int32_t (*disp_api_set_global_pa_config)(uint64_t, uint32_t, uint32_t, void*);
     typedef int32_t (*disp_api_get_feature_version)(uint64_t, uint32_t, void*, uint32_t*);
 
-    static const char kFilename[];
     std::shared_ptr<void> mHandle;
     disp_api_init mFn_init;
     disp_api_deinit mFn_deinit;
