@@ -92,7 +92,7 @@ class Color : public IColor {
         mFeatures |= (uint32_t)f;
     };
 
-    sp<ColorBackend> mBackend;
+    std::unique_ptr<ColorBackend> mBackend;
     Mutex mLock;
 };
 
