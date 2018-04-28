@@ -16,7 +16,10 @@
 
 #include "controller/SDMController.h"
 
-#define LOAD_SDM_FUNCTION(name) mFn_##name = loadFunction<disp_api_##name>("disp_api_" #name);
+#include <dlfcn.h>
+
+#define LOAD_SDM_FUNCTION(name) \
+    mFn_##name = loadFunction<disp_api_##name>(mHandle, "disp_api_" #name);
 
 #define CLOSE_SDM_FUNCTION(name) mFn_##name = nullptr;
 
@@ -47,13 +50,24 @@
     }                                      \
     return 0;
 
+namespace {
+constexpr char kFilename[] = "libsdm-disp-vndapis.so";
+
+template <typename Function>
+Function loadFunction(std::shared_ptr<void> handle, const char* name) {
+    void* fn = dlsym(handle.get(), name);
+    if (fn == nullptr) {
+        LOG(ERROR) << "loadFunction -- failed to load function " << name;
+    }
+    return reinterpret_cast<Function>(fn);
+}
+}  // anonymous namespace
+
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
 namespace V1_0 {
 namespace implementation {
-
-constexpr char SDMController::kFilename[] = "libsdm-disp-vndapis.so";
 
 SDMController::SDMController() {
     mHandle = openlib();
