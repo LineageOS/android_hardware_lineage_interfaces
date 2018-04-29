@@ -41,15 +41,11 @@ namespace implementation {
 
 using ::android::NO_INIT;
 using ::android::OK;
-using ::std::endl;
-using ::std::ifstream;
-using ::std::ofstream;
-using ::std::string;
 
 status_t Utils::readInt(const char* node, int32_t* value) {
-    string buf;
+    std::string buf;
     status_t ret = OK;
-    ifstream fin(node);
+    std::ifstream fin(node);
     if (!fin.good()) {
         return errno;
     }
@@ -64,11 +60,11 @@ status_t Utils::readInt(const char* node, int32_t* value) {
 
 status_t Utils::writeInt(const char* node, int32_t value) {
     status_t ret = OK;
-    ofstream fout(node);
+    std::ofstream fout(node);
     if (!fout.good()) {
         return errno;
     }
-    if (!(fout << value << endl)) {
+    if (!(fout << value << std::endl)) {
         ret = errno;
     }
     fout.close();
