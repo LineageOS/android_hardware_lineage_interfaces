@@ -46,11 +46,6 @@ using ::std::ifstream;
 using ::std::ofstream;
 using ::std::string;
 
-status_t Utils::exists(const char* node) {
-    struct stat sbuf;
-    return stat(node, &sbuf);
-}
-
 status_t Utils::readInt(const char* node, int32_t* value) {
     string buf;
     status_t ret = OK;
