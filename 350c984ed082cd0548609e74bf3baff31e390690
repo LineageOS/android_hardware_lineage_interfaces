@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fbf3bb9_c3a72d97",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2018-04-29T09:03:28Z",
+      "side": 0,
+      "message": "not related, but can we move to std::string?",
+      "revId": "350c984ed082cd0548609e74bf3baff31e390690",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
