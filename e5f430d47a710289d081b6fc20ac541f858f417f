@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eba0eab0_bc33adeb",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2018-04-29T03:13:38Z",
+      "side": 1,
+      "message": "Unrelated to this patch, do we know what 0x00000002 is?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "e5f430d47a710289d081b6fc20ac541f858f417f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
