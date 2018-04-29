@@ -49,9 +49,8 @@ status_t Utils::readInt(const char* node, int32_t* value) {
     if (!fin.good()) {
         return errno;
     }
-    if (getline(fin, buf)) {
-        *value = stoi(buf);
-    } else {
+    fin >> *value;
+    if (fin.fail()) {
         ret = errno;
     }
     fin.close();
@@ -64,7 +63,8 @@ status_t Utils::writeInt(const char* node, int32_t value) {
     if (!fout.good()) {
         return errno;
     }
-    if (!(fout << value << std::endl)) {
+    fout << value << std::endl;
+    if (fout.fail()) {
         ret = errno;
     }
     fout.close();
