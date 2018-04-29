@@ -22,6 +22,30 @@
       "revId": "49ec71930d048fccc9357451dc2b8350c34e45a0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b042fc_e87f3e8b",
+        "filename": "livedisplay/1.0/default/include/Color.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-04-29T20:18:06Z",
+      "side": 1,
+      "message": "These can\u0027t really be easily moved since they are referring to other member functions.",
+      "parentUuid": "3c786cc6_bdede1a8",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 6
+      },
+      "revId": "49ec71930d048fccc9357451dc2b8350c34e45a0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
