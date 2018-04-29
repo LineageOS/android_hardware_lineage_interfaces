@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d2d6c0f_fc4708b4",
+        "filename": "livedisplay/1.0/default/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-29T06:46:58Z",
+      "side": 0,
+      "message": "The plan was to add things as this part when adding new backends such as legacymm.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "e9981ec971bcf2c33a82d058cc1d1b1b5340d36f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
