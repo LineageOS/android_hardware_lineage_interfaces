@@ -16,6 +16,7 @@
 
 #define LOG_TAG "VibratorService"
 
+#include <cutils/properties.h>
 #include <log/log.h>
 
 #include "Vibrator.h"
@@ -40,6 +41,15 @@ namespace implementation {
 
 #define DEFAULT_MIN_VTG 0
 #define DEFAULT_MAX_VTG 255
+
+#define AMPLITUDE "vendor.lineage.vibrator.amplitude."
+#define AMPLITUDE_LIGHT    AMPLITUDE"light"
+#define AMPLITUDE_MEDIUM   AMPLITUDE"medium"
+#define AMPLITUDE_STRONG   AMPLITUDE"strong"
+
+#define DEFAULT_LIGHT_AMPLITUDE     36
+#define DEFAULT_MEDIUM_AMPLITUDE    128
+#define DEFAULT_STRONG_AMPLITUDE    256
 
 static int get(std::string path, int defaultValue) {
     int value = defaultValue;
@@ -80,6 +90,10 @@ static int set(std::string path, int value) {
 Vibrator::Vibrator() {
     minVoltage = get(VIBRATOR VTG_MIN, DEFAULT_MIN_VTG);
     maxVoltage = get(VIBRATOR VTG_MAX, DEFAULT_MAX_VTG);
+
+    lightAmplitude = property_get_int32(AMPLITUDE_LIGHT, DEFAULT_LIGHT_AMPLITUDE);
+    mediumAmplitude = property_get_int32(AMPLITUDE_MEDIUM, DEFAULT_MEDIUM_AMPLITUDE);
+    strongAmplitude = property_get_int32(AMPLITUDE_STRONG, DEFAULT_STRONG_AMPLITUDE);
 }
 
 Return<Status> Vibrator::on(uint32_t timeout_ms) {
@@ -130,13 +144,13 @@ Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_c
 
         switch (strength) {
         case EffectStrength::LIGHT:
-            amplitude = 36;
+            amplitude = lightAmplitude;
             break;
         case EffectStrength::MEDIUM:
-            amplitude = 128;
+            amplitude = mediumAmplitude;
             break;
         case EffectStrength::STRONG:
-            amplitude = 255;
+            amplitude = strongAmplitude;
             break;
         default:
             _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);

@@ -24,6 +24,7 @@ cc_binary {
         "liblog",
         "libhwbinder",
         "libutils",
+        "libcutils",
         "libhardware",
         "android.hardware.vibrator@1.0",
     ],
