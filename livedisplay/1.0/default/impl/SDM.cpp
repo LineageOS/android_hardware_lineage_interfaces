@@ -226,32 +226,26 @@ sp<disp_mode> SDM::getDefaultDisplayMode() {
 }
 
 sp<disp_mode> SDM::getLocalSRGBMode() {
-    char path[PATH_MAX];
-    sprintf(path, "%s", kSrgbNode);
-
-    if (access(path, W_OK) != 0) {
+    if (access(kSrgbNode, W_OK) != 0) {
         return nullptr;
     }
     sp<disp_mode> m = new disp_mode;
     m->id = kSrgbNodeId;
     m->name = "srgb";
     m->privFlags = PRIV_MODE_FLAG_SYSFS;
-    m->privData = path;
+    m->privData = kSrgbNode;
     return m;
 }
 
 sp<disp_mode> SDM::getLocalDCIP3Mode() {
-    char path[PATH_MAX];
-    sprintf(path, "%s", kDciP3Node);
-
-    if (access(path, W_OK) != 0) {
+    if (access(kDciP3Node, W_OK) != 0) {
         return nullptr;
     }
     sp<disp_mode> m = new disp_mode;
     m->id = kDciP3NodeId;
     m->name = "dci_p3";
     m->privFlags = PRIV_MODE_FLAG_SYSFS;
-    m->privData = path;
+    m->privData = kDciP3Node;
     return m;
 }
 
