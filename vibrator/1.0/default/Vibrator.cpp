@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@
 #include <cmath>
 #include <fstream>
 
-namespace android {
-namespace hardware {
+namespace vendor {
+namespace lineage {
 namespace vibrator {
 namespace V1_0 {
 namespace implementation {
@@ -32,6 +32,8 @@ namespace implementation {
 #define VIBRATOR "/sys/devices/virtual/timed_output/vibrator/"
 
 #define ENABLE      "enable"
+
+#define VTG_DEFAULT "vtg_default"
 #define VTG_LEVEL   "vtg_level"
 #define VTG_MIN     "vtg_min"
 #define VTG_MAX     "vtg_max"
@@ -47,6 +49,8 @@ namespace implementation {
 #define DEFAULT_LIGHT_VTG 36
 #define DEFAULT_MEDIUM_VTG 128
 #define DEFAULT_STRONG_VTG 256
+
+namespace {
 
 static int get(std::string path, int defaultValue) {
     int value = defaultValue;
@@ -84,15 +88,21 @@ static int set(std::string path, int value) {
     return 0;
 }
 
+} // anonymous namespace
+
 Vibrator::Vibrator() {
+    defaultVoltage = get(VIBRATOR VTG_DEFAULT, DEFAULT_MAX_VTG);
     minVoltage = get(VIBRATOR VTG_MIN, DEFAULT_MIN_VTG);
     maxVoltage = get(VIBRATOR VTG_MAX, DEFAULT_MAX_VTG);
 
     lightVoltage = get(VIBRATOR VTG_LIGHT, DEFAULT_LIGHT_VTG);
     mediumVoltage = get(VIBRATOR VTG_MEDIUM, DEFAULT_MEDIUM_VTG);
     strongVoltage = get(VIBRATOR VTG_STRONG, DEFAULT_STRONG_VTG);
+
+    defaultIntensity = intensity = 255 * defaultVoltage / maxVoltage;
 }
 
+// Methods from ::android::hardware::vibrator::V1_0::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeout_ms) {
     if (set(VIBRATOR ENABLE, timeout_ms)) {
         return Status::UNKNOWN_ERROR;
@@ -113,6 +123,16 @@ Return<bool> Vibrator::supportsAmplitudeControl()  {
     return true;
 }
 
+Return<Status> Vibrator::setVoltage(uint32_t voltage) {
+    uint32_t scaledVoltage = voltage * intensity / 255;
+
+    if (set(VIBRATOR VTG_LEVEL, scaledVoltage)) {
+        return Status::UNKNOWN_ERROR;
+    }
+
+    return Status::OK;
+}
+
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
     if (amplitude == 0) {
         return Status::BAD_VALUE;
@@ -125,13 +145,9 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
     uint32_t voltage =
             std::lround((amplitude - 1) / 254.0 * (maxVoltage - minVoltage) + minVoltage);
 
-    if (set(VIBRATOR VTG_LEVEL, voltage)) {
-        return Status::UNKNOWN_ERROR;
-    }
-
     ALOGI("Voltage set to: %u", voltage);
 
-    return Status::OK;
+    return setVoltage(voltage);
 }
 
 Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
@@ -155,7 +171,7 @@ Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_c
         }
 
         on(CLICK_TIMING_MS);
-        set(VIBRATOR VTG_LEVEL, voltage);
+        setVoltage(voltage);
         _hidl_cb(Status::OK, CLICK_TIMING_MS);
         break;
     default:
@@ -166,8 +182,24 @@ Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_c
     return Void();
 }
 
-} // namespace implementation
+// Methods from IVibrator follow.
+Return<void> Vibrator::getDefaultIntensity(getDefaultIntensity_cb _hidl_cb) {
+    _hidl_cb(Status::OK, defaultIntensity);
+    return Void();
+}
+
+Return<void> Vibrator::getIntensity(getIntensity_cb _hidl_cb) {
+    _hidl_cb(Status::OK, intensity);
+    return Void();
+}
+
+Return<Status> Vibrator::setIntensity(uint8_t newIntensity) {
+    intensity = newIntensity;
+    return Status::OK;
+}
+
+}  // namespace implementation
 }  // namespace V1_0
 }  // namespace vibrator
-}  // namespace hardware
-}  // namespace android
+}  // namespace lineage
+}  // namespace vendor

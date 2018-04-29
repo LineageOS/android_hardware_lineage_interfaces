@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,41 +13,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef ANDROID_HARDWARE_VIBRATOR_V1_0_VIBRATOR_H
-#define ANDROID_HARDWARE_VIBRATOR_V1_0_VIBRATOR_H
+#ifndef VENDOR_LINEAGE_VIBRATOR_V1_0_VIBRATOR_H
+#define VENDOR_LINEAGE_VIBRATOR_V1_0_VIBRATOR_H
 
-#include <android/hardware/vibrator/1.0/IVibrator.h>
+#include <vendor/lineage/vibrator/1.0/IVibrator.h>
 #include <hidl/Status.h>
 
-namespace android {
-namespace hardware {
+namespace vendor {
+namespace lineage {
 namespace vibrator {
 namespace V1_0 {
 namespace implementation {
 
+using ::android::hardware::Return;
+using ::android::hardware::Void;
+using ::android::hardware::vibrator::V1_0::Status;
+using ::android::hardware::vibrator::V1_0::Effect;
+using ::android::hardware::vibrator::V1_0::EffectStrength;
+
 class Vibrator : public IVibrator {
 public:
   Vibrator();
+  Return<Status> setVoltage(uint32_t voltage);
 
+  // Methods from ::android::hardware::vibrator::V1_0::IVibrator follow.
   Return<Status> on(uint32_t timeoutMs) override;
   Return<Status> off() override;
   Return<bool> supportsAmplitudeControl() override;
   Return<Status> setAmplitude(uint8_t amplitude) override;
   Return<void> perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 
+  // Methods from IVibrator follow.
+  Return<void> getDefaultIntensity(getDefaultIntensity_cb _hidl_cb) override;
+  Return<void> getIntensity(getIntensity_cb _hidl_cb) override;
+  Return<Status> setIntensity(uint8_t intensity) override;
+
 private:
+  uint32_t defaultVoltage;
   uint32_t minVoltage;
   uint32_t maxVoltage;
 
   uint32_t lightVoltage;
   uint32_t mediumVoltage;
   uint32_t strongVoltage;
+
+  uint8_t defaultIntensity;
+  uint8_t intensity;
 };
 
 }  // namespace implementation
 }  // namespace V1_0
 }  // namespace vibrator
-}  // namespace hardware
-}  // namespace android
+}  // namespace lineage
+}  // namespace vendor
 
-#endif  // ANDROID_HARDWARE_VIBRATOR_V1_0_VIBRATOR_H
+#endif  // VENDOR_LINEAGE_VIBRATOR_V1_0_VIBRATOR_H
