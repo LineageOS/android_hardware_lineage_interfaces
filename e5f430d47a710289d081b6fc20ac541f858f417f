@@ -22,6 +22,53 @@
       "revId": "e5f430d47a710289d081b6fc20ac541f858f417f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4e1af0_ae5030c1",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-29T06:55:03Z",
+      "side": 1,
+      "message": "Defined in disp_color_apis.h if you have BSP:\nFEATURE_VER_SW_MEMCOLOR_API        -- For describing the version of the Memory Color support\nUnused by us.",
+      "parentUuid": "eba0eab0_bc33adeb",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "e5f430d47a710289d081b6fc20ac541f858f417f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc66e88a_1ace1a29",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-04-29T06:55:03Z",
+      "side": 1,
+      "message": "The val should explicitly specified to avoid confusion.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "e5f430d47a710289d081b6fc20ac541f858f417f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
