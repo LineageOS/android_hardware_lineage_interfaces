@@ -38,6 +38,10 @@ public:
 private:
   uint32_t minVoltage;
   uint32_t maxVoltage;
+
+  uint8_t lightAmplitude;
+  uint8_t mediumAmplitude;
+  uint8_t strongAmplitude;
 };
 
 }  // namespace implementation
