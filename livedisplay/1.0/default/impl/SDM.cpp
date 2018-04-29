@@ -173,15 +173,15 @@ status_t SDM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
             int32_t type;
             int32_t len;
             char* name;
+            sdm_mode() : id(-1), type(0), len(128) {
+                name = new char[128];
+            }
+            ~sdm_mode() {
+                delete name;
+            }
         };
 
-        sdm_mode* tmp = new sdm_mode[sdm_count];
-        memset(tmp, 0, sizeof(sdm_mode) * sdm_count);
-        for (uint32_t i = 0; i < sdm_count; i++) {
-            tmp[i].id = -1;
-            tmp[i].name = new char[128];
-            tmp[i].len = 128;
-        }
+        sdm_mode tmp[sdm_count];
 
         uint32_t flags = 0;
         rc = SDMController::getInstance().get_display_modes(mHandle, 0, 0, tmp, sdm_count, &flags);
@@ -194,8 +194,6 @@ status_t SDM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
                 profiles.push_back(m);
             }
         }
-        for (uint32_t i = 0; i < sdm_count; i++) delete tmp[i].name;
-        delete[] tmp;
     }
 
     sp<disp_mode> srgb = getLocalSRGBMode();
@@ -416,7 +414,7 @@ status_t SDM::setAdaptiveBacklightEnabled(bool enabled) {
     if (enabled == mCachedFOSSStatus) {
         return OK;
     }
-    char* buf = new char[kDppsBufSize];
+    char buf[kDppsBufSize];
     sprintf(buf, "%s", enabled ? kFossOn : kFossOff);
     if (Utils::sendDPPSCommand(buf, kDppsBufSize) == OK) {
         if (strncmp(buf, "Success", 7) == 0) {
@@ -424,7 +422,6 @@ status_t SDM::setAdaptiveBacklightEnabled(bool enabled) {
             mCachedFOSSStatus = enabled;
         }
     }
-    delete[] buf;
     return rc;
 }
 
