@@ -36,10 +36,17 @@ namespace implementation {
 #define VTG_MIN     "vtg_min"
 #define VTG_MAX     "vtg_max"
 
+#define VTG_LIGHT   "vtg_light"
+#define VTG_MEDIUM  "vtg_medium"
+#define VTG_STRONG  "vtg_strong"
+
 #define CLICK_TIMING_MS 20
 
 #define DEFAULT_MIN_VTG 0
 #define DEFAULT_MAX_VTG 255
+#define DEFAULT_LIGHT_VTG 36
+#define DEFAULT_MEDIUM_VTG 128
+#define DEFAULT_STRONG_VTG 256
 
 static int get(std::string path, int defaultValue) {
     int value = defaultValue;
@@ -80,6 +87,10 @@ static int set(std::string path, int value) {
 Vibrator::Vibrator() {
     minVoltage = get(VIBRATOR VTG_MIN, DEFAULT_MIN_VTG);
     maxVoltage = get(VIBRATOR VTG_MAX, DEFAULT_MAX_VTG);
+
+    lightVoltage = get(VIBRATOR VTG_LIGHT, DEFAULT_LIGHT_VTG);
+    mediumVoltage = get(VIBRATOR VTG_MEDIUM, DEFAULT_MEDIUM_VTG);
+    strongVoltage = get(VIBRATOR VTG_STRONG, DEFAULT_STRONG_VTG);
 }
 
 Return<Status> Vibrator::on(uint32_t timeout_ms) {
@@ -126,17 +137,17 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
 Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     switch (effect) {
     case Effect::CLICK:
-        uint8_t amplitude;
+        uint32_t voltage;
 
         switch (strength) {
         case EffectStrength::LIGHT:
-            amplitude = 36;
+            voltage = lightVoltage;
             break;
         case EffectStrength::MEDIUM:
-            amplitude = 128;
+            voltage = mediumVoltage;
             break;
         case EffectStrength::STRONG:
-            amplitude = 255;
+            voltage = strongVoltage;
             break;
         default:
             _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
@@ -144,7 +155,7 @@ Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_c
         }
 
         on(CLICK_TIMING_MS);
-        setAmplitude(amplitude);
+        set(VIBRATOR VTG_LEVEL, voltage);
         _hidl_cb(Status::OK, CLICK_TIMING_MS);
         break;
     default:
