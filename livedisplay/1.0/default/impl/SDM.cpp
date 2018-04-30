@@ -17,8 +17,6 @@
 
 // #define LOG_NDEBUG 0
 
-#define LOG_TAG "LiveDisplay-SDM"
-
 #include "impl/SDM.h"
 
 #include "controller/SDMController.h"

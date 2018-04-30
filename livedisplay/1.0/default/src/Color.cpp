@@ -16,15 +16,13 @@
 
 // #define LOG_NDEBUG 0
 
-#define LOG_TAG "LiveDisplay-HIDL"
-
 #include "Color.h"
 
 #include "ColorBackend.h"
-#ifdef COLOR_BACKEND_SDM
+#if defined(COLOR_BACKEND_SDM)
 #include "impl/SDM.h"
-#else
-#error "Color backend undefined!"
+#elif defined(COLOR_BACKEND_LEGACYMM)
+#include "impl/LegacyMM.h"
 #endif
 
 #include <android-base/logging.h>
