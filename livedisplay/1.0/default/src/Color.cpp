@@ -21,10 +21,10 @@
 #include "Color.h"
 
 #include "ColorBackend.h"
-#ifdef COLOR_BACKEND_SDM
+#if defined(COLOR_BACKEND_SDM)
 #include "impl/SDM.h"
-#else
-#error "Color backend undefined!"
+#elif defined(COLOR_BACKEND_LEGACYMM)
+#include "impl/LegacyMM.h"
 #endif
 
 #include <android-base/logging.h>
@@ -63,8 +63,10 @@ using ::android::status_t;
 sp<Color> Color::sInstance = nullptr;
 
 Color::Color() : mConnected(false), mBackend(nullptr) {
-#ifdef COLOR_BACKEND_SDM
+#if defined(COLOR_BACKEND_SDM)
     mBackend = std::make_unique<SDM>();
+#elif defined(COLOR_BACKEND_LEGACYMM)
+    mBackend = std::make_unique<LegacyMM>();
 #endif
     LOG(DEBUG) << "Loaded LiveDisplay native interface";
 }

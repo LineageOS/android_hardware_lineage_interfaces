@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-#ifdef COLOR_BACKEND_SDM
+#if defined(COLOR_BACKEND_SDM)
 #define LOG_TAG "vendor.lineage.livedisplay@1.0-service-sdm"
+#elif defined(COLOR_BACKEND_LEGACYMM)
+#define LOG_TAG "vendor.lineage.livedisplay@1.0-service-legacymm"
 #else
 #error "Color backend undefined!"
 #endif
@@ -60,7 +62,7 @@ int main() {
 
     LOG(INFO) << "LiveDisplay HAL service is ready.";
     joinRpcThreadpool();
-    // Should not pass this line
+// Should not pass this line
 
 shutdown:
     // In normal operation, we don't expect the thread pool to exit
