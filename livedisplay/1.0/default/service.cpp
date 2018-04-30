@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-#ifdef COLOR_BACKEND_SDM
+#if defined(COLOR_BACKEND_SDM)
 #define LOG_TAG "vendor.lineage.livedisplay@1.0-service-sdm"
+#elif defined(COLOR_BACKEND_LEGACYMM)
+#define LOG_TAG "vendor.lineage.livedisplay@1.0-service-legacymm"
 #else
 #error "Color backend undefined!"
 #endif
