@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4d3d49d_7edeed83",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2018-04-30T21:20:18Z",
+      "side": 1,
+      "message": "will always fail since we set features after we create SDM()",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 42
+      },
+      "revId": "5cc25130a0bfe69c213a4653df1d9f3652d8221a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
