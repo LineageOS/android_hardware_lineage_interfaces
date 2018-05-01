@@ -34,32 +34,6 @@ using ::android::NO_INIT;
 
 using ::vendor::lineage::livedisplay::V1_0::IColor;
 
-struct hsic_int_range {
-    int32_t max;
-    int32_t min;
-    uint32_t step;
-};
-
-struct hsic_float_range {
-    float max;
-    float min;
-    float step;
-};
-
-struct hsic_ranges {
-    uint32_t flags;
-    struct hsic_int_range hue;
-    struct hsic_float_range saturation;
-    struct hsic_float_range intensity;
-    struct hsic_float_range contrast;
-    struct hsic_float_range saturationThreshold;
-};
-
-struct hsic_config {
-    uint32_t flags;
-    HSIC data;
-};
-
 class SDM : public ColorBackend {
   public:
     virtual status_t getDisplayModes(std::vector<sp<disp_mode>>& profiles) override;

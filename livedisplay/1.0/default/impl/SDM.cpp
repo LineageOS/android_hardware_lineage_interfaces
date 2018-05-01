@@ -49,6 +49,32 @@ enum {
     PRIV_MODE_FLAG_SDM = 1,
     PRIV_MODE_FLAG_SYSFS,
 };
+
+struct hsic_config {
+    uint32_t flags;
+    vendor::lineage::livedisplay::V1_0::HSIC data;
+};
+
+struct hsic_float_range {
+    float max;
+    float min;
+    float step;
+};
+
+struct hsic_int_range {
+    int32_t max;
+    int32_t min;
+    uint32_t step;
+};
+
+struct hsic_ranges {
+    uint32_t flags;
+    struct hsic_int_range hue;
+    struct hsic_float_range saturation;
+    struct hsic_float_range intensity;
+    struct hsic_float_range contrast;
+    struct hsic_float_range saturationThreshold;
+};
 }  // anonymous namespace
 
 namespace vendor {
