@@ -17,7 +17,9 @@
 #ifndef VENDOR_LINEAGE_LIVEDISPLAY_V1_0_SDMCONTROLLER_H
 #define VENDOR_LINEAGE_LIVEDISPLAY_V1_0_SDMCONTROLLER_H
 
-#include <android-base/logging.h>
+#include <memory>
+
+#include <stdint.h>
 
 namespace vendor {
 namespace lineage {
