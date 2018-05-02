@@ -15,6 +15,8 @@
 ** limitations under the License.
 */
 
+#include "Utils.h"
+
 #include <fcntl.h>
 #include <poll.h>
 #include <signal.h>
@@ -26,8 +28,6 @@
 #include <string>
 
 #include <cutils/sockets.h>
-
-#include "Utils.h"
 
 constexpr char LOCAL_STORAGE_PATH[] = "/data/vendor/display";
 constexpr char LOCAL_MODE_ID[] = "livedisplay_mode";

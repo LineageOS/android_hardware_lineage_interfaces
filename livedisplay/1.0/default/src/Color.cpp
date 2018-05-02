@@ -20,11 +20,14 @@
 
 #include "Color.h"
 
+#include "ColorBackend.h"
 #ifdef COLOR_BACKEND_SDM
 #include "impl/SDM.h"
 #else
 #error "Color backend undefined!"
 #endif
+
+#include <android-base/logging.h>
 
 namespace {
 

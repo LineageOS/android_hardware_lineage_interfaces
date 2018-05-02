@@ -16,6 +16,8 @@
 
 #include "controller/SDMController.h"
 
+#include <android-base/logging.h>
+
 #include <dlfcn.h>
 
 #define LOAD_SDM_FUNCTION(name) \

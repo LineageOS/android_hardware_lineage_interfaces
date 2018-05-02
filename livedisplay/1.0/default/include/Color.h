@@ -18,10 +18,11 @@
 #ifndef VENDOR_LINEAGE_LIVEDISPLAY_V1_0_COLOR_H
 #define VENDOR_LINEAGE_LIVEDISPLAY_V1_0_COLOR_H
 
-#include <utils/Mutex.h>
 #include <vendor/lineage/livedisplay/1.0/IColor.h>
 
-#include "ColorBackend.h"
+#include <utils/Mutex.h>
+
+#include <memory>
 
 namespace vendor {
 namespace lineage {
@@ -36,6 +37,8 @@ using ::android::hardware::hidl_vec;
 using ::android::sp;
 
 using ::vendor::lineage::livedisplay::V1_0::IColor;
+
+class ColorBackend;
 
 class Color : public IColor {
   public:
