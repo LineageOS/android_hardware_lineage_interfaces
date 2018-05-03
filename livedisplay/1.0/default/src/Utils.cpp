@@ -41,6 +41,7 @@ namespace implementation {
 
 using ::android::NO_INIT;
 using ::android::OK;
+using ::android::status_t;
 
 status_t Utils::readInt(const char* node, int32_t* value) {
     std::string buf;

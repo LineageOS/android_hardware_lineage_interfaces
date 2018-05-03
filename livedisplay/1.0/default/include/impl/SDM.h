@@ -35,49 +35,49 @@ using ::vendor::lineage::livedisplay::V1_0::IColor;
 
 class SDM : public ColorBackend {
   public:
-    virtual status_t getDisplayModes(std::vector<sp<disp_mode>>& profiles) override;
-    virtual sp<disp_mode> getCurrentDisplayMode() override;
-    virtual sp<disp_mode> getDefaultDisplayMode() override;
-    virtual status_t setDisplayMode(int32_t modeID, bool makeDefault) override;
+    virtual android::status_t getDisplayModes(std::vector<android::sp<disp_mode>>& profiles) override;
+    virtual android::sp<disp_mode> getCurrentDisplayMode() override;
+    virtual android::sp<disp_mode> getDefaultDisplayMode() override;
+    virtual android::status_t setDisplayMode(int32_t modeID, bool makeDefault) override;
 
-    virtual status_t setAdaptiveBacklightEnabled(bool enabled) override;
+    virtual android::status_t setAdaptiveBacklightEnabled(bool enabled) override;
     virtual bool isAdaptiveBacklightEnabled() override;
 
-    virtual status_t setOutdoorModeEnabled(bool /* enabled */) override {
+    virtual android::status_t setOutdoorModeEnabled(bool /* enabled */) override {
         return NO_INIT;
     }
     virtual bool isOutdoorModeEnabled() override {
         return false;
     }
 
-    virtual status_t getColorBalanceRange(Range& /* range */) override {
+    virtual android::status_t getColorBalanceRange(Range& /* range */) override {
         return NO_INIT;
     }
     virtual int32_t getColorBalance() override {
         return 0;
     }
-    virtual status_t setColorBalance(int32_t /* balance */) override {
+    virtual android::status_t setColorBalance(int32_t /* balance */) override {
         return NO_INIT;
     }
 
-    virtual status_t getPictureAdjustmentRanges(HSICRanges& ranges) override;
-    virtual status_t setPictureAdjustment(const HSIC& hsic) override;
-    virtual status_t getPictureAdjustment(HSIC& hsic) override;
+    virtual android::status_t getPictureAdjustmentRanges(HSICRanges& ranges) override;
+    virtual android::status_t setPictureAdjustment(const HSIC& hsic) override;
+    virtual android::status_t getPictureAdjustment(HSIC& hsic) override;
     virtual HSIC getDefaultPictureAdjustment() override;
 
     virtual bool hasFeature(Feature f);
-    virtual status_t initialize();
-    virtual status_t deinitialize();
+    virtual android::status_t initialize();
+    virtual android::status_t deinitialize();
 
   private:
-    status_t saveInitialDisplayMode();
+    android::status_t saveInitialDisplayMode();
     uint32_t getNumDisplayModes();
     uint32_t getNumSDMDisplayModes();
 
-    sp<disp_mode> getDisplayModeById(int32_t id);
-    status_t setModeState(sp<disp_mode> mode, bool state);
-    sp<disp_mode> getLocalSRGBMode();
-    sp<disp_mode> getLocalDCIP3Mode();
+    android::sp<disp_mode> getDisplayModeById(int32_t id);
+    android::status_t setModeState(android::sp<disp_mode> mode, bool state);
+    android::sp<disp_mode> getLocalSRGBMode();
+    android::sp<disp_mode> getLocalDCIP3Mode();
 
     uint64_t mHandle;
     bool mFOSSEnabled;

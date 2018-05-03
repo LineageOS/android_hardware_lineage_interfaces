@@ -54,8 +54,11 @@ namespace livedisplay {
 namespace V1_0 {
 namespace implementation {
 
+using ::android::Mutex;
 using ::android::NO_INIT;
 using ::android::OK;
+using ::android::sp;
+using ::android::status_t;
 
 sp<Color> Color::sInstance = nullptr;
 
