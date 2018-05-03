@@ -88,6 +88,8 @@ namespace implementation {
 
 using ::android::BAD_VALUE;
 using ::android::OK;
+using ::android::sp;
+using ::android::status_t;
 
 status_t SDM::initialize() {
     status_t rc = NO_INIT;

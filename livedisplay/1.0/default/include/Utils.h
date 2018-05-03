@@ -20,8 +20,6 @@
 
 #include <utils/Errors.h>
 
-using ::android::status_t;
-
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
@@ -30,19 +28,19 @@ namespace implementation {
 
 class Utils {
   public:
-    static status_t readInt(const char* node, int32_t* value);
+    static android::status_t readInt(const char* node, int32_t* value);
 
-    static status_t writeInt(const char* node, int32_t value);
+    static android::status_t writeInt(const char* node, int32_t value);
 
-    static status_t sendDPPSCommand(char* buf, size_t len);
+    static android::status_t sendDPPSCommand(char* buf, size_t len);
 
-    static status_t writeLocalModeId(int32_t id);
+    static android::status_t writeLocalModeId(int32_t id);
 
-    static status_t readLocalModeId(int32_t* id);
+    static android::status_t readLocalModeId(int32_t* id);
 
-    static status_t writeInitialModeId(int32_t id);
+    static android::status_t writeInitialModeId(int32_t id);
 
-    static status_t readInitialModeId(int32_t* id);
+    static android::status_t readInitialModeId(int32_t* id);
 };
 
 }  // namespace implementation
