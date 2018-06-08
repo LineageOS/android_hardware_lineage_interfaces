@@ -87,6 +87,7 @@ namespace V1_0 {
 namespace implementation {
 
 using ::android::BAD_VALUE;
+using ::android::NO_INIT;
 using ::android::OK;
 using ::android::sp;
 using ::android::status_t;

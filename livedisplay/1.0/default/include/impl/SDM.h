@@ -28,11 +28,6 @@ namespace livedisplay {
 namespace V1_0 {
 namespace implementation {
 
-using ::android::hardware::Return;
-using ::android::NO_INIT;
-
-using ::vendor::lineage::livedisplay::V1_0::IColor;
-
 class SDM : public ColorBackend {
   public:
     virtual android::status_t getDisplayModes(std::vector<android::sp<disp_mode>>& profiles) override;
@@ -44,20 +39,20 @@ class SDM : public ColorBackend {
     virtual bool isAdaptiveBacklightEnabled() override;
 
     virtual android::status_t setOutdoorModeEnabled(bool /* enabled */) override {
-        return NO_INIT;
+        return android::NO_INIT;
     }
     virtual bool isOutdoorModeEnabled() override {
         return false;
     }
 
     virtual android::status_t getColorBalanceRange(Range& /* range */) override {
-        return NO_INIT;
+        return android::NO_INIT;
     }
     virtual int32_t getColorBalance() override {
         return 0;
     }
     virtual android::status_t setColorBalance(int32_t /* balance */) override {
-        return NO_INIT;
+        return android::NO_INIT;
     }
 
     virtual android::status_t getPictureAdjustmentRanges(HSICRanges& ranges) override;
