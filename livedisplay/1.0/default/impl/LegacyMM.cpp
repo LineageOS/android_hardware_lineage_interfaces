@@ -21,6 +21,7 @@
 
 #include "impl/LegacyMM.h"
 
+#include "controller/LegacyMMController.h"
 #include "Utils.h"
 
 #include <android-base/logging.h>
