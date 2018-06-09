@@ -24,10 +24,10 @@
 
 #include <dlfcn.h>
 
-#define LOAD_SDM_FUNCTION(name) \
+#define LOAD_MM_FUNCTION(name) \
     mFn_##name = loadFunction<disp_api_##name>(mHandle, "disp_api_" #name);
 
-#define CLOSE_SDM_FUNCTION(name) mFn_##name = nullptr;
+#define CLOSE_MM_FUNCTION(name) mFn_##name = nullptr;
 
 #define FOR_EACH_FUNCTION(MACRO)    \
     MACRO(init)                     \
@@ -76,13 +76,13 @@ namespace implementation {
 LegacyMMController::LegacyMMController() {
     mHandle = openlib();
     if (mHandle != nullptr) {
-        FOR_EACH_FUNCTION(LOAD_SDM_FUNCTION)
+        FOR_EACH_FUNCTION(LOAD_MM_FUNCTION)
     }
 }
 
 std::shared_ptr<void> LegacyMMController::openlib() {
     std::shared_ptr<void> handle(dlopen(kFilename, RTLD_NOW), [this](void* p) {
-        FOR_EACH_FUNCTION(CLOSE_SDM_FUNCTION)
+        FOR_EACH_FUNCTION(CLOSE_MM_FUNCTION)
         if (p != nullptr) {
             int err = dlclose(p);
             p = nullptr;
