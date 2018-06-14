@@ -72,6 +72,13 @@ namespace V1_0 {
 namespace implementation {
 
 SDMController::SDMController() {
+    mHandle = openlib();
+    if (mHandle != nullptr) {
+        FOR_EACH_FUNCTION(LOAD_SDM_FUNCTION)
+    }
+}
+
+std::shared_ptr<void> SDMController::openlib() {
     std::shared_ptr<void> handle(dlopen(kFilename, RTLD_NOW), [this](void* p) {
         FOR_EACH_FUNCTION(CLOSE_SDM_FUNCTION)
         if (p != nullptr) {
@@ -84,11 +91,14 @@ SDMController::SDMController() {
     });
     if (handle == nullptr) {
         LOG(ERROR) << "DLOPEN failed for " << kFilename << " (" << dlerror() << ")";
-        return;
+        return nullptr;
     }
-    mHandle = handle;
+    return handle;
+}
 
-    FOR_EACH_FUNCTION(LOAD_SDM_FUNCTION)
+SDMController& SDMController::getInstance() {
+    static SDMController instance{};
+    return instance;
 }
 
 int32_t SDMController::init(uint64_t* hctx, uint32_t flags) {

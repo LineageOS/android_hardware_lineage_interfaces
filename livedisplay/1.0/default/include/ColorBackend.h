@@ -49,6 +49,8 @@ class ColorBackend {
     virtual HSIC getDefaultPictureAdjustment() = 0;
     virtual android::status_t setPictureAdjustment(const HSIC& hsic) = 0;
 
+    virtual android::status_t initialize() = 0;
+    virtual android::status_t deinitialize() = 0;
     virtual bool hasFeature(Feature feature) = 0;
 
     virtual ~ColorBackend() {

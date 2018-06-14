@@ -74,6 +74,13 @@ namespace V1_0 {
 namespace implementation {
 
 LegacyMMController::LegacyMMController() {
+    mHandle = openlib();
+    if (mHandle != nullptr) {
+        FOR_EACH_FUNCTION(LOAD_MM_FUNCTION)
+    }
+}
+
+std::shared_ptr<void> LegacyMMController::openlib() {
     std::shared_ptr<void> handle(dlopen(kFilename, RTLD_NOW), [this](void* p) {
         FOR_EACH_FUNCTION(CLOSE_MM_FUNCTION)
         if (p != nullptr) {
@@ -86,11 +93,14 @@ LegacyMMController::LegacyMMController() {
     });
     if (handle == nullptr) {
         LOG(ERROR) << "DLOPEN failed for " << kFilename << " (" << dlerror() << ")";
-        return;
+        return nullptr;
     }
-    mHandle = handle;
+    return handle;
+}
 
-    FOR_EACH_FUNCTION(LOAD_MM_FUNCTION);
+LegacyMMController& LegacyMMController::getInstance() {
+    static LegacyMMController instance{};
+    return instance;
 }
 
 int32_t LegacyMMController::init(int32_t initialize) {

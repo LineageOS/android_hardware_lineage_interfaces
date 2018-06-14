@@ -92,23 +92,21 @@ using ::android::OK;
 using ::android::sp;
 using ::android::status_t;
 
-SDM::SDM() : mActiveModeId(-1) {
-    mController = std::make_unique<SDMController>();
-    if (mController == nullptr) {
-        LOG(ERROR) << "Failed to create SDMController";
-        return;
+status_t SDM::initialize() {
+    status_t rc = NO_INIT;
+
+    rc = SDMController::getInstance().init(&mHandle, 0);
+    if (rc != OK) {
+        return rc;
     }
 
-    status_t rc = mController->init(&mHandle, 0);
-    if (rc != OK) {
-        return;
-    }
+    mActiveModeId = -1;
 
     if (hasFeature(Feature::DISPLAY_MODES)) {
         rc = saveInitialDisplayMode();
         if (rc != OK) {
             LOG(ERROR) << "Failed to save initial display mode! err=" << rc;
-            return;
+            return rc;
         }
         sp<disp_mode> defMode = getDefaultDisplayMode();
         if (defMode != nullptr) {
@@ -117,16 +115,20 @@ SDM::SDM() : mActiveModeId(-1) {
     }
 
     mFOSSEnabled = android::base::GetBoolProperty(kFossProperty, false);
+
+    return OK;
 }
 
-SDM::~SDM() {
-    mController->deinit(mHandle, 0);
+status_t SDM::deinitialize() {
+    SDMController::getInstance().deinit(mHandle, 0);
+    mHandle = 0;
+    return OK;
 }
 
 uint32_t SDM::getNumSDMDisplayModes() {
     uint32_t flags = 0;
     int32_t count = 0;
-    if (mController->get_num_display_modes(mHandle, 0, 0, &count, &flags)) {
+    if (SDMController::getInstance().get_num_display_modes(mHandle, 0, 0, &count, &flags)) {
         count = 0;
     }
     return count;
@@ -170,11 +172,11 @@ status_t SDM::setModeState(sp<disp_mode> mode, bool state) {
         }
     } else if (mode->privFlags == PRIV_MODE_FLAG_SDM) {
         if (state) {
-            return mController->set_active_display_mode(mHandle, 0, mode->id, 0);
+            return SDMController::getInstance().set_active_display_mode(mHandle, 0, mode->id, 0);
         } else {
             if (Utils::readInitialModeId(&id) == OK) {
                 LOG(VERBOSE) << "set sdm mode to default: id" << id;
-                return mController->set_active_display_mode(mHandle, 0, id, 0);
+                return SDMController::getInstance().set_active_display_mode(mHandle, 0, id, 0);
             }
         }
     }
@@ -214,7 +216,7 @@ status_t SDM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
         sdm_mode tmp[sdm_count];
 
         uint32_t flags = 0;
-        rc = mController->get_display_modes(mHandle, 0, 0, tmp, sdm_count, &flags);
+        rc = SDMController::getInstance().get_display_modes(mHandle, 0, 0, tmp, sdm_count, &flags);
         if (rc == 0) {
             for (uint32_t i = 0; i < sdm_count; i++) {
                 const sp<disp_mode> m = new disp_mode;
@@ -281,7 +283,7 @@ status_t SDM::getPictureAdjustmentRanges(HSICRanges& ranges) {
     hsic_ranges r;
     memset(&r, 0, sizeof(struct hsic_ranges));
 
-    status_t rc = mController->get_global_pa_range(mHandle, 0, &r);
+    status_t rc = SDMController::getInstance().get_global_pa_range(mHandle, 0, &r);
     if (rc == OK) {
         ranges.hue.min = r.hue.min;
         ranges.hue.max = r.hue.max;
@@ -326,7 +328,7 @@ bool SDM::hasFeature(Feature feature) {
             return false;
     }
 
-    if (mController->get_feature_version(mHandle, id, &v, &flags) != OK) {
+    if (SDMController::getInstance().get_feature_version(mHandle, id, &v, &flags) != OK) {
         return false;
     }
 
@@ -350,7 +352,7 @@ status_t SDM::saveInitialDisplayMode() {
     int32_t id = 0;
     uint32_t flags = 0;
     if (Utils::readInitialModeId(&id) != OK || id < 0) {
-        if (mController->get_default_display_mode(mHandle, 0, &id, &flags) == OK &&
+        if (SDMController::getInstance().get_default_display_mode(mHandle, 0, &id, &flags) == OK &&
             id >= 0) {
             return Utils::writeInitialModeId(id);
         } else {
@@ -365,7 +367,7 @@ status_t SDM::getPictureAdjustment(HSIC& hsic) {
     hsic_config config;
     memset(&config, 0, sizeof(struct hsic_config));
 
-    status_t rc = mController->get_global_pa_config(mHandle, 0, &enable, &config);
+    status_t rc = SDMController::getInstance().get_global_pa_config(mHandle, 0, &enable, &config);
     if (rc == OK) {
         hsic.hue = config.data.hue;
         hsic.saturation = config.data.saturation;
@@ -413,7 +415,7 @@ status_t SDM::setDisplayMode(int32_t modeID, bool makeDefault) {
                 return rc;
             }
             if (mode->privFlags == PRIV_MODE_FLAG_SDM) {
-                rc = mController->set_default_display_mode(mHandle, 0, mode->id, 0);
+                rc = SDMController::getInstance().set_default_display_mode(mHandle, 0, mode->id, 0);
                 if (rc != OK) {
                     LOG(ERROR) << "failed to save mode! err=" << rc;
                     return rc;
@@ -468,7 +470,7 @@ status_t SDM::setPictureAdjustment(const HSIC& hsic) {
     config.data.contrast = hsic.contrast;
     config.data.saturationThreshold = hsic.saturationThreshold;
 
-    return mController->set_global_pa_config(mHandle, 0, 1, &config);
+    return SDMController::getInstance().set_global_pa_config(mHandle, 0, 1, &config);
 }
 
 HSIC SDM::getDefaultPictureAdjustment() {

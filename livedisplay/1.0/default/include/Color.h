@@ -40,7 +40,7 @@ class ColorBackend;
 
 class Color : public IColor {
   public:
-    Color();
+    static android::sp<Color> getInstance();
 
     Return<Features> getSupportedFeatures() override;
 
@@ -72,14 +72,18 @@ class Color : public IColor {
     ~Color();
 
   private:
-    void connect();
-    void disconnect();
+    bool connect();
+    void reset();
+
+    Color();
+    static android::sp<Color> sInstance;
 
     uint32_t mFeatures;
     bool mConnected;
 
-    bool check(Feature f);
-
+    bool check(Feature f) {
+        return connect() && (mFeatures & (uint32_t)f);
+    }
     void error(const char* msg = NULL);
 
     void addFeature(Feature f) {
