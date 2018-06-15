@@ -66,8 +66,6 @@ class SDM : public ColorBackend {
     virtual HSIC getDefaultPictureAdjustment() override;
 
     virtual bool hasFeature(Feature f);
-    virtual android::status_t initialize();
-    virtual android::status_t deinitialize();
 
   private:
     android::status_t saveInitialDisplayMode();
