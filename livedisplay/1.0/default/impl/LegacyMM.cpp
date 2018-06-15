@@ -244,7 +244,7 @@ status_t LegacyMM::initialize() {
     status_t rc = NO_INIT;
     rc = LegacyMMController::getInstance().init(0);
     if (rc != OK) {
-        LOG(ERROR) << "%s: Failed to initialize LegacyMMController";
+        LOG(ERROR) << "Failed to initialize LegacyMMController";
         return rc;
     }
 
