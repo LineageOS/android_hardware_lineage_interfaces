@@ -63,10 +63,45 @@ using android::OK;
 using android::sp;
 using android::status_t;
 
-LegacyMM::LegacyMM() : mController(nullptr) {
+LegacyMM::LegacyMM() {
+    mController = std::make_unique<LegacyMMController>();
+    if (mController == nullptr) {
+        LOG(ERROR) << "Failed to create LegacyMMController";
+        return;
+    }
+
+    status_t rc = mController->init(0);
+    if (rc != OK) {
+        LOG(ERROR) << "Failed to initialize LegacyMMController";
+        return;
+    }
+
+    if (hasFeature(Feature::DISPLAY_MODES)) {
+        int32_t id;
+        // Get the initial mode from Utils
+        rc = Utils::readInitialModeId(&id);
+        if (rc != OK || id < 0) {
+            // Get controller default mode and save it
+            rc = mController->get_default_display_mode(0, &id);
+            if (rc == OK && id >= 0) {
+                Utils::writeInitialModeId(id);
+            } else {
+                Utils::writeInitialModeId(0);
+            }
+        }
+
+        auto mode = getDefaultDisplayMode();
+        if (mode != nullptr) {
+            setDisplayMode(mode->id, false);
+        }
+    }
 }
 
 LegacyMM::~LegacyMM() {
+    status_t rc = mController->init(1);
+    if (rc != OK) {
+        LOG(ERROR) << "Failed to deinitialize LegacyMMController";
+    }
 }
 
 status_t LegacyMM::getColorBalanceRange(Range& range) {
@@ -244,50 +279,6 @@ status_t LegacyMM::setPictureAdjustment(const HSIC& hsic) {
     config.data.saturationThreshold = hsic.saturationThreshold;
 
     return mController->set_pa_config(0, &config);
-}
-
-status_t LegacyMM::initialize() {
-    mController = std::make_unique<LegacyMMController>();
-    if (mController == nullptr) {
-        LOG(ERROR) << "Failed to create LegacyMMController";
-        return NO_INIT;
-    }
-    status_t rc = mController->init(0);
-    if (rc != OK) {
-        LOG(ERROR) << "Failed to initialize LegacyMMController";
-        return rc;
-    }
-
-    if (hasFeature(Feature::DISPLAY_MODES)) {
-        int32_t id;
-        // Get the initial mode from Utils
-        rc = Utils::readInitialModeId(&id);
-        if (rc != OK || id < 0) {
-            // Get controller default mode and save it
-            rc = mController->get_default_display_mode(0, &id);
-            if (rc == OK && id >= 0) {
-                Utils::writeInitialModeId(id);
-            } else {
-                Utils::writeInitialModeId(0);
-            }
-        }
-
-        auto mode = getDefaultDisplayMode();
-        if (mode != nullptr) {
-            setDisplayMode(mode->id, false);
-        }
-    }
-    return OK;
-}
-
-status_t LegacyMM::deinitialize() {
-    status_t rc = NO_INIT;
-    rc = mController->init(1);
-    mController = nullptr;
-    if (rc != OK) {
-        return rc;
-    }
-    return OK;
 }
 
 bool LegacyMM::hasFeature(Feature feature) {
