@@ -78,9 +78,8 @@ class Color : public IColor {
     uint32_t mFeatures;
     bool mConnected;
 
-    bool check(Feature f) {
-        return connect() && (mFeatures & (uint32_t)f);
-    }
+    bool check(Feature f);
+
     void error(const char* msg = NULL);
 
     void addFeature(Feature f) {
