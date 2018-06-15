@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d41117f1_35f6b9c5",
+        "filename": "livedisplay/1.0/default/impl/LegacyMM.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-06-15T07:08:14Z",
+      "side": 1,
+      "message": "It\u0027s needed because a forward declared T used with std::unique_ptr\u003cT\u003e results in an incomplete type if you use the default constructor/destructor. This is needed to compile.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "e0b1413513e975aca58c044aa85ce7e179a8c5e2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
