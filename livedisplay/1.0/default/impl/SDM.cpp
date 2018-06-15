@@ -92,7 +92,7 @@ using ::android::OK;
 using ::android::sp;
 using ::android::status_t;
 
-SDM::SDM() : mController(nullptr) {
+SDM::SDM() : mController(nullptr), mActiveModeId(-1) {
 }
 
 SDM::~SDM() {
@@ -109,8 +109,6 @@ status_t SDM::initialize() {
     if (rc != OK) {
         return rc;
     }
-
-    mActiveModeId = -1;
 
     if (hasFeature(Feature::DISPLAY_MODES)) {
         rc = saveInitialDisplayMode();
