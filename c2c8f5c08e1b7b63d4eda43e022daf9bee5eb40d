@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7197823_f1f67747",
+        "filename": "livedisplay/1.0/default/impl/LegacyMM.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-06-15T06:52:14Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "c2c8f5c08e1b7b63d4eda43e022daf9bee5eb40d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1db2736b_42f18188",
+        "filename": "livedisplay/1.0/default/impl/SDM.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-06-15T06:52:14Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 1
+      },
+      "revId": "c2c8f5c08e1b7b63d4eda43e022daf9bee5eb40d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
