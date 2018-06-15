@@ -81,6 +81,10 @@ void Color::reset() {
     mConnected = false;
 }
 
+bool Color::check(Feature f) {
+    return connect() && (mFeatures & (uint32_t)f);
+}
+
 void Color::error(const char* msg) {
     if (msg != NULL) {
         LOG(ERROR) << msg;
