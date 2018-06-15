@@ -40,7 +40,7 @@ class ColorBackend;
 
 class Color : public IColor {
   public:
-    static android::sp<Color> getInstance();
+    Color();
 
     Return<Features> getSupportedFeatures() override;
 
@@ -74,9 +74,6 @@ class Color : public IColor {
   private:
     bool connect();
     void reset();
-
-    Color();
-    static android::sp<Color> sInstance;
 
     uint32_t mFeatures;
     bool mConnected;

@@ -39,14 +39,13 @@ using ::vendor::lineage::livedisplay::V1_0::implementation::Color;
 
 int main() {
     status_t status;
-    android::sp<IColor> service = nullptr;
 
     LOG(INFO) << "LiveDisplay HAL service is starting.";
 
     // The LiveDisplay HAL may communicate to other vendor components via /dev/vndbinder
     android::ProcessState::initWithDriver("/dev/vndbinder");
 
-    service = Color::getInstance();
+    android::sp<IColor> service = new Color();
     if (service == nullptr) {
         LOG(ERROR) << "Can not create an instance of LiveDisplay HAL Iface, exiting.";
         goto shutdown;
