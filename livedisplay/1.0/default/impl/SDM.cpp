@@ -92,29 +92,24 @@ using ::android::OK;
 using ::android::sp;
 using ::android::status_t;
 
-SDM::SDM() : mController(nullptr), mActiveModeId(-1) {
-}
-
-SDM::~SDM() {
-}
-
-status_t SDM::initialize() {
+SDM::SDM() : mActiveModeId(-1) {
     mController = std::make_unique<SDMController>();
     if (mController == nullptr) {
         LOG(ERROR) << "Failed to create SDMController";
-        return NO_INIT;
+        return;
     }
 
     status_t rc = mController->init(&mHandle, 0);
     if (rc != OK) {
-        return rc;
+        LOG(ERROR) << "Failed to initialize SDMController";
+        return;
     }
 
     if (hasFeature(Feature::DISPLAY_MODES)) {
         rc = saveInitialDisplayMode();
         if (rc != OK) {
             LOG(ERROR) << "Failed to save initial display mode! err=" << rc;
-            return rc;
+            return;
         }
         sp<disp_mode> defMode = getDefaultDisplayMode();
         if (defMode != nullptr) {
@@ -123,15 +118,10 @@ status_t SDM::initialize() {
     }
 
     mFOSSEnabled = android::base::GetBoolProperty(kFossProperty, false);
-
-    return OK;
 }
 
-status_t SDM::deinitialize() {
+SDM::~SDM() {
     mController->deinit(mHandle, 0);
-    mHandle = 0;
-    mController = nullptr;
-    return OK;
 }
 
 uint32_t SDM::getNumSDMDisplayModes() {

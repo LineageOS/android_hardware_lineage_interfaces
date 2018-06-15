@@ -62,8 +62,6 @@ class LegacyMM : public ColorBackend {
     virtual HSIC getDefaultPictureAdjustment() override;
     virtual android::status_t setPictureAdjustment(const HSIC& hsic) override;
 
-    virtual android::status_t initialize() override;
-    virtual android::status_t deinitialize() override;
     virtual bool hasFeature(Feature feature) override;
 
   private:

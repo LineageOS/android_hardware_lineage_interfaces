@@ -61,12 +61,6 @@ using ::android::sp;
 using ::android::status_t;
 
 Color::Color() : mConnected(false), mBackend(nullptr) {
-#if defined(COLOR_BACKEND_SDM)
-    mBackend = std::make_unique<SDM>();
-#elif defined(COLOR_BACKEND_LEGACYMM)
-    mBackend = std::make_unique<LegacyMM>();
-#endif
-    LOG(DEBUG) << "Loaded LiveDisplay native interface";
 }
 
 Color::~Color() {
@@ -75,7 +69,7 @@ Color::~Color() {
 
 void Color::reset() {
     if (mConnected) {
-        mBackend->deinitialize();
+        mBackend = nullptr;
     }
     mFeatures = 0;
     mConnected = false;
@@ -100,11 +94,12 @@ bool Color::connect() {
 
     mFeatures = 0;
 
+#if defined(COLOR_BACKEND_SDM)
+    mBackend.reset(new SDM());
+#elif defined(COLOR_BACKEND_LEGACYMM)
+    mBackend.reset(new LegacyMM());
+#endif
     if (mBackend == nullptr) {
-        return false;
-    }
-
-    if (mBackend->initialize() != OK) {
         LOG(ERROR) << "Failed to initialize backend!";
         return false;
     }
