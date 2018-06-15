@@ -29,7 +29,7 @@ namespace implementation {
 
 class LegacyMMController {
   public:
-    static LegacyMMController& getInstance();
+    LegacyMMController();
 
     int32_t init(int32_t init);
     int32_t get_color_balance_range(int32_t disp_id, void* range);
@@ -47,10 +47,6 @@ class LegacyMMController {
     int32_t supported(int32_t disp_id, uint32_t feature_id);
 
   private:
-    LegacyMMController();
-
-    std::shared_ptr<void> openlib();
-
     typedef int32_t (*disp_api_init)(int32_t);
     typedef int32_t (*disp_api_get_color_balance_range)(int32_t, void*);
     typedef int32_t (*disp_api_set_color_balance)(int32_t, int32_t);

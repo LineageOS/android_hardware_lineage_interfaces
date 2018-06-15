@@ -28,13 +28,8 @@ namespace V1_0 {
 namespace implementation {
 
 class SDMController {
-  private:
-    SDMController();
-
-    std::shared_ptr<void> openlib();
-
   public:
-    static SDMController& getInstance();
+    SDMController();
 
     int32_t init(uint64_t* hctx, uint32_t flags);
     int32_t deinit(uint64_t hctx, uint32_t flags);
