@@ -93,6 +93,8 @@ using ::android::sp;
 using ::android::status_t;
 
 SDM::SDM() : mActiveModeId(-1) {
+    memset(&mDefaultPictureAdjustment, 0, sizeof(HSIC));
+
     mController = std::make_unique<SDMController>();
     if (mController == nullptr) {
         LOG(ERROR) << "Failed to create SDMController";

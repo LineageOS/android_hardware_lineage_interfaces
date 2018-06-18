@@ -64,6 +64,8 @@ using android::sp;
 using android::status_t;
 
 LegacyMM::LegacyMM() {
+    memset(&mDefaultPictureAdjustment, 0, sizeof(HSIC));
+
     mController = std::make_unique<LegacyMMController>();
     if (mController == nullptr) {
         LOG(ERROR) << "Failed to create LegacyMMController";
