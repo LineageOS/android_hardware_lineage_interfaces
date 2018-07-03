@@ -2,3 +2,6 @@ service livedisplay-hal-1-0 /vendor/bin/hw/vendor.lineage.livedisplay@1.0-servic
     class hal
     user system
     group system
+
+on property:vold.decrypt=trigger_restart_framework
+    restart livedisplay-hal-1-0
