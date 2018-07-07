@@ -32,12 +32,12 @@ namespace implementation {
 
 #define VIBRATOR "/sys/devices/virtual/timed_output/vibrator/"
 
-#define ENABLE      "enable"
+#define ENABLE      VIBRATOR "enable"
 
-#define VTG_DEFAULT "vtg_default"
-#define VTG_LEVEL   "vtg_level"
-#define VTG_MIN     "vtg_min"
-#define VTG_MAX     "vtg_max"
+#define VTG_DEFAULT VIBRATOR "vtg_default"
+#define VTG_LEVEL   VIBRATOR "vtg_level"
+#define VTG_MIN     VIBRATOR "vtg_min"
+#define VTG_MAX     VIBRATOR "vtg_max"
 
 #define CLICK_TIMING_MS 20
 
@@ -94,9 +94,9 @@ static int set(std::string path, int value) {
 } // anonymous namespace
 
 Vibrator::Vibrator() {
-    defaultVoltage = get(VIBRATOR VTG_DEFAULT, DEFAULT_MAX_VTG);
-    minVoltage = get(VIBRATOR VTG_MIN, DEFAULT_MIN_VTG);
-    maxVoltage = get(VIBRATOR VTG_MAX, DEFAULT_MAX_VTG);
+    defaultVoltage = get(VTG_DEFAULT, DEFAULT_MAX_VTG);
+    minVoltage = get(VTG_MIN, DEFAULT_MIN_VTG);
+    maxVoltage = get(VTG_MAX, DEFAULT_MAX_VTG);
 
     lightAmplitude = property_get_int32(AMPLITUDE_LIGHT, DEFAULT_LIGHT_AMPLITUDE);
     mediumAmplitude = property_get_int32(AMPLITUDE_MEDIUM, DEFAULT_MEDIUM_AMPLITUDE);
@@ -107,7 +107,7 @@ Vibrator::Vibrator() {
 
 // Methods from ::android::hardware::vibrator::V1_0::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeout_ms) {
-    if (set(VIBRATOR ENABLE, timeout_ms)) {
+    if (set(ENABLE, timeout_ms)) {
         return Status::UNKNOWN_ERROR;
     }
 
@@ -115,7 +115,7 @@ Return<Status> Vibrator::on(uint32_t timeout_ms) {
 }
 
 Return<Status> Vibrator::off()  {
-    if (set(VIBRATOR ENABLE, 0)) {
+    if (set(ENABLE, 0)) {
         return Status::UNKNOWN_ERROR;
     }
 
@@ -129,7 +129,7 @@ Return<bool> Vibrator::supportsAmplitudeControl()  {
 Return<Status> Vibrator::setVoltage(uint32_t voltage) {
     uint32_t scaledVoltage = voltage * intensity / 255;
 
-    if (set(VIBRATOR VTG_LEVEL, scaledVoltage)) {
+    if (set(VTG_LEVEL, scaledVoltage)) {
         return Status::UNKNOWN_ERROR;
     }
 
