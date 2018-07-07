@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49f095fd_9f6ed8c7",
+        "filename": "vibrator/1.0/default/Vibrator.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 19719
+      },
+      "writtenOn": "2018-07-07T13:48:35Z",
+      "side": 1,
+      "message": "can you add an option to replace those values from device tree?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "ffec73924c9d8b406839a7a8519483b14e66969a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ca7a0fe_597339a7",
+        "filename": "vibrator/1.0/default/Vibrator.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 19719
+      },
+      "writtenOn": "2018-07-07T13:48:35Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 39
+      },
+      "revId": "ffec73924c9d8b406839a7a8519483b14e66969a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
