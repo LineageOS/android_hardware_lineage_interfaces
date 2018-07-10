@@ -42,8 +42,13 @@ int main() {
 
     LOG(INFO) << "LiveDisplay HAL service is starting.";
 
+#ifdef LIVES_IN_SYSTEM
+    // The LiveDisplay HAL may communicate to other components via /dev/binder
+    android::ProcessState::initWithDriver("/dev/binder");
+#else
     // The LiveDisplay HAL may communicate to other vendor components via /dev/vndbinder
     android::ProcessState::initWithDriver("/dev/vndbinder");
+#endif
 
     android::sp<IColor> service = new Color();
     if (service == nullptr) {
