@@ -16,7 +16,6 @@ cc_defaults {
     name: "livedisplay_defaults",
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    proprietary: true,
     local_include_dirs: ["include"],
     srcs: [
         "service.cpp",
@@ -36,9 +35,21 @@ cc_defaults {
 }
 
 cc_binary {
+    name: "lineage.livedisplay@1.0-service-sdm",
+    init_rc: ["lineage.livedisplay@1.0-service-sdm.rc"],
+    defaults: ["livedisplay_defaults"],
+    cflags: ["-DCOLOR_BACKEND_SDM", "-DLIVES_IN_SYSTEM"],
+    srcs: [
+        "impl/SDM.cpp",
+        "controller/SDMController.cpp",
+    ],
+}
+
+cc_binary {
     name: "vendor.lineage.livedisplay@1.0-service-legacymm",
     init_rc: ["vendor.lineage.livedisplay@1.0-service-legacymm.rc"],
     defaults: ["livedisplay_defaults"],
+    proprietary: true,
     cflags: ["-DCOLOR_BACKEND_LEGACYMM"],
     srcs: [
         "impl/LegacyMM.cpp",
@@ -50,6 +61,7 @@ cc_binary {
     name: "vendor.lineage.livedisplay@1.0-service-sdm",
     init_rc: ["vendor.lineage.livedisplay@1.0-service-sdm.rc"],
     defaults: ["livedisplay_defaults"],
+    proprietary: true,
     cflags: ["-DCOLOR_BACKEND_SDM"],
     srcs: [
         "impl/SDM.cpp",
