@@ -29,7 +29,11 @@
 
 #include <cutils/sockets.h>
 
+#ifdef LIVES_IN_SYSTEM
+constexpr char LOCAL_STORAGE_PATH[] = "/data/display";
+#else
 constexpr char LOCAL_STORAGE_PATH[] = "/data/vendor/display";
+#endif
 constexpr char LOCAL_MODE_ID[] = "livedisplay_mode";
 constexpr char LOCAL_INITIAL_MODE_ID[] = "livedisplay_initial_mode";
 

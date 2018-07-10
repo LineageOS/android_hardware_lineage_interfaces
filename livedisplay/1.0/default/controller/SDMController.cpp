@@ -53,7 +53,11 @@
     return 0;
 
 namespace {
+#ifdef LIVES_IN_SYSTEM
+constexpr char kFilename[] = "libsdm-disp-apis.so";
+#else
 constexpr char kFilename[] = "libsdm-disp-vndapis.so";
+#endif
 
 template <typename Function>
 Function loadFunction(std::shared_ptr<void> handle, const char* name) {
