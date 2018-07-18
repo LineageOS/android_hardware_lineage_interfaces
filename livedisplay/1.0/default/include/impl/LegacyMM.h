@@ -32,13 +32,8 @@ class LegacyMM : public ColorBackend {
     LegacyMM();
     ~LegacyMM();
 
-    virtual android::status_t setAdaptiveBacklightEnabled(bool /* enabled */) override {
-        return android::NO_INIT;
-    }
-
-    virtual bool isAdaptiveBacklightEnabled() override {
-        return false;
-    }
+    virtual android::status_t setAdaptiveBacklightEnabled(bool enabled) override;
+    virtual bool isAdaptiveBacklightEnabled() override;
 
     virtual android::status_t setOutdoorModeEnabled(bool /* enabled */) override {
         return android::NO_INIT;
@@ -65,6 +60,8 @@ class LegacyMM : public ColorBackend {
     virtual bool hasFeature(Feature feature) override;
 
   private:
+    bool mCABLEnabled;
+    bool mCachedCABLStatus;
     uint32_t getNumDisplayModes();
     android::sp<disp_mode> getDisplayModeById(int32_t id);
 
