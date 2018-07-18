@@ -44,6 +44,7 @@ class LegacyMMController {
     int32_t get_pa_range(int32_t disp_id, void* range);
     int32_t get_pa_config(int32_t disp_id, void* cfg);
     int32_t set_pa_config(int32_t disp_id, void* cfg);
+    int32_t active_feature_control(int32_t disp_id, uint32_t feature_id, int32_t req_id);
     int32_t supported(int32_t disp_id, uint32_t feature_id);
 
   private:
@@ -60,6 +61,7 @@ class LegacyMMController {
     typedef int32_t (*disp_api_get_pa_range)(int32_t, void*);
     typedef int32_t (*disp_api_get_pa_config)(int32_t, void*);
     typedef int32_t (*disp_api_set_pa_config)(int32_t, void*);
+    typedef int32_t (*disp_api_active_feature_control)(int32_t disp_id, uint32_t feature_id, int32_t req_id);
     typedef int32_t (*disp_api_supported)(int32_t, uint32_t);
 
     std::shared_ptr<void> mHandle;
@@ -77,6 +79,7 @@ class LegacyMMController {
     disp_api_get_pa_range mFn_get_pa_range;
     disp_api_get_pa_config mFn_get_pa_config;
     disp_api_set_pa_config mFn_set_pa_config;
+    disp_api_active_feature_control mFn_active_feature_control;
     disp_api_supported mFn_supported;
 };
 

@@ -25,8 +25,11 @@
 #include "Utils.h"
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 
 namespace {
+constexpr char kCablProperty[] = "ro.qualcomm.cabl";
+
 struct mm_pa_data {
     int hue;
     int saturation;
@@ -97,6 +100,8 @@ LegacyMM::LegacyMM() {
             setDisplayMode(mode->id, false);
         }
     }
+
+    mCABLEnabled  = android::base::GetIntProperty(kCablProperty, 0) > 0;
 }
 
 LegacyMM::~LegacyMM() {
@@ -295,6 +300,8 @@ bool LegacyMM::hasFeature(Feature feature) {
         case Feature::PICTURE_ADJUSTMENT:
             id = 4;
             break;
+        case Feature::ADAPTIVE_BACKLIGHT:
+            return mCABLEnabled;
         default:
             return false;
     }
@@ -344,6 +351,22 @@ sp<disp_mode> LegacyMM::getDisplayModeById(int32_t id) {
     }
 
     return nullptr;
+}
+
+status_t LegacyMM::setAdaptiveBacklightEnabled(bool enabled) {
+    status_t rc = NO_INIT;
+    if (enabled == mCachedCABLStatus) {
+        return OK;
+    }
+    if (!mController->active_feature_control(0, 0, !enabled)){
+        rc = OK;
+        mCachedCABLStatus = enabled;
+    }
+    return rc;
+}
+
+bool LegacyMM::isAdaptiveBacklightEnabled() {
+    return mCachedCABLStatus;
 }
 
 }  // namespace implementation
