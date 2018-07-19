@@ -44,6 +44,7 @@
     MACRO(get_pa_config)            \
     MACRO(set_pa_config)            \
     MACRO(active_feature_control)   \
+    MACRO(is_active_feature_on)     \
     MACRO(supported)
 
 #define CONTROLLER_CHECK(function, ...)    \
@@ -151,6 +152,10 @@ int32_t LegacyMMController::set_pa_config(int32_t disp_id, void* cfg) {
 
 int32_t LegacyMMController::active_feature_control(int32_t disp_id, uint32_t feature_id, int32_t req_id) {
     CONTROLLER_CHECK(active_feature_control, disp_id, feature_id, req_id);
+}
+
+int32_t LegacyMMController::is_active_feature_on(int32_t disp_id, uint32_t feature_id) {
+    CONTROLLER_CHECK(is_active_feature_on, disp_id, feature_id);
 }
 
 int32_t LegacyMMController::supported(int32_t disp_id, uint32_t feature_id) {

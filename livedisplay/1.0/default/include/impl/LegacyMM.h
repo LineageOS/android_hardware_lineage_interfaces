@@ -61,7 +61,6 @@ class LegacyMM : public ColorBackend {
 
   private:
     bool mCABLEnabled;
-    bool mCachedCABLStatus;
     uint32_t getNumDisplayModes();
     android::sp<disp_mode> getDisplayModeById(int32_t id);
 
