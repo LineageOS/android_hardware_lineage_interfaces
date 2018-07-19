@@ -355,18 +355,17 @@ sp<disp_mode> LegacyMM::getDisplayModeById(int32_t id) {
 
 status_t LegacyMM::setAdaptiveBacklightEnabled(bool enabled) {
     status_t rc = NO_INIT;
-    if (enabled == mCachedCABLStatus) {
+    if (enabled == isAdaptiveBacklightEnabled()) {
         return OK;
     }
     if (!mController->active_feature_control(0, 0, !enabled)){
         rc = OK;
-        mCachedCABLStatus = enabled;
     }
     return rc;
 }
 
 bool LegacyMM::isAdaptiveBacklightEnabled() {
-    return mCachedCABLStatus;
+    return mController->is_active_feature_on(0, 0) > 0;
 }
 
 }  // namespace implementation
