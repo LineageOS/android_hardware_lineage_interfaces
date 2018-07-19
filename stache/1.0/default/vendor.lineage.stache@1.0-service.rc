@@ -1,0 +1,7 @@
+service stache-hal-1-0 /vendor/bin/hw/vendor.lineage.stache@1.0-service
+    class hal
+    user system
+    group system
+
+on property:vold.decrypt=trigger_restart_framework
+    restart stache-hal-1-0
