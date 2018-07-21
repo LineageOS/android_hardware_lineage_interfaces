@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "45e14b45_b342dfb5",
+        "filename": "livedisplay/1.0/default/impl/LegacyMM.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 8752
+      },
+      "writtenOn": "2018-07-21T08:40:48Z",
+      "side": 1,
+      "message": "Based on the documentation, (if I\u0027m using the right one?),\nGetBoolProperty return only true, if the value is one of\nvalue \u003d\u003d \"1\" || value \u003d\u003d \"y\" || value \u003d\u003d \"yes\" || value \u003d\u003d \"on\" || value \u003d\u003d \"true\"\nSince this value can be set to \"2\" it wouldn\u0027t work.\n\nThe property itself is also used for the mm-pp-daemon, so does it makes sense to add an special one?",
+      "parentUuid": "56ca31fb_4a050edf",
+      "revId": "92441e34fdd3fbc7c0041dcde72837486d622ab6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d052f171_404e2080",
         "filename": "livedisplay/1.0/default/include/impl/LegacyMM.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-21T08:30:54Z",
       "side": 1,
       "message": "is it more accurate to say that cabl is available for this variable name?",
+      "revId": "92441e34fdd3fbc7c0041dcde72837486d622ab6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b16f1e_9d353cb0",
+        "filename": "livedisplay/1.0/default/include/impl/LegacyMM.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 8752
+      },
+      "writtenOn": "2018-07-21T08:40:48Z",
+      "side": 1,
+      "message": "I oriented on the SDM implementation.\nhttps://github.com/LineageOS/android_hardware_lineage_interfaces/blob/1951e03f95c63a2f118dac0a594e782e55ec0141/livedisplay/1.0/default/include/impl/SDM.h#L82\n\nThe variable is named \"bool mFOSSEnabled;\" an has the same meaning as here.",
+      "parentUuid": "d052f171_404e2080",
       "revId": "92441e34fdd3fbc7c0041dcde72837486d622ab6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
