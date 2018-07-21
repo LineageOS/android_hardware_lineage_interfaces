@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56ca31fb_4a050edf",
+        "filename": "livedisplay/1.0/default/impl/LegacyMM.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-07-21T08:30:54Z",
+      "side": 1,
+      "message": "does fetching the prop as a bool work better here? also, it\u0027s kind of weird to base this off a system property anyone can set.",
+      "revId": "92441e34fdd3fbc7c0041dcde72837486d622ab6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d052f171_404e2080",
+        "filename": "livedisplay/1.0/default/include/impl/LegacyMM.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-07-21T08:30:54Z",
+      "side": 1,
+      "message": "is it more accurate to say that cabl is available for this variable name?",
+      "revId": "92441e34fdd3fbc7c0041dcde72837486d622ab6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
