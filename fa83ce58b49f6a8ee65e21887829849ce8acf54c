@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fe7467a_333f19e9",
+        "filename": "vibrator/1.0/default/Vibrator.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 15450
+      },
+      "writtenOn": "2018-07-22T14:11:03Z",
+      "side": 1,
+      "message": "255",
+      "revId": "fa83ce58b49f6a8ee65e21887829849ce8acf54c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
