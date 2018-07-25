@@ -1,4 +1,5 @@
 // Copyright (C) 2017 The Android Open Source Project
+// Copyright (C) 2018 The LineageOS Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,10 +14,10 @@
 // limitations under the License.
 
 cc_binary {
-    name: "android.hardware.usb@1.0-service.dual_role_usb",
+    name: "android.hardware.usb@1.1-service.dual_role_usb",
     defaults: ["hidl_defaults"],
-    init_rc: ["android.hardware.usb@1.0-service.dual_role_usb.rc"],
-    vintf_fragments: ["android.hardware.usb@1.0-service.dual_role_usb.xml"],
+    init_rc: ["android.hardware.usb@1.1-service.dual_role_usb.rc"],
+    vintf_fragments: ["android.hardware.usb@1.1-service.dual_role_usb.xml"],
     relative_install_path: "hw",
     vendor: true,
     srcs: [
@@ -31,5 +32,6 @@ cc_binary {
         "libutils",
         "libhardware",
         "android.hardware.usb@1.0",
+        "android.hardware.usb@1.1",
     ],
 }
