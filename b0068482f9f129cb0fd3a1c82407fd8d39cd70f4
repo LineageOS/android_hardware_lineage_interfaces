@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1bc5442_e68a29e6",
+        "filename": "vibrator/1.0/default/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-08-04T22:13:58Z",
+      "side": 1,
+      "message": "There isn\u0027t any reason to declare this at the top, C++ has no such restrictions.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "b0068482f9f129cb0fd3a1c82407fd8d39cd70f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
