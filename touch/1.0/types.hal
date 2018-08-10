@@ -14,16 +14,10 @@
  * limitations under the License.
  */
 
-package vendor.lineage.livedisplay@2.0;
+package vendor.lineage.touch@1.0;
 
-interface IPictureAdjustment {
-    getHueRange() generates (FloatRange range);
-    getSaturationRange() generates (FloatRange range);
-    getIntensityRange() generates (FloatRange range);
-    getContrastRange() generates (FloatRange range);
-    getSaturationThresholdRange() generates (FloatRange range);
-
-    getPictureAdjustment() generates (HSIC hsic);
-    getDefaultPictureAdjustment() generates (HSIC hsic);
-    setPictureAdjustment(HSIC hsic) generates (bool rc);
+struct Gesture {
+    int32_t id;
+    string name;
+    int32_t keycode;
 };
