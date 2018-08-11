@@ -1,0 +1,4 @@
+service livedisplay-hal-2-0-qti /vendor/bin/hw/vendor.lineage.livedisplay@2.0-service-qti
+    class hal
+    user system
+    group system
