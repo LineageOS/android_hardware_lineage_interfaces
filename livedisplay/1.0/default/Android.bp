@@ -31,7 +31,7 @@ cc_defaults {
         "libhidlbase",
         "libhidltransport",
         "libutils",
-        "vendor.lineage.livedisplay@1.0_vendor",
+        "vendor.lineage.livedisplay@1.0",
     ],
 }
 
