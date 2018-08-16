@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a97d7690_94decdcc",
+        "filename": "usb/1.0-basic/Usb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 15346
+      },
+      "writtenOn": "2018-08-16T14:00:05Z",
+      "side": 1,
+      "message": "Doesn\u0027t exist in aosp\u0027s header. https://github.com/LineageOS/android_hardware_interfaces/blob/lineage-16.0/usb/1.0/default/Usb.h",
+      "parentUuid": "1845198e_a1eba1c3",
+      "revId": "968a015c49e911b38247f817cebd62c776cf61e2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e51bee14_17c464f0",
         "filename": "usb/1.0-basic/service.cpp",
         "patchSetId": 1
