@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2359f141_6c1f5735",
+        "filename": "touch/1.0/IGloveMode.hal",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2018-09-18T13:31:43Z",
+      "side": 1,
+      "message": "Same as KeyDisabler.",
+      "revId": "65825a25e8a86c9dd68ee561af3e52406e05f4bb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab40a725_99b414d1",
         "filename": "touch/1.0/IKeyDisabler.hal",
         "patchSetId": 5
