@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a4b3779_17167169",
+        "filename": "touch/1.0/IGesture.hal",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2018-09-18T13:33:10Z",
+      "side": 1,
+      "message": "Either no return or return a Status.",
+      "revId": "65825a25e8a86c9dd68ee561af3e52406e05f4bb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2359f141_6c1f5735",
         "filename": "touch/1.0/IGloveMode.hal",
         "patchSetId": 5
