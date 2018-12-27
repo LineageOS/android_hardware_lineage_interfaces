@@ -46,6 +46,30 @@
       "revId": "8f2fcfc832a469cc48655a9f874ddc844f9e9c73",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ee7e50_6ee92837",
+        "filename": "livedisplay/1.0/default/service.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-12-27T13:37:53Z",
+      "side": 1,
+      "message": "initWithDriver(\"/dev/binder\") is done implicitly so replace the block with ifndef to avoid an unnecessary call",
+      "parentUuid": "81fd9f9d_1b85a407",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "8f2fcfc832a469cc48655a9f874ddc844f9e9c73",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
