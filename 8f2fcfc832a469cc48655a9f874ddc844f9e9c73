@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "365abbd6_f3d3f0b1",
+        "filename": "livedisplay/1.0/default/service.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-12-27T13:18:13Z",
+      "side": 1,
+      "message": "#ifndef LIVES_IN_SYSTEM, since /dev/binder is the default choice.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "8f2fcfc832a469cc48655a9f874ddc844f9e9c73",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
