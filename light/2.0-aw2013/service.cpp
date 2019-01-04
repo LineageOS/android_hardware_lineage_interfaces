@@ -72,63 +72,54 @@ int main() {
     if (!redLed) {
         LOG(ERROR) << "Failed to open " << kRedLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream greenLed(kGreenLedPath);
     if (!greenLed) {
         LOG(ERROR) << "Failed to open " << kGreenLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream blueLed(kBlueLedPath);
     if (!blueLed) {
         LOG(ERROR) << "Failed to open " << kBlueLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream redBlink(kRedBlinkPath);
     if (!redBlink) {
         LOG(ERROR) << "Failed to open " << kRedBlinkPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream greenBlink(kGreenBlinkPath);
     if (!greenBlink) {
         LOG(ERROR) << "Failed to open " << kGreenBlinkPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream blueBlink(kBlueBlinkPath);
     if (!blueBlink) {
         LOG(ERROR) << "Failed to open " << kBlueBlinkPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream redLedTime(kRedLedTimePath);
     if (!redLedTime) {
         LOG(ERROR) << "Failed to open " << kRedLedTimePath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream greenLedTime(kGreenLedTimePath);
     if (!greenLedTime) {
         LOG(ERROR) << "Failed to open " << kGreenLedTimePath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     std::ofstream blueLedTime(kBlueLedTimePath);
     if (!blueBlink) {
         LOG(ERROR) << "Failed to open " << kBlueLedTimePath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
     }
 
     android::sp<ILight> service = new Light(
