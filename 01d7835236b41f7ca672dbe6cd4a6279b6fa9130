@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03ce44f0_04c6e4e1",
+        "filename": "trust/UsbRestrict.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T14:07:03Z",
+      "side": 1,
+      "message": "I would do a half-indent here, to separate it from class a little bit",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "01d7835236b41f7ca672dbe6cd4a6279b6fa9130",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
