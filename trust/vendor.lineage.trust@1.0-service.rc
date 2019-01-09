@@ -1,0 +1,4 @@
+service vendor.trust-hal-1-0 /vendor/bin/vendor.lineage.trust@1.0-service
+    class hal
+    user system
+    group system
