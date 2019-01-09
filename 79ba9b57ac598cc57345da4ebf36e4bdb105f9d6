@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "246aca61_cd195aab",
+        "filename": "trust/UsbRestrict.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "You need to do file.close() to check the failbit",
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c865d05_27811280",
+        "filename": "trust/UsbRestrict.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "void",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf28e0b_8dcd4c33",
+        "filename": "trust/UsbRestrict.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "You don\u0027t need to do file.close() here since you\u0027re not checking the failbit",
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed9ecc30_c857169f",
+        "filename": "trust/UsbRestrict.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "Void();",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89a410d_82160a64",
+        "filename": "trust/UsbRestrict.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f1ea36_630706c0",
+        "filename": "trust/UsbRestrict.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "class UsbRestrict : public IUsbRestrict {\n  public:\n    UsbRestrict();",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad69fc4_b9d2bc76",
+        "filename": "trust/UsbRestrict.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 70
+      },
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f896099_20dad2e2",
+        "filename": "trust/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-09T13:49:15Z",
+      "side": 1,
+      "message": "Do you not need \"using ::vendor::lineage::trust::V1_0::implementation::UsbRestrict;\"?",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "79ba9b57ac598cc57345da4ebf36e4bdb105f9d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
