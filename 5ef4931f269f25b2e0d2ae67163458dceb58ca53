@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4e62e18_54027881",
+        "filename": "trust/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-10T11:13:29Z",
+      "side": 1,
+      "message": "We need to have a specific .rc file that loads binary from system.",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "5ef4931f269f25b2e0d2ae67163458dceb58ca53",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f33d94f_45beb039",
+        "filename": "trust/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-10T11:13:29Z",
+      "side": 1,
+      "message": "No need for this as of now.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "5ef4931f269f25b2e0d2ae67163458dceb58ca53",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
