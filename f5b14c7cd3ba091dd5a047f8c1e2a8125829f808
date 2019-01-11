@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a00bab7c_bfada626",
+        "filename": "trust/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-11T13:06:46Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be cc_binary?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "f5b14c7cd3ba091dd5a047f8c1e2a8125829f808",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
