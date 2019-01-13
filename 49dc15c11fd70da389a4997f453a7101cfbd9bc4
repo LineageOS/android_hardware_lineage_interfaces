@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2659969f_a6b1eaa0",
+        "filename": "trust/vendor.lineage.trust@1.0-service.rc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-13T16:02:47Z",
+      "side": 1,
+      "message": "vendor.trust-hal-1-0",
+      "range": {
+        "startLine": 1,
+        "startChar": 8,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "49dc15c11fd70da389a4997f453a7101cfbd9bc4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
