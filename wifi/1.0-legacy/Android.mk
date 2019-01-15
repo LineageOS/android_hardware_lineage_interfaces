@@ -104,3 +104,35 @@ LOCAL_STATIC_LIBRARIES := \
     android.hardware.wifi@1.0-legacy_service-lib
 LOCAL_INIT_RC := android.hardware.wifi@1.0-service.legacy.rc
 include $(BUILD_EXECUTABLE)
+
+###
+### android.hardware.wifi daemon
+###
+include $(CLEAR_VARS)
+LOCAL_MODULE := android.hardware.wifi@1.0-service-lazy.legacy
+LOCAL_VINTF_FRAGMENTS := android.hardware.wifi@1.0-service.legacy.xml
+LOCAL_OVERRIDES_MODULES := android.hardware.wifi@1.0-service.legacy
+LOCAL_CFLAGS := -DLAZY_SERVICE
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_CPPFLAGS := -Wall -Werror -Wextra
+LOCAL_SRC_FILES := \
+    service.cpp
+LOCAL_SHARED_LIBRARIES := \
+    libbase \
+    libcutils \
+    libhidlbase \
+    liblog \
+    libnl \
+    libutils \
+    libwifi-hal \
+    libwifi-system-iface \
+    android.hardware.wifi@1.0 \
+    android.hardware.wifi@1.1 \
+    android.hardware.wifi@1.2 \
+    android.hardware.wifi@1.3 \
+    android.hardware.wifi@1.4
+LOCAL_STATIC_LIBRARIES := \
+    android.hardware.wifi@1.0-legacy_service-lib
+LOCAL_INIT_RC := android.hardware.wifi@1.0-service-lazy.legacy.rc
+include $(BUILD_EXECUTABLE)
