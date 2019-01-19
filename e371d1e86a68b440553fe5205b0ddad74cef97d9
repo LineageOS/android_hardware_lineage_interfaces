@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "259b023e_107d1447",
+        "filename": "touch/1.0/IKeyDisabler.hal",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-19T14:21:34Z",
+      "side": 1,
+      "message": "Why do we want this to return a bool? Wouldn\u0027t it make more sense to be a int (errno), since we\u0027re opening a file and writing to it?",
+      "range": {
+        "startLine": 21,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "e371d1e86a68b440553fe5205b0ddad74cef97d9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
