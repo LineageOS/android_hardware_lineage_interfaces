@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef VENDOR_LINEAGE_LIVEDISPLAY_V1_0_COLORBACKEND_H
-#define VENDOR_LINEAGE_LIVEDISPLAY_V1_0_COLORBACKEND_H
+#ifndef VENDOR_LINEAGE_LIVEDISPLAY_V2_0_COLORBACKEND_H
+#define VENDOR_LINEAGE_LIVEDISPLAY_V2_0_COLORBACKEND_H
 
 #include "Types.h"
 
@@ -24,7 +24,7 @@
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 class ColorBackend {
@@ -56,9 +56,9 @@ class ColorBackend {
 };
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor
 
-#endif  // VENDOR_LINEAGE_LIVEDISPLAY_V1_0_COLORBACKEND_H
+#endif  // VENDOR_LINEAGE_LIVEDISPLAY_V2_0_COLORBACKEND_H

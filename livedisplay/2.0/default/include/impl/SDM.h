@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef VENDOR_LINEAGE_LIVEDISPLAY_V1_0_SDM_H
-#define VENDOR_LINEAGE_LIVEDISPLAY_V1_0_SDM_H
+#ifndef VENDOR_LINEAGE_LIVEDISPLAY_V2_0_SDM_H
+#define VENDOR_LINEAGE_LIVEDISPLAY_V2_0_SDM_H
 
 #include "ColorBackend.h"
 
@@ -25,7 +25,7 @@
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 class SDMController;
@@ -87,9 +87,9 @@ class SDM : public ColorBackend {
 };
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor
 
-#endif  // VENDOR_LINEAGE_LIVEDISPLAY_V1_0_SDM_H
+#endif  // VENDOR_LINEAGE_LIVEDISPLAY_V2_0_SDM_H

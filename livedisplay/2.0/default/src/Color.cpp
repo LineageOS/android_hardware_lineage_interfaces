@@ -31,8 +31,8 @@
 
 namespace {
 
-using vendor::lineage::livedisplay::V1_0::DisplayMode;
-using vendor::lineage::livedisplay::V1_0::implementation::disp_mode;
+using vendor::lineage::livedisplay::V2_0::DisplayMode;
+using vendor::lineage::livedisplay::V2_0::implementation::disp_mode;
 
 DisplayMode modePointerToObj(android::sp<disp_mode> mode) {
     DisplayMode m;
@@ -51,7 +51,7 @@ DisplayMode invalidDisplayMode() {
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 using ::android::Mutex;
@@ -115,12 +115,75 @@ bool Color::connect() {
     return mFeatures > 0;
 }
 
-Return<Features> Color::getSupportedFeatures() {
+uint32_t Color::getSupportedFeatures() {
     connect();
     return mFeatures;
 }
 
-Return<void> Color::getDisplayModes(getDisplayModes_cb _hidl_cb) {
+// IAdaptiveBacklight
+bool Color::setAdaptiveBacklightEnabled(bool enabled) {
+    status_t rc = NO_INIT;
+    Mutex::Autolock _l(mLock);
+
+    if (check(Feature::ADAPTIVE_BACKLIGHT)) {
+        rc = mBackend->setAdaptiveBacklightEnabled(enabled);
+        if (rc != OK) {
+            error("Unable to set adaptive backlight state!");
+        }
+    }
+    return rc == OK;
+}
+
+bool Color::isAdaptiveBacklightEnabled() {
+    Mutex::Autolock _l(mLock);
+
+    if (check(Feature::ADAPTIVE_BACKLIGHT)) {
+        return mBackend->isAdaptiveBacklightEnabled();
+    }
+    return false;
+}
+
+// IColorBalance
+void Color::getColorBalanceRange(IColorBalance::getRange_cb _hidl_cb) {
+    Range range;
+    Mutex::Autolock _l(mLock);
+
+    if (check(Feature::COLOR_BALANCE)) {
+        status_t rc = mBackend->getColorBalanceRange(range);
+        if (rc != OK) {
+            error("Unable to fetch color balance range!");
+            range.max = range.min = 0;
+        }
+    }
+
+    _hidl_cb(range);
+}
+
+int32_t Color::getColorBalance() {
+    Mutex::Autolock _l(mLock);
+
+    if (check(Feature::COLOR_BALANCE)) {
+        return mBackend->getColorBalance();
+    }
+
+    return 0;
+}
+
+bool Color::setColorBalance(int32_t value) {
+    status_t rc = NO_INIT;
+    Mutex::Autolock _l(mLock);
+
+    if (check(Feature::COLOR_BALANCE)) {
+        rc = mBackend->setColorBalance(value);
+        if (rc != OK) {
+            error("Unable to set color balance!");
+        }
+    }
+    return rc == OK;
+}
+
+// IDisplayModes
+void Color::getDisplayModes(IDisplayModes::getModes_cb _hidl_cb) {
     hidl_vec<DisplayMode> profiles;
     status_t rc = NO_INIT;
     Mutex::Autolock _l(mLock);
@@ -140,10 +203,9 @@ Return<void> Color::getDisplayModes(getDisplayModes_cb _hidl_cb) {
     }
 
     _hidl_cb(profiles);
-    return Void();
 }
 
-Return<void> Color::getCurrentDisplayMode(getCurrentDisplayMode_cb _hidl_cb) {
+void Color::getCurrentDisplayMode(IDisplayModes::getCurrentMode_cb _hidl_cb) {
     DisplayMode mode;
     Mutex::Autolock _l(mLock);
 
@@ -156,10 +218,9 @@ Return<void> Color::getCurrentDisplayMode(getCurrentDisplayMode_cb _hidl_cb) {
         }
     }
     _hidl_cb(mode);
-    return Void();
 }
 
-Return<void> Color::getDefaultDisplayMode(getDefaultDisplayMode_cb _hidl_cb) {
+void Color::getDefaultDisplayMode(IDisplayModes::getDefaultMode_cb _hidl_cb) {
     DisplayMode mode;
     Mutex::Autolock _l(mLock);
 
@@ -172,10 +233,9 @@ Return<void> Color::getDefaultDisplayMode(getDefaultDisplayMode_cb _hidl_cb) {
         }
     }
     _hidl_cb(mode);
-    return Void();
 }
 
-Return<bool> Color::setDisplayMode(int32_t modeID, bool makeDefault) {
+bool Color::setDisplayMode(int32_t modeID, bool makeDefault) {
     status_t rc = NO_INIT;
     Mutex::Autolock _l(mLock);
 
@@ -188,29 +248,8 @@ Return<bool> Color::setDisplayMode(int32_t modeID, bool makeDefault) {
     return rc == OK;
 }
 
-Return<bool> Color::setAdaptiveBacklightEnabled(bool enabled) {
-    status_t rc = NO_INIT;
-    Mutex::Autolock _l(mLock);
-
-    if (check(Feature::ADAPTIVE_BACKLIGHT)) {
-        rc = mBackend->setAdaptiveBacklightEnabled(enabled);
-        if (rc != OK) {
-            error("Unable to set adaptive backlight state!");
-        }
-    }
-    return rc == OK;
-}
-
-Return<bool> Color::isAdaptiveBacklightEnabled() {
-    Mutex::Autolock _l(mLock);
-
-    if (check(Feature::ADAPTIVE_BACKLIGHT)) {
-        return mBackend->isAdaptiveBacklightEnabled();
-    }
-    return false;
-}
-
-Return<bool> Color::setOutdoorModeEnabled(bool enabled) {
+// ISunlightEnhancement
+bool Color::setOutdoorModeEnabled(bool enabled) {
     status_t rc = NO_INIT;
     Mutex::Autolock _l(mLock);
 
@@ -223,7 +262,7 @@ Return<bool> Color::setOutdoorModeEnabled(bool enabled) {
     return rc == OK;
 }
 
-Return<bool> Color::isOutdoorModeEnabled() {
+bool Color::isOutdoorModeEnabled() {
     Mutex::Autolock _l(mLock);
 
     if (check(Feature::OUTDOOR_MODE)) {
@@ -232,46 +271,8 @@ Return<bool> Color::isOutdoorModeEnabled() {
     return false;
 }
 
-Return<void> Color::getColorBalanceRange(getColorBalanceRange_cb _hidl_cb) {
-    Range range;
-    Mutex::Autolock _l(mLock);
-
-    if (check(Feature::COLOR_BALANCE)) {
-        status_t rc = mBackend->getColorBalanceRange(range);
-        if (rc != OK) {
-            error("Unable to fetch color balance range!");
-            range.max = range.min = 0;
-        }
-    }
-
-    _hidl_cb(range);
-    return Void();
-}
-
-Return<int32_t> Color::getColorBalance() {
-    Mutex::Autolock _l(mLock);
-
-    if (check(Feature::COLOR_BALANCE)) {
-        return mBackend->getColorBalance();
-    }
-
-    return 0;
-}
-
-Return<bool> Color::setColorBalance(int32_t value) {
-    status_t rc = NO_INIT;
-    Mutex::Autolock _l(mLock);
-
-    if (check(Feature::COLOR_BALANCE)) {
-        rc = mBackend->setColorBalance(value);
-        if (rc != OK) {
-            error("Unable to set color balance!");
-        }
-    }
-    return rc == OK;
-}
-
-Return<bool> Color::setPictureAdjustment(const HSIC& hsic) {
+// IPictureAdjustment
+bool Color::setPictureAdjustment(const HSIC& hsic) {
     status_t rc = NO_INIT;
     Mutex::Autolock _l(mLock);
 
@@ -284,7 +285,7 @@ Return<bool> Color::setPictureAdjustment(const HSIC& hsic) {
     return rc == OK;
 }
 
-Return<void> Color::getPictureAdjustment(getPictureAdjustment_cb _hidl_cb) {
+void Color::getPictureAdjustment(IPictureAdjustment::getAdjustment_cb _hidl_cb) {
     HSIC hsic;
     Mutex::Autolock _l(mLock);
 
@@ -295,10 +296,9 @@ Return<void> Color::getPictureAdjustment(getPictureAdjustment_cb _hidl_cb) {
         }
     }
     _hidl_cb(hsic);
-    return Void();
 }
 
-Return<void> Color::getDefaultPictureAdjustment(getDefaultPictureAdjustment_cb _hidl_cb) {
+void Color::getDefaultPictureAdjustment(IPictureAdjustment::getDefaultAdjustment_cb _hidl_cb) {
     HSIC hsic;
     Mutex::Autolock _l(mLock);
 
@@ -306,10 +306,9 @@ Return<void> Color::getDefaultPictureAdjustment(getDefaultPictureAdjustment_cb _
         hsic = mBackend->getDefaultPictureAdjustment();
     }
     _hidl_cb(hsic);
-    return Void();
 }
 
-Return<void> Color::getHueRange(getHueRange_cb _hidl_cb) {
+void Color::getHueRange(IPictureAdjustment::getHueRange_cb _hidl_cb) {
     HSICRanges ranges;
     Mutex::Autolock _l(mLock);
 
@@ -320,10 +319,9 @@ Return<void> Color::getHueRange(getHueRange_cb _hidl_cb) {
         }
     }
     _hidl_cb(ranges.hue);
-    return Void();
 }
 
-Return<void> Color::getSaturationRange(getSaturationRange_cb _hidl_cb) {
+void Color::getSaturationRange(IPictureAdjustment::getSaturationRange_cb _hidl_cb) {
     HSICRanges ranges;
     Mutex::Autolock _l(mLock);
 
@@ -334,10 +332,9 @@ Return<void> Color::getSaturationRange(getSaturationRange_cb _hidl_cb) {
         }
     }
     _hidl_cb(ranges.saturation);
-    return Void();
 }
 
-Return<void> Color::getIntensityRange(getIntensityRange_cb _hidl_cb) {
+void Color::getIntensityRange(IPictureAdjustment::getIntensityRange_cb _hidl_cb) {
     HSICRanges ranges;
     Mutex::Autolock _l(mLock);
 
@@ -348,10 +345,9 @@ Return<void> Color::getIntensityRange(getIntensityRange_cb _hidl_cb) {
         }
     }
     _hidl_cb(ranges.intensity);
-    return Void();
 }
 
-Return<void> Color::getContrastRange(getContrastRange_cb _hidl_cb) {
+void Color::getContrastRange(IPictureAdjustment::getContrastRange_cb _hidl_cb) {
     HSICRanges ranges;
     Mutex::Autolock _l(mLock);
 
@@ -362,10 +358,9 @@ Return<void> Color::getContrastRange(getContrastRange_cb _hidl_cb) {
         }
     }
     _hidl_cb(ranges.contrast);
-    return Void();
 }
 
-Return<void> Color::getSaturationThresholdRange(getSaturationThresholdRange_cb _hidl_cb) {
+void Color::getSaturationThresholdRange(IPictureAdjustment::getSaturationThresholdRange_cb _hidl_cb) {
     HSICRanges ranges;
     Mutex::Autolock _l(mLock);
 
@@ -376,11 +371,10 @@ Return<void> Color::getSaturationThresholdRange(getSaturationThresholdRange_cb _
         }
     }
     _hidl_cb(ranges.saturationThreshold);
-    return Void();
 }
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor

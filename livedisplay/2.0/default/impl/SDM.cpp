@@ -55,7 +55,7 @@ enum {
 
 struct hsic_config {
     uint32_t flags;
-    vendor::lineage::livedisplay::V1_0::HSIC data;
+    vendor::lineage::livedisplay::V2_0::HSIC data;
 };
 
 struct hsic_float_range {
@@ -83,7 +83,7 @@ struct hsic_ranges {
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 using ::android::BAD_VALUE;
@@ -479,7 +479,7 @@ HSIC SDM::getDefaultPictureAdjustment() {
 }
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor

@@ -1,4 +1,4 @@
-// Copyright (C) 2017-2018 The LineageOS Project
+// Copyright (C) 2017-2019 The LineageOS Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,6 +20,15 @@ cc_defaults {
     srcs: [
         "service.cpp",
         "src/Color.cpp",
+        "src/AdaptiveBacklight.cpp",
+        "src/AutoContrast.cpp",
+        "src/ColorBalance.cpp",
+        "src/ColorEnhancement.cpp",
+        "src/DisplayColorCalibration.cpp",
+        "src/DisplayModes.cpp",
+        "src/PictureAdjustment.cpp",
+        "src/ReadingEnhancement.cpp",
+        "src/SunlightEnhancement.cpp",
         "src/Utils.cpp"
     ],
     shared_libs: [
@@ -30,13 +39,13 @@ cc_defaults {
         "libhidlbase",
         "libhidltransport",
         "libutils",
-        "vendor.lineage.livedisplay@1.0",
+        "vendor.lineage.livedisplay@2.0",
     ],
 }
 
 cc_binary {
-    name: "lineage.livedisplay@1.0-service-sdm",
-    init_rc: ["lineage.livedisplay@1.0-service-sdm.rc"],
+    name: "lineage.livedisplay@2.0-service-sdm",
+    init_rc: ["lineage.livedisplay@2.0-service-sdm.rc"],
     defaults: ["livedisplay_defaults"],
     cflags: ["-DCOLOR_BACKEND_SDM", "-DLIVES_IN_SYSTEM"],
     srcs: [
@@ -46,8 +55,8 @@ cc_binary {
 }
 
 cc_binary {
-    name: "vendor.lineage.livedisplay@1.0-service-legacymm",
-    init_rc: ["vendor.lineage.livedisplay@1.0-service-legacymm.rc"],
+    name: "vendor.lineage.livedisplay@2.0-service-legacymm",
+    init_rc: ["vendor.lineage.livedisplay@2.0-service-legacymm.rc"],
     defaults: ["livedisplay_defaults"],
     proprietary: true,
     cflags: ["-DCOLOR_BACKEND_LEGACYMM"],
@@ -58,8 +67,8 @@ cc_binary {
 }
 
 cc_binary {
-    name: "vendor.lineage.livedisplay@1.0-service-sdm",
-    init_rc: ["vendor.lineage.livedisplay@1.0-service-sdm.rc"],
+    name: "vendor.lineage.livedisplay@2.0-service-sdm",
+    init_rc: ["vendor.lineage.livedisplay@2.0-service-sdm.rc"],
     defaults: ["livedisplay_defaults"],
     proprietary: true,
     cflags: ["-DCOLOR_BACKEND_SDM"],

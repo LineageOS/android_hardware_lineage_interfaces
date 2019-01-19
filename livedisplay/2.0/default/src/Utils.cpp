@@ -40,7 +40,7 @@ constexpr char LOCAL_INITIAL_MODE_ID[] = "livedisplay_initial_mode";
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 using ::android::NO_INIT;
@@ -132,7 +132,7 @@ status_t Utils::sendDPPSCommand(char* buf, size_t len) {
 }
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor

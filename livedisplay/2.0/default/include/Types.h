@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-#ifndef VENDOR_LINEAGE_LIVEDISPLAY_V1_0_TYPES_H
-#define VENDOR_LINEAGE_LIVEDISPLAY_V1_0_TYPES_H
+#ifndef VENDOR_LINEAGE_LIVEDISPLAY_V2_0_TYPES_H
+#define VENDOR_LINEAGE_LIVEDISPLAY_V2_0_TYPES_H
 
 #include <utils/RefBase.h>
-#include <vendor/lineage/livedisplay/1.0/IColor.h>
+#include <vendor/lineage/livedisplay/2.0/types.h>
 #include <string>
 
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 struct disp_mode : public android::RefBase {
@@ -71,9 +71,9 @@ struct HSICRanges {
 };
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor
 
-#endif  // VENDOR_LINEAGE_LIVEDISPLAY_V1_0_TYPES_H
+#endif  // VENDOR_LINEAGE_LIVEDISPLAY_V2_0_TYPES_H

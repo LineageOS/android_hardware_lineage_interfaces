@@ -54,7 +54,7 @@ struct mm_range {
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 using android::BAD_VALUE;
@@ -347,7 +347,7 @@ sp<disp_mode> LegacyMM::getDisplayModeById(int32_t id) {
 }
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor

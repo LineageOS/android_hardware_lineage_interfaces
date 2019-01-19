@@ -72,7 +72,7 @@ Function loadFunction(std::shared_ptr<void> handle, const char* name) {
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V1_0 {
+namespace V2_0 {
 namespace implementation {
 
 SDMController::SDMController() {
@@ -167,7 +167,7 @@ int32_t SDMController::get_feature_version(uint64_t hctx, uint32_t feature_id, v
 }
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor
