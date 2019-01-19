@@ -22,6 +22,30 @@
       "revId": "e371d1e86a68b440553fe5205b0ddad74cef97d9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c93db3_74200293",
+        "filename": "touch/1.0/IKeyDisabler.hal",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-01-19T14:24:19Z",
+      "side": 1,
+      "message": "Parity with the lineagehw API.",
+      "parentUuid": "259b023e_107d1447",
+      "range": {
+        "startLine": 21,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "e371d1e86a68b440553fe5205b0ddad74cef97d9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
