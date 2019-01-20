@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b72e0d91_04d6b52d",
+        "filename": "trust/UsbRestrict.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-20T23:00:16Z",
+      "side": 1,
+      "message": "file.is_open()",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "6035a7638fbd224f0908224c3e7089d843d92edc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ea5acb5_8771f2af",
         "filename": "trust/vendor.lineage.trust@1.0-service.rc",
         "patchSetId": 11
