@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ea5acb5_8771f2af",
+        "filename": "trust/vendor.lineage.trust@1.0-service.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-20T22:55:39Z",
+      "side": 1,
+      "message": "/vendor/bin/hw/",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 34
+      },
+      "revId": "6035a7638fbd224f0908224c3e7089d843d92edc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4e2bfb_2c216e38",
+        "filename": "trust/vendor.lineage.trust@1.0-service.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-20T22:55:39Z",
+      "side": 1,
+      "message": "vendor. prefix missing",
+      "range": {
+        "startLine": 1,
+        "startChar": 8,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "6035a7638fbd224f0908224c3e7089d843d92edc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
