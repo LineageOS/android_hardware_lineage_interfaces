@@ -148,7 +148,7 @@ status_t LegacyMM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
             name = new char[128];
         }
         ~d_mode() {
-            delete name;
+            delete[] name;
         }
     };
 

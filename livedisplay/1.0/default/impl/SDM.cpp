@@ -210,7 +210,7 @@ status_t SDM::getDisplayModes(std::vector<sp<disp_mode>>& profiles) {
                 name = new char[128];
             }
             ~sdm_mode() {
-                delete name;
+                delete[] name;
             }
         };
 
