@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b48793c7_ab9d956c",
+        "filename": "trust/UsbRestrict.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-31T13:29:51Z",
+      "side": 1,
+      "message": "Did you forget about this?",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "fd52276dcca6a6b47d5ac023b4b786b9141a93f9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
