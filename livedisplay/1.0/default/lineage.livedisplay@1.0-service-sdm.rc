@@ -1,7 +1,0 @@
-on post-fs-data
-    mkdir /data/display 0770 system graphics
-
-service livedisplay-hal-1-0 /system/bin/hw/lineage.livedisplay@1.0-service-sdm
-    class hal
-    user system
-    group system

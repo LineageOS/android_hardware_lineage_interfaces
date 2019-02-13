@@ -1,4 +1,0 @@
-service vendor.livedisplay-hal-1-0 /vendor/bin/hw/vendor.lineage.livedisplay@1.0-service-sdm
-    class hal
-    user system
-    group system
