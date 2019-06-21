@@ -1,0 +1,10 @@
+hidl_interface {
+    name: "vendor.lineage.biometrics.fingerprint.inscreen@1.0",
+    root: "vendor.lineage",
+    srcs: [
+        "IFingerprintInscreen.hal",
+    ],
+    interfaces: [
+        "android.hidl.base@1.0",
+    ],
+}
