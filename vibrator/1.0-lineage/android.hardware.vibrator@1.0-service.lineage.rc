@@ -7,6 +7,7 @@ on early-boot
     chmod 0444 /sys/devices/virtual/timed_output/vibrator/vtg_min
 
 service vendor.vibrator-1-0 /vendor/bin/hw/android.hardware.vibrator@1.0-service.lineage
+    interface android.hardware.vibrator@1.0::IVibrator default
     class hal
     user system
     group system
