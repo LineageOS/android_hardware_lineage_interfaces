@@ -16,6 +16,8 @@
 
 package vendor.lineage.biometrics.fingerprint.inscreen@1.0;
 
+import IFingerprintInscreenCallback;
+
 interface IFingerprintInscreen {
     /*
      * Called when fingerprint enrollment started
@@ -64,4 +66,8 @@ interface IFingerprintInscreen {
      * according to the previous events.
      */
     shouldBoostBrightness() generates (bool ret);
+    /*
+     * yaaaaawn
+     */
+    oneway setCallback(IFingerprintInscreenCallback callback);
 };
