@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11a40c6d_2f57f1d7",
+        "filename": "biometrics/fingerprint/inscreen/1.0/IFingerprintInscreen.hal",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2019-07-01T21:33:59Z",
+      "side": 1,
+      "message": "Not really related to the purpose of the HAL.",
+      "revId": "5ed2749654353ef3452d023c868e16794e6d9625",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
