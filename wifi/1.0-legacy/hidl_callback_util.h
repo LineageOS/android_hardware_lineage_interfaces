@@ -52,7 +52,7 @@ class HidlDeathHandler : public android::hardware::hidl_death_recipient {
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace hidl_callback_util {
 template <typename CallbackType>
@@ -117,7 +117,7 @@ class HidlCallbackHandler {
 
 }  // namespace hidl_callback_util
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android
