@@ -22,7 +22,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace hidl_struct_util {
 
@@ -302,11 +302,11 @@ legacy_hal::wifi_power_scenario convertHidlTxPowerScenarioToLegacy_1_2(
 }
 
 legacy_hal::wifi_latency_mode convertHidlLatencyModeToLegacy(
-    IWifiChip::LatencyMode hidl_latency_mode) {
+    V1_3::IWifiChip::LatencyMode hidl_latency_mode) {
     switch (hidl_latency_mode) {
-        case IWifiChip::LatencyMode::NORMAL:
+        case V1_3::IWifiChip::LatencyMode::NORMAL:
             return legacy_hal::WIFI_LATENCY_MODE_NORMAL;
-        case IWifiChip::LatencyMode::LOW:
+        case V1_3::IWifiChip::LatencyMode::LOW:
             return legacy_hal::WIFI_LATENCY_MODE_LOW;
     }
     CHECK(false);
@@ -2695,7 +2695,7 @@ bool convertLegacyVectorOfRttResultToHidl(
 }
 }  // namespace hidl_struct_util
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

@@ -20,7 +20,7 @@
 #include <functional>
 
 #include <android-base/macros.h>
-#include <android/hardware/wifi/1.3/IWifi.h>
+#include <android/hardware/wifi/1.4/IWifi.h>
 #include <utils/Looper.h>
 
 #include "hidl_callback_util.h"
@@ -32,13 +32,13 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 
 /**
  * Root HIDL interface object used to control the Wifi HAL.
  */
-class Wifi : public V1_3::IWifi {
+class Wifi : public V1_4::IWifi {
    public:
     Wifi(const std::shared_ptr<wifi_system::InterfaceTool> iface_tool,
          const std::shared_ptr<legacy_hal::WifiLegacyHal> legacy_hal,
@@ -92,7 +92,7 @@ class Wifi : public V1_3::IWifi {
 };
 
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

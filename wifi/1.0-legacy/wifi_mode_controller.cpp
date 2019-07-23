@@ -48,7 +48,7 @@ int convertIfaceTypeToFirmwareMode(IfaceType type) {
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace mode_controller {
 
@@ -85,7 +85,7 @@ bool WifiModeController::deinitialize() {
 }
 }  // namespace mode_controller
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

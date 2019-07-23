@@ -23,7 +23,7 @@ std::recursive_mutex g_mutex;
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace hidl_sync_util {
 
@@ -33,7 +33,7 @@ std::unique_lock<std::recursive_mutex> acquireGlobalLock() {
 
 }  // namespace hidl_sync_util
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

@@ -28,7 +28,7 @@ static constexpr android::hardware::wifi::V1_0::ChipId kChipId = 0;
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 using hidl_return_util::validateAndCall;
 using hidl_return_util::validateAndCallWithLock;
@@ -210,7 +210,7 @@ WifiStatus Wifi::stopLegacyHalAndDeinitializeModeController(
     return createWifiStatus(WifiStatusCode::SUCCESS);
 }
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

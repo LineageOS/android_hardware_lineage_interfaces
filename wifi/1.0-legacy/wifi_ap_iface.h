@@ -27,7 +27,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 using namespace android::hardware::wifi::V1_0;
 
@@ -72,7 +72,7 @@ class WifiApIface : public V1_0::IWifiApIface {
 };
 
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android
