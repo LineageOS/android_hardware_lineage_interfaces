@@ -20,7 +20,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace legacy_hal {
 #include <hardware_legacy/wifi_hal.h>
@@ -28,7 +28,7 @@ namespace legacy_hal {
 bool initHalFuncTableWithStubs(wifi_hal_fn* hal_fn);
 }  // namespace legacy_hal
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

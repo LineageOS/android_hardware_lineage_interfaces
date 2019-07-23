@@ -21,7 +21,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 
 Ringbuffer::Ringbuffer(size_t maxSize) : size_(0), maxSize_(maxSize) {}
@@ -48,7 +48,7 @@ const std::list<std::vector<uint8_t>>& Ringbuffer::getData() const {
 }
 
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

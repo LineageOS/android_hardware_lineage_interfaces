@@ -35,7 +35,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 // This is in a separate namespace to prevent typename conflicts between
 // the legacy HAL types and the HIDL interface types.
@@ -396,7 +396,7 @@ class WifiLegacyHal {
 
 }  // namespace legacy_hal
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

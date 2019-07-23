@@ -50,7 +50,7 @@ std::vector<char> makeCharVec(const std::string& str) {
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace legacy_hal {
 // Legacy HAL functions accept "C" style function pointers, so use global
@@ -1449,7 +1449,7 @@ void WifiLegacyHal::invalidate() {
 
 }  // namespace legacy_hal
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

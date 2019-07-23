@@ -23,7 +23,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace hidl_return_util {
 using namespace android::hardware::wifi::V1_0;
@@ -113,7 +113,7 @@ Return<void> validateAndCall(
 
 }  // namespace hidl_return_util
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android
