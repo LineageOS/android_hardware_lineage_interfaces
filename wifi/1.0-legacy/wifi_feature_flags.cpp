@@ -19,7 +19,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace feature_flags {
 
@@ -162,7 +162,7 @@ bool WifiFeatureFlags::isApMacRandomizationDisabled() {
 
 }  // namespace feature_flags
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

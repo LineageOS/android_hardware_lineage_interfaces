@@ -28,11 +28,11 @@
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 using android::hardware::LazyServiceRegistrar;
-using android::hardware::wifi::V1_3::implementation::feature_flags::
+using android::hardware::wifi::V1_4::implementation::feature_flags::
     WifiFeatureFlags;
-using android::hardware::wifi::V1_3::implementation::iface_util::WifiIfaceUtil;
-using android::hardware::wifi::V1_3::implementation::legacy_hal::WifiLegacyHal;
-using android::hardware::wifi::V1_3::implementation::mode_controller::
+using android::hardware::wifi::V1_4::implementation::iface_util::WifiIfaceUtil;
+using android::hardware::wifi::V1_4::implementation::legacy_hal::WifiLegacyHal;
+using android::hardware::wifi::V1_4::implementation::mode_controller::
     WifiModeController;
 
 #ifdef LAZY_SERVICE
@@ -51,8 +51,8 @@ int main(int /*argc*/, char** argv) {
     const auto iface_tool =
         std::make_shared<android::wifi_system::InterfaceTool>();
     // Setup hwbinder service
-    android::sp<android::hardware::wifi::V1_3::IWifi> service =
-        new android::hardware::wifi::V1_3::implementation::Wifi(
+    android::sp<android::hardware::wifi::V1_4::IWifi> service =
+        new android::hardware::wifi::V1_4::implementation::Wifi(
             iface_tool, std::make_shared<WifiLegacyHal>(iface_tool),
             std::make_shared<WifiModeController>(),
             std::make_shared<WifiIfaceUtil>(iface_tool),

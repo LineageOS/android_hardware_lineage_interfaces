@@ -35,7 +35,7 @@ constexpr uint8_t kMacAddressLocallyAssignedMask = 0x02;
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_3 {
+namespace V1_4 {
 namespace implementation {
 namespace iface_util {
 
@@ -112,7 +112,7 @@ std::array<uint8_t, 6> WifiIfaceUtil::createRandomMacAddress() {
 }
 }  // namespace iface_util
 }  // namespace implementation
-}  // namespace V1_3
+}  // namespace V1_4
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android
