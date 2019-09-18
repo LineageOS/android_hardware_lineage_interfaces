@@ -39,7 +39,7 @@ interface IFingerprintInscreen {
      * Called when the on-screen area of the fingerprint scanner
      * is pressed and ready to scan.
      */
-    onPress();
+    onPress(int32_t ambientLight);
     /**
      * Called when the on-screen area of the scanner is released
      */
