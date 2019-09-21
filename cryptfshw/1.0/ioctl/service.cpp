@@ -26,7 +26,7 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 using ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw;
-using ::vendor::qti::hardware::cryptfshw::V1_0::lineage::CryptfsHw;
+using ::vendor::qti::hardware::cryptfshw::V1_0::ioctl_qti::CryptfsHw;
 
 int main() {
     sp<CryptfsHw> cryptfsHw;

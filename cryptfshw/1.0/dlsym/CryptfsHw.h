@@ -16,7 +16,7 @@
 
 #pragma once
 
-#define LOG_TAG "vendor.qti.hardware.cryptfshw@1.0-service-lineage"
+#define LOG_TAG "vendor.qti.hardware.cryptfshw@1.0-service-dlsym-qti"
 
 #include <android-base/logging.h>
 
@@ -29,7 +29,7 @@ namespace qti {
 namespace hardware {
 namespace cryptfshw {
 namespace V1_0 {
-namespace lineage {
+namespace dlsym_qti {
 
 using ::android::hardware::hidl_string;
 using ::android::hardware::Return;
@@ -46,7 +46,7 @@ class CryptfsHw : public ICryptfsHw {
     Return<int32_t> clearKey() override;
 };
 
-}  // namespace lineage
+}  // namespace dlsym_qti
 }  // namespace V1_0
 }  // namespace cryptfshw
 }  // namespace hardware

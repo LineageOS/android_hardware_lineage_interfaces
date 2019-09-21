@@ -21,7 +21,7 @@ namespace qti {
 namespace hardware {
 namespace cryptfshw {
 namespace V1_0 {
-namespace lineage {
+namespace dlsym_qti {
 
 CryptfsHw::CryptfsHw() {
     // TODO implement
@@ -49,7 +49,7 @@ Return<int32_t> CryptfsHw::clearKey() {
     return int32_t{};
 }
 
-}  // namespace lineage
+}  // namespace dlsym_qti
 }  // namespace V1_0
 }  // namespace cryptfshw
 }  // namespace hardware
