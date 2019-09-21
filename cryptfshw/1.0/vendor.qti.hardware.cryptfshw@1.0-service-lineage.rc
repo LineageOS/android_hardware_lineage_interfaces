@@ -1,0 +1,7 @@
+service vendor.cryptfshw-hal-1-0-lineage /vendor/bin/hw/vendor.qti.hardware.cryptfshw@1.0-service-lineage
+    class early_hal
+    user system
+    group system
+    shutdown critical
+    ioprio be 2
+    writepid /dev/cpuset/foreground/tasks
