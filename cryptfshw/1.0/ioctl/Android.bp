@@ -16,6 +16,7 @@ cc_binary {
     name: "vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti",
     defaults: ["hidl_defaults"],
     init_rc: ["vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti.rc"],
+    header_libs: ["generated_kernel_headers"],
     owner: "qti",
     relative_install_path: "hw",
     srcs: [
