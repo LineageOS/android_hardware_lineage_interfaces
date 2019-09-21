@@ -34,6 +34,22 @@ namespace ioctl_qti {
 using ::android::hardware::hidl_string;
 using ::android::hardware::Return;
 
+// All error codes we return
+#define CRYPTFS_HW_KMS_WIPE_KEY 1
+#define CRYPTFS_HW_CREATE_KEY_FAILED -7
+#define CRYPTFS_HW_WIPE_KEY_FAILED -8
+#define CRYPTFS_HW_UPDATE_KEY_FAILED -9
+#define CRYPTFS_HW_KMS_MAX_FAILURE -10
+
+// Usage constants for the backend based on the device's storage type
+enum cryptfs_hw_key_management_usage_type {
+    CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION = 0x01,
+    CRYPTFS_HW_KM_USAGE_FILE_ENCRYPTION = 0x02,
+    CRYPTFS_HW_KM_USAGE_UFS_ICE_DISK_ENCRYPTION = 0x03,
+    CRYPTFS_HW_KM_USAGE_SDCC_ICE_DISK_ENCRYPTION = 0x04,
+    CRYPTFS_HW_KM_USAGE_MAX
+};
+
 class CryptfsHw : public ICryptfsHw {
    public:
     CryptfsHw();
@@ -44,6 +60,9 @@ class CryptfsHw : public ICryptfsHw {
     Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw,
                               const hidl_string& enc_mode) override;
     Return<int32_t> clearKey() override;
+
+   private:
+    qseecom_key_management_usage_type mKeyManagementUsage;
 };
 
 }  // namespace ioctl_qti
