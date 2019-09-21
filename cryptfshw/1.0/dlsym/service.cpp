@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "vendor.qti.hardware.cryptfshw@1.0-service-lineage"
+#define LOG_TAG "vendor.qti.hardware.cryptfshw@1.0-service-dlsym-qti"
 
 #include <android-base/logging.h>
 #include <binder/ProcessState.h>
@@ -29,7 +29,7 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 using ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw;
-using ::vendor::qti::hardware::cryptfshw::V1_0::lineage::CryptfsHw;
+using ::vendor::qti::hardware::cryptfshw::V1_0::dlsym_qti::CryptfsHw;
 
 int main() {
     sp<CryptfsHw> cryptfsHw;

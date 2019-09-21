@@ -25,7 +25,7 @@ namespace qti {
 namespace hardware {
 namespace cryptfshw {
 namespace V1_0 {
-namespace lineage {
+namespace dlsym_qti {
 
 using ::android::sp;
 using ::android::hardware::hidl_array;
@@ -47,7 +47,7 @@ class CryptfsHw : public ICryptfsHw {
     Return<int32_t> clearKey() override;
 };
 
-}  // namespace lineage
+}  // namespace dlsym_qti
 }  // namespace V1_0
 }  // namespace cryptfshw
 }  // namespace hardware

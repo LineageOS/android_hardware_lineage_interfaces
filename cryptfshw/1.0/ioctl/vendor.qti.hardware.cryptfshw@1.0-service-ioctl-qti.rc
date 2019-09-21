@@ -1,4 +1,4 @@
-service vendor.cryptfshw-hal-1-0-lineage /vendor/bin/hw/vendor.qti.hardware.cryptfshw@1.0-service-lineage
+service vendor.cryptfshw-hal-1-0-ioctl-qti /vendor/bin/hw/vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti
     class early_hal
     user system
     group system
