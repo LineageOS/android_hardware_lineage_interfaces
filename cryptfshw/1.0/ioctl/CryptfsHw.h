@@ -35,16 +35,37 @@ using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
 
+#define QTI_ICE_STORAGE_NOT -1
+#define QTI_ICE_STORAGE_UFS 1
+#define QTI_ICE_STORAGE_SDCC 2
+
+#define CRYPTFS_HW_KMS_WIPE_KEY 1
+#define CRYPTFS_HW_CREATE_KEY_FAILED -7
+#define CRYPTFS_HW_WIPE_KEY_FAILED -8
+#define CRYPTFS_HW_UPDATE_KEY_FAILED -9
+#define CRYPTFS_HW_KMS_MAX_FAILURE -10
+
+enum cryptfs_hw_key_management_usage_type {
+    CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION = 0x01,
+    CRYPTFS_HW_KM_USAGE_FILE_ENCRYPTION = 0x02,
+    CRYPTFS_HW_KM_USAGE_UFS_ICE_DISK_ENCRYPTION = 0x03,
+    CRYPTFS_HW_KM_USAGE_SDCC_ICE_DISK_ENCRYPTION = 0x04,
+    CRYPTFS_HW_KM_USAGE_MAX
+};
+
 class CryptfsHw : public ICryptfsHw {
    public:
     CryptfsHw();
 
     // Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
     Return<int32_t> setIceParam(uint32_t flag) override;
-    Return<int32_t> setKey(const hidl_string& passwd, const hidl_string& enc_mode) override;
+    Return<int32_t> setKey(const hidl_string& passwd, const hidl_string&) override;
     Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw,
-                              const hidl_string& enc_mode) override;
+                              const hidl_string&) override;
     Return<int32_t> clearKey() override;
+
+   private:
+    int mStorageType;
 };
 
 }  // namespace ioctl_qti
