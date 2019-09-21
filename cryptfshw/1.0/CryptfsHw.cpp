@@ -21,37 +21,35 @@ namespace qti {
 namespace hardware {
 namespace cryptfshw {
 namespace V1_0 {
-namespace implementation {
+namespace lineage {
+
+CryptfsHw::CryptfsHw() {
+    // TODO implement
+}
 
 // Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
 Return<int32_t> CryptfsHw::setIceParam(uint32_t flag) {
     // TODO implement
-    return int32_t {};
+    return int32_t{};
 }
 
 Return<int32_t> CryptfsHw::setKey(const hidl_string& passwd, const hidl_string& enc_mode) {
     // TODO implement
-    return int32_t {};
+    return int32_t{};
 }
 
-Return<int32_t> CryptfsHw::updateKey(const hidl_string& oldpw, const hidl_string& newpw, const hidl_string& enc_mode) {
+Return<int32_t> CryptfsHw::updateKey(const hidl_string& oldpw, const hidl_string& newpw,
+                                     const hidl_string& enc_mode) {
     // TODO implement
-    return int32_t {};
+    return int32_t{};
 }
 
 Return<int32_t> CryptfsHw::clearKey() {
     // TODO implement
-    return int32_t {};
+    return int32_t{};
 }
 
-
-// Methods from ::android::hidl::base::V1_0::IBase follow.
-
-//ICryptfsHw* HIDL_FETCH_ICryptfsHw(const char* /* name */) {
-    //return new CryptfsHw();
-//}
-//
-}  // namespace implementation
+}  // namespace lineage
 }  // namespace V1_0
 }  // namespace cryptfshw
 }  // namespace hardware
