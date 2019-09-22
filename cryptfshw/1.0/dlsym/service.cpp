@@ -14,9 +14,15 @@
  * limitations under the License.
  */
 
+#include <chrono>
+#include <thread>
+
+#include <dlfcn.h>
+
 #define LOG_TAG "vendor.qti.hardware.cryptfshw@1.0-service-dlsym-qti"
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <binder/ProcessState.h>
 #include <hidl/HidlTransportSupport.h>
 
@@ -25,6 +31,7 @@
 using android::OK;
 using android::sp;
 using android::status_t;
+using android::base::GetBoolProperty;
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
@@ -32,13 +39,31 @@ using ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw;
 using ::vendor::qti::hardware::cryptfshw::V1_0::dlsym_qti::CryptfsHw;
 
 int main() {
+    void* libHandle = nullptr;
+
     sp<CryptfsHw> cryptfsHw;
 
     status_t status = OK;
 
     LOG(INFO) << "CryptfsHw HAL service is starting.";
 
-    cryptfsHw = new CryptfsHw();
+#ifndef SKIP_WAITING_FOR_QSEE
+    for (int i = 0; i < CRYPTFS_HW_UP_CHECK_COUNT; i++) {
+        if (GetBoolProperty("sys.keymaster.loaded", false)) goto start;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+
+    LOG(ERROR) << "Timed out waiting for QSEECom";
+    goto shutdown;
+start:
+#endif
+    libHandle = dlopen("libQSEEComAPI.so", RTLD_NOW);
+    if (libHandle == nullptr) {
+        LOG(ERROR) << "Can not get libQSEEComAPI.so (" << dlerror() << ")";
+        goto shutdown;
+    }
+
+    cryptfsHw = new CryptfsHw(libHandle);
     if (cryptfsHw == nullptr) {
         LOG(ERROR) << "Can not create an instance of CryptfsHw HAL CryptfsHw Iface, exiting.";
         goto shutdown;
@@ -58,6 +83,8 @@ int main() {
     // Should not pass this line
 
 shutdown:
+    if (libHandle != nullptr) dlclose(libHandle);
+
     // In normal operation, we don't expect the thread pool to shutdown
     LOG(ERROR) << "CryptfsHw HAL service is shutting down.";
     return 1;
