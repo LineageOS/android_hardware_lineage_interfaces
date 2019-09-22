@@ -34,16 +34,41 @@ namespace dlsym_qti {
 using ::android::hardware::hidl_string;
 using ::android::hardware::Return;
 
+// Number of times to check for qseecomd being up
+#define CRYPTFS_HW_UP_CHECK_COUNT 10
+
+// All error codes we return
+#define CRYPTFS_HW_CREATE_KEY_FAILED -7
+#define CRYPTFS_HW_WIPE_KEY_FAILED -8
+#define CRYPTFS_HW_UPDATE_KEY_FAILED -9
+
+// Usage constants for the backend based on the device's storage type
+enum cryptfs_hw_key_management_usage_type {
+    CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION = 0x01,
+    CRYPTFS_HW_KM_USAGE_FILE_ENCRYPTION = 0x02,
+    CRYPTFS_HW_KM_USAGE_UFS_ICE_DISK_ENCRYPTION = 0x03,
+    CRYPTFS_HW_KM_USAGE_SDCC_ICE_DISK_ENCRYPTION = 0x04,
+    CRYPTFS_HW_KM_USAGE_MAX
+};
+
 class CryptfsHw : public ICryptfsHw {
    public:
-    CryptfsHw();
+    CryptfsHw(void* libHandle);
 
     // Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
-    Return<int32_t> setIceParam(uint32_t flag) override;
+    Return<int32_t> setIceParam(uint32_t) override;
     Return<int32_t> setKey(const hidl_string& passwd, const hidl_string& enc_mode) override;
     Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw,
                               const hidl_string& enc_mode) override;
     Return<int32_t> clearKey() override;
+
+   private:
+    void* mLibHandle;
+    int mStorageType;
+
+    int (*qseecom_create_key)(int, void*);
+    int (*qseecom_update_key)(int, void*, void*);
+    int (*qseecom_wipe_key)(int);
 };
 
 }  // namespace dlsym_qti
