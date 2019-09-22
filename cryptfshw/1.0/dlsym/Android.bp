@@ -17,6 +17,13 @@ cc_binary {
     defaults: ["hidl_defaults"],
     init_rc: ["vendor.qti.hardware.cryptfshw@1.0-service-dlsym-qti.rc"],
     owner: "qti",
+    product_variables: {
+        lineage: {
+            should_skip_waiting_for_qsee: {
+                cflags: ["-DSKIP_WAITING_FOR_QSEE"],
+            },
+        },
+    },
     relative_install_path: "hw",
     srcs: [
         "CryptfsHw.cpp",
@@ -25,6 +32,7 @@ cc_binary {
     shared_libs: [
         "libbase",
         "libbinder",
+        "libdl",
         "libhidlbase",
         "libhidltransport",
         "libutils",
