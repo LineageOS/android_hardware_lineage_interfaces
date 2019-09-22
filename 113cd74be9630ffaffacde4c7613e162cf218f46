@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfabd716_d3e945e4",
+        "filename": "cryptfshw/1.0/dlsym/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-09-22T03:23:29Z",
+      "side": 1,
+      "message": "We could just skip the loop here and restart the service until it comes up too, but restarting the service is probably more expensive.",
+      "revId": "113cd74be9630ffaffacde4c7613e162cf218f46",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
