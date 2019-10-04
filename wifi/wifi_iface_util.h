@@ -47,10 +47,6 @@ class WifiIfaceUtil {
         const std::string& iface_name);
     virtual bool setMacAddress(const std::string& iface_name,
                                const std::array<uint8_t, 6>& mac);
-    // Get or create a random MAC address. The MAC address returned from
-    // this method will remain the same throughout the lifetime of the HAL
-    // daemon. (So, changes on every reboot)
-    virtual std::array<uint8_t, 6> getOrCreateRandomMacAddress();
 
     // Register for any iface event callbacks for the provided interface.
     virtual void registerIfaceEventHandlers(const std::string& iface_name,
@@ -58,10 +54,7 @@ class WifiIfaceUtil {
     virtual void unregisterIfaceEventHandlers(const std::string& iface_name);
 
    private:
-    std::array<uint8_t, 6> createRandomMacAddress();
-
     std::weak_ptr<wifi_system::InterfaceTool> iface_tool_;
-    std::unique_ptr<std::array<uint8_t, 6>> random_mac_address_;
     std::map<std::string, IfaceEventHandlers> event_handlers_map_;
 };
 
