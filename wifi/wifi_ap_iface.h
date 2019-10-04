@@ -20,7 +20,6 @@
 #include <android-base/macros.h>
 #include <android/hardware/wifi/1.0/IWifiApIface.h>
 
-#include "wifi_feature_flags.h"
 #include "wifi_iface_util.h"
 #include "wifi_legacy_hal.h"
 
@@ -39,8 +38,7 @@ class WifiApIface : public V1_0::IWifiApIface {
     WifiApIface(
         const std::string& ifname,
         const std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal,
-        const std::weak_ptr<iface_util::WifiIfaceUtil> iface_util,
-        const std::weak_ptr<feature_flags::WifiFeatureFlags> feature_flags);
+        const std::weak_ptr<iface_util::WifiIfaceUtil> iface_util);
     // Refer to |WifiChip::invalidate()|.
     void invalidate();
     bool isValid();
@@ -65,7 +63,6 @@ class WifiApIface : public V1_0::IWifiApIface {
     std::string ifname_;
     std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal_;
     std::weak_ptr<iface_util::WifiIfaceUtil> iface_util_;
-    std::weak_ptr<feature_flags::WifiFeatureFlags> feature_flags_;
     bool is_valid_;
 
     DISALLOW_COPY_AND_ASSIGN(WifiApIface);
