@@ -16,9 +16,7 @@
 
 #pragma once
 
-#include <vendor/qti/hardware/cryptfshw/1.0/ICryptfsHw.h>
-
-#include "QSEEComController.h"
+#include <memory>
 
 namespace vendor {
 namespace qti {
@@ -26,27 +24,32 @@ namespace hardware {
 namespace cryptfshw {
 namespace V1_0 {
 namespace implementation {
+namespace qti {
 
-using ::android::hardware::hidl_string;
-using ::android::hardware::Return;
-
-class CryptfsHw : public ICryptfsHw {
-  public:
-    CryptfsHw();
-
-    // Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
-    Return<int32_t> setIceParam(uint32_t flag) override;
-    Return<int32_t> setKey(const hidl_string& passwd, const hidl_string& enc_mode) override;
-    Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw,
-                              const hidl_string& enc_mode) override;
-    Return<int32_t> clearKey() override;
-
+// interface wrapper
+class Controller {
+    // methods
   private:
-    int mapUsage(int usage);
-    std::unique_ptr<qti::Controller> mController;
-    int mStorageType = 0;
+    Controller(const Controller&) = delete;
+    Controller(Controller&&) = delete;
+    Controller& operator=(const Controller&) = delete;
+    Controller& operator=(Controller&&) = delete;
+    template <typename Function>
+    Function loadFunction(const char* name);
+    std::shared_ptr<void> mHandle;
+
+    int (*mFn_create_key)(int, void*);
+    int (*mFn_update_key_user_info)(int, void*, void*);
+    int (*mFn_wipe_key)(int);
+
+  public:
+    Controller();
+    int createKey(int usage, unsigned char* hash32);
+    int updateKey(int usage, unsigned char* current_hash32, unsigned char* new_hash32);
+    int wipeKey(int usage);
 };
 
+}  // namespace qti
 }  // namespace implementation
 }  // namespace V1_0
 }  // namespace cryptfshw
