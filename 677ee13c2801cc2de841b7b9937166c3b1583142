@@ -16,6 +16,24 @@
       "revId": "677ee13c2801cc2de841b7b9937166c3b1583142",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ab2ee7_c567ba6f",
+        "filename": "cryptfshw/1.0/ioctl/CryptfsHw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2019-10-06T12:15:03Z",
+      "side": 1,
+      "message": "yes, I know. I\u0027ll be pushing a PS later to make it work on older devices.",
+      "parentUuid": "06b83c73_a5171765",
+      "revId": "677ee13c2801cc2de841b7b9937166c3b1583142",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
