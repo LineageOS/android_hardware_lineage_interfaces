@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df61eb6f_9c4c979a",
+        "filename": "wifi/1.0-legacy/Android.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 18205
+      },
+      "writtenOn": "2019-10-06T18:15:07Z",
+      "side": 1,
+      "message": "This reads wrong though. I believe you meant to rename the make flag to WIFI_HIDL_FEATURE_AP_MAC_RANDOMIZATION too",
+      "revId": "864d19a23ce888cc63ee18b975788bbb82bef685",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
