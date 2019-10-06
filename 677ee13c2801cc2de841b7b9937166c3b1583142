@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06b83c73_a5171765",
+        "filename": "cryptfshw/1.0/ioctl/CryptfsHw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2019-10-06T07:43:50Z",
+      "side": 1,
+      "message": "This ioctl only exists on 4.9+. https://github.com/LineageOS/android_kernel_xiaomi_violet/commit/deca1043dcced663b61d49c8ca01a1eb33ab29d5",
+      "revId": "677ee13c2801cc2de841b7b9937166c3b1583142",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
