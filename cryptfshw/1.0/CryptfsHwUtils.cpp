@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-#pragma once
+#include <cstring>
 
-#include <vendor/qti/hardware/cryptfshw/1.0/ICryptfsHw.h>
-
-#include "QSEEComController.h"
+#include "CryptfsHwUtils.h"
 
 namespace vendor {
 namespace qti {
@@ -27,25 +25,11 @@ namespace cryptfshw {
 namespace V1_0 {
 namespace implementation {
 
-using ::android::hardware::hidl_string;
-using ::android::hardware::Return;
-
-class CryptfsHw : public ICryptfsHw {
-  public:
-    CryptfsHw();
-
-    // Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
-    Return<int32_t> setIceParam(uint32_t flag) override;
-    Return<int32_t> setKey(const hidl_string& passwd, const hidl_string& enc_mode) override;
-    Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw,
-                              const hidl_string& enc_mode) override;
-    Return<int32_t> clearKey() override;
-
-  private:
-    int mapUsage(int usage);
-    std::unique_ptr<qti::Controller> mController;
-    int mStorageType = 0;
-};
+size_t memscpy(void* dst, size_t dst_size, const void* src, size_t src_size) {
+    size_t min_size = (dst_size < src_size) ? dst_size : src_size;
+    memcpy(dst, src, min_size);
+    return min_size;
+}
 
 }  // namespace implementation
 }  // namespace V1_0
