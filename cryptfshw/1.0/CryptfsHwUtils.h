@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-#include "CryptfsHw.h"
+#pragma once
+
+#include <cstddef>
 
 namespace vendor {
 namespace qti {
@@ -23,34 +25,9 @@ namespace cryptfshw {
 namespace V1_0 {
 namespace implementation {
 
-// Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
-Return<int32_t> CryptfsHw::setIceParam(uint32_t flag) {
-    // TODO implement
-    return int32_t {};
-}
+void* secure_memset(void* v, int c, size_t n);
+size_t memscpy(void* dst, size_t dst_size, const void* src, size_t src_size);
 
-Return<int32_t> CryptfsHw::setKey(const hidl_string& passwd, const hidl_string& enc_mode) {
-    // TODO implement
-    return int32_t {};
-}
-
-Return<int32_t> CryptfsHw::updateKey(const hidl_string& oldpw, const hidl_string& newpw, const hidl_string& enc_mode) {
-    // TODO implement
-    return int32_t {};
-}
-
-Return<int32_t> CryptfsHw::clearKey() {
-    // TODO implement
-    return int32_t {};
-}
-
-
-// Methods from ::android::hidl::base::V1_0::IBase follow.
-
-//ICryptfsHw* HIDL_FETCH_ICryptfsHw(const char* /* name */) {
-    //return new CryptfsHw();
-//}
-//
 }  // namespace implementation
 }  // namespace V1_0
 }  // namespace cryptfshw

@@ -16,9 +16,15 @@
 
 #pragma once
 
+#include <dlfcn.h>
+
+#include <android-base/logging.h>
+#include <android-base/properties.h>
+#include <android-base/unique_fd.h>
+
 #include <vendor/qti/hardware/cryptfshw/1.0/ICryptfsHw.h>
-#include <hidl/MQDescriptor.h>
-#include <hidl/Status.h>
+#include <CryptfsHwUtils.h>
+#include <Types.h>
 
 namespace vendor {
 namespace qti {
@@ -27,27 +33,127 @@ namespace cryptfshw {
 namespace V1_0 {
 namespace implementation {
 
-using ::android::hardware::hidl_array;
-using ::android::hardware::hidl_memory;
+using ::android::base::GetProperty;
+using ::android::base::unique_fd;
 using ::android::hardware::hidl_string;
-using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
-using ::android::hardware::Void;
-using ::android::sp;
 
-struct CryptfsHw : public ICryptfsHw {
+template <typename T>
+class CryptfsHw : public ICryptfsHw {
+  public:
+    CryptfsHw() {
+        std::string bootdevice = GetProperty("ro.boot.bootdevice", "");
+
+        if (bootdevice.find("ufs") != std::string::npos) {
+            /*
+             * All UFS based devices has ICE in it. So we dont need
+             * to check if corresponding device exists or not
+             */
+            mStorageType = QTI_ICE_STORAGE_UFS;
+        } else if (bootdevice.find("sdhc") != std::string::npos) {
+            if (access("/dev/icesdcc", F_OK) != -1) {
+                mStorageType = QTI_ICE_STORAGE_SDCC;
+            }
+        }
+    }
+
     // Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
-    Return<int32_t> setIceParam(uint32_t flag) override;
-    Return<int32_t> setKey(const hidl_string& passwd, const hidl_string& enc_mode) override;
-    Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw, const hidl_string& enc_mode) override;
-    Return<int32_t> clearKey() override;
+    Return<int32_t> setIceParam(uint32_t flag) override {
+#ifdef QSEECOM_IOCTL_SET_ICE_INFO
+        int32_t ret = -1;
+        qseecom_ice_data_t ice_data;
+        unique_fd qseecom_fd(open("/dev/qseecom", O_RDWR));
+        if (qseecom_fd < 0) return ret;
+        ice_data.flag = static_cast<int>(flag);
+        ret = ioctl(qseecom_fd, QSEECOM_IOCTL_SET_ICE_INFO, &ice_data);
+        return ret;
+#else
+        (void)flag;
+        return -1;
+#endif
+    }
 
-    // Methods from ::android::hidl::base::V1_0::IBase follow.
+    Return<int32_t> setKey(const hidl_string& passwd, const hidl_string& enc_mode) override {
+        int err = -1;
+        unsigned char tmp_passwd[MAX_PASSWORD_LEN];
 
+        if (!IsHwDiskEncryption(enc_mode)) return err;
+
+        GetTmpPasswd(passwd.c_str(), tmp_passwd);
+
+        err = mController.createKey(mapUsage(CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION), tmp_passwd);
+        if (err < 0) {
+            if (ERR_MAX_PASSWORD_ATTEMPTS == err)
+                LOG_TO(SYSTEM, INFO)
+                        << "Maximum wrong password attempts reached, will erase userdata";
+        }
+        secure_memset(tmp_passwd, 0, MAX_PASSWORD_LEN);
+
+        return err;
+    }
+
+    Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw,
+                              const hidl_string& enc_mode) override {
+        int err = -1;
+        unsigned char tmp_passwd[MAX_PASSWORD_LEN], tmp_currentpasswd[MAX_PASSWORD_LEN];
+
+        if (!IsHwDiskEncryption(enc_mode)) return err;
+
+        GetTmpPasswd(newpw.c_str(), tmp_passwd);
+        GetTmpPasswd(oldpw.c_str(), tmp_currentpasswd);
+
+        err = mController.updateKey(mapUsage(CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION),
+                                    tmp_currentpasswd, tmp_passwd);
+        if (err < 0) {
+            if (ERR_MAX_PASSWORD_ATTEMPTS == err)
+                LOG_TO(SYSTEM, INFO)
+                        << "Maximum wrong password attempts reached, will erase userdata";
+        }
+        secure_memset(tmp_currentpasswd, 0, MAX_PASSWORD_LEN);
+        secure_memset(tmp_passwd, 0, MAX_PASSWORD_LEN);
+
+        return err;
+    }
+
+    Return<int32_t> clearKey() override {
+        return mController.wipeKey(mapUsage(CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION));
+    }
+
+  private:
+    T mController;
+    int mStorageType = 0;
+
+    int mapUsage(int usage) {
+        if (usage == CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION) {
+            if (mStorageType == QTI_ICE_STORAGE_UFS) {
+                return CRYPTFS_HW_KM_USAGE_UFS_ICE_DISK_ENCRYPTION;
+            } else if (mStorageType == QTI_ICE_STORAGE_SDCC) {
+                return CRYPTFS_HW_KM_USAGE_SDCC_ICE_DISK_ENCRYPTION;
+            }
+        }
+        return usage;
+    }
+
+    static bool IsHwDiskEncryption(const hidl_string& encryption_mode) {
+        if (encryption_mode == "aes-xts") {
+            LOG_TO(SYSTEM, DEBUG) << "HW based disk encryption is enabled";
+            return true;
+        }
+        return false;
+    }
+
+    static void GetTmpPasswd(const char* passwd, unsigned char* tmp_passwd) {
+        int passwd_len = 0;
+
+        secure_memset(tmp_passwd, 0, MAX_PASSWORD_LEN);
+        if (passwd) {
+            passwd_len = strnlen(passwd, MAX_PASSWORD_LEN);
+            memcpy(tmp_passwd, passwd, passwd_len);
+        } else {
+            LOG_TO(SYSTEM, ERROR) << __func__ << ": Passed argument is NULL";
+        }
+    }
 };
-
-// FIXME: most likely delete, this is only for passthrough implementations
-// extern "C" ICryptfsHw* HIDL_FETCH_ICryptfsHw(const char* name);
 
 }  // namespace implementation
 }  // namespace V1_0
