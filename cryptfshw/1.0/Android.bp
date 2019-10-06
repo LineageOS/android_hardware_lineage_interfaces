@@ -12,28 +12,50 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-cc_library_shared {
-    // FIXME: this should only be -impl for a passthrough hal.
-    // In most cases, to convert this to a binderized implementation, you should:
-    // - change '-impl' to '-service' here and make it a cc_binary instead of a
-    //   cc_library_shared.
-    // - add a *.rc file for this module.
-    // - delete HIDL_FETCH_I* functions.
-    // - call configureRpcThreadpool and registerAsService on the instance.
-    // You may also want to append '-impl/-service' with a specific identifier like
-    // '-vendor' or '-<hardware identifier>' etc to distinguish it.
-    name: "vendor.qti.hardware.cryptfshw@1.0-impl",
+cc_defaults {
+    name: "vendor.qti.hardware.cryptfshw@1.0_defaults",
+    defaults: ["hidl_defaults"],
+    header_libs: ["generated_kernel_headers"],
+    owner: "qti",
     relative_install_path: "hw",
-    // FIXME: this should be 'vendor: true' for modules that will eventually be
-    // on AOSP.
-    proprietary: true,
     srcs: [
         "CryptfsHw.cpp",
+        "CryptfsHwUtils.cpp",
     ],
     shared_libs: [
+        "libbase",
         "libhidlbase",
         "libhidltransport",
         "libutils",
         "vendor.qti.hardware.cryptfshw@1.0",
+    ],
+    arch: {
+        arm: {
+            shared_libs: [
+                "libhwbinder",
+            ],
+            cflags: ["-DARCH_ARM_32"],
+        },
+    },
+    vendor: true,
+}
+
+cc_binary {
+    name: "vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee",
+    init_rc: ["vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee.rc"],
+    defaults: ["vendor.qti.hardware.cryptfshw@1.0_defaults"],
+    product_variables: {
+        lineage: {
+            should_wait_for_qsee: {
+                cflags: ["-DWAIT_FOR_QSEE"],
+            },
+        },
+    },
+    shared_libs: [
+        "libdl",
+    ],
+    srcs: [
+        "qsee/QSEEComController.cpp",
+        "qsee/service.cpp",
     ],
 }

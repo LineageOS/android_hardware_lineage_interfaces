@@ -18,8 +18,9 @@
 
 #include <memory>
 
+#include <android-base/macros.h>
+
 #include <ICryptfsHwController.h>
-#include <vendor/qti/hardware/cryptfshw/1.0/ICryptfsHw.h>
 
 namespace vendor {
 namespace qti {
@@ -27,28 +28,31 @@ namespace hardware {
 namespace cryptfshw {
 namespace V1_0 {
 namespace implementation {
+namespace qsee {
 
-using ::android::hardware::hidl_string;
-using ::android::hardware::Return;
-
-class CryptfsHw : public ICryptfsHw {
+// interface wrapper
+class Controller : public ICryptfsHwController {
   public:
-    CryptfsHw(std::unique_ptr<ICryptfsHwController> controller);
-
-    // Methods from ::vendor::qti::hardware::cryptfshw::V1_0::ICryptfsHw follow.
-    Return<int32_t> setIceParam(uint32_t flag) override;
-    Return<int32_t> setKey(const hidl_string& passwd, const hidl_string& enc_mode) override;
-    Return<int32_t> updateKey(const hidl_string& oldpw, const hidl_string& newpw,
-                              const hidl_string& enc_mode) override;
-    Return<int32_t> clearKey() override;
+    Controller();
+    int createKey(int usage, const char* passwd) override;
+    int updateKey(int usage, const char* oldpw, const char* newpw) override;
+    int wipeKey(int usage) override;
 
   private:
-    std::unique_ptr<ICryptfsHwController> controller_;
-    int storage_type_ = 0;
+    template <typename Function>
+    Function loadFunction(const char* name);
+    std::shared_ptr<void> handle_;
 
-    DISALLOW_IMPLICIT_CONSTRUCTORS(CryptfsHw);
+    int (*mFn_create_key)(int, void*);
+    int (*mFn_update_key_user_info)(int, void*, void*);
+    int (*mFn_wipe_key)(int);
+
+    DISALLOW_COPY_AND_ASSIGN(Controller);
+    Controller(Controller&&) = delete;
+    Controller& operator=(Controller&&) = delete;
 };
 
+}  // namespace qsee
 }  // namespace implementation
 }  // namespace V1_0
 }  // namespace cryptfshw
