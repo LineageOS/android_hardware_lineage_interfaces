@@ -22,6 +22,30 @@
       "revId": "326d2c50911682582ef3f15c3b2984e3063552b1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04059697_1a6a6dc2",
+        "filename": "cryptfshw/1.0/QSEEComController.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-10-10T11:50:15Z",
+      "side": 1,
+      "message": "I\u0027m fine with both, but when implementing livedisplay@1.0 Ethan argued it\u0027s better to put in .cpp even though google puts it in .h for nn hal",
+      "parentUuid": "85f3a6fb_be75fea4",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 1
+      },
+      "revId": "326d2c50911682582ef3f15c3b2984e3063552b1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
