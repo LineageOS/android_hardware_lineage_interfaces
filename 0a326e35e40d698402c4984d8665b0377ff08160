@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "1c9f94d0_971cfbb6",
+        "filename": "cryptfshw/1.0/CryptfsHwUtils.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-11-05T10:17:54Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "8540f74d_9c84cecb",
+      "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f481b837_264b6176",
         "filename": "cryptfshw/1.0/CryptfsHwUtils.h",
         "patchSetId": 13
@@ -45,6 +63,24 @@
       "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01108a59_988388f5",
+        "filename": "cryptfshw/1.0/CryptfsHwUtils.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-11-05T10:17:54Z",
+      "side": 1,
+      "message": "Yes, always use c++ casts in c++ code",
+      "parentUuid": "f481b837_264b6176",
+      "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +127,24 @@
       "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01110d47_4f8dafc6",
+        "filename": "cryptfshw/1.0/QSEEComController.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-11-05T10:17:54Z",
+      "side": 1,
+      "message": "+1\nit\u0027s the standard",
+      "parentUuid": "5f51e2cb_ed093fdb",
+      "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
