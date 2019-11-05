@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "478ae507_783c783e",
+        "filename": "cryptfshw/1.0/QSEEComController.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2019-11-05T10:17:00Z",
+      "side": 1,
+      "message": "uh also kill that comment, it\u0027s not only ugly but also useless.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f51e2cb_ed093fdb",
         "filename": "cryptfshw/1.0/QSEEComController.h",
         "patchSetId": 13
