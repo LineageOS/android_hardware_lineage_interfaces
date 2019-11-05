@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8540f74d_9c84cecb",
+        "filename": "cryptfshw/1.0/CryptfsHwUtils.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2019-11-05T10:15:28Z",
+      "side": 1,
+      "message": "std::min?",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 66
+      },
+      "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f481b837_264b6176",
+        "filename": "cryptfshw/1.0/CryptfsHwUtils.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2019-11-05T10:15:28Z",
+      "side": 1,
+      "message": "auto p \u003d reinterpret_cast\u003cvolatile unsigned char*\u003e(p)?",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f51e2cb_ed093fdb",
+        "filename": "cryptfshw/1.0/QSEEComController.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2019-11-05T10:15:28Z",
+      "side": 1,
+      "message": "public first? CryptfsHw.h seems to do that.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "0a326e35e40d698402c4984d8665b0377ff08160",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
