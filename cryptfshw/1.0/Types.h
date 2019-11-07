@@ -28,6 +28,7 @@ constexpr auto MAX_PASSWORD_LEN = 32;
 constexpr auto QTI_ICE_STORAGE_UFS = 1;
 constexpr auto QTI_ICE_STORAGE_SDCC = 2;
 
+constexpr auto CRYPTFS_HW_KMS_WIPE_KEY = 1;
 constexpr auto CRYPTFS_HW_UP_CHECK_COUNT = 10;
 constexpr auto CRYPTFS_HW_CREATE_KEY_FAILED = -7;
 constexpr auto CRYPTFS_HW_WIPE_KEY_FAILED = -8;
