@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9758b590_1ba4672f",
+        "filename": "cryptfshw/1.0/kernel/KernelController.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-11-07T14:22:15Z",
+      "side": 1,
+      "message": "needs further clean up to avoid memcpy twice",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "7336de334ed319eb59c7c548853c1649c99ce92f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
