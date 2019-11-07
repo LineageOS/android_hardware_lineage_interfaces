@@ -59,3 +59,13 @@ cc_binary {
         "qsee/service.cpp",
     ],
 }
+
+cc_binary {
+    name: "vendor.qti.hardware.cryptfshw@1.0-service-qti.kernel",
+    init_rc: ["vendor.qti.hardware.cryptfshw@1.0-service-qti.kernel.rc"],
+    defaults: ["vendor.qti.hardware.cryptfshw@1.0_defaults"],
+    srcs: [
+        "kernel/KernelController.cpp",
+        "kernel/service.cpp",
+    ],
+}
