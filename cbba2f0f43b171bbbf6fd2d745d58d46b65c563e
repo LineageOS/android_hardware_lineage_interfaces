@@ -483,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "b25d5b92_6a97c296",
+        "filename": "cryptfshw/1.0/service.impl.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-12-04T16:21:54Z",
+      "side": 1,
+      "message": "CAF adds to this to some services (e.g. https://review.lineageos.org/233911)",
+      "parentUuid": "5866deb1_f3957d51",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a087267_600d9898",
         "filename": "cryptfshw/1.0/service.impl.h",
         "patchSetId": 25
