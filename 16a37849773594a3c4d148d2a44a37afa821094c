@@ -22,6 +22,30 @@
       "revId": "16a37849773594a3c4d148d2a44a37afa821094c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81b63e85_d64eff55",
+        "filename": "cryptfshw/1.0/qsee/QSEEComController.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6c40049_657dd687",
+      "range": {
+        "startLine": 38,
+        "startChar": 36,
+        "endLine": 38,
+        "endChar": 66
+      },
+      "revId": "16a37849773594a3c4d148d2a44a37afa821094c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
