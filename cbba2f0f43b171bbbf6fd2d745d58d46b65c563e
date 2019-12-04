@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a41adc2_afcdb06f",
+        "filename": "cryptfshw/1.0/CryptfsHw.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "clang-format, local .h with the same name as .cpp comes first, then system headers and other local headers",
+      "parentUuid": "e70caa83_d1532d41",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b36216e5_0beea7d2",
         "filename": "cryptfshw/1.0/CryptfsHw.cpp",
         "patchSetId": 25
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-04T15:45:09Z",
       "side": 1,
       "message": "(void) flag?",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51553573_e68c7855",
+        "filename": "cryptfshw/1.0/CryptfsHw.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "clang-format",
+      "parentUuid": "b36216e5_0beea7d2",
       "range": {
         "startLine": 77,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dbb3319a_70904c27",
+        "filename": "cryptfshw/1.0/CryptfsHw.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "I don\u0027t get you, feel free to upload new ps",
+      "parentUuid": "a7d509d4_dd20cae7",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12e39aab_972eb080",
         "filename": "cryptfshw/1.0/CryptfsHw.cpp",
         "patchSetId": 25
@@ -82,6 +154,30 @@
       "writtenOn": "2019-12-04T15:45:09Z",
       "side": 1,
       "message": "switch (err)?",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 18
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ee0eb1_8a856a74",
+        "filename": "cryptfshw/1.0/CryptfsHw.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "12e39aab_972eb080",
       "range": {
         "startLine": 103,
         "startChar": 4,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "abef90fb_a5197d05",
+        "filename": "cryptfshw/1.0/CryptfsHw.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "clang-format",
+      "parentUuid": "2bb44aa8_eea60e90",
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "939e3778_817d5e01",
         "filename": "cryptfshw/1.0/CryptfsHwUtils.cpp",
         "patchSetId": 25
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "232ad2c5_7470e1d2",
+        "filename": "cryptfshw/1.0/CryptfsHwUtils.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "939e3778_817d5e01",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce990e5b_247b12c9",
         "filename": "cryptfshw/1.0/qsee/QSEEComController.cpp",
         "patchSetId": 25
@@ -145,6 +283,24 @@
       "writtenOn": "2019-12-04T15:45:09Z",
       "side": 1,
       "message": "drop this newline?",
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae971c1_83a40095",
+        "filename": "cryptfshw/1.0/qsee/QSEEComController.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "clang-format",
+      "parentUuid": "ce990e5b_247b12c9",
       "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "6262c28f_08640fb2",
+        "filename": "cryptfshw/1.0/qsee/QSEEComController.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c324bc6f_a914aff1",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 28
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b0921c8_b4e4ab26",
         "filename": "cryptfshw/1.0/qsee/QSEEComController.cpp",
         "patchSetId": 25
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "ada762d4_01a2d203",
+        "filename": "cryptfshw/1.0/qsee/QSEEComController.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0921c8_b4e4ab26",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1afb824_fc1962b5",
         "filename": "cryptfshw/1.0/qsee/QSEEComController.h",
         "patchSetId": 25
@@ -214,6 +418,24 @@
     },
     {
       "key": {
+        "uuid": "6f7c734c_f2c157af",
+        "filename": "cryptfshw/1.0/qsee/QSEEComController.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "clang-format",
+      "parentUuid": "e1afb824_fc1962b5",
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5541c89e_3ec4e5f9",
         "filename": "cryptfshw/1.0/service.impl.h",
         "patchSetId": 25
@@ -225,6 +447,30 @@
       "writtenOn": "2019-12-04T15:45:09Z",
       "side": 1,
       "message": "is cast needed here?",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5866deb1_f3957d51",
+        "filename": "cryptfshw/1.0/service.impl.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "not sure, I don\u0027t have 32bit devices running 17.0, copied this line from other hals",
+      "parentUuid": "5541c89e_3ec4e5f9",
       "range": {
         "startLine": 41,
         "startChar": 54,
@@ -257,6 +503,30 @@
       "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b039f50_d80950a4",
+        "filename": "cryptfshw/1.0/service.impl.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-12-04T16:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a087267_600d9898",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 56
+      },
+      "revId": "cbba2f0f43b171bbbf6fd2d745d58d46b65c563e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
