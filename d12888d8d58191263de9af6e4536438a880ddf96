@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "324d942d_68029cc2",
+        "filename": "cryptfshw/1.0/Types.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2019-12-08T14:11:42Z",
+      "side": 1,
+      "message": "needs to be 20 for my msm8953 device",
+      "range": {
+        "startLine": 31,
+        "startChar": 43,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "d12888d8d58191263de9af6e4536438a880ddf96",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
