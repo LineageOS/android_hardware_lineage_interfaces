@@ -117,7 +117,7 @@ int main() {
     }
 
     std::ofstream blueLedTime(kBlueLedTimePath);
-    if (!blueBlink) {
+    if (!blueLedTime) {
         LOG(ERROR) << "Failed to open " << kBlueLedTimePath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
     }
