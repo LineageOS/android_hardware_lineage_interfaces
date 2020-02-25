@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04f745b4_95d57dd0",
+        "filename": "biometrics/fingerprint/inscreen/1.1/IFingerprintInscreen.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2020-02-25T14:57:38Z",
+      "side": 1,
+      "message": "can be removed",
+      "range": {
+        "startLine": 21,
+        "startChar": 39,
+        "endLine": 21,
+        "endChar": 85
+      },
+      "revId": "72dee3e3b5dc5a4b8f92ca57fcc6c8f4f6ec1e32",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
