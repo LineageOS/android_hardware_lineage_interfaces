@@ -30,10 +30,12 @@ cc_binary {
         "liblog",
         "libperfmgr",
         "libutils",
+        "pixel-power-ext-ndk_platform",
     ],
     srcs: [
         "aidl/service.cpp",
         "aidl/InteractionHandler.cpp",
         "aidl/Power.cpp",
+        "aidl/PowerExt.cpp",
     ],
 }
