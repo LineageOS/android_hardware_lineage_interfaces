@@ -13,10 +13,12 @@ cc_binary {
         "libbinder_ndk",
         "libdisppower-pixel",
         "libperfmgr",
+        "pixel-power-ext-ndk_platform",
     ],
     srcs: [
         "InteractionHandler.cpp",
         "service.cpp",
         "Power.cpp",
+        "PowerExt.cpp",
     ],
 }
