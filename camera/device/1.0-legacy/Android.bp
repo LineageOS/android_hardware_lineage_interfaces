@@ -20,6 +20,7 @@ cc_library_shared {
         "android.hidl.memory@1.0",
         "libcutils",
         "liblog",
+        "libgralloctypes",
         "libhardware",
         "libcamera_metadata",
     ],
