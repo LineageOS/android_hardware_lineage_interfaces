@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a038823_f3b69fab",
+        "filename": "powershare/1.0/ILineagePowerShare.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2020-04-24T17:54:30Z",
+      "side": 1,
+      "message": "Does this have to be called ILineagePowerShare? It could simply be called IPowerShare, as it\u0027s already under the vendor.lineage namespace.",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "70d596df333d8ae8fa370f87616b12c600e346a0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b820d5_15fa6137",
+        "filename": "powershare/1.0/ILineagePowerShare.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2020-04-24T17:54:30Z",
+      "side": 1,
+      "message": "maybe isEnabled() and setEnabled() to match LiveDisplay? https://github.com/LineageOS/android_hardware_lineage_interfaces/blob/lineage-17.1/livedisplay/2.0/IAutoContrast.hal#L20",
+      "revId": "70d596df333d8ae8fa370f87616b12c600e346a0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
