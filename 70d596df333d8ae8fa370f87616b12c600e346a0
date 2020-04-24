@@ -39,6 +39,24 @@
       "revId": "70d596df333d8ae8fa370f87616b12c600e346a0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47d5d35_7552806b",
+        "filename": "powershare/1.0/ILineagePowerShare.hal",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2020-04-24T18:33:07Z",
+      "side": 1,
+      "message": "Andreas mentioned that we might want an extensible state. In that case, we should make this return a uint32_t or something similar to match the backend. Or we can change it to isEnabled and setEnabled for now, and deal with more states later by updating the version in the future. My preference is the latter, since then we can define an enum of states once we know state other than on and off.",
+      "parentUuid": "f0b820d5_15fa6137",
+      "revId": "70d596df333d8ae8fa370f87616b12c600e346a0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
