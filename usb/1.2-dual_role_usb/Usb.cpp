@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The Android Open Source Project
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018-2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@
 namespace android {
 namespace hardware {
 namespace usb {
-namespace V1_1 {
+namespace V1_2 {
 namespace implementation {
 
 // Set by the signal handler to destroy the thread
@@ -262,24 +262,23 @@ Status getPortMode_1_1Helper(const std::string portName, PortMode_1_1& portMode)
 }
 
 /*
- * Reuse the same method for both V1_0 and V1_1 callback objects.
  * The caller of this method would reconstruct the V1_0::PortStatus
  * object if required.
  */
-Status getPortStatusHelper(hidl_vec<PortStatus_1_1>* currentPortStatus_1_1, bool V1_0) {
+Status getPortStatusHelper(hidl_vec<PortStatus>* currentPortStatus_1_2, bool V1_0) {
     std::vector<std::string> names;
     Status result = getTypeCPortNamesHelper(names);
 
     if (result == Status::SUCCESS) {
-        currentPortStatus_1_1->resize(names.size());
+        currentPortStatus_1_2->resize(names.size());
         for (std::vector<std::string>::size_type i = 0; i < names.size(); i++) {
             ALOGI("%s", names[i].c_str());
-            (*currentPortStatus_1_1)[i].status.portName = names[i];
+            (*currentPortStatus_1_2)[i].status_1_1.status.portName = names[i];
 
             uint32_t currentRole;
             if (getCurrentRoleHelper(names[i], PortRoleType::POWER_ROLE, currentRole) ==
                 Status::SUCCESS) {
-                (*currentPortStatus_1_1)[i].status.currentPowerRole =
+                (*currentPortStatus_1_2)[i].status_1_1.status.currentPowerRole =
                         static_cast<PortPowerRole>(currentRole);
             } else {
                 ALOGE("Error while retreiving portNames");
@@ -288,7 +287,7 @@ Status getPortStatusHelper(hidl_vec<PortStatus_1_1>* currentPortStatus_1_1, bool
 
             if (getCurrentRoleHelper(names[i], PortRoleType::DATA_ROLE, currentRole) ==
                 Status::SUCCESS) {
-                (*currentPortStatus_1_1)[i].status.currentDataRole =
+                (*currentPortStatus_1_2)[i].status_1_1.status.currentDataRole =
                         static_cast<PortDataRole>(currentRole);
             } else {
                 ALOGE("Error while retreiving current port role");
@@ -297,37 +296,47 @@ Status getPortStatusHelper(hidl_vec<PortStatus_1_1>* currentPortStatus_1_1, bool
 
             if (getCurrentRoleHelper(names[i], PortRoleType::MODE, currentRole) ==
                 Status::SUCCESS) {
-                (*currentPortStatus_1_1)[i].currentMode = static_cast<PortMode_1_1>(currentRole);
-                (*currentPortStatus_1_1)[i].status.currentMode =
+                (*currentPortStatus_1_2)[i].status_1_1.currentMode =
+                        static_cast<PortMode_1_1>(currentRole);
+                (*currentPortStatus_1_2)[i].status_1_1.status.currentMode =
                         static_cast<V1_0::PortMode>(currentRole);
             } else {
                 ALOGE("Error while retreiving current data role");
                 goto done;
             }
 
-            (*currentPortStatus_1_1)[i].status.canChangeMode =
+            (*currentPortStatus_1_2)[i].status_1_1.status.canChangeMode =
                     canSwitchRoleHelper(names[i], PortRoleType::MODE);
-            (*currentPortStatus_1_1)[i].status.canChangeDataRole =
+            (*currentPortStatus_1_2)[i].status_1_1.status.canChangeDataRole =
                     canSwitchRoleHelper(names[i], PortRoleType::DATA_ROLE);
-            (*currentPortStatus_1_1)[i].status.canChangePowerRole =
+            (*currentPortStatus_1_2)[i].status_1_1.status.canChangePowerRole =
                     canSwitchRoleHelper(names[i], PortRoleType::POWER_ROLE);
 
             ALOGI("canChangeMode: %d canChagedata: %d canChangePower:%d",
-                  (*currentPortStatus_1_1)[i].status.canChangeMode,
-                  (*currentPortStatus_1_1)[i].status.canChangeDataRole,
-                  (*currentPortStatus_1_1)[i].status.canChangePowerRole);
+                  (*currentPortStatus_1_2)[i].status_1_1.status.canChangeMode,
+                  (*currentPortStatus_1_2)[i].status_1_1.status.canChangeDataRole,
+                  (*currentPortStatus_1_2)[i].status_1_1.status.canChangePowerRole);
 
             if (V1_0) {
-                if (getPortModeHelper(names[i],
-                                      (*currentPortStatus_1_1)[i].status.supportedModes) !=
+                if (getPortModeHelper(
+                            names[i],
+                            (*currentPortStatus_1_2)[i].status_1_1.status.supportedModes) !=
                     Status::SUCCESS) {
                     ALOGE("Error while retrieving port modes");
                     goto done;
                 }
             } else {
-                (*currentPortStatus_1_1)[i].supportedModes = PortMode_1_1::UFP | PortMode_1_1::DFP;
-                (*currentPortStatus_1_1)[i].status.supportedModes = V1_0::PortMode::NONE;
-                (*currentPortStatus_1_1)[i].status.currentMode = V1_0::PortMode::NONE;
+                (*currentPortStatus_1_2)[i].status_1_1.supportedModes =
+                        PortMode_1_1::UFP | PortMode_1_1::DFP;
+                (*currentPortStatus_1_2)[i].status_1_1.status.supportedModes = V1_0::PortMode::NONE;
+                (*currentPortStatus_1_2)[i].status_1_1.status.currentMode = V1_0::PortMode::NONE;
+
+                (*currentPortStatus_1_2)[i].supportedContaminantProtectionModes =
+                        ContaminantProtectionMode::NONE | ContaminantProtectionMode::NONE;
+                (*currentPortStatus_1_2)[i].supportsEnableContaminantPresenceProtection = false;
+                (*currentPortStatus_1_2)[i].supportsEnableContaminantPresenceDetection = false;
+                (*currentPortStatus_1_2)[i].contaminantProtectionStatus =
+                        ContaminantProtectionStatus::NONE;
             }
         }
         return Status::SUCCESS;
@@ -337,25 +346,35 @@ done:
 }
 
 Return<void> Usb::queryPortStatus() {
-    hidl_vec<PortStatus_1_1> currentPortStatus_1_1;
+    hidl_vec<PortStatus> currentPortStatus_1_2;
+    hidl_vec<V1_1::PortStatus_1_1> currentPortStatus_1_1;
     hidl_vec<V1_0::PortStatus> currentPortStatus;
     Status status;
-    sp<IUsbCallback> callback_V1_1 = IUsbCallback::castFrom(mCallback_1_0);
+    sp<IUsbCallback> callback_V1_2 = IUsbCallback::castFrom(mCallback_1_0);
+    sp<V1_1::IUsbCallback> callback_V1_1 = V1_1::IUsbCallback::castFrom(mCallback_1_0);
 
     pthread_mutex_lock(&mLock);
     if (mCallback_1_0 != NULL) {
-        if (callback_V1_1 != NULL) {
-            status = getPortStatusHelper(&currentPortStatus_1_1, false);
-        } else {
-            status = getPortStatusHelper(&currentPortStatus_1_1, true);
-            currentPortStatus.resize(currentPortStatus_1_1.size());
-            for (unsigned long i = 0; i < currentPortStatus_1_1.size(); i++)
-                currentPortStatus[i] = currentPortStatus_1_1[i].status;
+        if (callback_V1_1 != NULL) {      // 1.1 or 1.2
+            if (callback_V1_2 == NULL) {  // 1.1 only
+                status = getPortStatusHelper(&currentPortStatus_1_2, false);
+                currentPortStatus_1_1.resize(currentPortStatus_1_2.size());
+                for (unsigned long i = 0; i < currentPortStatus_1_2.size(); i++)
+                    currentPortStatus_1_1[i].status = currentPortStatus_1_2[i].status_1_1.status;
+            } else  // 1.2 only
+                status = getPortStatusHelper(&currentPortStatus_1_2, false);
+        } else {  // 1.0 only
+            status = getPortStatusHelper(&currentPortStatus_1_2, true);
+            currentPortStatus.resize(currentPortStatus_1_2.size());
+            for (unsigned long i = 0; i < currentPortStatus_1_2.size(); i++)
+                currentPortStatus[i] = currentPortStatus_1_2[i].status_1_1.status;
         }
 
         Return<void> ret;
 
-        if (callback_V1_1 != NULL)
+        if (callback_V1_2 != NULL)
+            ret = callback_V1_2->notifyPortStatusChange_1_2(currentPortStatus_1_2, status);
+        else if (callback_V1_1 != NULL)
             ret = callback_V1_1->notifyPortStatusChange_1_1(currentPortStatus_1_1, status);
         else
             ret = mCallback_1_0->notifyPortStatusChange(currentPortStatus, status);
@@ -365,14 +384,25 @@ Return<void> Usb::queryPortStatus() {
         ALOGI("Notifying userspace skipped. Callback is NULL");
     }
     pthread_mutex_unlock(&mLock);
-
     return Void();
 }
 
 struct data {
     int uevent_fd;
-    android::hardware::usb::V1_1::implementation::Usb* usb;
+    android::hardware::usb::V1_2::implementation::Usb* usb;
 };
+
+Return<void> Usb::enableContaminantPresenceDetection(const hidl_string& portName __unused,
+                                                     bool enable __unused) {
+    ALOGI("Contaminant Presence Detection is not supported");
+    return Void();
+}
+
+Return<void> Usb::enableContaminantPresenceProtection(const hidl_string& portName __unused,
+                                                      bool enable __unused) {
+    ALOGI("Contaminant Presence Protection is not supported");
+    return Void();
+}
 
 static void uevent_event(uint32_t /*epevents*/, struct data* payload) {
     char msg[UEVENT_MSG_LEN + 2];
@@ -389,40 +419,14 @@ static void uevent_event(uint32_t /*epevents*/, struct data* payload) {
     cp = msg;
 
     while (*cp) {
+        sp<IUsbCallback> callback_V1_2 = IUsbCallback::castFrom(payload->usb->mCallback_1_0);
+        sp<V1_1::IUsbCallback> callback_V1_1 =
+                V1_1::IUsbCallback::castFrom(payload->usb->mCallback_1_0);
+        hidl_vec<PortStatus> currentPortStatus_1_2;
+        Return<void> ret;
         if (!strcmp(cp, "SUBSYSTEM=dual_role_usb")) {
-            hidl_vec<PortStatus_1_1> currentPortStatus_1_1;
             ALOGE("uevent received %s", cp);
-            pthread_mutex_lock(&payload->usb->mLock);
-            if (payload->usb->mCallback_1_0 != NULL) {
-                sp<IUsbCallback> callback_V1_1 =
-                        IUsbCallback::castFrom(payload->usb->mCallback_1_0);
-                Return<void> ret;
-
-                // V1_1 callback
-                if (callback_V1_1 != NULL) {
-                    Status status = getPortStatusHelper(&currentPortStatus_1_1, false);
-                    ret = callback_V1_1->notifyPortStatusChange_1_1(currentPortStatus_1_1, status);
-                } else {  // V1_0 callback
-                    Status status = getPortStatusHelper(&currentPortStatus_1_1, true);
-
-                    /*
-                     * Copying the result from getPortStatusHelper
-                     * into V1_0::PortStatus to pass back through
-                     * the V1_0 callback object.
-                     */
-                    hidl_vec<V1_0::PortStatus> currentPortStatus;
-                    currentPortStatus.resize(currentPortStatus_1_1.size());
-                    for (unsigned long i = 0; i < currentPortStatus_1_1.size(); i++)
-                        currentPortStatus[i] = currentPortStatus_1_1[i].status;
-
-                    ret = payload->usb->mCallback_1_0->notifyPortStatusChange(currentPortStatus,
-                                                                              status);
-                }
-                if (!ret.isOk()) ALOGE("error %s", ret.description().c_str());
-            } else {
-                ALOGI("Notifying userspace skipped. Callback is NULL");
-            }
-            pthread_mutex_unlock(&payload->usb->mLock);
+            ret = payload->usb->queryPortStatus();
             break;
         }
         /* advance to after the next \0 */
@@ -447,7 +451,7 @@ void* work(void* param) {
     }
 
     payload.uevent_fd = uevent_fd;
-    payload.usb = (android::hardware::usb::V1_1::implementation::Usb*)param;
+    payload.usb = (android::hardware::usb::V1_2::implementation::Usb*)param;
 
     fcntl(uevent_fd, F_SETFL, O_NONBLOCK);
 
@@ -501,7 +505,8 @@ void sighandler(int sig) {
 }
 
 Return<void> Usb::setCallback(const sp<V1_0::IUsbCallback>& callback) {
-    sp<IUsbCallback> callback_V1_1 = IUsbCallback::castFrom(callback);
+    sp<V1_1::IUsbCallback> callback_V1_1 = V1_1::IUsbCallback::castFrom(callback);
+    sp<IUsbCallback> callback_V1_2 = IUsbCallback::castFrom(callback);
 
     if (callback != NULL)
         if (callback_V1_1 == NULL) ALOGI("Registering 1.0 callback");
@@ -567,7 +572,7 @@ Usb::Usb() {
 }
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_2
 }  // namespace usb
 }  // namespace hardware
 }  // namespace android
