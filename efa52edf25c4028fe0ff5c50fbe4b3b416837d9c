@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d68c26be_51056503",
+        "filename": "biometrics/fingerprint/inscreen/1.1/IFingerprintInscreen.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 14838
+      },
+      "writtenOn": "2020-05-12T10:47:41Z",
+      "side": 1,
+      "message": "On Samsung devices, you don\u0027t get a delay, you get a callback when the HBM has been applied.\n\nMaybe HAL can call a callback into IFingerprintInscreenCallback ?",
+      "revId": "efa52edf25c4028fe0ff5c50fbe4b3b416837d9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c016a29d_8883bc30",
+        "filename": "biometrics/fingerprint/inscreen/1.1/IFingerprintInscreen.hal",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 14838
+      },
+      "writtenOn": "2020-05-12T10:47:41Z",
+      "side": 1,
+      "message": "I think I\u0027ve seen devices which support Always-ON HBM, but for which the command between screen-on HBM, and Always-ON HBM are different, I\u0027ll try to find references. Though I guess this can wait a @2.0 HAL?",
+      "revId": "efa52edf25c4028fe0ff5c50fbe4b3b416837d9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
