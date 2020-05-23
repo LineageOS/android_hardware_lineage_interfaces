@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c501bf00_188680ea",
+        "filename": "gnss/1.0-haxx/Gnss.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 18205
+      },
+      "writtenOn": "2020-05-23T16:28:45Z",
+      "side": 1,
+      "message": "svid is unique between constellations, so this could very well be just\n(usedInFixMask \u0026 svidMask) || (gloUsedInFixMask \u0026 svidMask)",
+      "revId": "d576b0021318462dfcef1b22b3f131b4d1845c00",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
