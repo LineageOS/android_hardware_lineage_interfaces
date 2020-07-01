@@ -1,7 +1,7 @@
 service vendor.power-hal-aidl /vendor/bin/hw/android.hardware.power-service.libperfmgr
     class hal
     user root
-    group system
+    group system radio
     priority -20
 
 on late-fs
