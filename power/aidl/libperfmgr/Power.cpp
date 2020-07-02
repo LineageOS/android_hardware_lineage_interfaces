@@ -170,6 +170,16 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 
 ndk::ScopedAStatus Power::isModeSupported(Mode type, bool *_aidl_return) {
     bool supported = HintManager::GetInstance()->IsHintSupported(toString(type));
+    switch (type) {
+        case Mode::DOUBLE_TAP_TO_WAKE:
+            supported = true;
+            break;
+        case Mode::INTERACTIVE:
+            supported = true;
+            break;
+        default:
+            break;
+    }
     LOG(INFO) << "Power mode " << toString(type) << " isModeSupported: " << supported;
     *_aidl_return = supported;
     return ndk::ScopedAStatus::ok();
