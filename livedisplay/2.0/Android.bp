@@ -7,6 +7,7 @@ hidl_interface {
     srcs: [
         "types.hal",
         "IAdaptiveBacklight.hal",
+        "IAntiFlicker.hal",
         "IAutoContrast.hal",
         "IColorBalance.hal",
         "IColorEnhancement.hal",
