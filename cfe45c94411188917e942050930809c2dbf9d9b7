@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b759850_f84284c0",
+        "filename": "gnss/1.0-legacy/Gnss.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 18205
+      },
+      "writtenOn": "2020-07-31T08:34:54Z",
+      "side": 1,
+      "message": "Indentation",
+      "revId": "cfe45c94411188917e942050930809c2dbf9d9b7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
