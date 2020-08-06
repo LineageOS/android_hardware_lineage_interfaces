@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a330421_0f60db53",
+        "filename": "gnss/1.0-legacy/Gnss.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-08-06T20:09:32Z",
+      "side": 1,
+      "message": "Replace by a comma.",
+      "range": {
+        "startLine": 239,
+        "startChar": 42,
+        "endLine": 239,
+        "endChar": 46
+      },
+      "revId": "b0866173b7634f7287265503e05a9f5f7eba1e86",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
