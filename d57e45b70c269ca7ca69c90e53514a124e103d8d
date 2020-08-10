@@ -16,6 +16,24 @@
       "revId": "d57e45b70c269ca7ca69c90e53514a124e103d8d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47551346_b990cd6a",
+        "filename": "livedisplay/2.0/IAntiFlicker.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2020-08-10T17:10:40Z",
+      "side": 1,
+      "message": "I have added this because dianlujitao mentioned that there isn\u0027t only DC dimming to reduce the flicker, he mentioned high frequency pwm, and hence i moved the disclaimer about DC dimming\u0027s drawbacks to a Dialog which should only be enabled from devices that actually use DC dimming as anti flicker mode.",
+      "parentUuid": "1f84894f_7e38e314",
+      "revId": "d57e45b70c269ca7ca69c90e53514a124e103d8d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
