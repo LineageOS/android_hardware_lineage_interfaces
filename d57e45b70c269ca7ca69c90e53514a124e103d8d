@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f84894f_7e38e314",
+        "filename": "livedisplay/2.0/IAntiFlicker.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2020-08-10T17:05:05Z",
+      "side": 1,
+      "message": "Hmmm, is it reasonable that this would ever be different for devices? I would lean towards removing it unless we have any concrete examples of devices that don\u0027t need it when others do.",
+      "revId": "d57e45b70c269ca7ca69c90e53514a124e103d8d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
