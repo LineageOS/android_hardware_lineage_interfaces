@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018-2019-2020 The LineageOS Project
+ * Copyright (C) 2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,13 @@
 
 package vendor.lineage.touch@1.0;
 
-struct Gesture {
-    int32_t id;
-    string name;
-    int32_t keycode;
-};
-
-enum TouchFeature : uint32_t {
+interface ITouchFeature {
     /**
-     * Enabling/Disabling this feature will allow/disallow the system
-     * to wake up by tapping the screen twice.
+     * setFeature() is called to turn on or off a particular feature
+     * depending on the state parameter.
+     *
+     * @param feature TouchFeature which needs to be set
+     * @param activate true/false to enable/disable the feature
      */
-    POWER_FEATURE_DOUBLE_TAP_TO_WAKE = 0x00000001
+    setFeature(TouchFeature feature, bool activate);
 };
