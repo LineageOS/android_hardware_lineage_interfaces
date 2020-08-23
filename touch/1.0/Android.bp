@@ -5,6 +5,7 @@ hidl_interface {
     root: "vendor.lineage",
     srcs: [
         "types.hal",
+        "IFeature.hal",
         "IGloveMode.hal",
         "IKeyDisabler.hal",
         "IStylusMode.hal",
