@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24ce9dc7_750724c3",
+        "filename": "touch/1.0/types.hal",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 24438
+      },
+      "writtenOn": "2020-08-23T12:57:37Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 31
+      },
+      "revId": "ecd4c110b1847aa6e542c37de6f4ece436a78f41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
