@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f9359b5_ed101356",
+        "filename": "touch/1.0/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2020-08-23T08:56:59Z",
+      "side": 1,
+      "message": "letter sequence",
+      "revId": "c6afb370825c713f3ae684bb42829a1b7c010949",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
