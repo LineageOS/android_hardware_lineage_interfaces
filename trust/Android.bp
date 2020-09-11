@@ -24,7 +24,6 @@ cc_defaults {
         "libbase",
         "libbinder",
         "libhidlbase",
-        "libhidltransport",
         "libutils",
         "vendor.lineage.trust@1.0",
     ],
