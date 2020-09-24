@@ -31,7 +31,11 @@ void convertFromSensor(const sensor_t &src, SensorInfo *dst) {
     dst->sensorHandle = src.handle;
     dst->type = (SensorType)src.type;
     dst->maxRange = src.maxRange;
-    dst->resolution = src.resolution;
+    if (dst->type == SensorType::PROXIMITY && src.resolution == 0) {
+        dst->resolution = src.maxRange;
+    } else {
+        dst->resolution = src.resolution;
+    }
     dst->power = src.power;
     dst->minDelay = src.minDelay;
     dst->fifoReservedEventCount = src.fifoReservedEventCount;
