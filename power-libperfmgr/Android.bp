@@ -13,6 +13,9 @@ soong_namespace {
 
 cc_binary {
     name: "android.hardware.power-service.lineage-libperfmgr",
+    defaults: [
+        "power_libperfmgr_defaults",
+    ],
     relative_install_path: "hw",
     init_rc: ["aidl/android.hardware.power-service.lineage-libperfmgr.rc"],
     vintf_fragments: ["aidl/android.hardware.power-service.lineage.xml"],
@@ -40,5 +43,16 @@ cc_binary {
         "aidl/PowerExt.cpp",
         "aidl/PowerHintSession.cpp",
         "aidl/PowerSessionManager.cpp",
+    ],
+}
+
+cc_library_static {
+    name: "libPowerModeExtensionDummy",
+    vendor: true,
+    srcs: [
+        "aidl/PowerModeExtension.cpp",
+    ],
+    shared_libs: [
+        "android.hardware.power-V4-ndk",
     ],
 }
