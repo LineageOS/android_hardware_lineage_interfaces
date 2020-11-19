@@ -3,7 +3,7 @@
 hidl_interface {
     name: "vendor.lineage.powershare@1.0",
     root: "vendor.lineage",
-    product_specific: true,
+    system_ext_specific: true,
     srcs: [
         "IPowerShare.hal",
     ],

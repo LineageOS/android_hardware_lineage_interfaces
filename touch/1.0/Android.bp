@@ -3,6 +3,7 @@
 hidl_interface {
     name: "vendor.lineage.touch@1.0",
     root: "vendor.lineage",
+    system_ext_specific: true,
     srcs: [
         "types.hal",
         "IGloveMode.hal",
@@ -13,9 +14,5 @@ hidl_interface {
     interfaces: [
         "android.hidl.base@1.0",
     ],
-    types: [
-        "Gesture",
-    ],
     gen_java: true,
 }
-

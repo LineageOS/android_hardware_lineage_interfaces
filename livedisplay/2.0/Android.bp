@@ -3,6 +3,7 @@
 hidl_interface {
     name: "vendor.lineage.livedisplay@2.0",
     root: "vendor.lineage",
+    system_ext_specific: true,
     srcs: [
         "types.hal",
         "IAdaptiveBacklight.hal",
@@ -18,12 +19,5 @@ hidl_interface {
     interfaces: [
         "android.hidl.base@1.0",
     ],
-    types: [
-        "DisplayMode",
-        "FloatRange",
-        "HSIC",
-        "Range",
-    ],
     gen_java: true,
 }
-
