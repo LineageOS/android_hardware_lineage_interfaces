@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72f7e456_b41e194c",
+        "filename": "livedisplay/2.0/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2020-11-19T23:05:14Z",
+      "side": 0,
+      "message": "do you want me to restore this?",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "5c43ee982863b0c2e8ca58a03b0935d16fc115ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
