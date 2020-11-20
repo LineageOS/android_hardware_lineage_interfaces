@@ -64,6 +64,24 @@
       "revId": "5c43ee982863b0c2e8ca58a03b0935d16fc115ec",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1514fb1_922be1bf",
+        "filename": "livedisplay/2.0/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2020-11-20T08:52:01Z",
+      "side": 0,
+      "message": "then it\u0027s okay as long as there are not any regressions. aosp has this btw https://github.com/LineageOS/android_hardware_interfaces/commit/b91ac5c6a0c0b76f17c19a1d3983d5faa1857eb6",
+      "parentUuid": "43cbb71f_44b0d641",
+      "revId": "5c43ee982863b0c2e8ca58a03b0935d16fc115ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
