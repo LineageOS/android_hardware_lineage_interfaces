@@ -46,6 +46,24 @@
       "revId": "5c43ee982863b0c2e8ca58a03b0935d16fc115ec",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cbb71f_44b0d641",
+        "filename": "livedisplay/2.0/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2020-11-20T07:48:15Z",
+      "side": 0,
+      "message": "Yeah, script removed them (even on 17.1). I have no idea if there are any downsides...",
+      "parentUuid": "20a4d476_b5f660ce",
+      "revId": "5c43ee982863b0c2e8ca58a03b0935d16fc115ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
