@@ -32,12 +32,14 @@ cc_defaults {
 cc_binary {
     name: "lineage.trust@1.0-service",
     init_rc: ["lineage.trust@1.0-service.rc"],
+    vintf_fragments: ["lineage.trust@1.0-service.xml"],
     defaults: ["trust_defaults"],
 }
 
 cc_binary {
     name: "vendor.lineage.trust@1.0-service",
     init_rc: ["vendor.lineage.trust@1.0-service.rc"],
+    vintf_fragments: ["vendor.lineage.trust@1.0-service.xml"],
     defaults: ["trust_defaults"],
     proprietary: true,
 }
