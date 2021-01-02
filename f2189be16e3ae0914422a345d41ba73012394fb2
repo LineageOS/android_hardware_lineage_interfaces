@@ -22,6 +22,30 @@
       "revId": "f2189be16e3ae0914422a345d41ba73012394fb2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc88323_a8360e5a",
+        "filename": "trust/lineage.trust@1.0-service.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 444
+      },
+      "writtenOn": "2021-01-02T23:52:04Z",
+      "side": 1,
+      "message": "I think it goes by what\u0027s in the service.cpp file, which is built by both. I might be wrong though.\n\nusing ::vendor::lineage::trust::V1_0::IUsbRestrict;",
+      "parentUuid": "1bf20788_1bae1654",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f2189be16e3ae0914422a345d41ba73012394fb2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
