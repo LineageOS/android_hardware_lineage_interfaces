@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c9b6d963_1e59c33a",
+        "filename": "biometrics/fingerprint/2.0/android.hardware.biometrics.fingerprint@2.0-service.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 444
+      },
+      "writtenOn": "2021-01-02T23:53:30Z",
+      "side": 1,
+      "message": "According to service.cpp. it should be 2.1, but the service name for some reason uses 2.0.",
+      "revId": "f2189be16e3ae0914422a345d41ba73012394fb2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bf20788_1bae1654",
         "filename": "trust/lineage.trust@1.0-service.rc",
         "patchSetId": 2
