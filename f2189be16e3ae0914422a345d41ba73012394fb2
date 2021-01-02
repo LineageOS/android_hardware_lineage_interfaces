@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bf20788_1bae1654",
+        "filename": "trust/lineage.trust@1.0-service.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2021-01-02T23:27:03Z",
+      "side": 1,
+      "message": "I think that the system variant doesn\u0027t include this. Judging also by Mike\u0027s change that adds vintf fragment.",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f2189be16e3ae0914422a345d41ba73012394fb2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
