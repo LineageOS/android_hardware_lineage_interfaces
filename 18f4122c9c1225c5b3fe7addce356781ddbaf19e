@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d96b06b_a455a9bb",
+        "filename": "trust/lineage.trust@1.0-service.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2021-01-03T00:50:24Z",
+      "side": 1,
+      "message": "According to devices that build the system variant, this should be still vendor.lineage.trust",
+      "range": {
+        "startLine": 3,
+        "startChar": 14,
+        "endLine": 3,
+        "endChar": 27
+      },
+      "revId": "18f4122c9c1225c5b3fe7addce356781ddbaf19e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
