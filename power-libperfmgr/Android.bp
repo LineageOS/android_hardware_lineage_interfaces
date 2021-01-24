@@ -22,7 +22,8 @@ cc_binary {
         "-Wno-unused-parameter",
     ],
     shared_libs: [
-        "android.hardware.power-V1-ndk_platform",
+        "android.hardware.power-V2-ndk_platform",
+        "libadpf-pixel",
         "libbase",
         "libbinder_ndk",
         "libcutils",
