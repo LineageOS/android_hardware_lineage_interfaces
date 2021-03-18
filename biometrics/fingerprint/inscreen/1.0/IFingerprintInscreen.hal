@@ -74,6 +74,11 @@ interface IFingerprintInscreen {
      */
     getDimAmount(int32_t cur_brightness) generates (int32_t cur_brightness);
     /**
+     * Calculate dimming alpha [0, 255] based on the current brightness [0, 255]
+     * This allows to control fod brightness
+     */
+    getDimAlpha(int32_t cur_brightness) generates (int32_t cur_brightness);
+    /**
      * Should the framework boost the brightness? In ideal scenario the boosting
      * should be handled in the lower layers for the best user experience.
      * If this returns false, then the implementation MUST boost the brightness
