@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2016-2021 The Android Open Source Project
  * Copyright (C) 2018-2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
-using android::hardware::usb::V1_2::IUsb;
-using android::hardware::usb::V1_2::implementation::Usb;
+using android::hardware::usb::V1_3::IUsb;
+using android::hardware::usb::V1_3::implementation::Usb;
 
 using android::OK;
 using android::status_t;
