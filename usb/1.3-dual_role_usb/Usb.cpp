@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2016-2021 The Android Open Source Project
  * Copyright (C) 2018-2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,8 +33,41 @@
 namespace android {
 namespace hardware {
 namespace usb {
-namespace V1_2 {
+namespace V1_3 {
 namespace implementation {
+
+Return<bool> Usb::enableUsbDataSignal(bool enable) {
+    bool result = true;
+    ALOGI("Userspace turn %s USB data signaling", enable ? "on" : "off");
+    if (enable) {
+        if (!WriteStringToFile("1", USB_DATA_PATH)) {
+            ALOGE("Not able to turn on usb connection notification");
+            result = false;
+        }
+        if (!WriteStringToFile(kGadgetName, PULLUP_PATH)) {
+            ALOGE("Gadget cannot be pulled up");
+            result = false;
+        }
+    } else {
+        if (!WriteStringToFile("1", ID_PATH)) {
+            ALOGE("Not able to turn off host mode");
+            result = false;
+        }
+        if (!WriteStringToFile("0", VBUS_PATH)) {
+            ALOGE("Not able to set Vbus state");
+            result = false;
+        }
+        if (!WriteStringToFile("0", USB_DATA_PATH)) {
+            ALOGE("Not able to turn off usb connection notification");
+            result = false;
+        }
+        if (!WriteStringToFile("none", PULLUP_PATH)) {
+            ALOGE("Gadget cannot be pulled down");
+            result = false;
+        }
+    }
+    return result;
+}
 
 // Set by the signal handler to destroy the thread
 volatile bool destroyThread;
@@ -389,7 +422,7 @@ Return<void> Usb::queryPortStatus() {
 
 struct data {
     int uevent_fd;
-    android::hardware::usb::V1_2::implementation::Usb* usb;
+    android::hardware::usb::V1_3::implementation::Usb* usb;
 };
 
 Return<void> Usb::enableContaminantPresenceDetection(const hidl_string& portName __unused,
@@ -451,7 +484,7 @@ void* work(void* param) {
     }
 
     payload.uevent_fd = uevent_fd;
-    payload.usb = (android::hardware::usb::V1_2::implementation::Usb*)param;
+    payload.usb = (android::hardware::usb::V1_3::implementation::Usb*)param;
 
     fcntl(uevent_fd, F_SETFL, O_NONBLOCK);
 
@@ -572,7 +605,7 @@ Usb::Usb() {
 }
 
 }  // namespace implementation
-}  // namespace V1_2
+}  // namespace V1_3
 }  // namespace usb
 }  // namespace hardware
 }  // namespace android
