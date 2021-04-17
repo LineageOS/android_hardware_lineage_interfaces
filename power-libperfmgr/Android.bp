@@ -1,0 +1,39 @@
+//
+// Copyright (C) 2021 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+soong_namespace {
+    imports: [
+        "hardware/google/interfaces",
+        "hardware/google/pixel",
+    ],
+}
+
+cc_binary {
+    name: "android.hardware.power-service.lineage-libperfmgr",
+    relative_install_path: "hw",
+    init_rc: ["aidl/android.hardware.power-service.lineage-libperfmgr.rc"],
+    vintf_fragments: ["aidl/android.hardware.power-service.lineage.xml"],
+    vendor: true,
+    cflags: [
+        "-Wno-unused-variable",
+        "-Wno-unused-parameter",
+    ],
+    shared_libs: [
+        "android.hardware.power-ndk_platform",
+        "libbase",
+        "libbinder_ndk",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libperfmgr",
+        "libutils",
+    ],
+    srcs: [
+        "aidl/service.cpp",
+        "aidl/InteractionHandler.cpp",
+        "aidl/Power.cpp",
+    ],
+}
