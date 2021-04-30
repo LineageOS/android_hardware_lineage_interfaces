@@ -26,6 +26,8 @@
 #include "disp-power/DisplayLowPower.h"
 #include "InteractionHandler.h"
 
+#include "adaptivecpu/AdaptiveCpu.h"
+
 namespace aidl {
 namespace google {
 namespace hardware {
@@ -40,7 +42,8 @@ using ::android::perfmgr::HintManager;
 
 class Power : public ::aidl::android::hardware::power::BnPower {
   public:
-    Power(std::shared_ptr<HintManager> hm, std::shared_ptr<DisplayLowPower> dlpw);
+    Power(std::shared_ptr<HintManager> hm, std::shared_ptr<DisplayLowPower> dlpw,
+          std::shared_ptr<AdaptiveCpu> adaptiveCpu);
     ndk::ScopedAStatus setMode(Mode type, bool enabled) override;
     ndk::ScopedAStatus isModeSupported(Mode type, bool *_aidl_return) override;
     ndk::ScopedAStatus setBoost(Boost type, int32_t durationMs) override;
@@ -55,6 +58,7 @@ class Power : public ::aidl::android::hardware::power::BnPower {
   private:
     std::shared_ptr<HintManager> mHintManager;
     std::shared_ptr<DisplayLowPower> mDisplayLowPower;
+    std::shared_ptr<AdaptiveCpu> mAdaptiveCpu;
     std::unique_ptr<InteractionHandler> mInteractionHandler;
     std::atomic<bool> mVRModeOn;
     std::atomic<bool> mSustainedPerfModeOn;
