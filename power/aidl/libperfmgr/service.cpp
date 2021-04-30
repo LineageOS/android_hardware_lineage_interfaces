@@ -26,8 +26,10 @@
 #include "Power.h"
 #include "PowerExt.h"
 #include "PowerSessionManager.h"
+#include "adaptivecpu/AdaptiveCpu.h"
 #include "disp-power/DisplayLowPower.h"
 
+using aidl::google::hardware::power::impl::pixel::AdaptiveCpu;
 using aidl::google::hardware::power::impl::pixel::DisplayLowPower;
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
@@ -37,6 +39,9 @@ using ::android::perfmgr::HintManager;
 
 constexpr std::string_view kPowerHalInitProp("vendor.powerhal.init");
 constexpr std::string_view kConfigProperty("vendor.powerhal.config");
+
+// TODO(b/187691504): Finalize flag name and semantics in a follow-up change.
+constexpr std::string_view kAdaptiveCpuEnabledProperty("vendor.powerhal.adaptive_cpu.enabled");
 constexpr std::string_view kConfigDefaultFileName("powerhint.json");
 
 int main() {
@@ -57,8 +62,13 @@ int main() {
     // single thread
     ABinderProcess_setThreadPoolMaxThreadCount(0);
 
+    std::shared_ptr<AdaptiveCpu> adaptiveCpu;
+    if (android::base::GetBoolProperty(kAdaptiveCpuEnabledProperty.data(), false)) {
+        adaptiveCpu = std::make_shared<AdaptiveCpu>(hm);
+    }
+
     // core service
-    std::shared_ptr<Power> pw = ndk::SharedRefBase::make<Power>(hm, dlpw);
+    std::shared_ptr<Power> pw = ndk::SharedRefBase::make<Power>(hm, dlpw, adaptiveCpu);
     ndk::SpAIBinder pwBinder = pw->asBinder();
 
     // extension service
@@ -81,6 +91,9 @@ int main() {
         ::android::base::WaitForProperty(kPowerHalInitProp.data(), "1");
         hm->Start();
         dlpw->Init();
+        if (adaptiveCpu) {
+            adaptiveCpu->StartInBackground();
+        }
     });
     initThread.detach();
 
