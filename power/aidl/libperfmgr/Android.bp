@@ -6,6 +6,7 @@ cc_binary {
     vendor: true,
     shared_libs: [
         "android.hardware.power-V2-ndk_platform",
+        "libadaptivecpu",
         "libbase",
         "libcutils",
         "liblog",

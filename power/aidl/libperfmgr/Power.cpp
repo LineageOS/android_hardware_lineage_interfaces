@@ -50,9 +50,11 @@ constexpr char kPowerHalRenderingProp[] = "vendor.powerhal.rendering";
 constexpr char kPowerHalAdpfRateProp[] = "vendor.powerhal.adpf.rate";
 constexpr int64_t kPowerHalAdpfRateDefault = -1;
 
-Power::Power(std::shared_ptr<HintManager> hm, std::shared_ptr<DisplayLowPower> dlpw)
+Power::Power(std::shared_ptr<HintManager> hm, std::shared_ptr<DisplayLowPower> dlpw,
+             std::shared_ptr<AdaptiveCpu> adaptiveCpu)
     : mHintManager(hm),
       mDisplayLowPower(dlpw),
+      mAdaptiveCpu(adaptiveCpu),
       mInteractionHandler(nullptr),
       mVRModeOn(false),
       mSustainedPerfModeOn(false),
@@ -272,7 +274,7 @@ ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
     }
     std::shared_ptr<IPowerHintSession> session = ndk::SharedRefBase::make<PowerHintSession>(
-            tgid, uid, threadIds, durationNanos, nanoseconds(mAdpfRateNs));
+            mAdaptiveCpu, tgid, uid, threadIds, durationNanos, nanoseconds(mAdpfRateNs));
     *_aidl_return = session;
     return ndk::ScopedAStatus::ok();
 }
