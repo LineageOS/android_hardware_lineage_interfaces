@@ -131,9 +131,10 @@ static const int64_t sDSamplingWindow =
 
 }  // namespace
 
-PowerHintSession::PowerHintSession(int32_t tgid, int32_t uid, const std::vector<int32_t> &threadIds,
+PowerHintSession::PowerHintSession(std::shared_ptr<AdaptiveCpu> adaptiveCpu, int32_t tgid,
+                                   int32_t uid, const std::vector<int32_t> &threadIds,
                                    int64_t durationNanos, const nanoseconds adpfRate)
-    : kAdpfRate(adpfRate) {
+    : mAdaptiveCpu(adaptiveCpu), kAdpfRate(adpfRate) {
     mDescriptor = new AppHintDesc(tgid, uid, threadIds);
     mDescriptor->duration = std::chrono::nanoseconds(durationNanos);
     mStaleHandler = sp<StaleHandler>(new StaleHandler(this));
@@ -281,6 +282,11 @@ ndk::ScopedAStatus PowerHintSession::reportActualWorkDuration(
         ALOGE("Error: shouldn't report duration during pause state.");
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
+
+    if (mAdaptiveCpu) {
+        mAdaptiveCpu->ReportWorkDurations(actualDurations, mDescriptor->duration);
+    }
+
     if (PowerHintMonitor::getInstance()->isRunning() && isStale()) {
         if (ATRACE_ENABLED()) {
             const std::string idstr = getIdString();
