@@ -6,7 +6,6 @@ cc_binary {
     vendor: true,
     shared_libs: [
         "android.hardware.power-V2-ndk_platform",
-        "libadpf-pixel",
         "libbase",
         "libcutils",
         "liblog",
@@ -21,5 +20,7 @@ cc_binary {
         "service.cpp",
         "Power.cpp",
         "PowerExt.cpp",
+        "PowerHintSession.cpp",
+        "PowerSessionManager.cpp",
     ],
 }
