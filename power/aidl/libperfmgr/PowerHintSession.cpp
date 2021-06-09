@@ -287,10 +287,6 @@ ndk::ScopedAStatus PowerHintSession::reportActualWorkDuration(
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
 
-    if (mAdaptiveCpu) {
-        mAdaptiveCpu->ReportWorkDurations(actualDurations, mDescriptor->duration);
-    }
-
     if (PowerHintMonitor::getInstance()->isRunning() && isStale()) {
         if (ATRACE_ENABLED()) {
             const std::string idstr = getIdString();
@@ -369,6 +365,10 @@ ndk::ScopedAStatus PowerHintSession::reportActualWorkDuration(
         if (std::abs(mDescriptor->current_min - next_min) > sUclampMinGranularity) {
             setUclamp(next_min);
         }
+    }
+
+    if (mAdaptiveCpu) {
+        mAdaptiveCpu->ReportWorkDurations(actualDurations, mDescriptor->duration);
     }
 
     return ndk::ScopedAStatus::ok();
