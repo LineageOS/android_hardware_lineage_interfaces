@@ -17,8 +17,8 @@ hidl_interface {
         "ISunlightEnhancement.hal",
     ],
     interfaces: [
-        "vendor.lineage.livedisplay@2.0",
         "android.hidl.base@1.0",
+        "vendor.lineage.livedisplay@2.0",
     ],
     gen_java: true,
 }
