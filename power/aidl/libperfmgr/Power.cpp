@@ -94,6 +94,11 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     LOG(DEBUG) << "Power setMode: " << toString(type) << " to: " << enabled;
     PowerSessionManager::getInstance()->updateHintMode(toString(type), enabled);
     switch (type) {
+#ifdef TAP_TO_WAKE_NODE
+        case Mode::DOUBLE_TAP_TO_WAKE:
+            ::android::base::WriteStringToFile(enabled ? "1" : "0", TAP_TO_WAKE_NODE, true);
+            break;
+#endif
         case Mode::SUSTAINED_PERFORMANCE:
             if (enabled && !mSustainedPerfModeOn) {
                 if (!mVRModeOn) {  // Sustained mode only.
@@ -135,8 +140,10 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
                 break;
             }
             [[fallthrough]];
+#ifndef TAP_TO_WAKE_NODE
         case Mode::DOUBLE_TAP_TO_WAKE:
             [[fallthrough]];
+#endif
         case Mode::FIXED_PERFORMANCE:
             [[fallthrough]];
         case Mode::EXPENSIVE_RENDERING:

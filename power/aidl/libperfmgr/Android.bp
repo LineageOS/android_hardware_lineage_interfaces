@@ -1,5 +1,8 @@
 cc_binary {
     name: "android.hardware.power-service.libperfmgr",
+    defaults: [
+        "powerhal_tap_to_wake_defaults",
+    ],
     relative_install_path: "hw",
     init_rc: ["android.hardware.power-service.libperfmgr.rc"],
     vintf_fragments: ["android.hardware.power-service.xml"],
