@@ -7,7 +7,6 @@ cc_library_shared {
     ],
     shared_libs: [
         "libhidlbase",
-        "libhidlmemory",
         "libutils",
         "android.hardware.camera.device@1.0",
         "android.hardware.camera.common@1.0",
@@ -16,13 +15,12 @@ cc_library_shared {
         "android.hardware.graphics.mapper@3.0",
         "android.hardware.graphics.mapper@4.0",
         "android.hardware.graphics.common@1.0",
-        "android.hidl.allocator@1.0",
-        "android.hidl.memory@1.0",
         "libcutils",
         "liblog",
         "libgralloctypes",
         "libhardware",
         "libcamera_metadata",
+        "libbinder",
     ],
     static_libs: [
         "android.hardware.camera.common@1.0-helper",

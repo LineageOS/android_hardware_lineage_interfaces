@@ -17,7 +17,6 @@
 #define LOG_TAG "CamDev@1.0-impl.legacy"
 #include <hardware/camera.h>
 #include <hardware/gralloc1.h>
-#include <hidlmemory/mapping.h>
 #include <log/log.h>
 #include <utils/Trace.h>
 
@@ -104,12 +103,6 @@ CameraDevice::CameraDevice(
     if (mDeviceVersion != CAMERA_DEVICE_API_VERSION_1_0 && !mModule->isOpenLegacyDefined()) {
         ALOGI("%s: Camera id %s does not support HAL1.0",
                 __FUNCTION__, mCameraId.c_str());
-        mInitFail = true;
-    }
-
-    mAshmemAllocator = IAllocator::getService("ashmem");
-    if (mAshmemAllocator == nullptr) {
-        ALOGI("%s: cannot get ashmemAllocator", __FUNCTION__);
         mInitFail = true;
     }
 }
@@ -298,66 +291,35 @@ int CameraDevice::sGetMinUndequeuedBufferCount(
     return getStatusT(s);
 }
 
-CameraDevice::CameraHeapMemory::CameraHeapMemory(
-    int fd, size_t buf_size, uint_t num_buffers) :
+CameraDevice::CameraHeapMemory::CameraHeapMemory(int fd, size_t buf_size, uint_t num_buffers) :
         mBufSize(buf_size),
         mNumBufs(num_buffers) {
-    mHidlHandle = native_handle_create(1,0);
-    mHidlHandle->data[0] = fcntl(fd, F_DUPFD_CLOEXEC, 0);
-    const size_t pagesize = getpagesize();
-    size_t size = ((buf_size * num_buffers + pagesize-1) & ~(pagesize-1));
-    mHidlHeap = hidl_memory("ashmem", mHidlHandle, size);
+    mHeap = new MemoryHeapBase(fd, buf_size * num_buffers);
     commonInitialization();
 }
 
-CameraDevice::CameraHeapMemory::CameraHeapMemory(
-    sp<IAllocator> ashmemAllocator,
-    size_t buf_size, uint_t num_buffers) :
+CameraDevice::CameraHeapMemory::CameraHeapMemory(size_t buf_size, uint_t num_buffers) :
         mBufSize(buf_size),
         mNumBufs(num_buffers) {
-    const size_t pagesize = getpagesize();
-    size_t size = ((buf_size * num_buffers + pagesize-1) & ~(pagesize-1));
-    ashmemAllocator->allocate(size,
-        [&](bool success, const hidl_memory& mem) {
-            if (!success) {
-                ALOGE("%s: allocating ashmem of %zu bytes failed!",
-                        __FUNCTION__, buf_size * num_buffers);
-                return;
-            }
-            mHidlHandle = native_handle_clone(mem.handle());
-            mHidlHeap = hidl_memory("ashmem", mHidlHandle, size);
-        });
-
+    mHeap = new MemoryHeapBase(buf_size * num_buffers);
     commonInitialization();
 }
 
 void CameraDevice::CameraHeapMemory::commonInitialization() {
-    mHidlHeapMemory = mapMemory(mHidlHeap);
-    if (mHidlHeapMemory == nullptr) {
-        ALOGE("%s: memory map failed!", __FUNCTION__);
-        native_handle_close(mHidlHandle); // close FD for the shared memory
-        native_handle_delete(mHidlHandle);
-        mHidlHeap = hidl_memory();
-        mHidlHandle = nullptr;
-        return;
-    }
-    mHidlHeapMemData = mHidlHeapMemory->getPointer();
-    handle.data = mHidlHeapMemData;
+    handle.data = mHeap->base();
     handle.size = mBufSize * mNumBufs;
     handle.handle = this;
+
+    mBuffers = new sp<MemoryBase>[mNumBufs];
+    for (uint_t i = 0; i < mNumBufs; i++) {
+        mBuffers[i] = new MemoryBase(mHeap, i * mBufSize, mBufSize);
+    }
+
     handle.release = sPutMemory;
 }
 
 CameraDevice::CameraHeapMemory::~CameraHeapMemory() {
-    if (mHidlHeapMemory != nullptr) {
-        mHidlHeapMemData = nullptr;
-        mHidlHeapMemory.clear(); // The destructor will trigger munmap
-    }
-
-    if (mHidlHandle) {
-        native_handle_close(mHidlHandle); // close FD for the shared memory
-        native_handle_delete(mHidlHandle);
-    }
+    delete [] mBuffers;
 }
 
 // shared memory methods
@@ -371,13 +333,22 @@ camera_memory_t* CameraDevice::sGetMemory(int fd, size_t buf_size, uint_t num_bu
     }
 
     CameraHeapMemory* mem;
+    native_handle_t* handle = native_handle_create(1,0);
+
+    if (handle == nullptr) {
+        ALOGE("%s: native_handle_create failed!", __FUNCTION__);
+        return nullptr;
+    }
+
     if (fd < 0) {
-        mem = new CameraHeapMemory(object->mAshmemAllocator, buf_size, num_bufs);
+        mem = new CameraHeapMemory(buf_size, num_bufs);
     } else {
         mem = new CameraHeapMemory(fd, buf_size, num_bufs);
     }
+    handle->data[0] = mem->mHeap->getHeapID();
     mem->incStrong(mem);
-    hidl_handle hidlHandle = mem->mHidlHandle;
+
+    hidl_handle hidlHandle = handle;
     MemoryId id = object->mDeviceCallback->registerMemory(hidlHandle, buf_size, num_bufs);
     mem->handle.mId = id;
 
@@ -389,6 +360,7 @@ camera_memory_t* CameraDevice::sGetMemory(int fd, size_t buf_size, uint_t num_bu
         object->mMemoryMap[id] = mem;
     }
     mem->handle.mDevice = object;
+    native_handle_delete(handle);
     return &mem->handle;
 }
 
@@ -511,7 +483,7 @@ void CameraDevice::sDataCbTimestamp(nsecs_t timestamp, int32_t msg_type,
     if (object->mMetadataMode) {
         if (mem->mBufSize == sizeof(VideoNativeHandleMetadata)) {
             VideoNativeHandleMetadata* md = (VideoNativeHandleMetadata*)
-                    ((uint8_t*) mem->mHidlHeapMemData + index * mem->mBufSize);
+                    mem->mBuffers[index]->unsecurePointer();
             if (md->eType == kMetadataBufferTypeNativeHandleSource) {
                 handle = md->pHandle;
             }
@@ -849,12 +821,27 @@ void CameraDevice::releaseRecordingFrameLocked(
             }
             camMemory = it->second;
         }
+        sp<MemoryHeapBase> heap = camMemory->mHeap;
         if (bufferIndex >= camMemory->mNumBufs) {
             ALOGE("%s: bufferIndex %d exceeds number of buffers %d",
                     __FUNCTION__, bufferIndex, camMemory->mNumBufs);
             return;
         }
-        void *data = ((uint8_t *) camMemory->mHidlHeapMemData) + bufferIndex * camMemory->mBufSize;
+        sp<IMemory> mem = camMemory->mBuffers[bufferIndex];
+        // TODO: simplify below logic once we verify offset is indeed idx * mBufSize
+        //       and heap == heap2
+        ssize_t offset;
+        size_t size;
+        sp<IMemoryHeap> heap2 = mem->getMemory(&offset, &size);
+        if ((size_t)offset != bufferIndex * camMemory->mBufSize) {
+            ALOGI("%s: unexpected offset %zd (was expecting %zu)",
+                    __FUNCTION__, offset, bufferIndex * camMemory->mBufSize);
+        }
+        if (heap != heap2) {
+            ALOGE("%s: heap mismatch!", __FUNCTION__);
+            return;
+        }
+        void *data = ((uint8_t *)heap->base()) + offset;
         if (handle) {
             VideoNativeHandleMetadata* md = (VideoNativeHandleMetadata*) data;
             if (md->eType == kMetadataBufferTypeNativeHandleSource) {
