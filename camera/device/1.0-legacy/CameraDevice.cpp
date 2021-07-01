@@ -380,6 +380,7 @@ camera_memory_t* CameraDevice::sGetMemory(int fd, size_t buf_size, uint_t num_bu
     hidl_handle hidlHandle = mem->mHidlHandle;
     MemoryId id = object->mDeviceCallback->registerMemory(hidlHandle, buf_size, num_bufs);
     mem->handle.mId = id;
+
     {
         Mutex::Autolock _l(object->mMemoryMapLock);
         if (object->mMemoryMap.count(id) != 0) {
@@ -848,7 +849,6 @@ void CameraDevice::releaseRecordingFrameLocked(
             }
             camMemory = it->second;
         }
-
         if (bufferIndex >= camMemory->mNumBufs) {
             ALOGE("%s: bufferIndex %d exceeds number of buffers %d",
                     __FUNCTION__, bufferIndex, camMemory->mNumBufs);
