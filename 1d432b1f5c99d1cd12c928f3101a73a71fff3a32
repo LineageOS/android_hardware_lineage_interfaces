@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1a9f2a8_ecff9a29",
+        "filename": "touch/1.0/ITouchSampling.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 18205
+      },
+      "writtenOn": "2021-07-06T17:36:58Z",
+      "side": 1,
+      "message": "I think you agree that touch sampling enabled/disabled makes no sense",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "1d432b1f5c99d1cd12c928f3101a73a71fff3a32",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
