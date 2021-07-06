@@ -46,6 +46,30 @@
       "revId": "1d432b1f5c99d1cd12c928f3101a73a71fff3a32",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b7ce28_99003863",
+        "filename": "touch/1.0/ITouchSampling.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 18205
+      },
+      "writtenOn": "2021-07-06T21:14:29Z",
+      "side": 1,
+      "message": "that\u0027s still not what you want. touch sampling disabled or unsupported means you have no touchscreen.",
+      "parentUuid": "803f91a9_22047dc3",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "1d432b1f5c99d1cd12c928f3101a73a71fff3a32",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
