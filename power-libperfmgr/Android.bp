@@ -29,6 +29,7 @@ cc_binary {
         "libdl",
         "liblog",
         "libperfmgr",
+        "libprocessgroup",
         "libutils",
         "pixel-power-ext-V1-ndk_platform",
     ],
