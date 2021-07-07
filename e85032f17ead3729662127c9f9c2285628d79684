@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6b1662f_7c6e8004",
+        "filename": "touch/1.0/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2021-07-07T07:35:49Z",
+      "side": 1,
+      "message": "Order it alphabetically.",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "e85032f17ead3729662127c9f9c2285628d79684",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
