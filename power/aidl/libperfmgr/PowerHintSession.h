@@ -112,6 +112,7 @@ class PowerHintSession : public BnPowerHintSession {
     sp<MessageHandler> mPowerManagerHandler;
     std::mutex mLock;
     const nanoseconds kAdpfRate;
+    std::atomic<bool> mSessionClosed = false;
 };
 
 }  // namespace pixel
