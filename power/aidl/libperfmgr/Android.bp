@@ -5,7 +5,7 @@ cc_binary {
     vintf_fragments: ["android.hardware.power-service.pixel.xml"],
     vendor: true,
     shared_libs: [
-        "android.hardware.power-V2-ndk_platform",
+        "android.hardware.power-V2-ndk",
         "libadaptivecpu",
         "libbase",
         "libcutils",
@@ -15,7 +15,7 @@ cc_binary {
         "libdisppower-pixel",
         "libperfmgr",
         "libprocessgroup",
-        "pixel-power-ext-V1-ndk_platform",
+        "pixel-power-ext-V1-ndk",
     ],
     srcs: [
         "InteractionHandler.cpp",
