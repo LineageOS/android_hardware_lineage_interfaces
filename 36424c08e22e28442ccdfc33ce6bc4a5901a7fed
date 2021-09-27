@@ -87,6 +87,24 @@
       "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11c2fb3_ea3a6251",
+        "filename": "pocketmode/1.0/IFingerprintDisabler.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2021-09-27T21:29:31Z",
+      "side": 1,
+      "message": "I mean, if you want we can put these in lineage resources. But wouldn\u0027t there be some value in having whole pocket mode configuration in one place?",
+      "parentUuid": "00159310_d9127427",
+      "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
