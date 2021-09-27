@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d97fba36_30efe227",
+        "filename": "pocketmode/1.0/IFingerprintDisabler.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2021-09-27T20:40:28Z",
+      "side": 1,
+      "message": "We enable the disabler to disable fp ?  It makes (sdk) code harder to read because it\u0027s unclear if setEnabled is referring to fp or to fp disabler.  I get why the name as now but I think it unfortunately ends up being confusing in this context.\n\nMaybe just setFPDisabled(bool) ?  Remove any need to look at code to determine meaning.",
+      "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a519b0c0_fede625e",
+        "filename": "pocketmode/1.0/IFingerprintDisabler.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2021-09-27T20:40:28Z",
+      "side": 1,
+      "message": "getMaxSensorValue() ?   (or min, whichever way around it is but something that implies it\u0027s constant rather than realtime)",
+      "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
