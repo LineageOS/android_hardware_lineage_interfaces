@@ -69,6 +69,24 @@
       "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00159310_d9127427",
+        "filename": "pocketmode/1.0/IFingerprintDisabler.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2021-09-27T21:16:06Z",
+      "side": 1,
+      "message": "getNearSensorValue ?  It\u0027s not clear what sensor this is which leads to...  why are we mixing proximity measurement with fingerprint disabler ?  They are two separate things.  Couldn\u0027t we just overlay sensor type and threshold value strings ?",
+      "parentUuid": "0e153c40_91f34fee",
+      "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
