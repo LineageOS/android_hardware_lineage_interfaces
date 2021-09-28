@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d01ef18_5605c1df",
+        "filename": "pocketmode/1.0/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2021-09-28T15:21:03Z",
+      "side": 1,
+      "message": "as funny as it is, I won\u0027t be able to use it on the single device I\u0027m using this change on due to neverallow...",
+      "parentUuid": "ec1d20d5_7935dac4",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 14
+      },
+      "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97fba36_30efe227",
         "filename": "pocketmode/1.0/IFingerprintDisabler.hal",
         "patchSetId": 1
