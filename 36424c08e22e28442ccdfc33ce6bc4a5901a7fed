@@ -105,6 +105,24 @@
       "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9739eb4_9f37ad29",
+        "filename": "pocketmode/1.0/IFingerprintDisabler.hal",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2021-09-28T13:50:22Z",
+      "side": 1,
+      "message": "Probably, but shouldn\u0027t the interface then be named \u0027IPocketModeHardware\u0027 or something among those lines?",
+      "parentUuid": "e11c2fb3_ea3a6251",
+      "revId": "36424c08e22e28442ccdfc33ce6bc4a5901a7fed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
