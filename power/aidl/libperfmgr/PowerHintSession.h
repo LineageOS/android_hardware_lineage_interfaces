@@ -73,8 +73,7 @@ struct AppHintDesc {
 class PowerHintSession : public BnPowerHintSession {
   public:
     explicit PowerHintSession(std::shared_ptr<AdaptiveCpu> adaptiveCpu, int32_t tgid, int32_t uid,
-                              const std::vector<int32_t> &threadIds, int64_t durationNanos,
-                              nanoseconds adpfRate);
+                              const std::vector<int32_t> &threadIds, int64_t durationNanos);
     ~PowerHintSession();
     ndk::ScopedAStatus close() override;
     ndk::ScopedAStatus pause() override;
@@ -118,7 +117,6 @@ class PowerHintSession : public BnPowerHintSession {
     sp<StaleHandler> mStaleHandler;
     sp<MessageHandler> mPowerManagerHandler;
     std::mutex mLock;
-    const nanoseconds kAdpfRate;
     std::atomic<bool> mSessionClosed = false;
 };
 
