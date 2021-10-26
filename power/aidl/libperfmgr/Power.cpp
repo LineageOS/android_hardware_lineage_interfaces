@@ -45,17 +45,13 @@ using ::android::perfmgr::HintManager;
 constexpr char kPowerHalStateProp[] = "vendor.powerhal.state";
 constexpr char kPowerHalAudioProp[] = "vendor.powerhal.audio";
 constexpr char kPowerHalRenderingProp[] = "vendor.powerhal.rendering";
-constexpr char kPowerHalAdpfRateProp[] = "vendor.powerhal.adpf.rate";
-constexpr int64_t kPowerHalAdpfRateDefault = -1;
 
 Power::Power(std::shared_ptr<DisplayLowPower> dlpw, std::shared_ptr<AdaptiveCpu> adaptiveCpu)
     : mDisplayLowPower(dlpw),
       mAdaptiveCpu(adaptiveCpu),
       mInteractionHandler(nullptr),
       mVRModeOn(false),
-      mSustainedPerfModeOn(false),
-      mAdpfRateNs(
-              ::android::base::GetIntProperty(kPowerHalAdpfRateProp, kPowerHalAdpfRateDefault)) {
+      mSustainedPerfModeOn(false) {
     mInteractionHandler = std::make_unique<InteractionHandler>();
     mInteractionHandler->Init();
 
@@ -88,9 +84,6 @@ Power::Power(std::shared_ptr<DisplayLowPower> dlpw, std::shared_ptr<AdaptiveCpu>
         LOG(INFO) << "Initialize with EXPENSIVE_RENDERING on";
         HintManager::GetInstance()->DoHint("EXPENSIVE_RENDERING");
     }
-
-    // Now start to take powerhint
-    LOG(INFO) << "PowerHAL ready to take hints, Adpf update rate: " << mAdpfRateNs;
 }
 
 ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
@@ -262,7 +255,8 @@ ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,
                                             const std::vector<int32_t> &threadIds,
                                             int64_t durationNanos,
                                             std::shared_ptr<IPowerHintSession> *_aidl_return) {
-    if (mAdpfRateNs <= 0) {
+    if (!HintManager::GetInstance()->GetAdpfProfile() ||
+        HintManager::GetInstance()->GetAdpfProfile()->mReportingRateLimitNs <= 0) {
         *_aidl_return = nullptr;
         return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
@@ -272,14 +266,16 @@ ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
     }
     std::shared_ptr<IPowerHintSession> session = ndk::SharedRefBase::make<PowerHintSession>(
-            mAdaptiveCpu, tgid, uid, threadIds, durationNanos, nanoseconds(mAdpfRateNs));
+            mAdaptiveCpu, tgid, uid, threadIds, durationNanos);
     *_aidl_return = session;
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Power::getHintSessionPreferredRate(int64_t *outNanoseconds) {
-    *outNanoseconds = mAdpfRateNs;
-    if (mAdpfRateNs <= 0) {
+    *outNanoseconds = HintManager::GetInstance()->GetAdpfProfile()
+                              ? HintManager::GetInstance()->GetAdpfProfile()->mReportingRateLimitNs
+                              : 0;
+    if (*outNanoseconds <= 0) {
         return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
