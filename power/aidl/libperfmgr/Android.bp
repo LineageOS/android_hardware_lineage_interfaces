@@ -5,7 +5,7 @@ cc_binary {
     vintf_fragments: ["android.hardware.power-service.pixel.xml"],
     vendor: true,
     shared_libs: [
-        "android.hardware.power-V2-ndk",
+        "android.hardware.power-V3-ndk",
         "libadaptivecpu",
         "libbase",
         "libcutils",
