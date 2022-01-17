@@ -54,7 +54,9 @@ struct AppHintDesc {
           is_active(true),
           update_count(0),
           integral_error(0),
-          previous_error(0) {}
+          previous_error(0),
+          work_period(0),
+          last_start(0) {}
     std::string toString() const;
     const int32_t tgid;
     const int32_t uid;
@@ -68,6 +70,9 @@ struct AppHintDesc {
     uint64_t update_count;
     int64_t integral_error;
     int64_t previous_error;
+    // earlyhint pace
+    int64_t work_period;
+    int64_t last_start;
 };
 
 class PowerHintSession : public BnPowerHintSession {
@@ -87,22 +92,34 @@ class PowerHintSession : public BnPowerHintSession {
     int restoreUclamp();
 
   private:
-    class StaleHandler : public MessageHandler {
+    class HintTimerHandler : public MessageHandler {
       public:
-        StaleHandler(PowerHintSession *session)
+        enum HintTimerState {
+            STALE,
+            MONITORING,
+            EARLY_BOOST,
+        };
+        HintTimerHandler(PowerHintSession *session)
             : mSession(session),
-              mIsMonitoringStale(false),
+              mState(STALE),
               mLastUpdatedTime(steady_clock::now()),
               mIsSessionDead(false) {}
+        ~HintTimerHandler();
         void handleMessage(const Message &message) override;
-        void updateStaleTimer();
+        // Update HintTimer by actual work duration.
+        void updateHintTimer(int64_t actualDurationNs);
+        // Update HintTimer by a list of work durations which could be used for
+        // calculating the work period.
+        void updateHintTimer(const std::vector<WorkDuration> &actualDurations);
+        time_point<steady_clock> getEarlyBoostTime();
         time_point<steady_clock> getStaleTime();
         void setSessionDead();
 
       private:
         PowerHintSession *mSession;
-        std::atomic<bool> mIsMonitoringStale;
+        HintTimerState mState;
         std::atomic<time_point<steady_clock>> mLastUpdatedTime;
+        std::atomic<time_point<steady_clock>> mNextStartTime;
         std::mutex mStaleLock;
         bool mIsSessionDead;
     };
@@ -114,7 +131,7 @@ class PowerHintSession : public BnPowerHintSession {
     std::string getIdString() const;
     const std::shared_ptr<AdaptiveCpu> mAdaptiveCpu;
     AppHintDesc *mDescriptor = nullptr;
-    sp<StaleHandler> mStaleHandler;
+    sp<HintTimerHandler> mHintTimerHandler;
     sp<MessageHandler> mPowerManagerHandler;
     std::mutex mLock;
     std::atomic<bool> mSessionClosed = false;
