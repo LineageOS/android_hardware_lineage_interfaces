@@ -1,0 +1,17 @@
+/*
+ * Copyright (C) 2022 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package vendor.lineage.biometrics.fingerprint.udfpssensor@1.0;
+
+import IUdfpsSensorCallback;
+
+interface IUdfpsSensor {
+    /**
+     * This function is used to register a callback function which is
+     * called by the HAL whenever sensor is pressed.
+     */
+    oneway setCallback(IUdfpsSensorCallback callback);
+};

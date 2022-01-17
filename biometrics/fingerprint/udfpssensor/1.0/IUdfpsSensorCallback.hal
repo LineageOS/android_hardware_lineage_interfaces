@@ -1,0 +1,15 @@
+/*
+ * Copyright (C) 2022 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package vendor.lineage.biometrics.fingerprint.udfpssensor@1.0;
+
+/**
+ * IUdfpsSensorCallback is the callback interface to
+ * {@link IUdfpsSensor.setCallback}.
+ */
+interface IUdfpsSensorCallback {
+    oneway onPressed();
+};
