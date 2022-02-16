@@ -43,9 +43,14 @@ constexpr std::string_view kConfigProperty("vendor.powerhal.config");
 constexpr std::string_view kConfigDefaultFileName("powerhint.json");
 
 int main() {
-    const std::string config_path =
-            "/vendor/etc/" +
-            android::base::GetProperty(kConfigProperty.data(), kConfigDefaultFileName.data());
+    std::string config_path = "/vendor/etc/";
+    if (android::base::GetBoolProperty(kConfigDebugPathProperty.data(), false)) {
+        config_path = "/data/vendor/etc/";
+        LOG(WARNING) << "Pixel Power HAL AIDL Service is using debug config from: " << config_path;
+    }
+    config_path.append(
+            android::base::GetProperty(kConfigProperty.data(), kConfigDefaultFileName.data()));
+
     LOG(INFO) << "Pixel Power HAL AIDL Service with Extension is starting with config: "
               << config_path;
 
@@ -77,24 +82,15 @@ int main() {
     CHECK(status == STATUS_OK);
     LOG(INFO) << "Pixel Power HAL AIDL Service with Extension is started.";
 
+    if (::android::base::GetIntProperty("vendor.powerhal.adpf.rate", -1) != -1) {
+        PowerHintMonitor::getInstance()->start();
+        PowerSessionManager::getInstance()->setHintManager(hm);
+    }
+
     std::thread initThread([&]() {
         ::android::base::WaitForProperty(kPowerHalInitProp.data(), "1");
         hm->Start();
         dlpw->Init();
-
-        // use debug config for ADPF tuning.
-        if (android::base::GetBoolProperty(kConfigDebugPathProperty.data(), false)) {
-            const std::string debug_config_path =
-                    "/data/vendor/etc/" + android::base::GetProperty(kConfigProperty.data(),
-                                                                     kConfigDefaultFileName.data());
-            hm = HintManager::GetFromJSON(debug_config_path, false);
-            LOG(WARNING) << "Pixel Power HAL AIDL Service with Extension is reloading with config: "
-                         << debug_config_path;
-        }
-        if (::android::base::GetIntProperty("vendor.powerhal.adpf.rate", -1) != -1) {
-            PowerHintMonitor::getInstance()->start();
-            PowerSessionManager::getInstance()->setHintManager(hm);
-        }
     });
     initThread.detach();
 
