@@ -18,6 +18,8 @@
 #include <hidl/HidlTransportSupport.h>
 #include "Usb.h"
 
+using android::base::GetProperty;
+
 using android::sp;
 
 // libhwbinder:
@@ -32,7 +34,8 @@ using android::OK;
 using android::status_t;
 
 int main() {
-    android::sp<IUsb> service = new Usb();
+    android::sp<IUsb> service = new Usb(GetProperty(USB_DEVICE_PROP, "a600000.ssusb"),
+                                        GetProperty(USB_CONTROLLER_PROP, "a600000.dwc3"));
 
     configureRpcThreadpool(1, true /*callerWillJoin*/);
     status_t status = service->registerAsService();

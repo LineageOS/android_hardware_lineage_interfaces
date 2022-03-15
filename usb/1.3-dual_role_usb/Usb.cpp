@@ -40,24 +40,24 @@ Return<bool> Usb::enableUsbDataSignal(bool enable) {
     bool result = true;
     ALOGI("Userspace turn %s USB data signaling", enable ? "on" : "off");
     if (enable) {
-        if (!WriteStringToFile("1", USB_DATA_PATH)) {
+        if (!WriteStringToFile("1", mDevicePath + USB_DATA_PATH)) {
             ALOGE("Not able to turn on usb connection notification");
             result = false;
         }
-        if (!WriteStringToFile(kGadgetName, PULLUP_PATH)) {
+        if (!WriteStringToFile(mGadgetName, PULLUP_PATH)) {
             ALOGE("Gadget cannot be pulled up");
             result = false;
         }
     } else {
-        if (!WriteStringToFile("1", ID_PATH)) {
+        if (!WriteStringToFile("1", mDevicePath + ID_PATH)) {
             ALOGE("Not able to turn off host mode");
             result = false;
         }
-        if (!WriteStringToFile("0", VBUS_PATH)) {
+        if (!WriteStringToFile("0", mDevicePath + VBUS_PATH)) {
             ALOGE("Not able to set Vbus state");
             result = false;
         }
-        if (!WriteStringToFile("0", USB_DATA_PATH)) {
+        if (!WriteStringToFile("0", mDevicePath + USB_DATA_PATH)) {
             ALOGE("Not able to turn off usb connection notification");
             result = false;
         }
@@ -596,7 +596,8 @@ Return<void> Usb::setCallback(const sp<V1_0::IUsbCallback>& callback) {
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 Usb* usb;
 
-Usb::Usb() {
+Usb::Usb(std::string deviceName, std::string gadgetName)
+    : mDevicePath(SOC_PATH + deviceName + "/"), mGadgetName(gadgetName) {
     pthread_mutex_lock(&lock);
     // Make this a singleton class
     assert(usb == NULL);
