@@ -45,25 +45,21 @@ Return<bool> Usb::enableUsbDataSignal(bool enable) {
             result = false;
         }
         if (!WriteStringToFile(mGadgetName, PULLUP_PATH)) {
-            ALOGE("Gadget cannot be pulled up");
-            result = false;
+            ALOGW("Gadget cannot be pulled up");
         }
     } else {
         if (!WriteStringToFile("1", mDevicePath + ID_PATH)) {
-            ALOGE("Not able to turn off host mode");
-            result = false;
+            ALOGW("Not able to turn off host mode");
         }
         if (!WriteStringToFile("0", mDevicePath + VBUS_PATH)) {
-            ALOGE("Not able to set Vbus state");
-            result = false;
+            ALOGW("Not able to set Vbus state");
         }
         if (!WriteStringToFile("0", mDevicePath + USB_DATA_PATH)) {
             ALOGE("Not able to turn off usb connection notification");
             result = false;
         }
         if (!WriteStringToFile("none", PULLUP_PATH)) {
-            ALOGE("Gadget cannot be pulled down");
-            result = false;
+            ALOGW("Gadget cannot be pulled down");
         }
     }
     return result;
