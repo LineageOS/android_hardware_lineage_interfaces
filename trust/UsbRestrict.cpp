@@ -25,11 +25,9 @@ namespace trust {
 namespace V1_0 {
 namespace implementation {
 
-static constexpr const char* kControlPath = "/proc/sys/kernel/deny_new_usb";
-
 // Methods from ::vendor::lineage::trust::V1_0::IUsbRestrict follow.
 Return<bool> UsbRestrict::isEnabled() {
-    std::ifstream file(kControlPath);
+    std::ifstream file(CONTROL_PATH);
     std::string content;
     file >> content;
     file.close();
@@ -37,12 +35,12 @@ Return<bool> UsbRestrict::isEnabled() {
 }
 
 Return<void> UsbRestrict::setEnabled(bool enabled) {
-    std::ofstream file(kControlPath);
+    std::ofstream file(CONTROL_PATH);
     if (file.is_open()) {
         file << (enabled ? "1" : "0");
         file.close();
     } else {
-        LOG(ERROR) << "Failed to open " << kControlPath << ", error=" << errno
+        LOG(ERROR) << "Failed to open " << CONTROL_PATH << ", error=" << errno
                    << " (" << strerror(errno) << ")";
     }
     return Void();
