@@ -14,7 +14,7 @@
 
 cc_defaults {
     name: "trust_defaults",
-    defaults: ["hidl_defaults"],
+    defaults: ["hidl_defaults", "trust_usb_control_defaults"],
     relative_install_path: "hw",
     srcs: [
         "UsbRestrict.cpp",
