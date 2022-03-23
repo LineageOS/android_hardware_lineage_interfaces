@@ -133,8 +133,8 @@ Return<void> Usb::enableContaminantPresenceProtection(const hidl_string& portNam
 
 // Methods from ::android::hardware::usb::V1_3::IUsb follow.
 Return<bool> Usb::enableUsbDataSignal(bool enable) {
-    bool success =
-            android::base::WriteStringToFile(enable ? "0" : "1", "/proc/sys/kernel/deny_new_usb");
+    bool success = android::base::WriteStringToFile(
+            enable ? USB_CONTROL_DISABLE : USB_CONTROL_ENABLE, USB_CONTROL_PATH);
     if (success)
         queryPortStatus();
     else
