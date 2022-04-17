@@ -29,10 +29,8 @@
 #include "PowerExt.h"
 #include "PowerSessionManager.h"
 #include "adaptivecpu/AdaptiveCpu.h"
-#include "disp-power/DisplayLowPower.h"
 
 using aidl::google::hardware::power::impl::pixel::AdaptiveCpu;
-using aidl::google::hardware::power::impl::pixel::DisplayLowPower;
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
 using aidl::google::hardware::power::impl::pixel::PowerHintMonitor;
@@ -48,20 +46,18 @@ int main() {
         LOG(FATAL) << "HintManager Init failed";
     }
 
-    std::shared_ptr<DisplayLowPower> dlpw = std::make_shared<DisplayLowPower>();
-
     // single thread
     ABinderProcess_setThreadPoolMaxThreadCount(0);
 
     std::shared_ptr<AdaptiveCpu> adaptiveCpu = std::make_shared<AdaptiveCpu>();
 
     // core service
-    std::shared_ptr<Power> pw = ndk::SharedRefBase::make<Power>(dlpw, adaptiveCpu);
+    std::shared_ptr<Power> pw = ndk::SharedRefBase::make<Power>(adaptiveCpu);
     ndk::SpAIBinder pwBinder = pw->asBinder();
     AIBinder_setMinSchedulerPolicy(pwBinder.get(), SCHED_NORMAL, -20);
 
     // extension service
-    std::shared_ptr<PowerExt> pwExt = ndk::SharedRefBase::make<PowerExt>(dlpw, adaptiveCpu);
+    std::shared_ptr<PowerExt> pwExt = ndk::SharedRefBase::make<PowerExt>(adaptiveCpu);
     auto pwExtBinder = pwExt->asBinder();
     AIBinder_setMinSchedulerPolicy(pwExtBinder.get(), SCHED_NORMAL, -20);
 
@@ -80,7 +76,6 @@ int main() {
     std::thread initThread([&]() {
         ::android::base::WaitForProperty(kPowerHalInitProp.data(), "1");
         HintManager::GetInstance()->Start();
-        dlpw->Init();
     });
     initThread.detach();
 

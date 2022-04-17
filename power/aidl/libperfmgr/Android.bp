@@ -12,7 +12,6 @@ cc_binary {
         "liblog",
         "libutils",
         "libbinder_ndk",
-        "libdisppower-pixel",
         "libperfmgr",
         "libprocessgroup",
         "pixel-power-ext-V1-ndk",
