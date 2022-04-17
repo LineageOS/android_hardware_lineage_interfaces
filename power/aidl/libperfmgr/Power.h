@@ -23,7 +23,7 @@
 #include <aidl/android/hardware/power/BnPower.h>
 #include <perfmgr/HintManager.h>
 
-#include "disp-power/InteractionHandler.h"
+#include "InteractionHandler.h"
 
 namespace aidl {
 namespace android {
