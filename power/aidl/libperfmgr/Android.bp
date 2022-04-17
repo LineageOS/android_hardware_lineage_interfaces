@@ -15,6 +15,7 @@ cc_binary {
         "libperfmgr",
     ],
     srcs: [
+        "InteractionHandler.cpp",
         "service.cpp",
         "Power.cpp",
     ],
