@@ -92,6 +92,7 @@ class PowerHintSession : public BnPowerHintSession {
     bool isAppSession();
     const std::vector<int> &getTidList() const;
     int getUclampMin();
+    void dumpToStream(std::ostream &stream);
 
   private:
     class HintTimerHandler : public MessageHandler {
