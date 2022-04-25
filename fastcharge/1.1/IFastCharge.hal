@@ -1,0 +1,12 @@
+//
+// Copyright (C) 2021 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package vendor.lineage.fastcharge@1.1;
+
+import @1.0::IFastCharge;
+
+interface IFastCharge extends @1.0::IFastCharge {
+};
