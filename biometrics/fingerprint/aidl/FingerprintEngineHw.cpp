@@ -15,6 +15,10 @@ static FingerprintEngineHw* sInstance = nullptr;
 FingerprintEngineHw::FingerprintEngineHw(std::shared_ptr<FingerprintConfig> config)
     : FingerprintEngine(config), mDevice(openHal()) {
     sInstance = this;
+
+    if (mUdfpsHandler) {
+        mUdfpsHandler->init(mDevice);
+    }
 }
 
 std::shared_ptr<FingerprintEngine> FingerprintEngineHw::create(
@@ -129,7 +133,26 @@ ndk::ScopedAStatus FingerprintEngineHw::invalidateAuthenticatorIdImpl() {
     return ndk::ScopedAStatus::ok();
 }
 
+ndk::ScopedAStatus FingerprintEngineHw::onPointerDownImpl(int32_t /* pointerId */, int32_t x,
+                                                          int32_t y, float minor, float major) {
+    if (mUdfpsHandler) {
+        mUdfpsHandler->onFingerDown(x, y, minor, major);
+    }
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus FingerprintEngineHw::onPointerUpImpl(int32_t /* pointerId */) {
+    if (mUdfpsHandler) {
+        mUdfpsHandler->onFingerUp();
+    }
+    return ndk::ScopedAStatus::ok();
+}
+
 ndk::ScopedAStatus FingerprintEngineHw::cancelImpl() {
+    if (mUdfpsHandler) {
+        mUdfpsHandler->cancel();
+    }
+
     int ret = mDevice->cancel(mDevice);
     if (ret == 0) {
         mCb->onError(Error::CANCELED, 0 /* vendorCode */);
@@ -192,6 +215,9 @@ void FingerprintEngineHw::notify(const fingerprint_msg_t* msg) {
             AcquiredInfo result =
                     VendorAcquiredFilter(msg->data.acquired.acquired_info, &vendorCode);
             ALOGD("onAcquired(%hhd, %d)", result, vendorCode);
+            if (sInstance->mUdfpsHandler) {
+                sInstance->mUdfpsHandler->onAcquired(static_cast<int32_t>(result), vendorCode);
+            }
             // don't process vendor messages further since frameworks try to disable
             // udfps display mode on vendor acquired messages but our sensors send a
             // vendor message during processing...
@@ -219,10 +245,15 @@ void FingerprintEngineHw::notify(const fingerprint_msg_t* msg) {
                 const hw_auth_token_t hat = msg->data.authenticated.hat;
                 HardwareAuthToken authToken;
                 translate(hat, authToken);
-
+                if (sInstance->mUdfpsHandler) {
+                    sInstance->mUdfpsHandler->onAuthenticationSucceeded();
+                }
                 sInstance->mCb->onAuthenticationSucceeded(msg->data.authenticated.finger.fid, authToken);
                 sInstance->clearLockout(true);
             } else {
+                if (sInstance->mUdfpsHandler) {
+                    sInstance->mUdfpsHandler->onAuthenticationFailed();
+                }
                 sInstance->mCb->onAuthenticationFailed();
                 sInstance->checkSensorLockout();
             }

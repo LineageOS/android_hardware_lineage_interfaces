@@ -20,6 +20,10 @@ FingerprintEngineHidl::FingerprintEngineHidl(std::shared_ptr<FingerprintConfig> 
             ALOGE("Can't open any fingerprint HAL module");
         }
     }
+
+    if (mUdfpsHandler) {
+        mUdfpsHandler->init(mService.get());
+    }
 }
 
 std::shared_ptr<FingerprintEngine> FingerprintEngineHidl::create(
@@ -123,7 +127,26 @@ ndk::ScopedAStatus FingerprintEngineHidl::invalidateAuthenticatorIdImpl() {
     return ndk::ScopedAStatus::ok();
 }
 
+ndk::ScopedAStatus FingerprintEngineHidl::onPointerDownImpl(int32_t /* pointerId */, int32_t x,
+                                                            int32_t y, float minor, float major) {
+    if (mUdfpsHandler) {
+        mUdfpsHandler->onFingerDown(x, y, minor, major);
+    }
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus FingerprintEngineHidl::onPointerUpImpl(int32_t /* pointerId */) {
+    if (mUdfpsHandler) {
+        mUdfpsHandler->onFingerUp();
+    }
+    return ndk::ScopedAStatus::ok();
+}
+
 ndk::ScopedAStatus FingerprintEngineHidl::cancelImpl() {
+    if (mUdfpsHandler) {
+        mUdfpsHandler->cancel();
+    }
+
     RequestStatus status = mService->cancel();
     if (status != RequestStatus::SYS_OK) {
         int error = RequestStatusToInt(status);
@@ -145,10 +168,13 @@ Return<void> FingerprintEngineHidl::onAcquired(uint64_t deviceId,
                                                FingerprintAcquiredInfo acquiredInfo,
                                                int32_t vendorCode) {
     ALOGD("onAcquired(%hhd, %d)", acquiredInfo, vendorCode);
+    AcquiredInfo info = VendorAcquiredFilter(acquiredInfo);
+    if (mUdfpsHandler) {
+        mUdfpsHandler->onAcquired(static_cast<int32_t>(info), vendorCode);
+    }
     // don't process vendor messages further since frameworks try to disable
     // udfps display mode on vendor acquired messages but our sensors send a
     // vendor message during processing...
-    AcquiredInfo info = VendorAcquiredFilter(acquiredInfo);
     if (info != AcquiredInfo::VENDOR) {
         mCb->onAcquired(info, vendorCode);
     }
@@ -161,9 +187,15 @@ Return<void> FingerprintEngineHidl::onAuthenticated(uint64_t deviceId, uint32_t 
     if (fingerId != 0) {
         HardwareAuthToken authToken;
         translate(token, authToken);
+        if (mUdfpsHandler) {
+            mUdfpsHandler->onAuthenticationSucceeded();
+        }
         mCb->onAuthenticationSucceeded(fingerId, authToken);
         mLockoutTracker.reset(true);
     } else {
+        if (mUdfpsHandler) {
+            mUdfpsHandler->onAuthenticationFailed();
+        }
         mCb->onAuthenticationFailed();
         mLockoutTracker.addFailedAttempt();
         checkSensorLockout();

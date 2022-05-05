@@ -13,6 +13,7 @@
 
 #include "FingerprintConfig.h"
 #include "LockoutTracker.h"
+#include "UdfpsHandler.h"
 
 using ::aidl::android::hardware::keymaster::HardwareAuthToken;
 
@@ -44,6 +45,7 @@ class FingerprintEngine {
 
   protected:
     std::shared_ptr<FingerprintConfig> mConfig;
+    UdfpsHandler* mUdfpsHandler = nullptr;
 
     int32_t mUserId;
     std::shared_ptr<ISessionCallback> mCb;
@@ -59,6 +61,8 @@ class FingerprintEngine {
     // lockout timer
     bool mIsLockoutTimerStarted = false;
     bool mIsLockoutTimerAborted = false;
+
+    UdfpsHandlerFactory* mUdfpsHandlerFactory = nullptr;
 };
 
 }  // namespace aidl::android::hardware::biometrics::fingerprint

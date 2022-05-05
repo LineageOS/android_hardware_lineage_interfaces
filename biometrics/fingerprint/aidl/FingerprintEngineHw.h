@@ -35,6 +35,9 @@ class FingerprintEngineHw : public FingerprintEngine {
     ndk::ScopedAStatus removeEnrollmentsImpl(const std::vector<int32_t>& enrollmentIds) override;
     ndk::ScopedAStatus getAuthenticatorIdImpl() override;
     ndk::ScopedAStatus invalidateAuthenticatorIdImpl() override;
+    ndk::ScopedAStatus onPointerDownImpl(int32_t pointerId, int32_t x,
+                                                 int32_t y, float minor, float major) override;
+    ndk::ScopedAStatus onPointerUpImpl(int32_t pointerId) override;
     ndk::ScopedAStatus cancelImpl() override;
 
   private:

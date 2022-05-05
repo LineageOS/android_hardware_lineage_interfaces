@@ -52,6 +52,7 @@ cc_binary {
     local_include_dirs: [
         "include",
     ],
+    header_libs: ["libudfpshandler_headers"],
     shared_libs: [
         "libbase",
         "libbinder_ndk",
@@ -72,6 +73,7 @@ cc_binary {
     ],
     static_libs: [
         "libandroid.hardware.biometrics.fingerprint.lineage.Props",
+        "libudfpshandlerfactory",
     ],
     vendor: true,
 }

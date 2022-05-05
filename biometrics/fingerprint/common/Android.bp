@@ -1,0 +1,18 @@
+//
+// Copyright (C) 2022-2024 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_headers {
+    name: "libudfpshandler_headers",
+    export_include_dirs: ["include"],
+    vendor: true,
+}
+
+cc_library_static {
+    name: "libudfpshandlerfactory",
+    srcs: ["UdfpsHandler.cpp"],
+    vendor: true,
+    header_libs: ["libudfpshandler_headers"],
+}
