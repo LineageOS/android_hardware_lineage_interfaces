@@ -24,6 +24,8 @@ namespace fastboot {
 namespace V1_1 {
 namespace implementation {
 
+#define FB_OEM_GET_PROP "getprop"
+
 using ::android::hardware::hidl_string;
 using ::android::hardware::Return;
 using ::android::hardware::Void;

@@ -16,11 +16,18 @@
 
 #include "Fastboot.h"
 
+#include <unordered_map>
+
+#include <android-base/properties.h>
+#include <android-base/strings.h>
+
 namespace android {
 namespace hardware {
 namespace fastboot {
 namespace V1_1 {
 namespace implementation {
+
+using OEMCommandHandler = std::function<Result(const std::vector<std::string>&)>;
 
 // Methods from ::android::hardware::fastboot::V1_1::IFastboot follow.
 Return<void> Fastboot::getPartitionType(const hidl_string& /* partitionName */,
@@ -29,8 +36,39 @@ Return<void> Fastboot::getPartitionType(const hidl_string& /* partitionName */,
     return Void();
 }
 
-Return<void> Fastboot::doOemCommand(const hidl_string& /* oemCmdArgs */, doOemCommand_cb _hidl_cb) {
-    _hidl_cb({Status::FAILURE_UNKNOWN, "Command not supported"});
+Result GetProp(const std::vector<std::string>& args) {
+    if (!args.size()) {
+        return { Status::INVALID_ARGUMENT, "Property unspecified" };
+    }
+
+    auto property = android::base::GetProperty(args[0], "");
+
+    if (!property.empty()) {
+        return { Status::SUCCESS, args[0] + ": " + property };
+    }
+
+    return { Status::FAILURE_UNKNOWN, "Unable to get property" };
+}
+
+Return<void> Fastboot::doOemCommand(const hidl_string& oemCmdArgs, doOemCommand_cb _hidl_cb) {
+    const std::unordered_map<std::string, OEMCommandHandler> kOEMCmdMap = {
+        {FB_OEM_GET_PROP, GetProp},
+    };
+
+    auto args = android::base::Split(oemCmdArgs, " ");
+    if (args.size() < 2) {
+        _hidl_cb({ Status::INVALID_ARGUMENT, "Invalid OEM command" });
+        return Void();
+    }
+
+    // args[0] will be "oem", args[1] will be the command name
+    auto cmd_handler = kOEMCmdMap.find(args[1]);
+    if (cmd_handler != kOEMCmdMap.end()) {
+        _hidl_cb(cmd_handler->second(std::vector<std::string>(args.begin() + 2, args.end())));
+    } else {
+        _hidl_cb({ Status::FAILURE_UNKNOWN, "Unknown OEM command" });
+    }
+
     return Void();
 }
 
