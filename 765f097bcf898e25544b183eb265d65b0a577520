@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e695e22_ebac4913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-26T23:19:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this rather get called device side when the initialization is actually done?",
+      "revId": "765f097bcf898e25544b183eb265d65b0a577520",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
