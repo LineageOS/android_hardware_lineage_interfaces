@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e401ec68_718ea29b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-26T23:22:48Z",
+      "side": 1,
+      "message": "The power hal does not have much to do with radio. Can\u0027t you fix the permissions on the nodes instead?",
+      "revId": "4f9c9da4ae668e1ca67855fe2ace6ed6e221964f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
