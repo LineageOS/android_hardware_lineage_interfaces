@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this rather get called device side when the initialization is actually done?",
       "revId": "765f097bcf898e25544b183eb265d65b0a577520",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea25df2_3f604ceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-09-27T00:40:53Z",
+      "side": 1,
+      "message": "Most if not all devices do it on boot complete, but I guess it\u0027s fine to drop this.",
+      "parentUuid": "1e695e22_ebac4913",
+      "revId": "765f097bcf898e25544b183eb265d65b0a577520",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
