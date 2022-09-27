@@ -16,6 +16,24 @@
       "message": "I think this is still useful for many devices that don\u0027t use a simple sysfs node for dt2w.",
       "revId": "8e4d87324c2ad99884679248277f80282acad81a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cdd0c98_475852f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-09-27T00:44:00Z",
+      "side": 1,
+      "message": "AFAIK this was only used on Xiaomi devices to dynamically detect the touchscreen node but they\u0027ve since switched to a common node.",
+      "parentUuid": "703e79b2_d422075b",
+      "revId": "8e4d87324c2ad99884679248277f80282acad81a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
