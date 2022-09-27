@@ -16,6 +16,24 @@
       "message": "The power hal does not have much to do with radio. Can\u0027t you fix the permissions on the nodes instead?",
       "revId": "4f9c9da4ae668e1ca67855fe2ace6ed6e221964f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f094629_069274e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-09-27T00:22:23Z",
+      "side": 1,
+      "message": "Not sure, gonna need one of the Samsung guys to chime in.",
+      "parentUuid": "e401ec68_718ea29b",
+      "revId": "4f9c9da4ae668e1ca67855fe2ace6ed6e221964f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
