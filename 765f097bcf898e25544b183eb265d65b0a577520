@@ -34,6 +34,24 @@
       "parentUuid": "1e695e22_ebac4913",
       "revId": "765f097bcf898e25544b183eb265d65b0a577520",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c5b40a_3412a35b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-27T00:55:39Z",
+      "side": 1,
+      "message": "Yes, they start it on boot complete and set the property when they are done. This patch would set the property earlier on boot complete.",
+      "parentUuid": "aea25df2_3f604ceb",
+      "revId": "765f097bcf898e25544b183eb265d65b0a577520",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
