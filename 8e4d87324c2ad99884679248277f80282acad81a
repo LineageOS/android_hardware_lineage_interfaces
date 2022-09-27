@@ -34,6 +34,24 @@
       "parentUuid": "703e79b2_d422075b",
       "revId": "8e4d87324c2ad99884679248277f80282acad81a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e9cc2fe_9a87a4b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-09-27T00:53:48Z",
+      "side": 1,
+      "message": "https://github.com/search?q\u003dorg%3ALineageOS+TARGET_POWERHAL_MODE_EXT\u0026type\u003dcode\nfrom the official devcies xiaomi sdm845 and surya are currently using libperfmgr and not a single sysfs node. Some newer xiaomi devices also use a common touchscreen driver which is controlled with ioctl. Having this patch would be useful for them to handle dt2w.",
+      "parentUuid": "0cdd0c98_475852f2",
+      "revId": "8e4d87324c2ad99884679248277f80282acad81a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
