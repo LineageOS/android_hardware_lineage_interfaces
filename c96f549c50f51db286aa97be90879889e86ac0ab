@@ -16,6 +16,24 @@
       "message": "What\u0027s the intention behind this?",
       "revId": "c96f549c50f51db286aa97be90879889e86ac0ab",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b61fc8a2_6ce9274a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-10-03T21:49:29Z",
+      "side": 1,
+      "message": "No clue, this was used on hardware/samsung",
+      "parentUuid": "6ad61077_1f07bba9",
+      "revId": "c96f549c50f51db286aa97be90879889e86ac0ab",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
