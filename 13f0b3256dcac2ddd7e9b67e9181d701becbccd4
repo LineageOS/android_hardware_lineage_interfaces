@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452ab106_e40b1521",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-04T17:34:14Z",
+      "side": 1,
+      "message": "similar to other commit: why did you change the directory structure that much? what\u0027s wrong with something like the original:\npower-libperfmgr\n \\-  Android.bp\n   \\- aidl\n     |- sources\n   \\- disp-power\n     |- sources",
+      "revId": "13f0b3256dcac2ddd7e9b67e9181d701becbccd4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
