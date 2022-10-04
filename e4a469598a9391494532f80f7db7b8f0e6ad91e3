@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ea615a9_6c3330b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-04T16:56:14Z",
+      "side": 1,
+      "message": "everyone who pulled this hal to their device trees appended some sort of moniker to it, i\u0027d actually prefer having android.hardware.power-service.lineage-libperfmgr",
+      "revId": "e4a469598a9391494532f80f7db7b8f0e6ad91e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
