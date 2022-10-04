@@ -86,6 +86,24 @@
       "message": "it has even less \"generic hal\" things, seeing as it\u0027s modified to fit us ;P",
       "revId": "e4a469598a9391494532f80f7db7b8f0e6ad91e3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "674daea5_e1792e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-10-04T17:51:46Z",
+      "side": 1,
+      "message": "The Lineage branding is added to Lineage stuff like trust, livedisplay, etc. It doesn\u0027t apply here.",
+      "parentUuid": "fe11a4c6_c51e645f",
+      "revId": "e4a469598a9391494532f80f7db7b8f0e6ad91e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
