@@ -51,6 +51,24 @@
       "message": "they are not, as mentioned: working fine on op8998",
       "revId": "cd8228aa1286ed19a5a0a2f1a9de195968805edc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f0384e_89919003",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-10-04T17:49:47Z",
+      "side": 1,
+      "message": "By working fine you mean the code isn\u0027t used at all? There\u0027s no reason to keep this, it\u0027s unused on non-Pixel devices.",
+      "parentUuid": "f0dfe08f_feefb5f8",
+      "revId": "cd8228aa1286ed19a5a0a2f1a9de195968805edc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
