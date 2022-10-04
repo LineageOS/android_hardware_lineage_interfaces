@@ -16,6 +16,23 @@
       "message": "why did you pull this into the aidl directory? i don\u0027t see the problem having this in disp-power, as it is in the original patches.",
       "revId": "d2467261fe3cd5e82d7075d2c61f6b090c335a22",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006fec58_28984eea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-04T17:06:35Z",
+      "side": 1,
+      "message": "also, like mentioned in the other patch, i\u0027d prefer having DisplayLowPower here too (so basically, just the additions of the original \"Split PowerHAL\" commit)",
+      "revId": "d2467261fe3cd5e82d7075d2c61f6b090c335a22",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
