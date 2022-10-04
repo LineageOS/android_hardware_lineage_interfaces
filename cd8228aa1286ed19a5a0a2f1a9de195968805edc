@@ -16,6 +16,24 @@
       "message": "why remove this? we\u0027re using this to good effect in op/msm8998 for example.",
       "revId": "cd8228aa1286ed19a5a0a2f1a9de195968805edc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f561031e_48020202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-10-04T17:41:51Z",
+      "side": 1,
+      "message": "These are unused if you don\u0027t have the Pixel-specific display hints, even if you keep the code.",
+      "parentUuid": "947aa935_8037abca",
+      "revId": "cd8228aa1286ed19a5a0a2f1a9de195968805edc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
