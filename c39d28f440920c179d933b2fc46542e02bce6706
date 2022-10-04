@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d768b68_1d541ef2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-04T16:52:43Z",
+      "side": 1,
+      "message": "this doesn\u0027t apply when picking the topic, did you shuffle the order of commits?",
+      "revId": "c39d28f440920c179d933b2fc46542e02bce6706",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
