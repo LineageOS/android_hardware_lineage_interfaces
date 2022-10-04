@@ -33,6 +33,42 @@
       "message": "also, frankly, i don\u0027t get why it wasn\u0027t renamed in the first commit, that\u0027s how it was done both in pro1 and op/msm8998",
       "revId": "e4a469598a9391494532f80f7db7b8f0e6ad91e3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afe2faf_b7e4dac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-10-04T17:36:55Z",
+      "side": 1,
+      "message": "This HAL doesn\u0027t have anything Lineage-specific, so that name wouldn\u0027t make much sense.",
+      "parentUuid": "1ea615a9_6c3330b8",
+      "revId": "e4a469598a9391494532f80f7db7b8f0e6ad91e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36accdcf_7e3c769d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-10-04T17:36:55Z",
+      "side": 1,
+      "message": "It\u0027s easier this way since we avoid conflicts.",
+      "parentUuid": "419a0fb0_6c2bd0d9",
+      "revId": "e4a469598a9391494532f80f7db7b8f0e6ad91e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
