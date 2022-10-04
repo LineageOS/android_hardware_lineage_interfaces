@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "947aa935_8037abca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-04T17:02:44Z",
+      "side": 1,
+      "message": "why remove this? we\u0027re using this to good effect in op/msm8998 for example.",
+      "revId": "cd8228aa1286ed19a5a0a2f1a9de195968805edc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
