@@ -1,8 +1,5 @@
 cc_binary {
     name: "android.hardware.power-service.libperfmgr",
-    defaults: [
-        "powerhal_mode_ext_defaults",
-    ],
     relative_install_path: "hw",
     init_rc: ["android.hardware.power-service.libperfmgr.rc"],
     vintf_fragments: ["android.hardware.power-service.xml"],
@@ -27,4 +24,5 @@ cc_binary {
         "PowerHintSession.cpp",
         "PowerSessionManager.cpp",
     ],
+    local_include_dirs: ["include"],
 }
