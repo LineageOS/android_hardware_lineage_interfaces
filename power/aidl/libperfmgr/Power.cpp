@@ -31,6 +31,10 @@
 #include "PowerHintSession.h"
 #include "PowerSessionManager.h"
 
+#ifdef TARGET_POWERHAL_MODE_EXT
+#include "power/power-mode.h"
+#endif
+
 namespace aidl {
 namespace google {
 namespace hardware {
@@ -40,11 +44,6 @@ namespace pixel {
 
 using ::aidl::google::hardware::power::impl::pixel::PowerHintSession;
 using ::android::perfmgr::HintManager;
-
-#ifdef MODE_EXT
-extern bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return);
-extern bool setDeviceSpecificMode(Mode type, bool enabled);
-#endif
 
 constexpr char kPowerHalStateProp[] = "vendor.powerhal.state";
 constexpr char kPowerHalAudioProp[] = "vendor.powerhal.audio";
@@ -95,7 +94,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
         HintManager::GetInstance()->GetAdpfProfile()->mReportingRateLimitNs > 0) {
         PowerSessionManager::getInstance()->updateHintMode(toString(type), enabled);
     }
-#ifdef MODE_EXT
+#ifdef TARGET_POWERHAL_MODE_EXT
     if (setDeviceSpecificMode(type, enabled)) {
         return ndk::ScopedAStatus::ok();
     }
@@ -179,7 +178,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 }
 
 ndk::ScopedAStatus Power::isModeSupported(Mode type, bool *_aidl_return) {
-#ifdef MODE_EXT
+#ifdef TARGET_POWERHAL_MODE_EXT
     if (isDeviceSpecificModeSupported(type, _aidl_return)) {
         return ndk::ScopedAStatus::ok();
     }

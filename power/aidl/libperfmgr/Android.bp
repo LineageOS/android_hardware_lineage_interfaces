@@ -27,4 +27,5 @@ cc_binary {
         "PowerHintSession.cpp",
         "PowerSessionManager.cpp",
     ],
+    local_include_dirs: ["include"],
 }
