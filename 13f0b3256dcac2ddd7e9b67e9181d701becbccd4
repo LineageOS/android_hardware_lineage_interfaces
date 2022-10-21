@@ -34,6 +34,23 @@
       "parentUuid": "452ab106_e40b1521",
       "revId": "13f0b3256dcac2ddd7e9b67e9181d701becbccd4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffdab3bc_f5acd802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-21T08:57:56Z",
+      "side": 1,
+      "message": "fully disagree. youre taking the code from somewhere else, might as well not mangle it until its unrecognizable, patches are hard to apply and everyone else doesnt understand the structure. not gonna use this.",
+      "revId": "13f0b3256dcac2ddd7e9b67e9181d701becbccd4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
