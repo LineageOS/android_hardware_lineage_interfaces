@@ -16,6 +16,24 @@
       "message": "The adaptivecpu does not seem to be included when compiling?\n```\nhardware/lineage/interfaces/power/aidl/libperfmgr/Power.h:25:10: fatal error: \u0027adaptivecpu/AdaptiveCpu.h\u0027 file not found\n#include \u003cadaptivecpu/AdaptiveCpu.h\u003e\n         ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n1 error generated.\n```\n",
       "revId": "6fc5ac73d47207ed43e605edd3c05b437a9bd215",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26e9637_dcdabc73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-11T08:24:32Z",
+      "side": 1,
+      "message": "Sry, the error is\n```\nhardware/lineage/interfaces/power/aidl/libperfmgr/Power.h:25:10: fatal error: \u0027adaptivecpu/AdaptiveCpu.h\u0027 file not found\n#include \"adaptivecpu/AdaptiveCpu.h\"\n         ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n1 error generated.\n```",
+      "parentUuid": "0fdde811_039a8987",
+      "revId": "6fc5ac73d47207ed43e605edd3c05b437a9bd215",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
