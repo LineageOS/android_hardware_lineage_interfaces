@@ -33,6 +33,23 @@
       "message": "so yeah, it would help if they\u0027d apply cleanly, otherwise i have to pull the entire chain, which squashes things a bit...",
       "revId": "c39d28f440920c179d933b2fc46542e02bce6706",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e0497d6_c1a72e14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-11T09:40:24Z",
+      "side": 1,
+      "message": "This change seems to only add the compile flag: `TARGET_POWERHAL_MODE_EXT`, but does not add the file `$(TARGET_POWERHAL_MODE_EXT)` or the `target_powerhal_mode_ext` to the `srcs` list of libperfmgr, causing ld error (The power-mode.cpp in the device tree directory is not getting compiled and linked):\n```\nld.lld: error: undefined symbol: aidl::google::hardware::power::impl::pixel::setDeviceSpecificMode(aidl::android::hardware::power::Mode, bool)\n\u003e\u003e\u003e referenced by Power.cpp:98 (hardware/lineage/interfaces/power/aidl/libperfmgr/Power.cpp:98)\n\u003e\u003e\u003e               out/soong/.intermediates/hardware/lineage/interfaces/power/aidl/libperfmgr/android.hardware.power-service.libperfmgr/android_vendor.33_arm64_armv8-a/obj/hardware/lineage/interfaces/power/aidl/libperfmgr/Power.o:(aidl::google::hardware::power::impl::pixel::Power::setMode(aidl::android::hardware::power::Mode, bool))\nionic/libdl/libdl/android_vendor.33_arm64_armv8-a_shared/libdl.so out/soong/.intermediates/bion\nld.lld: error: undefined symbol: aidl::google::hardware::power::impl::pixel::isDeviceSpecificModeSupported(aidl::android::hardware::power::Mode, bool*)\n\u003e\u003e\u003e referenced by Power.cpp:182 (hardware/lineage/interfaces/power/aidl/libperfmgr/Power.cpp:182)\n\u003e\u003e\u003e               out/soong/.intermediates/hardware/lineage/interfaces/power/aidl/libperfmgr/android.hardware.power-service.libperfmgr/android_vendor.33_arm64_armv8-a/obj/hardware/lineage/interfaces/power/aidl/libperfmgr/Power.o:(aidl::google::hardware::power::impl::pixel::Power::isModeSupported(aidl::android::hardware::power::Mode, bool*))\n```",
+      "revId": "c39d28f440920c179d933b2fc46542e02bce6706",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
