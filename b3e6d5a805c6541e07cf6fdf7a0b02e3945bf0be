@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bf6d1f_51857284",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-26T16:08:19Z",
+      "side": 1,
+      "message": "Renamed it to vendor.lineage.heath (Thanks to SebaUbuntu\u0027s idea)",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
