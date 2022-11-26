@@ -15,7 +15,7 @@ aidl_interface {
             enabled: false,
         },
         java: {
-            platform_apis: true,
+            sdk_version: "module_current",
         },
     },
     versions_with_info: [
