@@ -16,6 +16,189 @@
       "message": "Renamed it to vendor.lineage.heath (Thanks to SebaUbuntu\u0027s idea)",
       "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff54b33f_d4b1d1d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "Still many issues in the comments, one in a method name",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab8c5bd_7341aaae",
+        "filename": "health/aidl/aidl_api/vendor.lineage.health/1/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "wants the",
+      "range": {
+        "startLine": 15,
+        "startChar": 66,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bceb90c_41cdd1fc",
+        "filename": "health/aidl/aidl_api/vendor.lineage.health/1/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "because the",
+      "range": {
+        "startLine": 15,
+        "startChar": 48,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33cd2e96_cf356d05",
+        "filename": "health/aidl/aidl_api/vendor.lineage.health/1/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95895acf_10e7cb25",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "wants THE",
+      "range": {
+        "startLine": 15,
+        "startChar": 66,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc727811_fef6b7ba",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2da920_3ae2e259",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "Reason, not Reasion",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f76213f_168a00ce",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "the current",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e5399f_10fe5b35",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T17:16:03Z",
+      "side": 1,
+      "message": "compare it",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
