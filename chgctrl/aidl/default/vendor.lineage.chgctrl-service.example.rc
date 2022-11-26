@@ -1,0 +1,4 @@
+service vendor.lineage_chgctrl /vendor/bin/hw/vendor.lineage.chgctrl-service.example
+    class hal
+    user root
+    group root
