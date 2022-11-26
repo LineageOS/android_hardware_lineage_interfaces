@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b003fcde_db3994e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-26T05:48:45Z",
+      "side": 1,
+      "message": "Verified by running `vendor.lineage.chgctrl-V1-ndk` and it compiles",
+      "revId": "87ec318bbdd37d81df7c8cec27be29836caf4313",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
