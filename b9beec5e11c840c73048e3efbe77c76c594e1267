@@ -16,6 +16,24 @@
       "message": "isn\u0027t this how the hal is going to be implemented device-side?",
       "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e3b6a7_d657bbe0",
+        "filename": "chgctrl/aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-26T06:21:39Z",
+      "side": 1,
+      "message": "Google\u0027s documentation suggests disabling CPP backend for AIDL HAL:\nhttps://source.android.com/docs/core/architecture/aidl/aidl-hals#aidl-hal-interface\n\n\u003e Additionally, for maximum code portability and to avoid potential problems such as unnecessary additional libraries, disable the CPP backend.\n\nSo I disabled it here.",
+      "parentUuid": "0d463d39_0309c7dd",
+      "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
