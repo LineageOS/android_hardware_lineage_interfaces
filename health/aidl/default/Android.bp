@@ -1,0 +1,40 @@
+/*
+ * Copyright (C) 2022 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+soong_config_module_type {
+    name: "lineage_health_hal_cc_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "LINEAGE_HEALTH",
+    value_variables: ["CHARGING_ENABLED_PATH"],
+    properties: ["cppflags"],
+}
+
+lineage_health_hal_cc_defaults {
+    name: "lineage_health_hal_defaults",
+    soong_config_variables: {
+        CHARGING_ENABLED_PATH: {
+            cppflags: ["-DCHARGING_ENABLED_PATH=\"%s\""],
+        },
+    },
+}
+
+cc_binary {
+    name: "vendor.lineage.health-service.default",
+    defaults: ["lineage_health_hal_defaults"],
+    vendor: true,
+    relative_install_path: "hw",
+    init_rc: ["vendor.lineage.health-service.default.rc"],
+    vintf_fragments: ["vendor.lineage.health-service.default.xml"],
+    srcs: [
+        "service.cpp",
+        "LineageHealth.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "vendor.lineage.health-V1-ndk",
+    ],
+}
