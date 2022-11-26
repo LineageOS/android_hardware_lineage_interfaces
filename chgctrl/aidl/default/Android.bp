@@ -1,0 +1,26 @@
+/*
+ * Copyright (C) 2022 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+cc_binary {
+    name: "vendor.lineage.chgctrl-service.example",
+    relative_install_path: "hw",
+    init_rc: ["vendor.lineage.chgctrl-service.example.rc"],
+    vintf_fragments: ["vendor.lineage.chgctrl-service.example.xml"],
+    vendor: true,
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libutils",
+        "libbinder_ndk",
+        "vendor.lineage.chgctrl-V1-ndk",
+    ],
+    srcs: [
+        "service.cpp",
+        "Charger.cpp",
+        "UeventListener.cpp",
+    ]
+}
