@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ab7def7_ebfd2b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T10:48:54Z",
+      "side": 1,
+      "message": "Haven\u0027t commented in everything, but most of what I commented on repeats in other files",
+      "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d463d39_0309c7dd",
         "filename": "chgctrl/aidl/Android.bp",
         "patchSetId": 4
@@ -32,6 +49,74 @@
       "side": 1,
       "message": "Google\u0027s documentation suggests disabling CPP backend for AIDL HAL:\nhttps://source.android.com/docs/core/architecture/aidl/aidl-hals#aidl-hal-interface\n\n\u003e Additionally, for maximum code portability and to avoid potential problems such as unnecessary additional libraries, disable the CPP backend.\n\nSo I disabled it here.",
       "parentUuid": "0d463d39_0309c7dd",
+      "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad249324_a32a114e",
+        "filename": "chgctrl/aidl/vendor/lineage/chgctrl/ICharger.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T10:48:54Z",
+      "side": 1,
+      "message": "whats -\u003e wants",
+      "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74a6635_4b3cd1ab",
+        "filename": "chgctrl/aidl/vendor/lineage/chgctrl/ICharger.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T10:48:54Z",
+      "side": 1,
+      "message": "whats to -\u003e wants the",
+      "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e33d233_410e1e38",
+        "filename": "chgctrl/aidl/vendor/lineage/chgctrl/ICharger.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T10:48:54Z",
+      "side": 1,
+      "message": "i\u0027d omit everything after \"user\", that\u0027s redundant",
+      "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee021d74_c5b6356b",
+        "filename": "chgctrl/aidl/vendor/lineage/chgctrl/ICharger.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-11-26T10:48:54Z",
+      "side": 1,
+      "message": "at the -\u003e in the",
       "revId": "b9beec5e11c840c73048e3efbe77c76c594e1267",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
