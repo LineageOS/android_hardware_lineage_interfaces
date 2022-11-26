@@ -92,11 +92,24 @@ ndk::ScopedAStatus ChargingControl::setChargingEnabled(bool enabled) {
     return ndk::ScopedAStatus::ok();
 }
 
+ndk::ScopedAStatus ChargingControl::deviceChargingControlBypassesBattery(bool* _aidl_return) {
+#ifdef HEALTH_CHARGING_CONTROL_BYPASSES_BATTERY
+    *_aidl_return = true;
+#else
+    *_aidl_return = false;
+#endif
+
+    return ndk::ScopedAStatus::ok();
+}
+
 binder_status_t ChargingControl::dump(int fd, const char** /* args */, uint32_t /* numArgs */) {
     bool isChargingEnabled;
+    bool isChgctrlBypassesBattery;
     getChargingEnabled(&isChargingEnabled);
+    deviceChargingControlBypassesBattery(&isChgctrlBypassesBattery);
     dprintf(fd, "Charging control node selected: %s\n", mChargingEnabledNode->path.c_str());
     dprintf(fd, "Charging enabled: %s\n", isChargingEnabled ? "true" : "false");
+    dprintf(fd, "Charging bypasses battery: %s\n", isChgctrlBypassesBattery ? "true" : "false");
 
     return STATUS_OK;
 }

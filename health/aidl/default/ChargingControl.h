@@ -25,6 +25,7 @@ struct ChargingControl : public BnChargingControl {
 
     ndk::ScopedAStatus getChargingEnabled(bool* _aidl_return) override;
     ndk::ScopedAStatus setChargingEnabled(bool enabled) override;
+    ndk::ScopedAStatus deviceChargingControlBypassesBattery(bool* _aidl_return) override;
     binder_status_t dump(int fd, const char** args, uint32_t numArgs) override;
 
   private:
