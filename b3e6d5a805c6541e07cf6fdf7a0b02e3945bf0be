@@ -35,6 +35,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ecb335_9ec0d3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff54b33f_d4b1d1d9",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ab8c5bd_7341aaae",
@@ -81,6 +99,54 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d781f7_37464885",
+        "filename": "health/aidl/aidl_api/vendor.lineage.health/1/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bceb90c_41cdd1fc",
+      "range": {
+        "startLine": 15,
+        "startChar": 48,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24ec3ce_e31bcbe7",
+        "filename": "health/aidl/aidl_api/vendor.lineage.health/1/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab8c5bd_7341aaae",
+      "range": {
+        "startLine": 15,
+        "startChar": 66,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33cd2e96_cf356d05",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-11-26T17:16:03Z",
       "side": 1,
       "message": "the",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa84c80b_387cf39c",
+        "filename": "health/aidl/aidl_api/vendor.lineage.health/1/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33cd2e96_cf356d05",
       "range": {
         "startLine": 18,
         "startChar": 42,
@@ -127,6 +217,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf183efe_448419a5",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95895acf_10e7cb25",
+      "range": {
+        "startLine": 15,
+        "startChar": 66,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc727811_fef6b7ba",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-11-26T17:16:03Z",
       "side": 1,
       "message": "the",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf6768c_3e1d11af",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc727811_fef6b7ba",
       "range": {
         "startLine": 18,
         "startChar": 42,
@@ -167,6 +305,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6822e2bd_81d10c2a",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de2da920_3ae2e259",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f76213f_168a00ce",
@@ -184,6 +340,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37151592_55e97026",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f76213f_168a00ce",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18e5399f_10fe5b35",
@@ -197,6 +371,24 @@
       "writtenOn": "2022-11-26T17:16:03Z",
       "side": 1,
       "message": "compare it",
+      "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d945fe0f_7d4ca351",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-11-27T03:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e5399f_10fe5b35",
       "revId": "b3e6d5a805c6541e07cf6fdf7a0b02e3945bf0be",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
