@@ -22,6 +22,161 @@
       },
       "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a3d052_81da75c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-27T16:36:55Z",
+      "side": 1,
+      "message": "There are a lot of useless methods, this stuff would be duplicated on all implementations, better to move reason handling and battery percentage to framework since it\u0027s the same for all devices.\nThis will get us a single method interface which is definitely better, fwk\u003c-\u003evnd binder calls are expensive",
+      "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da3fa8f_e4bdde84",
+        "filename": "health/aidl/vendor/lineage/health/ChargerPauseType.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-27T16:36:55Z",
+      "side": 1,
+      "message": "The reason can now go away from the AIDL interface since it will stay in framework",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e455bdb_40d4bb01",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-27T16:36:55Z",
+      "side": 1,
+      "message": "I would use ILineageHealth, Android health interface handles all kind of battery related stuff https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/health/aidl/android/hardware/health/IHealth.aidl",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e13beaf_beee8489",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-27T16:36:55Z",
+      "side": 1,
+      "message": "See checkBatCapacityAndApplyLimit comment, this can now be called just setCharging and will only toggle charging regardless of the reason since it will be handled by framework",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0ca48c_e262d9df",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-27T16:36:55Z",
+      "side": 1,
+      "message": "See checkBatCapacityAndApplyLimit comment, the reason should be stored in framework",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a7d660_81a5ce29",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-27T16:36:55Z",
+      "side": 1,
+      "message": "See checkBatCapacityAndApplyLimit comment, the limit should be stored in framework and framework will enable/disable charging when needed",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a643b2_edf643ee",
+        "filename": "health/aidl/vendor/lineage/health/ICharger.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-27T16:36:55Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be handled by the AIDL, framework should poll known battery percentage and enable/disable charging accordingly",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "032477408fc5e691c6e01ce72fc12bb7afb1814d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
