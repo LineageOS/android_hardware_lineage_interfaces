@@ -16,6 +16,24 @@
       "message": "whitespace",
       "revId": "b2d96af1048d0c9cd5cc42c4234255cc07c63edb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d217d5_89bd7133",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-03-03T17:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00afa4bc_8b29eb6e",
+      "revId": "b2d96af1048d0c9cd5cc42c4234255cc07c63edb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
