@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2bc523d_6d75f1f7",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-03-09T13:45:59Z",
+      "side": 1,
+      "message": "After this, add:\n\n if (!mChargingEnabledNode) {\n     LOG(FATAL) \u003c\u003c \"Couldn\u0027t find a suitable charging control node\";\n }\n\nThis way the HAL dies miserably if not supported",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6301fc_3c2550fe",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-03-09T13:45:59Z",
+      "side": 1,
+      "message": "Can be removed",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b4bf0e_67cf14e5",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-03-09T13:45:59Z",
+      "side": 1,
+      "message": "Can be removed",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77709a0f_3236a98b",
+        "filename": "health/aidl/default/vendor.lineage.health-service.default.rc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-03-09T13:45:59Z",
+      "side": 1,
+      "message": "I don\u0027t remember if they\u0027re needed, but just in case I would add chowns there",
+      "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
