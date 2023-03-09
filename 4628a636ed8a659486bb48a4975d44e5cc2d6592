@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6a8f91c_e6dc7ba5",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-03-09T13:52:46Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_hardware_lineage_interfaces/+/344900/comments/f2bc523d_6d75f1f7\n\nWe should seriously expect the feature to work if we implement the interface in vendor",
+      "parentUuid": "34e68353_2d6d1673",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "4628a636ed8a659486bb48a4975d44e5cc2d6592",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f229863d_a0b91c2c",
         "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
         "patchSetId": 12
