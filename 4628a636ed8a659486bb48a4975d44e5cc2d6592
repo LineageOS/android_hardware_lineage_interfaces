@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34e68353_2d6d1673",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-03-09T13:47:09Z",
+      "side": 1,
+      "message": "This code `EX_UNSUPPORTED_OPERATION` is returned when the HAL is not able to find the kernel node in sysfs (Either because incorrect permission or node does not exist). The description can be updated but I don\u0027t feel like removing it.",
+      "parentUuid": "82f4e381_1969d747",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "4628a636ed8a659486bb48a4975d44e5cc2d6592",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f229863d_a0b91c2c",
         "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
         "patchSetId": 12
