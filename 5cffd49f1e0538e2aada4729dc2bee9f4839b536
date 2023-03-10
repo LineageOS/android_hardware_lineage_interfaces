@@ -193,6 +193,24 @@
       "parentUuid": "4bf9e10a_8a28fc94",
       "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d1f7a0_51da9d2a",
+        "filename": "health/aidl/default/vendor.lineage.health-service.default.rc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-03-10T13:42:54Z",
+      "side": 1,
+      "message": "So far none of the devices worked with chown on boot or any other stage. It needs to be implemented in the device\u0027s ueventd.rc",
+      "parentUuid": "ea25668f_09ca1101",
+      "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
