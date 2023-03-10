@@ -175,6 +175,24 @@
       "parentUuid": "77709a0f_3236a98b",
       "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea25668f_09ca1101",
+        "filename": "health/aidl/default/vendor.lineage.health-service.default.rc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-03-10T09:25:02Z",
+      "side": 1,
+      "message": "I wouldn\u0027t mind having them on boot (not early-boot since probing might be deferred), if they aren\u0027t enough for a device then the maintainer will do something about it in their init scripts",
+      "parentUuid": "4bf9e10a_8a28fc94",
+      "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
