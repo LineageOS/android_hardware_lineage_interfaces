@@ -72,6 +72,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73a46f9c_288fd26e",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-03-10T04:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a8f91c_e6dc7ba5",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "4628a636ed8a659486bb48a4975d44e5cc2d6592",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f229863d_a0b91c2c",
@@ -85,6 +109,30 @@
       "writtenOn": "2023-03-09T13:40:25Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "4628a636ed8a659486bb48a4975d44e5cc2d6592",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631690e6_1094a4a4",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-03-10T04:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f229863d_a0b91c2c",
       "range": {
         "startLine": 33,
         "startChar": 0,
