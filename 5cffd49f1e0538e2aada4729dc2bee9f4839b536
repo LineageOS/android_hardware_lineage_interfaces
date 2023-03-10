@@ -211,6 +211,24 @@
       "parentUuid": "ea25668f_09ca1101",
       "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd65e8b_e2857b92",
+        "filename": "health/aidl/default/vendor.lineage.health-service.default.rc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-03-10T14:02:56Z",
+      "side": 1,
+      "message": "Alright then, sad it won\u0027t work out of the box",
+      "parentUuid": "40d1f7a0_51da9d2a",
+      "revId": "5cffd49f1e0538e2aada4729dc2bee9f4839b536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
