@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c8ffec_0ccfcfbc",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2023-03-29T16:15:27Z",
+      "side": 1,
+      "message": "Can we add \"/sys/class/qcom-battery/input_suspend\" here?\nThat\u0027s the path on qcom sm8350+ due to GKI",
+      "revId": "481550b3ebd89c56661052afa60fef1bdb600195",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
