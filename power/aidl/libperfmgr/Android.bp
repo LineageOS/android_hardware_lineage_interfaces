@@ -1,3 +1,6 @@
+soong_namespace {
+}
+
 cc_binary {
     name: "android.hardware.power-service.libperfmgr",
     relative_install_path: "hw",
