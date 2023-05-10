@@ -22,6 +22,30 @@
       },
       "revId": "9bf58ccd3c755d688eb78e495e0f97418345fe7b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8580ec82_496c0169",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-05-10T14:29:39Z",
+      "side": 1,
+      "message": "This does not trim new line it seems.",
+      "parentUuid": "57b7b85e_6942ff28",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "9bf58ccd3c755d688eb78e495e0f97418345fe7b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
