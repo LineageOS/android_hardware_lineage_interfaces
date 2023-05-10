@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c92e99d_20813b5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-05-10T14:05:52Z",
+      "side": 1,
+      "message": "Need to trim the string otherwise the comparison is \"0\\n\" \u003d\u003d \"0\" (false)",
+      "revId": "b212ee8dd3f7d57fd5287ba0c889637b41c6117f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
