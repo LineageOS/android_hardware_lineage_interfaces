@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2488e4b0_7143e6a9",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2023-05-10T10:02:02Z",
+      "side": 1,
+      "message": "Likely read/write?",
+      "parentUuid": "9a5cf7ef_2d5fda91",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "067f640a84c374d2e8c81b29890950cf262702ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a77465b_a562de21",
         "filename": "health/aidl/default/ChargingControl.cpp",
         "patchSetId": 22
