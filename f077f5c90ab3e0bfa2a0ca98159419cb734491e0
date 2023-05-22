@@ -16,6 +16,24 @@
       "message": "If there is no support for toggle or deadline, the ChargingControl constructor is not defined, resulting in this error when building:\n`ld.lld: error: undefined symbol: aidl::vendor::lineage::health::ChargingControl::ChargingControl()`.",
       "revId": "f077f5c90ab3e0bfa2a0ca98159419cb734491e0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48826356_a8345414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-05-22T17:55:22Z",
+      "side": 1,
+      "message": "You are supposed to set one of these flags, this HAL can\u0027t work otherwise",
+      "parentUuid": "1c94ee0c_6fd50477",
+      "revId": "f077f5c90ab3e0bfa2a0ca98159419cb734491e0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
