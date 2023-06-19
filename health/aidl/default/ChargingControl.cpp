@@ -6,6 +6,7 @@
 
 #include "ChargingControl.h"
 
+#include <aidl/vendor/lineage/health/StageDescription.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/strings.h>
@@ -29,11 +30,11 @@ static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
         {"/sys/class/qcom-battery/input_suspend", "0", "1"},
 };
 
-ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
-    while (!mChargingEnabledNode) {
+ChargingControl::ChargingControl() {
+    while (mChargingEnabledNode.path.empty()) {
         for (const auto& node : kChargingEnabledNodes) {
             if (access(node.path.c_str(), R_OK | W_OK) == 0) {
-                mChargingEnabledNode = &node;
+                mChargingEnabledNode = node;
                 break;
             }
             PLOG(WARNING) << "Failed to access() file " << node.path;
@@ -44,16 +45,16 @@ ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
 
 ndk::ScopedAStatus ChargingControl::getChargingEnabled(bool* _aidl_return) {
     std::string content;
-    if (!android::base::ReadFileToString(mChargingEnabledNode->path, &content, true)) {
+    if (!android::base::ReadFileToString(mChargingEnabledNode.path, &content, true)) {
         LOG(ERROR) << "Failed to read current charging enabled value";
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
 
     content = android::base::Trim(content);
 
-    if (content == mChargingEnabledNode->value_true) {
+    if (content == mChargingEnabledNode.value_true) {
         *_aidl_return = true;
-    } else if (content == mChargingEnabledNode->value_false) {
+    } else if (content == mChargingEnabledNode.value_false) {
         *_aidl_return = false;
     } else {
         LOG(ERROR) << "Unknown value " << content;
@@ -65,8 +66,8 @@ ndk::ScopedAStatus ChargingControl::getChargingEnabled(bool* _aidl_return) {
 
 ndk::ScopedAStatus ChargingControl::setChargingEnabled(bool enabled) {
     const auto& value =
-            enabled ? mChargingEnabledNode->value_true : mChargingEnabledNode->value_false;
-    if (!android::base::WriteStringToFile(value, mChargingEnabledNode->path, true)) {
+            enabled ? mChargingEnabledNode.value_true : mChargingEnabledNode.value_false;
+    if (!android::base::WriteStringToFile(value, mChargingEnabledNode.path, true)) {
         LOG(ERROR) << "Failed to write to charging enable node: " << strerror(errno);
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
@@ -89,30 +90,76 @@ static const std::vector<std::string> kChargingDeadlineNodes = {
         "/sys/class/power_supply/battery/charge_deadline",
 };
 
-ChargingControl::ChargingControl() : mChargingDeadlineNode(nullptr) {
+ChargingControl::ChargingControl() {
     while (!mChargingDeadlineNode) {
         for (const auto& node : kChargingDeadlineNodes) {
             if (access(node.c_str(), R_OK | W_OK) == 0) {
-                mChargingDeadlineNode = &node;
+                mChargingDeadlineNode = node;
+                break;
+            }
+            PLOG(WARNING) << "Failed to access() file " << node;
+            usleep(100000);
+        }
+
+    while (!mChargingStageNode) {
+        for (const auto& node : kChargingStageNodes) {
+            if (access(node.c_str(), R_OK) == 0) {
+                mChargingStageNode = node;
                 break;
             }
             PLOG(WARNING) << "Failed to access() file " << node;
             usleep(100000);
         }
     }
-}
+};
+
+static const std::vector<std::string> kChargingStageNodes = {
+        HEALTH_CHARGING_CONTROL_STAGE_PATH,
+        "/sys/class/power_supply/battery/charge_stage",
+};
 
 ndk::ScopedAStatus ChargingControl::setChargingDeadline(int64_t deadline) {
     std::string content = std::to_string(deadline);
-    if (!android::base::WriteStringToFile(content, *mChargingDeadlineNode, true)) {
+    if (!android::base::WriteStringToFile(content, mChargingDeadlineNode, true)) {
         LOG(ERROR) << "Failed to write to charging deadline node: " << strerror(errno);
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
 
     return ndk::ScopedAStatus::ok();
 }
+
+ndk::ScopedAStatus ChargingControl::getChargingStageAndDeadline(ChargingStage* _aidl_return) {
+    std::string deadline;
+    if (!android::base::ReadFileToString(mChargingDeadlineNode, &deadline,
+                                         /*follow_symlinks=*/true)) {
+        LOG(ERROR) << "Failed to read from charging deadline node: " << strerror(errno);
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+    std::string stage;
+    if (!android::base::ReadFileToString(mChargingStageNode, &stage, /*follow_symlinks=*/true)) {
+        LOG(ERROR) << "Failed to read from charging stage node: " << strerror(errno);
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+    _aidl_return->deadlineSecs = std::stoi(deadline);
+    stage = android::base::Trim(stage);
+    if (stage == "Active") {
+        _aidl_return->stage = StageDescription::ACTIVE;
+    } else if (stage == "Inactive") {
+        _aidl_return->stage = StageDescription::INACTIVE;
+    } else if (stage == "Disabled") {
+        _aidl_return->stage = StageDescription::DISABLED;
+    } else if (stage == "Enabled") {
+        _aidl_return->stage = StageDescription::ENABLED;
+    }
+
+    return ndk::ScopedAStatus::ok();
+}
 #else
 ndk::ScopedAStatus ChargingControl::setChargingDeadline(int64_t /* deadline */) {
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+}
+
+ndk::ScopedAStatus ChargingControl::getChargingStageAndDeadline(ChargingStage*) {
     return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
 }
 #endif
@@ -144,12 +191,13 @@ binder_status_t ChargingControl::dump(int fd, const char** /* args */, uint32_t 
     getSupportedMode(&supportedMode);
 
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
-    dprintf(fd, "Charging control node selected: %s\n", mChargingEnabledNode->path.c_str());
+    dprintf(fd, "Charging control node selected: %s\n", mChargingEnabledNode.path.c_str());
     dprintf(fd, "Charging enabled: %s\n", isChargingEnabled ? "true" : "false");
 #endif
 
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE
-    dprintf(fd, "Charging deadline node selected: %s\n", mChargingDeadlineNode->c_str());
+    dprintf(fd, "Charging deadline node selected: %s\n", mChargingDeadlineNode.c_str());
+    dprintf(fd, "Charging stage node selected: %s\n", mChargingStageNode.c_str());
 #endif
 
     dprintf(fd, "Charging control supported mode: %d\n", supportedMode);
