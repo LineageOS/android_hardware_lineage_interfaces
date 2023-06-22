@@ -152,6 +152,10 @@ ndk::ScopedAStatus ChargingControl::getSupportedMode(int* _aidl_return) {
     mode |= static_cast<int>(ChargingControlSupportedMode::DEADLINE);
 #endif
 
+#ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_LEVEL
+    mode |= static_cast<int>(ChargingControlSupportedMode::LEVEL);
+#endif
+
     *_aidl_return = mode;
 
     return ndk::ScopedAStatus::ok();

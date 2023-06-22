@@ -22,10 +22,10 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package vendor.lineage.health;
-@Backing(type="int") @VintfStability
-enum ChargingControlSupportedMode {
-  TOGGLE = 1,
-  BYPASS = 2,
-  DEADLINE = 4,
-  LEVEL = 8,
+@VintfStability
+interface IChargingControl {
+  boolean getChargingEnabled();
+  void setChargingEnabled(in boolean enabled);
+  void setChargingDeadline(in long deadline);
+  int getSupportedMode();
 }
