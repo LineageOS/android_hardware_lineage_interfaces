@@ -16,6 +16,24 @@
       "message": "forgot an L?",
       "revId": "030376c89b1256025e935b24a84e31118d9e3b12",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deea02eb_142ab25e",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2023-06-22T21:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca0c715_ed76400f",
+      "revId": "030376c89b1256025e935b24a84e31118d9e3b12",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
