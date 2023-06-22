@@ -22,4 +22,9 @@ enum ChargingControlSupportedMode {
      * The device supports control charging by specifying the deadline
      */
     DEADLINE = 1 << 2,
+
+    /**
+     * The device supports control charging by specifying the level
+     */
+    LEVEL = 1 << 3,
 }

@@ -27,4 +27,5 @@ enum ChargingControlSupportedMode {
   TOGGLE = 1,
   BYPASS = 2,
   DEADLINE = 4,
+  LEVEL = 8,
 }
