@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377ab3ce_088f01a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-06-22T22:10:32Z",
+      "side": 1,
+      "message": "Do NOT edit the hash after the interface got shipped to users, let\u0027s not do LiveDisplay mistake again.\n\nTime for V2 :)",
+      "revId": "c73beedbd52aca686603311003d63fecbe90b30a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
