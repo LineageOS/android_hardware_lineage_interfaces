@@ -33,6 +33,42 @@
       "message": "You can use `m vendor.lineage.health-update-api` and `m vendor.lineage.health-freeze-api` to generate those files.",
       "revId": "c73beedbd52aca686603311003d63fecbe90b30a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4162b863_4c86e02c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2023-06-23T09:06:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "377ab3ce_088f01a8",
+      "revId": "c73beedbd52aca686603311003d63fecbe90b30a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3626ff93_39709cca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2023-06-23T09:06:16Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "5d5ce825_ec3cec29",
+      "revId": "c73beedbd52aca686603311003d63fecbe90b30a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
