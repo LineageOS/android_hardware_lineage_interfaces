@@ -20,6 +20,19 @@ namespace vendor {
 namespace lineage {
 namespace health {
 
+static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
+        {HEALTH_CHARGING_CONTROL_CHARGING_PATH, HEALTH_CHARGING_CONTROL_CHARGING_ENABLED,
+         HEALTH_CHARGING_CONTROL_CHARGING_DISABLED},
+        {"/sys/class/power_supply/battery/charging_enabled", "1", "0"},
+        {"/sys/class/power_supply/battery/input_suspend", "0", "1"},
+        {"/sys/class/qcom-battery/input_suspend", "0", "1"},
+};
+
+static const std::vector<std::string> kChargingDeadlineNodes = {
+        HEALTH_CHARGING_CONTROL_DEADLINE_PATH,
+        "/sys/class/power_supply/battery/charge_deadline",
+};
+
 static bool fileExists(const std::string& path) {
     if (path.empty()) {
         return false;
@@ -40,16 +53,8 @@ static bool fileExists(const std::string& path) {
     return false;
 }
 
+ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr), mChargingDeadlineNode(nullptr) {
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
-static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
-        {HEALTH_CHARGING_CONTROL_CHARGING_PATH, HEALTH_CHARGING_CONTROL_CHARGING_ENABLED,
-         HEALTH_CHARGING_CONTROL_CHARGING_DISABLED},
-        {"/sys/class/power_supply/battery/charging_enabled", "1", "0"},
-        {"/sys/class/power_supply/battery/input_suspend", "0", "1"},
-        {"/sys/class/qcom-battery/input_suspend", "0", "1"},
-};
-
-ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
     for (const auto& node : kChargingEnabledNodes) {
         if (!fileExists(node.path)) {
             continue;
@@ -62,8 +67,25 @@ ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
     if (!mChargingEnabledNode) {
         LOG(FATAL) << "Couldn't find a suitable charging control node";
     }
+#endif
+
+#ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE
+    for (const auto& node : kChargingDeadlineNodes) {
+        if (!fileExists(node)) {
+            continue;
+        }
+
+        mChargingDeadlineNode = &node;
+        break;
+    }
+
+    if (!mChargingDeadlineNode) {
+        LOG(FATAL) << "Couldn't find a suitable charging deadline node";
+    }
+#endif
 }
 
+#ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
 ndk::ScopedAStatus ChargingControl::getChargingEnabled(bool* _aidl_return) {
     std::string content;
     if (!android::base::ReadFileToString(mChargingEnabledNode->path, &content, true)) {
@@ -106,26 +128,6 @@ ndk::ScopedAStatus ChargingControl::setChargingEnabled(bool /* enabled */) {
 #endif
 
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE
-static const std::vector<std::string> kChargingDeadlineNodes = {
-        HEALTH_CHARGING_CONTROL_DEADLINE_PATH,
-        "/sys/class/power_supply/battery/charge_deadline",
-};
-
-ChargingControl::ChargingControl() : mChargingDeadlineNode(nullptr) {
-    for (const auto& node : kChargingDeadlineNodes) {
-        if (!fileExists(node)) {
-            continue;
-        }
-
-        mChargingDeadlineNode = &node;
-        break;
-    }
-
-    if (!mChargingDeadlineNode) {
-        LOG(FATAL) << "Couldn't find a suitable charging deadline node";
-    }
-}
-
 ndk::ScopedAStatus ChargingControl::setChargingDeadline(int64_t deadline) {
     std::string content = std::to_string(deadline);
     if (!android::base::WriteStringToFile(content, *mChargingDeadlineNode, true)) {
