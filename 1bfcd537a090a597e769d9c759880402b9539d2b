@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e844ddad_da4ea168",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2023-06-28T18:48:23Z",
+      "side": 1,
+      "message": "Pixels support not just a charging limit, `charge_stop_level`, but also a % to start charging from again, `charge_start_level`.\n\nExample\nDevice is at 50%\n`charge_stop_level` -\u003e 80%\n`charge_start_level` -\u003e 25%\n\nIt\u0027ll charge to 80, then stop charging and start draining till it gets to 25, until it starts charging again.",
+      "revId": "1bfcd537a090a597e769d9c759880402b9539d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
