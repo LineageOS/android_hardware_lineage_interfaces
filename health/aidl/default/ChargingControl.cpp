@@ -100,6 +100,10 @@ ChargingControl::ChargingControl() : mChargingDeadlineNode(nullptr) {
             usleep(100000);
         }
     }
+
+    if (!mChargingDeadlineNode) {
+        LOG(FATAL) << "Couldn't find a suitable charging deadline node";
+    }
 }
 
 ndk::ScopedAStatus ChargingControl::setChargingDeadline(int64_t deadline) {
