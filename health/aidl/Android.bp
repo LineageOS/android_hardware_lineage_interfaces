@@ -25,4 +25,5 @@ aidl_interface {
             imports: [],
         },
     ],
+    frozen: false,
 }
