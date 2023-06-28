@@ -8,6 +8,7 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/parseint.h>
 #include <android-base/strings.h>
 #include <android/binder_status.h>
 #include <fstream>
@@ -33,6 +34,11 @@ static const std::vector<std::string> kChargingDeadlineNodes = {
         "/sys/class/power_supply/battery/charge_deadline",
 };
 
+static const std::vector<std::string> kChargingLimitNodes = {
+        HEALTH_CHARGING_CONTROL_LIMIT_PATH,
+        "/sys/class/power_supply/battery/charge_limit",
+};
+
 static bool fileExists(const std::string& path) {
     if (path.empty()) {
         return false;
@@ -53,7 +59,8 @@ static bool fileExists(const std::string& path) {
     return false;
 }
 
-ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr), mChargingDeadlineNode(nullptr) {
+ChargingControl::ChargingControl()
+    : mChargingEnabledNode(nullptr), mChargingDeadlineNode(nullptr), mChargingLimitNode(nullptr) {
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
     for (const auto& node : kChargingEnabledNodes) {
         if (!fileExists(node.path)) {
@@ -81,6 +88,21 @@ ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr), mChargingDea
 
     if (!mChargingDeadlineNode) {
         LOG(FATAL) << "Couldn't find a suitable charging deadline node";
+    }
+#endif
+
+#ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT
+    for (const auto& node : kChargingLimitNodes) {
+        if (!fileExists(node)) {
+            continue;
+        }
+
+        mChargingLimitNode = &node;
+        break;
+    }
+
+    if (!mChargingLimitNode) {
+        LOG(FATAL) << "Couldn't find a suitable charging limit node";
     }
 #endif
 }
@@ -137,8 +159,60 @@ ndk::ScopedAStatus ChargingControl::setChargingDeadline(int64_t deadline) {
 
     return ndk::ScopedAStatus::ok();
 }
+
+ndk::ScopedAStatus ChargingControl::getChargingDeadline(int64_t* _aidl_return) {
+    std::string content;
+    if (!android::base::ReadFileToString(*mChargingDeadlineNode, &content, true)) {
+        LOG(ERROR) << "Failed to read current charging deadline value";
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+
+    content = android::base::Trim(content);
+
+    return android::base::ParseInt<int64_t>(content, _aidl_return)
+                   ? ndk::ScopedAStatus::ok()
+                   : ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+}
 #else
 ndk::ScopedAStatus ChargingControl::setChargingDeadline(int64_t /* deadline */) {
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+}
+
+ndk::ScopedAStatus ChargingControl::getChargingDeadline(int64_t* /* _aidl_return */) {
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+}
+#endif
+
+#ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT
+ndk::ScopedAStatus ChargingControl::setChargingLimit(int limit) {
+    std::string content = std::to_string(limit);
+    if (!android::base::WriteStringToFile(content, *mChargingLimitNode, true)) {
+        LOG(ERROR) << "Failed to write to charging limit node: " << strerror(errno);
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus ChargingControl::getChargingLimit(int* _aidl_return) {
+    std::string content;
+    if (!android::base::ReadFileToString(*mChargingLimitNode, &content, true)) {
+        LOG(ERROR) << "Failed to read current charging limit value";
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+
+    content = android::base::Trim(content);
+
+    return android::base::ParseInt(content, _aidl_return)
+                   ? ndk::ScopedAStatus::ok()
+                   : ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+}
+#else
+ndk::ScopedAStatus ChargingControl::setChargingLimit(int /* limit */) {
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+}
+
+ndk::ScopedAStatus ChargingControl::getChargingLimit(int* /* _aidl_return */) {
     return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
 }
 #endif
@@ -156,6 +230,10 @@ ndk::ScopedAStatus ChargingControl::getSupportedMode(int* _aidl_return) {
 
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE
     mode |= static_cast<int>(ChargingControlSupportedMode::DEADLINE);
+#endif
+
+#ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT
+    mode |= static_cast<int>(ChargingControlSupportedMode::LIMIT);
 #endif
 
     *_aidl_return = mode;
