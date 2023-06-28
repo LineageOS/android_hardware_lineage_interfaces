@@ -48,4 +48,39 @@ interface IChargingControl {
      * @return a bitmask of ChargingControlSupportedMode.
      */
     int getSupportedMode();
+
+    /**
+     * Get the charging control deadline, if deadline mode is supported.
+     *
+     * @return the deadline in seconds.
+     *         If error:
+     *         - Return exception with code EX_ILLEGAL_STATE
+     *           if the value can't be determined from the driver.
+     *         - Return service specific error with code STATUS_UNKNOWN
+     *           for other errors.
+     */
+     long getChargingDeadline();
+
+    /**
+     * Set the charging control limit, if limit mode is supported.
+     *
+     * @return nothing if successful.
+     *        If error:
+     *        - Return service specific error with code STATUS_UNKNOWN
+     *          for other errors.
+     */
+    void setChargingLimit(in int limit);
+
+     /**
+      * Get the charging control limit, if limit mode is supported.
+      *
+      * @return the charging control limit.
+      *         If error:
+      *         - Return exception with code EX_ILLEGAL_STATE
+      *           if the value can't be determined from the driver.
+      *         - Return service specific error with code STATUS_UNKNOWN
+      *           for other errors.
+      */
+      int getChargingLimit();
+
 }
