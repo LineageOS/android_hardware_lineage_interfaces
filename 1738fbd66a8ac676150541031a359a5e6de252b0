@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0cc73e_695eadb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-06-28T17:50:18Z",
+      "side": 1,
+      "message": "Hi, sorry for re-uploading. I am planning to support not only `LIMIT`, but also some other interfaces in V2, so I have uploaded a similar patch here: https://review.lineageos.org/c/LineageOS/android_hardware_lineage_interfaces/+/360476/1",
+      "revId": "1738fbd66a8ac676150541031a359a5e6de252b0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
