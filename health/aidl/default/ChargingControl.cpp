@@ -145,13 +145,13 @@ binder_status_t ChargingControl::dump(int fd, const char** /* args */, uint32_t 
 
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
     dprintf(fd, "Charging control node selected: %s\n", mChargingEnabledNode->path.c_str());
+    dprintf(fd, "Charging enabled: %s\n", isChargingEnabled ? "true" : "false");
 #endif
 
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE
     dprintf(fd, "Charging deadline node selected: %s\n", mChargingDeadlineNode->c_str());
 #endif
 
-    dprintf(fd, "Charging enabled: %s\n", isChargingEnabled ? "true" : "false");
     dprintf(fd, "Charging control supported mode: %d\n", supportedMode);
 
     return STATUS_OK;
