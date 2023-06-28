@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022-2023 The LineageOS Project
+ * Copyright (C) 2023 The LineageOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -23,9 +23,8 @@
 
 package vendor.lineage.health;
 @Backing(type="int") @VintfStability
-enum ChargingControlSupportedMode {
-  TOGGLE = 1,
-  BYPASS = 2,
-  DEADLINE = 4,
-  LIMIT = 8,
+enum FastChargeMode {
+  NONE = 0,
+  FAST_CHARGE = 1,
+  SUPER_FAST_CHARGE = 2,
 }

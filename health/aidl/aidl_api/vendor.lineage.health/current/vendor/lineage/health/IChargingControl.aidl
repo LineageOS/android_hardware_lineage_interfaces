@@ -28,4 +28,7 @@ interface IChargingControl {
   void setChargingEnabled(in boolean enabled);
   void setChargingDeadline(in long deadline);
   int getSupportedMode();
+  long getChargingDeadline();
+  void setChargingLimit(in vendor.lineage.health.ChargingLimitInfo limit);
+  vendor.lineage.health.ChargingLimitInfo getChargingLimit();
 }
