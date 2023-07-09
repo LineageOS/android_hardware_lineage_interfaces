@@ -20,26 +20,6 @@ namespace vendor {
 namespace lineage {
 namespace health {
 
-static bool fileExists(const std::string& path) {
-    if (path.empty()) {
-        return false;
-    }
-
-    int retries = 10;
-
-    while (retries--) {
-        android::base::unique_fd fd(TEMP_FAILURE_RETRY(open(path.c_str(), O_RDWR)));
-
-        if (fd > -1) {
-            return true;
-        }
-
-        usleep(100000);
-    }
-
-    return false;
-}
-
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
 static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
         {HEALTH_CHARGING_CONTROL_CHARGING_PATH, HEALTH_CHARGING_CONTROL_CHARGING_ENABLED,
@@ -50,17 +30,15 @@ static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
 };
 
 ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
-    for (const auto& node : kChargingEnabledNodes) {
-        if (!fileExists(node.path)) {
-            continue;
+    while (!mChargingEnabledNode) {
+        for (const auto& node : kChargingEnabledNodes) {
+            if (access(node.path.c_str(), F_OK)) {
+                mChargingEnabledNode = &node;
+                break;
+            }
+            PLOG(WARNING) << "Failed to access() file " << node.path;
+            usleep(100000);
         }
-
-        mChargingEnabledNode = &node;
-        break;
-    }
-
-    if (!mChargingEnabledNode) {
-        LOG(FATAL) << "Couldn't find a suitable charging control node";
     }
 }
 
@@ -112,13 +90,15 @@ static const std::vector<std::string> kChargingDeadlineNodes = {
 };
 
 ChargingControl::ChargingControl() : mChargingDeadlineNode(nullptr) {
-    for (const auto& node : kChargingDeadlineNodes) {
-        if (!fileExists(node)) {
-            continue;
+    while (!mChargingDeadlineNode) {
+        for (const auto& node : kChargingDeadlineNodes) {
+            if (access(node.path.c_str(), F_OK)) {
+                mChargingDeadlineNode = &node;
+                break;
+            }
+            PLOG(WARNING) << "Failed to access() file " << node.path;
+            usleep(100000);
         }
-
-        mChargingDeadlineNode = &node;
-        break;
     }
 }
 
