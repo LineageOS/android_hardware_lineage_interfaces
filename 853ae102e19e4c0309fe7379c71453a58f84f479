@@ -16,6 +16,23 @@
       "message": "Helps for martini.",
       "revId": "853ae102e19e4c0309fe7379c71453a58f84f479",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "204be063_58ed9b1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2023-07-10T16:34:06Z",
+      "side": 1,
+      "message": "It now works on salami.",
+      "revId": "853ae102e19e4c0309fe7379c71453a58f84f479",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
