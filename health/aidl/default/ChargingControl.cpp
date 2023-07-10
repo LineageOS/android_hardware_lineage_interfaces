@@ -32,7 +32,7 @@ static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
 ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
     while (!mChargingEnabledNode) {
         for (const auto& node : kChargingEnabledNodes) {
-            if (access(node.path.c_str(), F_OK)) {
+            if (access(node.path.c_str(), R_OK | W_OK)) {
                 mChargingEnabledNode = &node;
                 break;
             }
