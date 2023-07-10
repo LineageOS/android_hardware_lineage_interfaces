@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3453576_ef3e160b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-07-10T11:59:50Z",
+      "side": 1,
+      "message": "Are you sure this won\u0027t peg I/O during boot?",
+      "revId": "8859383c06f78594f1e79e4d3fb4dc9e97ab0386",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
