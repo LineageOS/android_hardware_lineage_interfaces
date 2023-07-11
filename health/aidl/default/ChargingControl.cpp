@@ -92,11 +92,11 @@ static const std::vector<std::string> kChargingDeadlineNodes = {
 ChargingControl::ChargingControl() : mChargingDeadlineNode(nullptr) {
     while (!mChargingDeadlineNode) {
         for (const auto& node : kChargingDeadlineNodes) {
-            if (access(node.path.c_str(), R_OK | W_OK) == 0) {
+            if (access(node.c_str(), R_OK | W_OK) == 0) {
                 mChargingDeadlineNode = &node;
                 break;
             }
-            PLOG(WARNING) << "Failed to access() file " << node.path;
+            PLOG(WARNING) << "Failed to access() file " << node;
             usleep(100000);
         }
     }
