@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7179d44_5ca33bb5",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2023-07-11T06:57:47Z",
+      "side": 1,
+      "message": "it\u0027s never going to reach this code.",
+      "revId": "d57cda1fd0562ec2eddce064613886f8022b2a56",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
