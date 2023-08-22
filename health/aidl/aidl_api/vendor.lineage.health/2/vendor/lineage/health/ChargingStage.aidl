@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022-2023 The LineageOS Project
+ * Copyright (C) 2023 The StatiXOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -23,10 +23,7 @@
 
 package vendor.lineage.health;
 @VintfStability
-interface IChargingControl {
-  boolean getChargingEnabled();
-  void setChargingEnabled(in boolean enabled);
-  void setChargingDeadline(in long deadline);
-  int getSupportedMode();
-  vendor.lineage.health.ChargingStage getChargingStageAndDeadline();
+parcelable ChargingStage {
+  vendor.lineage.health.StageDescription stage;
+  int deadlineSecs;
 }

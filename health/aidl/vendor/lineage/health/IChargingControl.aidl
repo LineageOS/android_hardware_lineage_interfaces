@@ -6,6 +6,8 @@
 
 package vendor.lineage.health;
 
+import vendor.lineage.health.ChargingStage;
+
 @VintfStability
 interface IChargingControl {
     /**
@@ -48,4 +50,12 @@ interface IChargingControl {
      * @return a bitmask of ChargingControlSupportedMode.
      */
     int getSupportedMode();
+
+    /**
+     * Get the device's current charging stage and deadline.
+     *
+     * @return ChargingStage describing the current active state and deadline in
+     *         seconds from now.
+     */
+    ChargingStage getChargingStageAndDeadline();
 }

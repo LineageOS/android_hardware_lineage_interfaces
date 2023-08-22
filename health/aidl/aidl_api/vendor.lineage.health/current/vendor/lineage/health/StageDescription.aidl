@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022-2023 The LineageOS Project
+ * Copyright (C) 2023 The StatiXOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -22,11 +22,10 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package vendor.lineage.health;
-@VintfStability
-interface IChargingControl {
-  boolean getChargingEnabled();
-  void setChargingEnabled(in boolean enabled);
-  void setChargingDeadline(in long deadline);
-  int getSupportedMode();
-  vendor.lineage.health.ChargingStage getChargingStageAndDeadline();
+@Backing(type="int") @VintfStability
+enum StageDescription {
+  DISABLED = 1,
+  INACTIVE = 2,
+  ENABLED = 4,
+  ACTIVE = 8,
 }
