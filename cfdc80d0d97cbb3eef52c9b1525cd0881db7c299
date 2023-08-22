@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd653c1_2ed9a03d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2023-08-22T13:24:49Z",
+      "side": 1,
+      "message": "Hi, can you add this change to https://review.lineageos.org/c/LineageOS/android_hardware_lineage_interfaces/+/360476?",
+      "revId": "cfdc80d0d97cbb3eef52c9b1525cd0881db7c299",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
