@@ -16,6 +16,23 @@
       "message": "`android::hardware::hidl_string nmeaString(name, length);`",
       "revId": "1b52a111f34fd3d2fdcd4692611e4cab64f67bf4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f763f6_a607b076",
+        "filename": "gnss/1.0-legacy/Gnss.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2023-09-28T16:03:29Z",
+      "side": 1,
+      "message": "as ^, this uses strlen so if the string isn\u0027t null terminated it\u0027ll be bad anyways.",
+      "revId": "1b52a111f34fd3d2fdcd4692611e4cab64f67bf4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
