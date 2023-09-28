@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b145a5_42be933b",
+        "filename": "gnss/1.0-legacy/Gnss.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2023-09-28T15:55:13Z",
+      "side": 1,
+      "message": "`android::hardware::hidl_string nmeaString(name, length);`",
+      "revId": "1b52a111f34fd3d2fdcd4692611e4cab64f67bf4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
