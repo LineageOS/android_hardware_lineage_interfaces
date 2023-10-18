@@ -38,6 +38,7 @@ using ::android::perfmgr::HintManager;
 constexpr std::string_view kPowerHalInitProp("vendor.powerhal.init");
 
 int main() {
+    android::base::SetDefaultTag(LOG_TAG);
     // Parse config but do not start the looper
     std::shared_ptr<HintManager> hm = HintManager::GetInstance();
     if (!hm) {
