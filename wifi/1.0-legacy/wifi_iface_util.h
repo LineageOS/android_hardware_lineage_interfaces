@@ -21,10 +21,12 @@
 
 #include <android/hardware/wifi/1.0/IWifi.h>
 
+#include "wifi_legacy_hal.h"
+
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 namespace iface_util {
 
@@ -39,14 +41,13 @@ struct IfaceEventHandlers {
  * Util class for common iface operations.
  */
 class WifiIfaceUtil {
-   public:
-    WifiIfaceUtil(const std::weak_ptr<wifi_system::InterfaceTool> iface_tool);
+  public:
+    WifiIfaceUtil(const std::weak_ptr<wifi_system::InterfaceTool> iface_tool,
+                  const std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal);
     virtual ~WifiIfaceUtil() = default;
 
-    virtual std::array<uint8_t, 6> getFactoryMacAddress(
-        const std::string& iface_name);
-    virtual bool setMacAddress(const std::string& iface_name,
-                               const std::array<uint8_t, 6>& mac);
+    virtual std::array<uint8_t, 6> getFactoryMacAddress(const std::string& iface_name);
+    virtual bool setMacAddress(const std::string& iface_name, const std::array<uint8_t, 6>& mac);
     // Get or create a random MAC address. The MAC address returned from
     // this method will remain the same throughout the lifetime of the HAL
     // daemon. (So, changes on every reboot)
@@ -59,17 +60,26 @@ class WifiIfaceUtil {
     virtual bool setUpState(const std::string& iface_name, bool request_up);
     virtual unsigned ifNameToIndex(const std::string& iface_name);
 
-   private:
-    std::array<uint8_t, 6> createRandomMacAddress();
+    virtual bool createBridge(const std::string& br_name);
 
+    virtual bool deleteBridge(const std::string& br_name);
+
+    virtual bool addIfaceToBridge(const std::string& br_name, const std::string& if_name);
+
+    virtual bool removeIfaceFromBridge(const std::string& br_name, const std::string& if_name);
+    // Get a random MAC address.
+    virtual std::array<uint8_t, 6> createRandomMacAddress();
+
+  private:
     std::weak_ptr<wifi_system::InterfaceTool> iface_tool_;
+    std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal_;
     std::unique_ptr<std::array<uint8_t, 6>> random_mac_address_;
     std::map<std::string, IfaceEventHandlers> event_handlers_map_;
 };
 
 }  // namespace iface_util
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

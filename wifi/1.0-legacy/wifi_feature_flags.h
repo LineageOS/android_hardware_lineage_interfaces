@@ -17,12 +17,12 @@
 #ifndef WIFI_FEATURE_FLAGS_H_
 #define WIFI_FEATURE_FLAGS_H_
 
-#include <android/hardware/wifi/1.2/IWifiChip.h>
+#include <android/hardware/wifi/1.6/IWifiChip.h>
 
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 namespace feature_flags {
 
@@ -38,16 +38,19 @@ constexpr V1_0::ChipModeId kV3 = 3;
 }  // namespace chip_mode_ids
 
 class WifiFeatureFlags {
-   public:
+  public:
     WifiFeatureFlags();
     virtual ~WifiFeatureFlags() = default;
 
-    virtual std::vector<V1_0::IWifiChip::ChipMode> getChipModes();
+    virtual std::vector<V1_6::IWifiChip::ChipMode> getChipModes(bool is_primary);
+
+  private:
+    std::vector<V1_6::IWifiChip::ChipMode> getChipModesForPrimary();
 };
 
 }  // namespace feature_flags
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

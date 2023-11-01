@@ -36,37 +36,49 @@ constexpr uint8_t kMacAddressLocallyAssignedMask = 0x02;
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 namespace iface_util {
 
-WifiIfaceUtil::WifiIfaceUtil(
-    const std::weak_ptr<wifi_system::InterfaceTool> iface_tool)
+WifiIfaceUtil::WifiIfaceUtil(const std::weak_ptr<wifi_system::InterfaceTool> iface_tool,
+                             const std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal)
     : iface_tool_(iface_tool),
+      legacy_hal_(legacy_hal),
       random_mac_address_(nullptr),
       event_handlers_map_() {}
 
-std::array<uint8_t, 6> WifiIfaceUtil::getFactoryMacAddress(
-    const std::string& iface_name) {
+std::array<uint8_t, 6> WifiIfaceUtil::getFactoryMacAddress(const std::string& iface_name) {
     return iface_tool_.lock()->GetFactoryMacAddress(iface_name.c_str());
 }
 
 bool WifiIfaceUtil::setMacAddress(const std::string& iface_name,
                                   const std::array<uint8_t, 6>& mac) {
 #ifndef WIFI_AVOID_IFACE_RESET_MAC_CHANGE
-    if (!iface_tool_.lock()->SetUpState(iface_name.c_str(), false)) {
+    legacy_hal::wifi_error legacy_status;
+    uint64_t legacy_feature_set;
+    std::tie(legacy_status, legacy_feature_set) =
+            legacy_hal_.lock()->getSupportedFeatureSet(iface_name);
+
+    if (!(legacy_feature_set & WIFI_FEATURE_DYNAMIC_SET_MAC) &&
+        !iface_tool_.lock()->SetUpState(iface_name.c_str(), false)) {
         LOG(ERROR) << "SetUpState(false) failed.";
         return false;
     }
 #endif
-    if (!iface_tool_.lock()->SetMacAddress(iface_name.c_str(), mac)) {
-        LOG(ERROR) << "SetMacAddress failed.";
-        return false;
-    }
+    bool success = iface_tool_.lock()->SetMacAddress(iface_name.c_str(), mac);
 #ifndef WIFI_AVOID_IFACE_RESET_MAC_CHANGE
-    if (!iface_tool_.lock()->SetUpState(iface_name.c_str(), true)) {
-        LOG(ERROR) << "SetUpState(true) failed.";
-        return false;
+    if (!(legacy_feature_set & WIFI_FEATURE_DYNAMIC_SET_MAC) &&
+        !iface_tool_.lock()->SetUpState(iface_name.c_str(), true)) {
+        LOG(ERROR) << "SetUpState(true) failed. Wait for driver ready.";
+        // Wait for driver ready and try to set iface UP again
+        if (legacy_hal_.lock()->waitForDriverReady() != legacy_hal::WIFI_SUCCESS) {
+            LOG(ERROR) << "SetUpState(true) wait for driver ready failed.";
+            return false;
+        }
+        if (!iface_tool_.lock()->SetUpState(iface_name.c_str(), true)) {
+            LOG(ERROR) << "SetUpState(true) failed after retry.";
+            return false;
+        }
     }
 #endif
     IfaceEventHandlers event_handlers = {};
@@ -77,16 +89,19 @@ bool WifiIfaceUtil::setMacAddress(const std::string& iface_name,
     if (event_handlers.on_state_toggle_off_on != nullptr) {
         event_handlers.on_state_toggle_off_on(iface_name);
     }
-    LOG(DEBUG) << "Successfully SetMacAddress.";
-    return true;
+    if (!success) {
+        LOG(ERROR) << "SetMacAddress failed on " << iface_name;
+    } else {
+        LOG(DEBUG) << "SetMacAddress succeeded on " << iface_name;
+    }
+    return success;
 }
 
 std::array<uint8_t, 6> WifiIfaceUtil::getOrCreateRandomMacAddress() {
     if (random_mac_address_) {
         return *random_mac_address_.get();
     }
-    random_mac_address_ =
-        std::make_unique<std::array<uint8_t, 6>>(createRandomMacAddress());
+    random_mac_address_ = std::make_unique<std::array<uint8_t, 6>>(createRandomMacAddress());
     return *random_mac_address_.get();
 }
 
@@ -95,8 +110,7 @@ void WifiIfaceUtil::registerIfaceEventHandlers(const std::string& iface_name,
     event_handlers_map_[iface_name] = handlers;
 }
 
-void WifiIfaceUtil::unregisterIfaceEventHandlers(
-    const std::string& iface_name) {
+void WifiIfaceUtil::unregisterIfaceEventHandlers(const std::string& iface_name) {
     event_handlers_map_.erase(iface_name);
 }
 
@@ -104,9 +118,8 @@ std::array<uint8_t, 6> WifiIfaceUtil::createRandomMacAddress() {
     std::array<uint8_t, 6> address = {};
     std::random_device rd;
     std::default_random_engine engine(rd());
-    std::uniform_int_distribution<uint8_t> dist(
-        std::numeric_limits<uint8_t>::min(),
-        std::numeric_limits<uint8_t>::max());
+    std::uniform_int_distribution<uint8_t> dist(std::numeric_limits<uint8_t>::min(),
+                                                std::numeric_limits<uint8_t>::max());
     for (size_t i = 0; i < address.size(); i++) {
         address[i] = dist(engine);
     }
@@ -127,9 +140,37 @@ bool WifiIfaceUtil::setUpState(const std::string& iface_name, bool request_up) {
 unsigned WifiIfaceUtil::ifNameToIndex(const std::string& iface_name) {
     return if_nametoindex(iface_name.c_str());
 }
+
+bool WifiIfaceUtil::createBridge(const std::string& br_name) {
+    if (!iface_tool_.lock()->createBridge(br_name)) {
+        return false;
+    }
+
+    if (!iface_tool_.lock()->SetUpState(br_name.c_str(), true)) {
+        LOG(ERROR) << "bridge SetUpState(true) failed.";
+    }
+    return true;
+}
+
+bool WifiIfaceUtil::deleteBridge(const std::string& br_name) {
+    if (!iface_tool_.lock()->SetUpState(br_name.c_str(), false)) {
+        LOG(INFO) << "SetUpState(false) failed for bridge=" << br_name.c_str();
+    }
+
+    return iface_tool_.lock()->deleteBridge(br_name);
+}
+
+bool WifiIfaceUtil::addIfaceToBridge(const std::string& br_name, const std::string& if_name) {
+    return iface_tool_.lock()->addIfaceToBridge(br_name, if_name);
+}
+
+bool WifiIfaceUtil::removeIfaceFromBridge(const std::string& br_name, const std::string& if_name) {
+    return iface_tool_.lock()->removeIfaceFromBridge(br_name, if_name);
+}
+
 }  // namespace iface_util
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

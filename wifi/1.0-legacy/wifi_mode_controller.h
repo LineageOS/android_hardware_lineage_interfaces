@@ -24,7 +24,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 namespace mode_controller {
 using namespace android::hardware::wifi::V1_0;
@@ -35,7 +35,7 @@ using namespace android::hardware::wifi::V1_0;
  * required state (essentially a wrapper over DriverTool).
  */
 class WifiModeController {
-   public:
+  public:
     WifiModeController();
     virtual ~WifiModeController() = default;
 
@@ -49,13 +49,13 @@ class WifiModeController {
     // invoked.
     virtual bool deinitialize();
 
-   private:
+  private:
     std::unique_ptr<wifi_hal::DriverTool> driver_tool_;
 };
 
 }  // namespace mode_controller
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

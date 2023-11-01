@@ -48,15 +48,14 @@ int convertIfaceTypeToFirmwareMode(IfaceType type) {
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 namespace mode_controller {
 
 WifiModeController::WifiModeController() : driver_tool_(new DriverTool) {}
 
 bool WifiModeController::isFirmwareModeChangeNeeded(IfaceType type) {
-    return driver_tool_->IsFirmwareModeChangeNeeded(
-        convertIfaceTypeToFirmwareMode(type));
+    return driver_tool_->IsFirmwareModeChangeNeeded(convertIfaceTypeToFirmwareMode(type));
 }
 
 bool WifiModeController::initialize() {
@@ -68,8 +67,7 @@ bool WifiModeController::initialize() {
 }
 
 bool WifiModeController::changeFirmwareMode(IfaceType type) {
-    if (!driver_tool_->ChangeFirmwareMode(
-            convertIfaceTypeToFirmwareMode(type))) {
+    if (!driver_tool_->ChangeFirmwareMode(convertIfaceTypeToFirmwareMode(type))) {
         LOG(ERROR) << "Failed to change firmware mode";
         return false;
     }
@@ -85,7 +83,7 @@ bool WifiModeController::deinitialize() {
 }
 }  // namespace mode_controller
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

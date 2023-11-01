@@ -21,34 +21,44 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 
 Ringbuffer::Ringbuffer(size_t maxSize) : size_(0), maxSize_(maxSize) {}
 
-void Ringbuffer::append(const std::vector<uint8_t>& input) {
+enum Ringbuffer::AppendStatus Ringbuffer::append(const std::vector<uint8_t>& input) {
     if (input.size() == 0) {
-        return;
+        return AppendStatus::FAIL_IP_BUFFER_ZERO;
     }
     if (input.size() > maxSize_) {
-        LOG(INFO) << "Oversized message of " << input.size()
-                  << " bytes is dropped";
-        return;
+        LOG(INFO) << "Oversized message of " << input.size() << " bytes is dropped";
+        return AppendStatus::FAIL_IP_BUFFER_EXCEEDED_MAXSIZE;
     }
     data_.push_back(input);
     size_ += input.size() * sizeof(input[0]);
     while (size_ > maxSize_) {
+        if (data_.front().size() <= 0 || data_.front().size() > maxSize_) {
+            LOG(ERROR) << "First buffer in the ring buffer is Invalid. Size: "
+                       << data_.front().size();
+            return AppendStatus::FAIL_RING_BUFFER_CORRUPTED;
+        }
         size_ -= data_.front().size() * sizeof(data_.front()[0]);
         data_.pop_front();
     }
+    return AppendStatus::SUCCESS;
 }
 
 const std::list<std::vector<uint8_t>>& Ringbuffer::getData() const {
     return data_;
 }
 
+void Ringbuffer::clear() {
+    data_.clear();
+    size_ = 0;
+}
+
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

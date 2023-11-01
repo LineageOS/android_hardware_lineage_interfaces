@@ -20,6 +20,7 @@
 #include <set>
 
 #include <hidl/HidlSupport.h>
+#include <hidl/HidlTransportSupport.h>
 
 namespace {
 // Type of callback invoked by the death handler.
@@ -29,20 +30,18 @@ using on_death_cb_function = std::function<void(uint64_t)>;
 // callbacks stored in HidlCallbackHandler.
 template <typename CallbackType>
 class HidlDeathHandler : public android::hardware::hidl_death_recipient {
-   public:
+  public:
     HidlDeathHandler(const on_death_cb_function& user_cb_function)
         : cb_function_(user_cb_function) {}
     ~HidlDeathHandler() = default;
 
     // Death notification for callbacks.
-    void serviceDied(
-        uint64_t cookie,
-        const android::wp<android::hidl::base::V1_0::IBase>& /* who */)
-        override {
+    void serviceDied(uint64_t cookie,
+                     const android::wp<android::hidl::base::V1_0::IBase>& /* who */) override {
         cb_function_(cookie);
     }
 
-   private:
+  private:
     on_death_cb_function cb_function_;
 
     DISALLOW_COPY_AND_ASSIGN(HidlDeathHandler);
@@ -52,18 +51,17 @@ class HidlDeathHandler : public android::hardware::hidl_death_recipient {
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 namespace hidl_callback_util {
 template <typename CallbackType>
 // Provides a class to manage callbacks for the various HIDL interfaces and
 // handle the death of the process hosting each callback.
 class HidlCallbackHandler {
-   public:
+  public:
     HidlCallbackHandler()
         : death_handler_(new HidlDeathHandler<CallbackType>(
-              std::bind(&HidlCallbackHandler::onObjectDeath, this,
-                        std::placeholders::_1))) {}
+                  std::bind(&HidlCallbackHandler::onObjectDeath, this, std::placeholders::_1))) {}
     ~HidlCallbackHandler() = default;
 
     bool addCallback(const sp<CallbackType>& cb) {
@@ -71,9 +69,11 @@ class HidlCallbackHandler {
         // (callback proxy's raw pointer) to track the death of individual
         // clients.
         uint64_t cookie = reinterpret_cast<uint64_t>(cb.get());
-        if (cb_set_.find(cb) != cb_set_.end()) {
-            LOG(WARNING) << "Duplicate death notification registration";
-            return true;
+        for (const auto& s : cb_set_) {
+            if (interfacesEqual(cb, s)) {
+                LOG(ERROR) << "Duplicate death notification registration";
+                return true;
+            }
         }
         if (!cb->linkToDeath(death_handler_, cookie)) {
             LOG(ERROR) << "Failed to register death notification";
@@ -83,9 +83,7 @@ class HidlCallbackHandler {
         return true;
     }
 
-    const std::set<android::sp<CallbackType>>& getCallbacks() {
-        return cb_set_;
-    }
+    const std::set<android::sp<CallbackType>>& getCallbacks() { return cb_set_; }
 
     // Death notification for callbacks.
     void onObjectDeath(uint64_t cookie) {
@@ -108,7 +106,7 @@ class HidlCallbackHandler {
         cb_set_.clear();
     }
 
-   private:
+  private:
     std::set<sp<CallbackType>> cb_set_;
     sp<HidlDeathHandler<CallbackType>> death_handler_;
 
@@ -117,7 +115,7 @@ class HidlCallbackHandler {
 
 }  // namespace hidl_callback_util
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android
