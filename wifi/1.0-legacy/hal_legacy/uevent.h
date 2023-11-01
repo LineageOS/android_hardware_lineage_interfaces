@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,22 @@
  * limitations under the License.
  */
 
-#include "hidl_sync_util.h"
+#ifndef _HARDWARE_UEVENT_H
+#define _HARDWARE_UEVENT_H
 
-namespace {
-std::recursive_mutex g_mutex;
-}  // namespace
+#if __cplusplus
+extern "C" {
+#endif
 
-namespace android {
-namespace hardware {
-namespace wifi {
-namespace V1_6 {
-namespace implementation {
-namespace hidl_sync_util {
+int uevent_init();
+int uevent_get_fd();
+int uevent_next_event(char* buffer, int buffer_length);
+int uevent_add_native_handler(void (*handler)(void* data, const char* msg, int msg_len),
+                              void* handler_data);
+int uevent_remove_native_handler(void (*handler)(void* data, const char* msg, int msg_len));
 
-std::unique_lock<std::recursive_mutex> acquireGlobalLock() {
-    return std::unique_lock<std::recursive_mutex>{g_mutex};
-}
+#if __cplusplus
+}  // extern "C"
+#endif
 
-}  // namespace hidl_sync_util
-}  // namespace implementation
-}  // namespace V1_6
-}  // namespace wifi
-}  // namespace hardware
-}  // namespace android
+#endif  // _HARDWARE_UEVENT_H

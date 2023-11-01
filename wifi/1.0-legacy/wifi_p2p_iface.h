@@ -25,7 +25,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 using namespace android::hardware::wifi::V1_0;
 
@@ -33,7 +33,7 @@ using namespace android::hardware::wifi::V1_0;
  * HIDL interface object used to control a P2P Iface instance.
  */
 class WifiP2pIface : public V1_0::IWifiP2pIface {
-   public:
+  public:
     WifiP2pIface(const std::string& ifname,
                  const std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal);
     // Refer to |WifiChip::invalidate()|.
@@ -45,7 +45,7 @@ class WifiP2pIface : public V1_0::IWifiP2pIface {
     Return<void> getName(getName_cb hidl_status_cb) override;
     Return<void> getType(getType_cb hidl_status_cb) override;
 
-   private:
+  private:
     // Corresponding worker functions for the HIDL methods.
     std::pair<WifiStatus, std::string> getNameInternal();
     std::pair<WifiStatus, IfaceType> getTypeInternal();
@@ -58,7 +58,7 @@ class WifiP2pIface : public V1_0::IWifiP2pIface {
 };
 
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

@@ -18,7 +18,7 @@
 #define WIFI_AP_IFACE_H_
 
 #include <android-base/macros.h>
-#include <android/hardware/wifi/1.0/IWifiApIface.h>
+#include <android/hardware/wifi/1.5/IWifiApIface.h>
 
 #include "wifi_iface_util.h"
 #include "wifi_legacy_hal.h"
@@ -26,41 +26,53 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 using namespace android::hardware::wifi::V1_0;
 
 /**
  * HIDL interface object used to control a AP Iface instance.
  */
-class WifiApIface : public V1_0::IWifiApIface {
-   public:
-    WifiApIface(const std::string& ifname,
+class WifiApIface : public V1_5::IWifiApIface {
+  public:
+    WifiApIface(const std::string& ifname, const std::vector<std::string>& instances,
                 const std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal,
                 const std::weak_ptr<iface_util::WifiIfaceUtil> iface_util);
     // Refer to |WifiChip::invalidate()|.
     void invalidate();
     bool isValid();
     std::string getName();
+    void removeInstance(std::string instance);
 
     // HIDL methods exposed.
     Return<void> getName(getName_cb hidl_status_cb) override;
     Return<void> getType(getType_cb hidl_status_cb) override;
     Return<void> setCountryCode(const hidl_array<int8_t, 2>& code,
                                 setCountryCode_cb hidl_status_cb) override;
-    Return<void> getValidFrequenciesForBand(
-        V1_0::WifiBand band,
-        getValidFrequenciesForBand_cb hidl_status_cb) override;
+    Return<void> getValidFrequenciesForBand(V1_0::WifiBand band,
+                                            getValidFrequenciesForBand_cb hidl_status_cb) override;
+    Return<void> setMacAddress(const hidl_array<uint8_t, 6>& mac,
+                               setMacAddress_cb hidl_status_cb) override;
+    Return<void> getFactoryMacAddress(getFactoryMacAddress_cb hidl_status_cb) override;
+    Return<void> resetToFactoryMacAddress(resetToFactoryMacAddress_cb hidl_status_cb) override;
 
-   private:
+    Return<void> getBridgedInstances(getBridgedInstances_cb hidl_status_cb) override;
+
+  private:
     // Corresponding worker functions for the HIDL methods.
     std::pair<WifiStatus, std::string> getNameInternal();
     std::pair<WifiStatus, IfaceType> getTypeInternal();
     WifiStatus setCountryCodeInternal(const std::array<int8_t, 2>& code);
-    std::pair<WifiStatus, std::vector<WifiChannelInMhz>>
-    getValidFrequenciesForBandInternal(V1_0::WifiBand band);
+    std::pair<WifiStatus, std::vector<WifiChannelInMhz>> getValidFrequenciesForBandInternal(
+            V1_0::WifiBand band);
+    WifiStatus setMacAddressInternal(const std::array<uint8_t, 6>& mac);
+    std::pair<WifiStatus, std::array<uint8_t, 6>> getFactoryMacAddressInternal(
+            const std::string& ifaceName);
+    WifiStatus resetToFactoryMacAddressInternal();
+    std::pair<WifiStatus, std::vector<hidl_string>> getBridgedInstancesInternal();
 
     std::string ifname_;
+    std::vector<std::string> instances_;
     std::weak_ptr<legacy_hal::WifiLegacyHal> legacy_hal_;
     std::weak_ptr<iface_util::WifiIfaceUtil> iface_util_;
     bool is_valid_;
@@ -69,7 +81,7 @@ class WifiApIface : public V1_0::IWifiApIface {
 };
 
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android

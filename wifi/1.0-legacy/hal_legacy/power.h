@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,27 @@
  * limitations under the License.
  */
 
-#include "hidl_sync_util.h"
+#ifndef _HARDWARE_POWER_H
+#define _HARDWARE_POWER_H
 
-namespace {
-std::recursive_mutex g_mutex;
-}  // namespace
+#include <stdint.h>
 
-namespace android {
-namespace hardware {
-namespace wifi {
-namespace V1_6 {
-namespace implementation {
-namespace hidl_sync_util {
+#if __cplusplus
+extern "C" {
+#endif
 
-std::unique_lock<std::recursive_mutex> acquireGlobalLock() {
-    return std::unique_lock<std::recursive_mutex>{g_mutex};
-}
+enum {
+    PARTIAL_WAKE_LOCK = 1,  // the cpu stays on, but the screen is off
+    FULL_WAKE_LOCK = 2      // the screen is also on
+};
 
-}  // namespace hidl_sync_util
-}  // namespace implementation
-}  // namespace V1_6
-}  // namespace wifi
-}  // namespace hardware
-}  // namespace android
+// while you have a lock held, the device will stay on at least at the
+// level you request.
+int acquire_wake_lock(int lock, const char* id);
+int release_wake_lock(const char* id);
+
+#if __cplusplus
+}  // extern "C"
+#endif
+
+#endif  // _HARDWARE_POWER_H

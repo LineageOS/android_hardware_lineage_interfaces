@@ -20,7 +20,7 @@
 namespace android {
 namespace hardware {
 namespace wifi {
-namespace V1_4 {
+namespace V1_6 {
 namespace implementation {
 namespace legacy_hal {
 template <typename>
@@ -143,11 +143,36 @@ bool initHalFuncTableWithStubs(wifi_hal_fn* hal_fn) {
     populateStubFor(&hal_fn->wifi_virtual_interface_delete);
     populateStubFor(&hal_fn->wifi_map_dscp_access_category);
     populateStubFor(&hal_fn->wifi_reset_dscp_mapping);
+    populateStubFor(&hal_fn->wifi_set_subsystem_restart_handler);
+    populateStubFor(&hal_fn->wifi_get_supported_iface_name);
+    populateStubFor(&hal_fn->wifi_early_initialize);
+    populateStubFor(&hal_fn->wifi_get_chip_feature_set);
+    populateStubFor(&hal_fn->wifi_multi_sta_set_primary_connection);
+    populateStubFor(&hal_fn->wifi_multi_sta_set_use_case);
+    populateStubFor(&hal_fn->wifi_set_coex_unsafe_channels);
+    populateStubFor(&hal_fn->wifi_set_voip_mode);
+    populateStubFor(&hal_fn->wifi_twt_register_handler);
+    populateStubFor(&hal_fn->wifi_twt_get_capability);
+    populateStubFor(&hal_fn->wifi_twt_setup_request);
+    populateStubFor(&hal_fn->wifi_twt_teardown_request);
+    populateStubFor(&hal_fn->wifi_twt_info_frame_request);
+    populateStubFor(&hal_fn->wifi_twt_get_stats);
+    populateStubFor(&hal_fn->wifi_twt_clear_stats);
+    populateStubFor(&hal_fn->wifi_set_dtim_config);
+    populateStubFor(&hal_fn->wifi_get_usable_channels);
+    populateStubFor(&hal_fn->wifi_trigger_subsystem_restart);
+    populateStubFor(&hal_fn->wifi_set_indoor_state);
+    populateStubFor(&hal_fn->wifi_get_supported_radio_combinations_matrix);
+    populateStubFor(&hal_fn->wifi_nan_rtt_chre_enable_request);
+    populateStubFor(&hal_fn->wifi_nan_rtt_chre_disable_request);
+    populateStubFor(&hal_fn->wifi_chre_register_handler);
+    populateStubFor(&hal_fn->wifi_enable_tx_power_limits);
+    populateStubFor(&hal_fn->wifi_get_cached_scan_results);
     return true;
 }
 }  // namespace legacy_hal
 }  // namespace implementation
-}  // namespace V1_4
+}  // namespace V1_6
 }  // namespace wifi
 }  // namespace hardware
 }  // namespace android
