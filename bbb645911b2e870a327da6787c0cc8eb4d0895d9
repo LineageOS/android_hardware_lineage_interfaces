@@ -16,6 +16,24 @@
       "message": "Needs permissive and only dumps the first line",
       "revId": "bbb645911b2e870a327da6787c0cc8eb4d0895d9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a5b464a_b6ee1f39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-11-12T15:12:01Z",
+      "side": 1,
+      "message": "Response buffer is limited to 256 bytes :(",
+      "parentUuid": "f232e126_7d935e03",
+      "revId": "bbb645911b2e870a327da6787c0cc8eb4d0895d9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
