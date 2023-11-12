@@ -25,6 +25,7 @@ namespace V1_1 {
 namespace implementation {
 
 #define FB_OEM_GET_PROP "getprop"
+#define FB_OEM_DMESG "dmesg"
 
 using ::android::hardware::hidl_string;
 using ::android::hardware::Return;

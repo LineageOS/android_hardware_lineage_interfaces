@@ -21,6 +21,10 @@
 #include <android-base/properties.h>
 #include <android-base/strings.h>
 
+#include <sys/klog.h>
+
+#include "LogKlogCompat.h"
+
 namespace android {
 namespace hardware {
 namespace fastboot {
@@ -50,9 +54,49 @@ Result GetProp(const std::vector<std::string>& args) {
     return { Status::FAILURE_UNKNOWN, "Unable to get property" };
 }
 
+Result Dmesg(const std::vector<std::string>& /* args */) {
+    int rc = klogctl(KLOG_SIZE_BUFFER, nullptr, 0);
+    if (rc <= 0) {
+        return { Status::FAILURE_UNKNOWN, "Unable to get dmesg size" };
+    }
+
+    // Margin for additional input race or trailing nul
+    ssize_t len = rc + 1024;
+    std::unique_ptr<char[]> buf(new char[len]);
+
+    // Drop old logs in /proc/kmsg to avoid duplicate print.
+    rc = klogctl(KLOG_SIZE_UNREAD, nullptr, 0);
+    if (rc > 0)
+        rc = klogctl(KLOG_READ, buf.get(), rc);
+
+    rc = klogctl(KLOG_READ_ALL, buf.get(), len);
+    if (rc <= 0) {
+        return { Status::FAILURE_UNKNOWN, "Unable to read dmesg" };
+    }
+
+    if (rc < len) {
+        len = rc + 1;
+    }
+    buf[--len] = '\0';
+
+    ssize_t sublen;
+    std::string result;
+    for (char *ptr = nullptr, *tok = buf.get();
+         (rc >= 0) && !!(tok = log_strntok_r(tok, len, ptr, sublen));
+         tok = nullptr) {
+        if ((sublen <= 0) || !*tok) continue;
+        // Append to result
+        result.append(tok, sublen);
+        result.push_back('\n');
+    }
+
+    return { Status::SUCCESS, result };
+}
+
 Return<void> Fastboot::doOemCommand(const hidl_string& oemCmdArgs, doOemCommand_cb _hidl_cb) {
     const std::unordered_map<std::string, OEMCommandHandler> kOEMCmdMap = {
         {FB_OEM_GET_PROP, GetProp},
+        {FB_OEM_DMESG, Dmesg},
     };
 
     auto args = android::base::Split(oemCmdArgs, " ");

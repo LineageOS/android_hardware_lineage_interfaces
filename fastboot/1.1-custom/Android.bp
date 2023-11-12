@@ -22,6 +22,7 @@ cc_library {
     recovery: true,
     srcs: [
         "Fastboot.cpp",
+        "LogKlogCompat.cpp",
     ],
     relative_install_path: "hw",
     shared_libs: [
