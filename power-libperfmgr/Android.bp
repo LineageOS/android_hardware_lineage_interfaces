@@ -22,7 +22,7 @@ cc_binary {
         "-Wno-unused-parameter",
     ],
     shared_libs: [
-        "android.hardware.power-V2-ndk",
+        "android.hardware.power-V3-ndk",
         "libbase",
         "libbinder_ndk",
         "libcutils",
