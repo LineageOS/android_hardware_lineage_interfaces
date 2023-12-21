@@ -22,7 +22,7 @@ cc_binary {
         "-Wno-unused-parameter",
     ],
     shared_libs: [
-        "android.hardware.power-V2-ndk_platform",
+        "android.hardware.power-V2-ndk",
         "libbase",
         "libbinder_ndk",
         "libcutils",
@@ -31,7 +31,7 @@ cc_binary {
         "libperfmgr",
         "libprocessgroup",
         "libutils",
-        "pixel-power-ext-V1-ndk_platform",
+        "pixel-power-ext-V1-ndk",
     ],
     srcs: [
         "aidl/service.cpp",
