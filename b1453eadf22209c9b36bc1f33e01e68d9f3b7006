@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8dcc94_cf78bb37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2024-01-31T09:01:04Z",
+      "side": 1,
+      "message": "this is not exactly _fine_",
+      "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad655d6_646f6f0f",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2024-01-31T09:01:04Z",
+      "side": 1,
+      "message": "this is not _fine_\nyou likely want to offload that code somewhere else, as currently it\u0027ll block on HAL init\nWhat I\u0027d do\nadd std::once_flag charging_node_check:\nconst std::string\u0026 getChargingModeNode() {\n    std::call_once(charging_node_check, [this]() {\n        while (!mChargingEnabledNode) {\n            for (const auto\u0026 node : kChargingEnabledNodes) {\n                if (access(node.path.c_str(), F_OK)) {\n                    mChargingEnabledNode \u003d \u0026node;\n                    break;\n                }\n                PLOG(WARNING) \u003c\u003c \"Failed to access() file \" \u003c\u003c node.path;\n                usleep(100000);\n            }\n        }\n    });\n    return mChargingEnabledNode;\n}\n\nand every time you use mChargingEnabledNode replace it with getChargingModeNode()\n\nthat way it\u0027ll lazy init the node at first usage without blocking the HAL creation",
+      "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
