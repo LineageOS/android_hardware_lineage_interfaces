@@ -51,6 +51,24 @@
       "parentUuid": "1ad655d6_646f6f0f",
       "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f3624e_27eb049c",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2024-01-31T12:29:02Z",
+      "side": 1,
+      "message": "I know I know, just wanted to point it out.\nAs soon I see an ack I\u0027m fine with merging it, just want to see it improved :)",
+      "parentUuid": "b544d531_65ea3eab",
+      "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
