@@ -87,6 +87,24 @@
       "parentUuid": "01f3624e_27eb049c",
       "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d9d0b1_a95f0595",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2024-02-16T11:08:29Z",
+      "side": 1,
+      "message": "Acknowledged\nJust wanted someone to be aware of this possible issue.",
+      "parentUuid": "58604472_2e2531ed",
+      "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
