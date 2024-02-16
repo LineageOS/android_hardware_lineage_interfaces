@@ -69,6 +69,24 @@
       "parentUuid": "b544d531_65ea3eab",
       "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58604472_2e2531ed",
+        "filename": "health/aidl/default/ChargingControl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 32717
+      },
+      "writtenOn": "2024-02-16T11:00:26Z",
+      "side": 1,
+      "message": "I ported the change from lineage20 to stay align with other variants. What I can do is, if this change get merged. I will prepare another change for all other variants of lineage with improvements.",
+      "parentUuid": "01f3624e_27eb049c",
+      "revId": "b1453eadf22209c9b36bc1f33e01e68d9f3b7006",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
