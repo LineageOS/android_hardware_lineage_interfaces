@@ -16,6 +16,24 @@
       "message": "@me.cafebabe@gmail.com isn\u0027t this enough? qcrild tries to register @1.1 even if unsupported?",
       "revId": "6d9e5a35ceb39c0a144c5dfc62bf07766b7fed76",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7db15a9_702bfe92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-03-16T03:38:53Z",
+      "side": 1,
+      "message": "qcrild tries to register 1.0~1.2 unconditionally, if one success to register then it\u0027ll stay on that one (depends on what\u0027s declared on manifest)",
+      "parentUuid": "1f023893_e2c1a88b",
+      "revId": "6d9e5a35ceb39c0a144c5dfc62bf07766b7fed76",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
