@@ -34,6 +34,24 @@
       "parentUuid": "1f023893_e2c1a88b",
       "revId": "6d9e5a35ceb39c0a144c5dfc62bf07766b7fed76",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a77b6be_cf82c58f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-03-16T03:51:17Z",
+      "side": 1,
+      "message": "so, if you declare radio.config@1.1 on manifest, then qcrild will register that...",
+      "parentUuid": "a7db15a9_702bfe92",
+      "revId": "6d9e5a35ceb39c0a144c5dfc62bf07766b7fed76",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
