@@ -20,6 +20,7 @@
 
 #define LOG_TAG "android.hardware.usb@1.3-service-basic"
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <utils/Errors.h>
 #include <utils/StrongPointer.h>
@@ -133,9 +134,12 @@ Return<void> Usb::enableContaminantPresenceProtection(const hidl_string& portNam
 }
 
 // Methods from ::android::hardware::usb::V1_3::IUsb follow.
-Return<bool> Usb::enableUsbDataSignal(bool enable __unused) {
-    // TODO implement
-    return bool{};
+Return<bool> Usb::enableUsbDataSignal(bool enable) {
+    if (!android::base::WriteStringToFile(enable ? "0" : "1", "/proc/sys/kernel/deny_new_usb")) {
+        LOG(ERROR) << __func__ << ": Failed to " << (enable ? "enable" : "disable");
+        return false;
+    }
+    return true;
 }
 
 }  // namespace implementation
