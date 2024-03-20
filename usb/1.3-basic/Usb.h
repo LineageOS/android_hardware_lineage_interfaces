@@ -14,21 +14,16 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_HARDWARE_USB_V1_3_USB_H
-#define ANDROID_HARDWARE_USB_V1_3_USB_H
+#pragma once
+
+#include <mutex>
 
 #include <android/hardware/usb/1.2/IUsbCallback.h>
 #include <android/hardware/usb/1.2/types.h>
 #include <android/hardware/usb/1.3/IUsb.h>
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
-#include <utils/Log.h>
 
-#ifdef LOG_TAG
-#undef LOG_TAG
-#endif
-
-#define LOG_TAG "android.hardware.usb@1.3-service-basic"
 #define UEVENT_MSG_LEN 2048
 
 namespace android {
@@ -48,7 +43,8 @@ using ::android::hardware::usb::V1_0::PortRole;
 using ::android::hardware::usb::V1_3::IUsb;
 using ::android::hidl::base::V1_0::IBase;
 
-struct Usb : public IUsb {
+class Usb : public IUsb {
+  public:
     // Methods from ::android::hardware::usb::V1_0::IUsb follow.
     Return<void> switchRole(const hidl_string& portName, const PortRole& role) override;
     Return<void> setCallback(const sp<V1_0::IUsbCallback>& callback) override;
@@ -63,10 +59,11 @@ struct Usb : public IUsb {
     // Methods from ::android::hardware::usb::V1_3::IUsb follow.
     Return<bool> enableUsbDataSignal(bool enable) override;
 
+  private:
     sp<V1_0::IUsbCallback> mCallback;
     sp<V1_1::IUsbCallback> mCallback_1_1;
     sp<V1_2::IUsbCallback> mCallback_1_2;
-    pthread_mutex_t mLock = PTHREAD_MUTEX_INITIALIZER;
+    std::mutex mMutex;
 };
 
 }  // namespace implementation
@@ -74,5 +71,3 @@ struct Usb : public IUsb {
 }  // namespace usb
 }  // namespace hardware
 }  // namespace android
-
-#endif  // ANDROID_HARDWARE_USB_V1_3_USB_H

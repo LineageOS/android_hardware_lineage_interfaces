@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <pthread.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
+
+#define LOG_TAG "android.hardware.usb@1.3-service-basic"
 
 #include <android-base/logging.h>
 #include <utils/Errors.h>
@@ -38,6 +39,8 @@ Return<void> Usb::switchRole(const hidl_string& portName __unused,
 }
 
 Return<void> Usb::queryPortStatus() {
+    std::lock_guard<std::mutex> lock(mMutex);
+
     V1_0::PortStatus currentPortStatus = {
             .portName = "otg_default",
             .currentDataRole = V1_0::PortDataRole::DEVICE,
@@ -65,7 +68,6 @@ Return<void> Usb::queryPortStatus() {
             .contaminantDetectionStatus = V1_2::ContaminantDetectionStatus::NOT_SUPPORTED,
     };
 
-    pthread_mutex_lock(&mLock);
     if (mCallback_1_2 != NULL) {
         hidl_vec<V1_2::PortStatus> vec_currentPortStatus_1_2;
         vec_currentPortStatus_1_2.resize(1);
@@ -99,13 +101,12 @@ Return<void> Usb::queryPortStatus() {
     } else {
         LOG(INFO) << "Notifying userspace skipped. Callback is NULL";
     }
-    pthread_mutex_unlock(&mLock);
 
     return Void();
 }
 
 Return<void> Usb::setCallback(const sp<V1_0::IUsbCallback>& callback) {
-    pthread_mutex_lock(&mLock);
+    std::lock_guard<std::mutex> lock(mMutex);
 
     mCallback = callback;
     mCallback_1_1 = V1_1::IUsbCallback::castFrom(mCallback);
@@ -113,7 +114,6 @@ Return<void> Usb::setCallback(const sp<V1_0::IUsbCallback>& callback) {
 
     LOG(INFO) << "registering callback";
 
-    pthread_mutex_unlock(&mLock);
     return Void();
 }
 
