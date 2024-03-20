@@ -18,6 +18,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define LOG_TAG "android.hardware.usb@1.3-service-basic"
+
 #include <android-base/logging.h>
 #include <utils/Errors.h>
 #include <utils/StrongPointer.h>
