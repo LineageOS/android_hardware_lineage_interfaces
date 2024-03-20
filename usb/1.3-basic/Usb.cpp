@@ -15,6 +15,7 @@
  */
 #include <pthread.h>
 #include <stdio.h>
+#include <sys/syscall.h>
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -131,9 +132,13 @@ Return<void> Usb::enableContaminantPresenceProtection(const hidl_string& portNam
 }
 
 // Methods from ::android::hardware::usb::V1_3::IUsb follow.
-Return<bool> Usb::enableUsbDataSignal(bool enable __unused) {
-    // TODO implement
-    return bool{};
+Return<bool> Usb::enableUsbDataSignal(bool enable) {
+    int ret = syscall(SYS_sysctl, "kernel.deny_new_usb", 0, NULL, NULL, enable ? "1" : "0", 1);
+    if (ret != 0) {
+        LOG(ERROR) << __func__ << ": Failed to " << enable ? "enable" : "disable";
+        return false;
+    }
+    return true;
 }
 
 }  // namespace implementation
