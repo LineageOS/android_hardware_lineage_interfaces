@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf14c13_bfdc71d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2024-03-21T08:03:48Z",
+      "side": 1,
+      "message": "You should also implement this https://github.com/LineageOS/android_hardware_lineage_interfaces/commit/c61c4aa2bca8be2983078c43a1a3af60f45ce8b9",
+      "revId": "06ba7ab1dabe689580c40af8ea383bc4f2ca5cd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
