@@ -13,10 +13,10 @@
 // limitations under the License.
 
 cc_binary {
-    name: "android.hardware.usb@1.0-service",
+    name: "android.hardware.usb@1.0-service.dual_role_usb",
     defaults: ["hidl_defaults"],
-    init_rc: ["android.hardware.usb@1.0-service.rc"],
-    vintf_fragments: ["android.hardware.usb@1.0-service.xml"],
+    init_rc: ["android.hardware.usb@1.0-service.dual_role_usb.rc"],
+    vintf_fragments: ["android.hardware.usb@1.0-service.dual_role_usb.xml"],
     relative_install_path: "hw",
     vendor: true,
     srcs: [
