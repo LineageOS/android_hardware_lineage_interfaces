@@ -593,7 +593,13 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 Usb* usb;
 
 Usb::Usb(std::string deviceName, std::string gadgetName)
-    : mDevicePath(SOC_PATH + deviceName + "/"), mGadgetName(gadgetName) {
+    : mGadgetName(gadgetName) {
+    if (access(SOC_PLATFORM_PATH, F_OK) == 0) {
+        mDevicePath = SOC_PLATFORM_PATH + deviceName + "/";
+    } else if (access(SOC_PATH, F_OK) == 0) {
+        mDevicePath = SOC_PATH + deviceName + "/";
+    }
+
     pthread_mutex_lock(&lock);
     // Make this a singleton class
     assert(usb == NULL);

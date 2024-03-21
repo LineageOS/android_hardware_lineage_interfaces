@@ -62,7 +62,8 @@ using ::android::hidl::base::V1_0::DebugInfo;
 using ::android::hidl::base::V1_0::IBase;
 
 #define USB_DEVICE_PROP "vendor.usb.device"
-#define SOC_PATH "/sys/devices/platform/soc/"
+#define SOC_PLATFORM_PATH "/sys/devices/platform/soc/"
+#define SOC_PATH "/sys/devices/soc/"
 #define ID_PATH "id"
 #define VBUS_PATH "b_sess"
 #define USB_DATA_PATH "usb_data_enabled"
