@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed62264_64b65c95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-03-22T15:31:59Z",
+      "side": 1,
+      "message": "I was personally using this HAL for a project with Android 13. No longer possible on Android 14 withou hacking vintf.",
+      "revId": "7f5f1892ae55d7547ac0b529caf47f4bb82c8128",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
