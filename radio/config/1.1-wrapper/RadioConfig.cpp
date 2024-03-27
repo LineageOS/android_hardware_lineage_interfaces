@@ -25,6 +25,10 @@ Return<void> RadioConfig::setResponseFunctions(
         const sp<::android::hardware::radio::config::V1_0::IRadioConfigIndication>&
                 radioConfigIndication) {
     mRadioConfigResponse = radioConfigResponse;
+    mRadioConfigResponseV1_1 =
+            ::android::hardware::radio::config::V1_1::IRadioConfigResponse::castFrom(
+                    mRadioConfigResponse)
+                    .withDefault(nullptr);
 
     auto realRadioConfig = mRealRadioConfig;
     if (realRadioConfig == nullptr) {
@@ -162,9 +166,7 @@ sp<IRadio> RadioConfig::getRadioForModemId(uint8_t modemId) {
 
 sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse>
 RadioConfig::getRadioConfigResponseV1_1() {
-    return ::android::hardware::radio::config::V1_1::IRadioConfigResponse::castFrom(
-                   mRadioConfigResponse)
-            .withDefault(nullptr);
+    return mRadioConfigResponseV1_1;
 }
 
 RadioResponseInfo RadioConfig::getUnimplementedResponseInfo(int32_t serial) {
