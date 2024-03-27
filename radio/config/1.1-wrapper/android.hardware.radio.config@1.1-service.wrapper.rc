@@ -1,4 +1,4 @@
-service vendor.radio-config-1-1-legacy /vendor/bin/hw/android.hardware.radio.config@1.1-service.legacy
+service vendor.radio-config-1-1-wrapper /vendor/bin/hw/android.hardware.radio.config@1.1-service.wrapper
     interface android.hardware.radio.config@1.0::IRadioConfig default
     interface android.hardware.radio.config@1.1::IRadioConfig default
     class hal

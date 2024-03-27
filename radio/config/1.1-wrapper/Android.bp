@@ -5,12 +5,12 @@
  */
 
 cc_binary {
-    name: "android.hardware.radio.config@1.1-service.legacy",
+    name: "android.hardware.radio.config@1.1-service.wrapper",
     owner: "lineage",
     relative_install_path: "hw",
     vendor: true,
-    init_rc: ["android.hardware.radio.config@1.1-service.legacy.rc"],
-    vintf_fragments: ["android.hardware.radio.config@1.1-service.legacy.xml"],
+    init_rc: ["android.hardware.radio.config@1.1-service.wrapper.rc"],
+    vintf_fragments: ["android.hardware.radio.config@1.1-service.wrapper.xml"],
     srcs: [
         "RadioConfig.cpp",
         "service.cpp",
