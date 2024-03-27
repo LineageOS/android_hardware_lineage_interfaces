@@ -21,10 +21,10 @@ using android::sp;
 using android::status_t;
 
 int main() {
-    sp<::android::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig = nullptr;
-    realRadioConfig = ::android::hardware::radio::config::V1_0::IRadioConfig::getService();
+    sp<lineage::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig =
+            lineage::hardware::radio::config::V1_0::IRadioConfig::getService();
     if (realRadioConfig == nullptr) {
-        LOG(ERROR) << "Cannot get radio config service.";
+        LOG(ERROR) << "Cannot get backend radio config service.";
         return 1;
     }
 

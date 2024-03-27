@@ -15,7 +15,7 @@ using ::android::hardware::radio::V1_0::RadioError;
 using ::android::hardware::radio::V1_0::RadioResponseInfo;
 using ::android::hardware::radio::V1_0::RadioResponseType;
 
-RadioConfig::RadioConfig(sp<::android::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig)
+RadioConfig::RadioConfig(sp<::lineage::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig)
     : mRealRadioConfig(realRadioConfig) {}
 
 // Methods from ::android::hardware::radio::config::V1_0::IRadioConfig follow.
@@ -36,7 +36,13 @@ Return<void> RadioConfig::setResponseFunctions(
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
-    return realRadioConfig->setResponseFunctions(radioConfigResponse, radioConfigIndication);
+    return realRadioConfig->setResponseFunctions(
+            reinterpret_cast<
+                    const sp<::lineage::hardware::radio::config::V1_0::IRadioConfigResponse>&>(
+                    radioConfigResponse),
+            reinterpret_cast<
+                    const sp<::lineage::hardware::radio::config::V1_0::IRadioConfigIndication>&>(
+                    radioConfigIndication));
 }
 
 Return<void> RadioConfig::getSimSlotsStatus(int32_t serial) {
