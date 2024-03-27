@@ -4,6 +4,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#define LOG_TAG "RadioConfigWrapper"
+
+#include <android-base/logging.h>
+
 #include "RadioConfig.h"
 
 #include <vector>
@@ -12,6 +16,7 @@
     do {                                                                       \
         auto radioOldcfg = mRadioOldcfg;                                       \
         if (radioOldcfg != nullptr) {                                          \
+            LOG(ERROR) << __func__ << ": radioOldcfg is null";                 \
             return radioOldcfg->method(__VA_ARGS__);                           \
         }                                                                      \
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE); \
@@ -34,7 +39,9 @@ using ::android::hardware::radio::V1_0::RadioResponseType;
 
 RadioConfig::RadioConfig(sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg> radioOldcfg,
                          sp<::lineage::hardware::radio::oldcfg::V1_1::IRadioOldcfg> radioOldcfgV1_1)
-    : mRadioOldcfg(radioOldcfg), mRadioOldcfgV1_1(radioOldcfgV1_1) {}
+    : mRadioOldcfg(radioOldcfg), mRadioOldcfgV1_1(radioOldcfgV1_1) {
+    android::base::SetLogger(android::base::LogdLogger(android::base::RADIO));
+}
 
 // Methods from ::android::hardware::radio::config::V1_0::IRadioConfig follow.
 Return<void> RadioConfig::setResponseFunctions(
@@ -51,6 +58,7 @@ Return<void> RadioConfig::setResponseFunctions(
 
     auto radioOldcfg = mRadioOldcfg;
     if (radioOldcfg == nullptr) {
+        LOG(ERROR) << __func__ << ": radioOldcfg is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
@@ -77,6 +85,7 @@ Return<void> RadioConfig::getPhoneCapability(int32_t serial) {
 
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
+        LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Void();
     }
 
@@ -139,6 +148,7 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
 
     if (radioConfigResponseV1_1 == nullptr) {
+        LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Void();
     }
 
@@ -167,6 +177,7 @@ Return<void> RadioConfig::setModemsConfig(
 
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
+        LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Void();
     }
 
@@ -180,6 +191,7 @@ Return<void> RadioConfig::getModemsConfig(int32_t serial) {
 
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
+        LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Void();
     }
 
