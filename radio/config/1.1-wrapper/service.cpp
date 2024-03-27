@@ -24,14 +24,20 @@ int main() {
     sp<lineage::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig =
             lineage::hardware::radio::config::V1_0::IRadioConfig::getService();
     if (realRadioConfig == nullptr) {
-        LOG(ERROR) << "Cannot get backend radio config service.";
+        LOG(ERROR) << "Cannot get backend radio config V1.0 service.";
         return 1;
+    }
+
+    sp<lineage::hardware::radio::config::V1_1::IRadioConfig> realRadioConfigV1_1 =
+            lineage::hardware::radio::config::V1_1::IRadioConfig::getService();
+    if (realRadioConfigV1_1 == nullptr) {
+        LOG(ERROR) << "Cannot get backend radio config V1.1 service (not fatal).";
     }
 
     // TODO: Use linkToDeath to monitor realRadioConfig.
 
     android::sp<android::hardware::radio::config::V1_1::IRadioConfig> radioConfig =
-            new RadioConfig(realRadioConfig);
+            new RadioConfig(realRadioConfig, realRadioConfigV1_1);
 
     configureRpcThreadpool(1, true);
 
