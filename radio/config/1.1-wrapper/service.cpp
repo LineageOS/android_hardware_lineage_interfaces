@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "android.hardware.radio.config@1.1-service.legacy"
+#define LOG_TAG "android.hardware.radio.config@1.1-service.wrapper"
 
 #include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>
