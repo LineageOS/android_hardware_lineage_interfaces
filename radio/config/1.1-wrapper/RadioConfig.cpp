@@ -8,6 +8,15 @@
 
 #include <vector>
 
+#define WRAP_V1_0_CALL(method, ...)                                            \
+    do {                                                                       \
+        auto realRadioConfig = mRealRadioConfig;                               \
+        if (realRadioConfig != nullptr) {                                      \
+            return realRadioConfig->method(__VA_ARGS__);                       \
+        }                                                                      \
+        return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE); \
+    } while (0)
+
 namespace android::hardware::radio::config::implementation {
 
 using ::android::hardware::radio::V1_0::IRadio;
@@ -46,21 +55,11 @@ Return<void> RadioConfig::setResponseFunctions(
 }
 
 Return<void> RadioConfig::getSimSlotsStatus(int32_t serial) {
-    auto realRadioConfig = mRealRadioConfig;
-    if (realRadioConfig == nullptr) {
-        return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
-    }
-
-    return realRadioConfig->getSimSlotsStatus(serial);
+    WRAP_V1_0_CALL(getSimSlotsStatus, serial);
 }
 
 Return<void> RadioConfig::setSimSlotsMapping(int32_t serial, const hidl_vec<uint32_t>& slotMap) {
-    auto realRadioConfig = mRealRadioConfig;
-    if (realRadioConfig == nullptr) {
-        return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
-    }
-
-    return realRadioConfig->setSimSlotsMapping(serial, slotMap);
+    WRAP_V1_0_CALL(setSimSlotsMapping, serial, slotMap);
 }
 
 // Methods from ::android::hardware::radio::config::V1_1::IRadioConfig follow.
