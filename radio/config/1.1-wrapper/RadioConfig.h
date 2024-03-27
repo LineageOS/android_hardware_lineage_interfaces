@@ -50,6 +50,7 @@ struct RadioConfig : public V1_1::IRadioConfig {
     sp<::android::hardware::radio::config::V1_0::IRadioConfig> mRealRadioConfig;
 
     sp<::android::hardware::radio::config::V1_0::IRadioConfigResponse> mRadioConfigResponse;
+    sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse> mRadioConfigResponseV1_1;
 
     std::map<uint8_t, sp<::android::hardware::radio::V1_0::IRadio>> mModemIdToRadioCache;
 
