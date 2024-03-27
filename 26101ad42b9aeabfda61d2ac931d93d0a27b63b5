@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5081a02c_70d707a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-03-27T21:31:25Z",
+      "side": 1,
+      "message": "uh, they\u0027re different type of things (backend hidl vs normal hidl), and we may wrap not just radio in the future, so... better to keep it as is?",
+      "parentUuid": "41a7ab7d_d492cde7",
+      "revId": "26101ad42b9aeabfda61d2ac931d93d0a27b63b5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16385936_24138b48",
         "filename": "_backend/radio/oldcfg/1.0/Android.bp",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-27T20:35:12Z",
       "side": 1,
       "message": "How about `lineage.hardware.radio.config`? (proposing this just in case we also need the same thing for .radio, `lineage.hardware.oldrd` doesn\u0027t sound good :D)",
+      "range": {
+        "startLine": 4,
+        "startChar": 11,
+        "endLine": 4,
+        "endChar": 40
+      },
+      "revId": "26101ad42b9aeabfda61d2ac931d93d0a27b63b5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7b7cb1_5107489c",
+        "filename": "_backend/radio/oldcfg/1.0/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-03-27T21:31:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16385936_24138b48",
       "range": {
         "startLine": 4,
         "startChar": 11,
