@@ -36,7 +36,7 @@ int main() {
 
     // TODO: Use linkToDeath to monitor realRadioConfig.
 
-    android::sp<android::hardware::radio::config::V1_1::IRadioConfig> radioConfig =
+    sp<android::hardware::radio::config::V1_1::IRadioConfig> radioConfig =
             new RadioConfig(realRadioConfig, realRadioConfigV1_1);
 
     configureRpcThreadpool(1, true);
