@@ -24,6 +24,7 @@ Return<void> RadioConfig::setResponseFunctions(
                 radioConfigResponse,
         const sp<::android::hardware::radio::config::V1_0::IRadioConfigIndication>&
                 radioConfigIndication) {
+    std::lock_guard<std::mutex> lock(mMutex);
     mRadioConfigResponse = radioConfigResponse;
     mRadioConfigResponseV1_1 =
             ::android::hardware::radio::config::V1_1::IRadioConfigResponse::castFrom(
@@ -86,6 +87,8 @@ Return<void> RadioConfig::getPhoneCapability(int32_t serial) {
 }
 
 Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId) {
+    std::lock_guard<std::mutex> lock(mMutex);
+
     std::vector<sp<IRadio>> radios;
 
     uint8_t numSlots = 0;

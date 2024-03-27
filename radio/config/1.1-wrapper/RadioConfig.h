@@ -14,6 +14,7 @@
 #include <hidl/Status.h>
 
 #include <map>
+#include <mutex>
 
 namespace android::hardware::radio::config::implementation {
 
@@ -53,6 +54,8 @@ struct RadioConfig : public V1_1::IRadioConfig {
     sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse> mRadioConfigResponseV1_1;
 
     std::map<uint8_t, sp<::android::hardware::radio::V1_0::IRadio>> mModemIdToRadioCache;
+
+    std::mutex mMutex;
 
     sp<::android::hardware::radio::V1_0::IRadio> getRadioForModemId(uint8_t modemId);
 
