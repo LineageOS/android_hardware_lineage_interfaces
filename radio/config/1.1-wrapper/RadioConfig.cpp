@@ -87,7 +87,7 @@ Return<void> RadioConfig::getPhoneCapability(int32_t serial) {
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
-        return Void();
+        return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
     RadioResponseInfo radioResponseInfo = {
@@ -150,7 +150,7 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
 
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
-        return Void();
+        return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
     RadioResponseInfo radioResponseInfo = {
@@ -179,7 +179,7 @@ Return<void> RadioConfig::setModemsConfig(
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
-        return Void();
+        return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
     radioConfigResponseV1_1->setModemsConfigResponse(getUnimplementedResponseInfo(serial));
@@ -193,7 +193,7 @@ Return<void> RadioConfig::getModemsConfig(int32_t serial) {
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
-        return Void();
+        return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
     radioConfigResponseV1_1->getModemsConfigResponse(getUnimplementedResponseInfo(serial), {});
