@@ -17,6 +17,14 @@
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE); \
     } while (0)
 
+#define MAYBE_WRAP_V1_1_CALL(method, ...)                \
+    do {                                                 \
+        auto radioOldcfgV1_1 = mRadioOldcfgV1_1;         \
+        if (radioOldcfgV1_1 != nullptr) {                \
+            return radioOldcfgV1_1->method(__VA_ARGS__); \
+        }                                                \
+    } while (0)
+
 namespace android::hardware::radio::config::implementation {
 
 using ::android::hardware::radio::V1_0::IRadio;
@@ -24,8 +32,9 @@ using ::android::hardware::radio::V1_0::RadioError;
 using ::android::hardware::radio::V1_0::RadioResponseInfo;
 using ::android::hardware::radio::V1_0::RadioResponseType;
 
-RadioConfig::RadioConfig(sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg> radioOldcfg)
-    : mRadioOldcfg(radioOldcfg) {}
+RadioConfig::RadioConfig(sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg> radioOldcfg,
+                         sp<::lineage::hardware::radio::oldcfg::V1_1::IRadioOldcfg> radioOldcfgV1_1)
+    : mRadioOldcfg(radioOldcfg), mRadioOldcfgV1_1(radioOldcfgV1_1) {}
 
 // Methods from ::android::hardware::radio::config::V1_0::IRadioConfig follow.
 Return<void> RadioConfig::setResponseFunctions(
@@ -64,6 +73,8 @@ Return<void> RadioConfig::setSimSlotsMapping(int32_t serial, const hidl_vec<uint
 
 // Methods from ::android::hardware::radio::config::V1_1::IRadioConfig follow.
 Return<void> RadioConfig::getPhoneCapability(int32_t serial) {
+    MAYBE_WRAP_V1_1_CALL(getPhoneCapability, serial);
+
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
         return Void();
@@ -92,6 +103,8 @@ Return<void> RadioConfig::getPhoneCapability(int32_t serial) {
 }
 
 Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId) {
+    MAYBE_WRAP_V1_1_CALL(setPreferredDataModem, serial, modemId);
+
     std::lock_guard<std::mutex> lock(mMutex);
 
     std::vector<sp<IRadio>> radios;
@@ -142,7 +155,16 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
 
 Return<void> RadioConfig::setModemsConfig(
         int32_t serial,
-        const ::android::hardware::radio::config::V1_1::ModemsConfig& /*modemsConfig*/) {
+        const ::android::hardware::radio::config::V1_1::ModemsConfig& modemsConfig) {
+    // Cannot use MAYBE_WRAP_V1_1_CALL, needs reinterpret_cast
+    auto radioOldcfgV1_1 = mRadioOldcfgV1_1;
+    if (radioOldcfgV1_1 != nullptr) {
+        return radioOldcfgV1_1->setModemsConfig(
+                serial,
+                reinterpret_cast<const ::lineage::hardware::radio::oldcfg::V1_1::ModemsConfig&>(
+                        modemsConfig));
+    }
+
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
         return Void();
@@ -154,6 +176,8 @@ Return<void> RadioConfig::setModemsConfig(
 }
 
 Return<void> RadioConfig::getModemsConfig(int32_t serial) {
+    MAYBE_WRAP_V1_1_CALL(getModemsConfig, serial);
+
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
     if (radioConfigResponseV1_1 == nullptr) {
         return Void();
