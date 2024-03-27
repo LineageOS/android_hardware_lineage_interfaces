@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41a7ab7d_d492cde7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-03-27T20:36:48Z",
+      "side": 1,
+      "message": "Also, move everything to `radio/` and set `hidl_package_root` in `radio/Android.bp`?",
+      "revId": "26101ad42b9aeabfda61d2ac931d93d0a27b63b5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16385936_24138b48",
         "filename": "_backend/radio/oldcfg/1.0/Android.bp",
         "patchSetId": 1
