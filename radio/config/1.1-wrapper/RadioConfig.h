@@ -12,6 +12,9 @@
 #include <android/hardware/radio/config/1.1/IRadioConfigResponse.h>
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
+#include <lineage/hardware/radio/oldcfg/1.0/IRadioOldcfg.h>
+#include <lineage/hardware/radio/oldcfg/1.0/IRadioOldcfgIndication.h>
+#include <lineage/hardware/radio/oldcfg/1.0/IRadioOldcfgResponse.h>
 
 #include <map>
 #include <mutex>
@@ -28,7 +31,7 @@ using ::android::hardware::Void;
 
 struct RadioConfig : public V1_1::IRadioConfig {
   public:
-    RadioConfig(sp<::android::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig);
+    RadioConfig(sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg> radioOldcfg);
 
     // Methods from ::android::hardware::radio::config::V1_0::IRadioConfig follow.
     Return<void> setResponseFunctions(
@@ -48,7 +51,7 @@ struct RadioConfig : public V1_1::IRadioConfig {
     Return<void> getModemsConfig(int32_t serial) override;
 
   private:
-    sp<::android::hardware::radio::config::V1_0::IRadioConfig> mRealRadioConfig;
+    sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg> mRadioOldcfg;
 
     sp<::android::hardware::radio::config::V1_0::IRadioConfigResponse> mRadioConfigResponse;
     sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse> mRadioConfigResponseV1_1;

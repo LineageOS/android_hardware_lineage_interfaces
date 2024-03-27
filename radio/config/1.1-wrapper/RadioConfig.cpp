@@ -15,8 +15,8 @@ using ::android::hardware::radio::V1_0::RadioError;
 using ::android::hardware::radio::V1_0::RadioResponseInfo;
 using ::android::hardware::radio::V1_0::RadioResponseType;
 
-RadioConfig::RadioConfig(sp<::android::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig)
-    : mRealRadioConfig(realRadioConfig) {}
+RadioConfig::RadioConfig(sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg> radioOldcfg)
+    : mRadioOldcfg(radioOldcfg) {}
 
 // Methods from ::android::hardware::radio::config::V1_0::IRadioConfig follow.
 Return<void> RadioConfig::setResponseFunctions(
@@ -31,30 +31,36 @@ Return<void> RadioConfig::setResponseFunctions(
                     mRadioConfigResponse)
                     .withDefault(nullptr);
 
-    auto realRadioConfig = mRealRadioConfig;
-    if (realRadioConfig == nullptr) {
+    auto radioOldcfg = mRadioOldcfg;
+    if (radioOldcfg == nullptr) {
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
-    return realRadioConfig->setResponseFunctions(radioConfigResponse, radioConfigIndication);
+    return radioOldcfg->setResponseFunctions(
+            reinterpret_cast<
+                    const sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfgResponse>&>(
+                    radioConfigResponse),
+            reinterpret_cast<
+                    const sp<::lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfgIndication>&>(
+                    radioConfigIndication));
 }
 
 Return<void> RadioConfig::getSimSlotsStatus(int32_t serial) {
-    auto realRadioConfig = mRealRadioConfig;
-    if (realRadioConfig == nullptr) {
+    auto radioOldcfg = mRadioOldcfg;
+    if (radioOldcfg == nullptr) {
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
-    return realRadioConfig->getSimSlotsStatus(serial);
+    return radioOldcfg->getSimSlotsStatus(serial);
 }
 
 Return<void> RadioConfig::setSimSlotsMapping(int32_t serial, const hidl_vec<uint32_t>& slotMap) {
-    auto realRadioConfig = mRealRadioConfig;
-    if (realRadioConfig == nullptr) {
+    auto radioOldcfg = mRadioOldcfg;
+    if (radioOldcfg == nullptr) {
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
-    return realRadioConfig->setSimSlotsMapping(serial, slotMap);
+    return radioOldcfg->setSimSlotsMapping(serial, slotMap);
 }
 
 // Methods from ::android::hardware::radio::config::V1_1::IRadioConfig follow.

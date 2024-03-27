@@ -21,17 +21,17 @@ using android::sp;
 using android::status_t;
 
 int main() {
-    sp<::android::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig = nullptr;
-    realRadioConfig = ::android::hardware::radio::config::V1_0::IRadioConfig::getService();
-    if (realRadioConfig == nullptr) {
-        LOG(ERROR) << "Cannot get radio config service.";
+    sp<lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg> radioOldcfg =
+            lineage::hardware::radio::oldcfg::V1_0::IRadioOldcfg::getService();
+    if (radioOldcfg == nullptr) {
+        LOG(ERROR) << "Cannot get backend radio config service (through IRadioOldcfg).";
         return 1;
     }
 
-    // TODO: Use linkToDeath to monitor realRadioConfig.
+    // TODO: Use linkToDeath to monitor radioOldcfg.
 
     android::sp<android::hardware::radio::config::V1_1::IRadioConfig> radioConfig =
-            new RadioConfig(realRadioConfig);
+            new RadioConfig(radioOldcfg);
 
     configureRpcThreadpool(1, true);
 
