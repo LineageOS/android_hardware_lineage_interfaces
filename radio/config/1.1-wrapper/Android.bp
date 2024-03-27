@@ -10,7 +10,6 @@ cc_binary {
     relative_install_path: "hw",
     vendor: true,
     init_rc: ["android.hardware.radio.config@1.1-service.wrapper.rc"],
-    vintf_fragments: ["android.hardware.radio.config@1.1-service.wrapper.xml"],
     srcs: [
         "RadioConfig.cpp",
         "service.cpp",
