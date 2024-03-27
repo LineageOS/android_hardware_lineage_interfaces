@@ -62,10 +62,9 @@ struct RadioConfig : public V1_1::IRadioConfig {
 
     std::mutex mMutex;
 
+    // Helper methods follow.
     sp<::android::hardware::radio::V1_0::IRadio> getRadioForModemId(uint8_t modemId);
-
     sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse> getRadioConfigResponseV1_1();
-
     ::android::hardware::radio::V1_0::RadioResponseInfo getUnimplementedResponseInfo(
             int32_t serial);
 };

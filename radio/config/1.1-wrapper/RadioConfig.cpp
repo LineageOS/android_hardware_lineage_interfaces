@@ -153,7 +153,6 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
     }
 
     auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
-
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
@@ -207,6 +206,7 @@ Return<void> RadioConfig::getModemsConfig(int32_t serial) {
     return Void();
 }
 
+// Helper methods follow.
 sp<IRadio> RadioConfig::getRadioForModemId(uint8_t modemId) {
     if (mModemIdToRadioCache.find(modemId) == mModemIdToRadioCache.end() ||
         mModemIdToRadioCache[modemId] == nullptr) {
