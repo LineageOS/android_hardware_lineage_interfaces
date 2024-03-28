@@ -144,6 +144,7 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
             auto radio = radios[i];
             if (radio == nullptr) {
                 LOG(ERROR) << __func__ << ": radios[" << std::to_string(i) << "] is null";
+                radioError = RadioError::INTERNAL_ERR;
                 continue;
             }
 
@@ -207,7 +208,8 @@ Return<void> RadioConfig::getModemsConfig(int32_t serial) {
 
 // Helper methods follow.
 sp<IRadio> RadioConfig::getRadioForModemId(uint8_t modemId) {
-    if (mModemIdToRadioCache.find(modemId) == mModemIdToRadioCache.end()) {
+    if (mModemIdToRadioCache.find(modemId) == mModemIdToRadioCache.end() ||
+        mModemIdToRadioCache[modemId] == nullptr) {
         mModemIdToRadioCache[modemId] = IRadio::getService("slot" + std::to_string(modemId + 1));
     }
 
