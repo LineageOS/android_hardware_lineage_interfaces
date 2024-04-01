@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a5fc24_1e027af8",
+        "filename": "radio/config/1.1-wrapper/RadioConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2024-04-01T16:12:34Z",
+      "side": 1,
+      "message": "Is that correct?",
+      "range": {
+        "startLine": 19,
+        "startChar": 57,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "f3952a80a1a26ae4057ad0e003ea677f7c6a1399",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
