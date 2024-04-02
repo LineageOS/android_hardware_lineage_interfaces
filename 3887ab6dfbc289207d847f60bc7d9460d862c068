@@ -16,6 +16,24 @@
       "message": "Nope, instead please add lineage.hardware.radio.config interface to your original interface, so you don\u0027t need init hacks to restart the service",
       "revId": "3887ab6dfbc289207d847f60bc7d9460d862c068",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b456f9df_6f02a7a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-04-02T06:17:04Z",
+      "side": 1,
+      "message": "\u003e so you don\u0027t need init hacks to restart the service\n\nno, I expect the real RIL service may die and restart by accident, when it restarts the radio config wrapper shall restart as well",
+      "parentUuid": "82f913be_e43f06a3",
+      "revId": "3887ab6dfbc289207d847f60bc7d9460d862c068",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
