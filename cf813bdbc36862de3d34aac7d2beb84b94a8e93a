@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6edcc986_3e57c868",
+        "filename": "radio/config/1.1-wrapper/service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-04-02T01:55:20Z",
+      "side": 1,
+      "message": "Please squash in the first commit",
+      "revId": "cf813bdbc36862de3d34aac7d2beb84b94a8e93a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
