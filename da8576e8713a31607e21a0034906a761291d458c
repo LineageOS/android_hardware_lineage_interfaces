@@ -16,6 +16,24 @@
       "message": "Why?",
       "revId": "da8576e8713a31607e21a0034906a761291d458c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e8a954c_30e1cc20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-04-02T06:21:23Z",
+      "side": 1,
+      "message": "1) some RIL impls which I\u0027ve seen have mutexs too\n2) to avoid races and such, for sure",
+      "parentUuid": "8580f760_6e8987fd",
+      "revId": "da8576e8713a31607e21a0034906a761291d458c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
