@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "576195e9_5dbd1ab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-04-13T19:47:30Z",
+      "side": 1,
+      "message": "I agreed on\n\n\u003e As the last point, if you add disabled by default, then it will 100% need some additional stuff, whereas without it it can maybe work out of the box",
+      "revId": "04d6a84e0e2e3b23efbe6dee44ad52af61577dd6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
