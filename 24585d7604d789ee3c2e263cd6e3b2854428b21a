@@ -16,6 +16,23 @@
       "message": "restored to the original state on PS 6",
       "revId": "24585d7604d789ee3c2e263cd6e3b2854428b21a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61581452_dcb92c8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-04-13T16:12:45Z",
+      "side": 1,
+      "message": "Squashed with the followup commits into I346810d5532d6612f92ad541a9c472482233ac79",
+      "revId": "24585d7604d789ee3c2e263cd6e3b2854428b21a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
