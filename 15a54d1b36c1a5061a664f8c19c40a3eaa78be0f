@@ -16,6 +16,24 @@
       "message": "Can we address this? It\u0027s just a matter of registering a callback that calls `exit(1)` to let the service restart",
       "revId": "15a54d1b36c1a5061a664f8c19c40a3eaa78be0f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1ee011_ddd3cf2f",
+        "filename": "radio/config/1.1-wrapper/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-04-22T16:30:10Z",
+      "side": 1,
+      "message": "You could push the change, and I\u0027ll test it when I have time.\nsadly I don\u0027t have much time to figure out how to implement it properly right now",
+      "parentUuid": "e66bc73b_0719f357",
+      "revId": "15a54d1b36c1a5061a664f8c19c40a3eaa78be0f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
