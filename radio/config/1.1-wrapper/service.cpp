@@ -24,8 +24,7 @@ int main() {
     sp<lineage::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig =
             lineage::hardware::radio::config::V1_0::IRadioConfig::getService();
     if (realRadioConfig == nullptr) {
-        LOG(ERROR) << "Cannot get backend radio config V1.0 service.";
-        return 1;
+        LOG(FATAL) << "Cannot get backend radio config V1.0 service.";
     }
 
     sp<lineage::hardware::radio::config::V1_1::IRadioConfig> realRadioConfigV1_1 =
@@ -43,14 +42,13 @@ int main() {
 
     status_t status = radioConfig->registerAsService();
     if (status != OK) {
-        LOG(ERROR) << "Cannot register RadioConfig HAL service.";
-        return 1;
+        LOG(FATAL) << "Cannot register RadioConfig HAL service.";
     }
 
     LOG(INFO) << "RadioConfig HAL service ready.";
 
     joinRpcThreadpool();
 
-    LOG(INFO) << "RadioConfig HAL service failed to join thread pool.";
-    return 1;
+    LOG(FATAL) << "RadioConfig HAL service failed to join thread pool.";
+    return EXIT_FAILURE;  // should not reach
 }
