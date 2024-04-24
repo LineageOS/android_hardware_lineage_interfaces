@@ -87,7 +87,7 @@ Return<void> RadioConfig::setSimSlotsMapping(int32_t serial, const hidl_vec<uint
 Return<void> RadioConfig::getPhoneCapability(int32_t serial) {
     MAYBE_WRAP_V1_1_CALL(getPhoneCapability, serial);
 
-    auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
+    auto radioConfigResponseV1_1 = mRadioConfigResponseV1_1;
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
@@ -155,7 +155,7 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
         }
     }
 
-    auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
+    auto radioConfigResponseV1_1 = mRadioConfigResponseV1_1;
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
@@ -184,7 +184,7 @@ Return<void> RadioConfig::setModemsConfig(
                         modemsConfig));
     }
 
-    auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
+    auto radioConfigResponseV1_1 = mRadioConfigResponseV1_1;
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
@@ -198,7 +198,7 @@ Return<void> RadioConfig::setModemsConfig(
 Return<void> RadioConfig::getModemsConfig(int32_t serial) {
     MAYBE_WRAP_V1_1_CALL(getModemsConfig, serial);
 
-    auto radioConfigResponseV1_1 = getRadioConfigResponseV1_1();
+    auto radioConfigResponseV1_1 = mRadioConfigResponseV1_1;
     if (radioConfigResponseV1_1 == nullptr) {
         LOG(ERROR) << __func__ << ": radioConfigResponseV1_1 is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
@@ -220,11 +220,6 @@ sp<IRadio> RadioConfig::getRadioForModemId(uint8_t modemId) {
     }
 
     return mModemIdToRadioCache[modemId];
-}
-
-sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse>
-RadioConfig::getRadioConfigResponseV1_1() {
-    return mRadioConfigResponseV1_1;
 }
 
 RadioResponseInfo RadioConfig::getUnimplementedResponseInfo(int32_t serial) {
