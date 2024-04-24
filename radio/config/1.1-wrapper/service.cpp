@@ -23,9 +23,7 @@ using android::status_t;
 int main() {
     sp<lineage::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig =
             lineage::hardware::radio::config::V1_0::IRadioConfig::getService();
-    if (realRadioConfig == nullptr) {
-        LOG(FATAL) << "Cannot get backend radio config V1.0 service.";
-    }
+    CHECK(realRadioConfig) << "Cannot get backend radio config V1.0 service.";
 
     sp<lineage::hardware::radio::config::V1_1::IRadioConfig> realRadioConfigV1_1 =
             lineage::hardware::radio::config::V1_1::IRadioConfig::getService();
@@ -41,9 +39,7 @@ int main() {
     configureRpcThreadpool(1, true);
 
     status_t status = radioConfig->registerAsService();
-    if (status != OK) {
-        LOG(FATAL) << "Cannot register RadioConfig HAL service.";
-    }
+    CHECK_EQ(status, OK);
 
     LOG(INFO) << "RadioConfig HAL service ready.";
 
