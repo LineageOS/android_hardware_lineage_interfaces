@@ -9,6 +9,7 @@
 #include <android-base/logging.h>
 
 #include "RadioConfig.h"
+#include "hidl-utils.h"
 
 #include <vector>
 
@@ -31,6 +32,8 @@
     } while (0)
 
 namespace android::hardware::radio::config::implementation {
+
+using namespace ::android::hardware::hidl_utils;
 
 using ::android::hardware::radio::V1_0::IRadio;
 using ::android::hardware::radio::V1_0::RadioError;
@@ -211,6 +214,9 @@ sp<IRadio> RadioConfig::getRadioForModemId(uint8_t modemId) {
     if (mModemIdToRadioCache.find(modemId) == mModemIdToRadioCache.end() ||
         mModemIdToRadioCache[modemId] == nullptr) {
         mModemIdToRadioCache[modemId] = IRadio::getService("slot" + std::to_string(modemId + 1));
+        if (mModemIdToRadioCache[modemId] != nullptr) {
+            hidl_utils::linkDeathToDeath(mModemIdToRadioCache[modemId]);
+        }
     }
 
     return mModemIdToRadioCache[modemId];
