@@ -13,6 +13,7 @@ cc_binary {
     vintf_fragments: ["android.hardware.radio.config@1.1-service.wrapper.xml"],
     srcs: [
         "RadioConfig.cpp",
+        "hidl-utils.cpp",
         "service.cpp",
     ],
     shared_libs: [
