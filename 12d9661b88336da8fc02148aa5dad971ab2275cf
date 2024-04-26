@@ -34,6 +34,24 @@
       "parentUuid": "fb763216_09620725",
       "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a3f6ca_8b8965a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-04-26T22:53:01Z",
+      "side": 1,
+      "message": "I did add needed namespaces in power-libperfmgr (actually, in this commit). So I guess we\u0027re good on that front.",
+      "parentUuid": "5557c222_2a2df5e0",
+      "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
