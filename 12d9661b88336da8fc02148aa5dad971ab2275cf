@@ -16,6 +16,24 @@
       "message": "This chain is largely taken from hardware/xiaomi implementation.\n\nDue to the non-existence of Android.mk under hardware/lineage, this has to be built via Blueprint, thus the following configurations are missed:\n- TARGET_POWERHAL_MODE_EXT\n- TARGET_TAP_TO_WAKE_NODE\n\nIt\u0027s probably possible to expose these via Soong configs, but I\u0027m not smart enough for this.\n\nFor the same reason as above, users will need to import `hardware/lineage/interfaces/power-libperfmgr` directly so as to avoid build failures on devices that don\u0027t have PRODUCT_SOONG_NAMESPACES for the needed namespaces.",
       "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5557c222_2a2df5e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-04-26T22:50:25Z",
+      "side": 1,
+      "message": "TARGET_TAP_TO_WAKE_NODE isn\u0027t needed anyway, can be added to the config\nFor the namespace issue, add `imports: []` to `hardware/lineage/interfaces/power-libperfmgr/Android.bp` and import the needed namespaces",
+      "parentUuid": "fb763216_09620725",
+      "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
