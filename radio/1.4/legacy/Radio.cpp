@@ -59,10 +59,9 @@ Radio::Radio(sp<V1_0::IRadio> realRadio) : mRealRadio(realRadio) {}
 // Methods from ::android::hardware::radio::V1_0::IRadio follow.
 Return<void> Radio::setResponseFunctions(const sp<V1_0::IRadioResponse>& radioResponse,
                                          const sp<V1_0::IRadioIndication>& radioIndication) {
-    mRealRadioResponse = radioResponse;
-    mRealRadioIndication = radioIndication;
-
-    WRAP_V1_0_CALL(setResponseFunctions, radioResponse, radioIndication);
+    mRadioResponse->mRealRadioResponse = V1_4::IRadioResponse::castFrom(radioResponse);
+    mRadioIndication->mRealRadioIndication = V1_4::IRadioIndication::castFrom(radioIndication);
+    WRAP_V1_0_CALL(setResponseFunctions, mRadioResponse, mRadioIndication);
 }
 
 Return<void> Radio::getIccCardStatus(int32_t serial) {

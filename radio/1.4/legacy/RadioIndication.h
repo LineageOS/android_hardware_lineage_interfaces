@@ -21,6 +21,7 @@ using ::android::hardware::Return;
 using ::android::hardware::Void;
 
 struct RadioIndication : public V1_4::IRadioIndication {
+    sp<V1_4::IRadioIndication> mRealRadioIndication;
     // Methods from ::android::hardware::radio::V1_0::IRadioIndication follow.
     Return<void> radioStateChanged(V1_0::RadioIndicationType type,
                                    V1_0::RadioState radioState) override;
