@@ -70,6 +70,23 @@
       "parentUuid": "20a3f6ca_8b8965a8",
       "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8df2172_e392fed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-04-27T02:04:53Z",
+      "side": 1,
+      "message": "libperfmgr (the actual lib) refuses to build for some reason",
+      "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
