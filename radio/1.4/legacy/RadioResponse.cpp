@@ -5,14 +5,19 @@
  */
 
 #include "RadioResponse.h"
+#include "Helpers.h"
+#include<string>
 
 namespace android::hardware::radio::implementation {
 
 // Methods from ::android::hardware::radio::V1_0::IRadioResponse follow.
 Return<void> RadioResponse::getIccCardStatusResponse(const V1_0::RadioResponseInfo& info,
                                                      const V1_0::CardStatus& cardStatus) {
-    // TODO implement
-    return Void();
+    V1_4::CardStatus newCS = {};
+    newCS.base.base = cardStatus;
+    newCS.base.physicalSlotId = -1;
+    newCS.base.iccid = hidl_string(" ");
+    return mRealRadioResponse->getIccCardStatusResponse_1_4(info, newCS);
 }
 
 Return<void> RadioResponse::supplyIccPinForAppResponse(const V1_0::RadioResponseInfo& info,
@@ -52,8 +57,14 @@ Return<void> RadioResponse::supplyNetworkDepersonalizationResponse(
 
 Return<void> RadioResponse::getCurrentCallsResponse(const V1_0::RadioResponseInfo& info,
                                                     const hidl_vec<V1_0::Call>& calls) {
-    // TODO implement
-    return Void();
+    hidl_vec<V1_2::Call> newCalls;
+    newCalls.resize(calls.size());
+
+    for(int x = 0; x < calls.size(); ++x){
+        newCalls[x].base = calls[x];
+        newCalls[x].audioQuality = V1_2::AudioQuality::UNSPECIFIED;
+    }
+    return mRealRadioResponse->getCurrentCallsResponse_1_2(info, newCalls);
 }
 
 Return<void> RadioResponse::dialResponse(const V1_0::RadioResponseInfo& info) {
@@ -98,20 +109,62 @@ Return<void> RadioResponse::getLastCallFailCauseResponse(
 
 Return<void> RadioResponse::getSignalStrengthResponse(const V1_0::RadioResponseInfo& info,
                                                       const V1_0::SignalStrength& sigStrength) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->getSignalStrengthResponse_1_4(info, Create1_4SignalStrength(sigStrength));
+}
+
+void Init1_2CellIdentity(const V1_0::CellIdentity& legacyCI, V1_2::CellIdentity& newCI) {
+    if(legacyCI.cellIdentityGsm.size() == 1){
+        newCI.cellIdentityGsm.resize(1);
+        newCI.cellIdentityGsm[0].base = legacyCI.cellIdentityGsm[0];
+    }
+    else if(legacyCI.cellIdentityCdma.size() == 1){
+        newCI.cellIdentityCdma.resize(1);
+        newCI.cellIdentityCdma[0].base = legacyCI.cellIdentityCdma[0];
+    }
+    else if(legacyCI.cellIdentityLte.size() == 1){
+        newCI.cellIdentityLte.resize(1);
+        newCI.cellIdentityLte[0].base = legacyCI.cellIdentityLte[0];
+        newCI.cellIdentityLte[0].bandwidth = INT_MAX;
+    }
+    else if(legacyCI.cellIdentityWcdma.size() == 1){
+        newCI.cellIdentityWcdma.resize(1);
+        newCI.cellIdentityWcdma[0].base = legacyCI.cellIdentityWcdma[0];
+    }
+    else if(legacyCI.cellIdentityTdscdma.size() == 1){
+        newCI.cellIdentityTdscdma.resize(1);
+        newCI.cellIdentityTdscdma[0].base = legacyCI.cellIdentityTdscdma[0];
+        newCI.cellIdentityTdscdma[0].uarfcn = INT_MAX;
+    }
 }
 
 Return<void> RadioResponse::getVoiceRegistrationStateResponse(
         const V1_0::RadioResponseInfo& info, const V1_0::VoiceRegStateResult& voiceRegResponse) {
-    // TODO implement
-    return Void();
+    V1_2::VoiceRegStateResult newVRR = {};
+    newVRR.regState = voiceRegResponse.regState;
+    newVRR.rat = voiceRegResponse.rat;
+    newVRR.cssSupported  = voiceRegResponse.cssSupported;
+    newVRR.roamingIndicator = voiceRegResponse.roamingIndicator;
+    newVRR.systemIsInPrl = voiceRegResponse.systemIsInPrl;
+    newVRR.defaultRoamingIndicator = voiceRegResponse.defaultRoamingIndicator;
+    newVRR.reasonForDenial = voiceRegResponse.reasonForDenial;
+    Init1_2CellIdentity(voiceRegResponse.cellIdentity, newVRR.cellIdentity);
+
+    return mRealRadioResponse->getVoiceRegistrationStateResponse_1_2(info, newVRR);
 }
 
 Return<void> RadioResponse::getDataRegistrationStateResponse(
         const V1_0::RadioResponseInfo& info, const V1_0::DataRegStateResult& dataRegResponse) {
-    // TODO implement
-    return Void();
+    mDataRoaming = (dataRegResponse.regState == V1_0::RegState::REG_ROAMING);
+    mRat = (V1_0::RadioTechnology) dataRegResponse.rat;
+
+    V1_4::DataRegStateResult newDRR = {};
+    newDRR.base.regState = dataRegResponse.regState;
+    newDRR.base.rat = dataRegResponse.rat;
+    newDRR.base.reasonDataDenied = dataRegResponse.reasonDataDenied;
+    newDRR.base.maxDataCalls = dataRegResponse.maxDataCalls;
+    Init1_2CellIdentity(dataRegResponse.cellIdentity, newDRR.base.cellIdentity);
+
+    return mRealRadioResponse->getDataRegistrationStateResponse_1_4(info, newDRR);
 }
 
 Return<void> RadioResponse::getOperatorResponse(const V1_0::RadioResponseInfo& info,
@@ -141,8 +194,7 @@ Return<void> RadioResponse::sendSMSExpectMoreResponse(const V1_0::RadioResponseI
 
 Return<void> RadioResponse::setupDataCallResponse(const V1_0::RadioResponseInfo& info,
                                                   const V1_0::SetupDataCallResult& dcResponse) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->setupDataCallResponse_1_4(info, Create1_4SetupDataCallResult(dcResponse));
 }
 
 Return<void> RadioResponse::iccIOForAppResponse(const V1_0::RadioResponseInfo& info,
@@ -266,8 +318,13 @@ Return<void> RadioResponse::getClipResponse(const V1_0::RadioResponseInfo& info,
 Return<void> RadioResponse::getDataCallListResponse(
         const V1_0::RadioResponseInfo& info,
         const hidl_vec<V1_0::SetupDataCallResult>& dcResponse) {
-    // TODO implement
-    return Void();
+    hidl_vec<V1_4::SetupDataCallResult> newResponse;
+    newResponse.resize(dcResponse.size());
+
+    for(int x = 0; x < dcResponse.size(); ++x)
+        newResponse[x] = Create1_4SetupDataCallResult(dcResponse[x]);
+
+    return mRealRadioResponse->getDataCallListResponse_1_4(info, newResponse);
 }
 
 Return<void> RadioResponse::setSuppServiceNotificationsResponse(
@@ -312,14 +369,82 @@ Return<void> RadioResponse::explicitCallTransferResponse(const V1_0::RadioRespon
 }
 
 Return<void> RadioResponse::setPreferredNetworkTypeResponse(const V1_0::RadioResponseInfo& info) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->setPreferredNetworkTypeBitmapResponse(info);
 }
 
 Return<void> RadioResponse::getPreferredNetworkTypeResponse(const V1_0::RadioResponseInfo& info,
                                                             V1_0::PreferredNetworkType nwType) {
-    // TODO implement
-    return Void();
+    hidl_bitfield<V1_4::RadioAccessFamily> nwTypeBitmap = 0;
+    switch(nwType){
+        case V1_0::PreferredNetworkType::GSM_WCDMA:
+        case V1_0::PreferredNetworkType::GSM_WCDMA_AUTO:
+            nwTypeBitmap = GSMBITS | WCDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::GSM_ONLY:
+            nwTypeBitmap = GSMBITS;
+        break;
+        case V1_0::PreferredNetworkType::WCDMA:
+            nwTypeBitmap = WCDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::CDMA_EVDO_AUTO:
+            nwTypeBitmap = CDMABITS | EVDOBITS;
+        break;
+        case V1_0::PreferredNetworkType::CDMA_ONLY:
+            nwTypeBitmap = CDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::EVDO_ONLY:
+            nwTypeBitmap = EVDOBITS;
+        break;
+        case V1_0::PreferredNetworkType::GSM_WCDMA_CDMA_EVDO_AUTO:
+            nwTypeBitmap = GSMBITS | WCDMABITS | CDMABITS | EVDOBITS;
+        break;
+        case V1_0::PreferredNetworkType::LTE_CDMA_EVDO:
+            nwTypeBitmap = LTEBITS | CDMABITS | EVDOBITS;
+        break;
+        case V1_0::PreferredNetworkType::LTE_GSM_WCDMA:
+            nwTypeBitmap = LTEBITS | GSMBITS | WCDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::LTE_CMDA_EVDO_GSM_WCDMA:
+            nwTypeBitmap = LTEBITS | CDMABITS | EVDOBITS | GSMBITS | WCDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::LTE_ONLY:
+            nwTypeBitmap = LTEBITS;
+        break;
+        case V1_0::PreferredNetworkType::LTE_WCDMA:
+            nwTypeBitmap = LTEBITS | WCDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_ONLY:
+            nwTypeBitmap = TDSCDMABIT;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_WCDMA:
+            nwTypeBitmap = TDSCDMABIT | WCDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_LTE:
+            nwTypeBitmap = TDSCDMABIT | LTEBITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_GSM:
+            nwTypeBitmap = TDSCDMABIT | GSMBITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_GSM_LTE:
+            nwTypeBitmap = TDSCDMABIT | GSMBITS | LTEBITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_GSM_WCDMA:
+            nwTypeBitmap = TDSCDMABIT | GSMBITS | WCDMABITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_WCDMA_LTE:
+            nwTypeBitmap = TDSCDMABIT | WCDMABITS | LTEBITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_GSM_WCDMA_LTE:
+            nwTypeBitmap = TDSCDMABIT | GSMBITS | WCDMABITS | LTEBITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_GSM_WCDMA_CDMA_EVDO_AUTO:
+            nwTypeBitmap = TDSCDMABIT | GSMBITS | WCDMABITS | CDMABITS | EVDOBITS;
+        break;
+        case V1_0::PreferredNetworkType::TD_SCDMA_LTE_CDMA_EVDO_GSM_WCDMA:
+            nwTypeBitmap = TDSCDMABIT | LTEBITS | CDMABITS | EVDOBITS | GSMBITS | WCDMABITS;
+        break;
+    }
+    return mRealRadioResponse->getPreferredNetworkTypeBitmapResponse(info, nwTypeBitmap);
 }
 
 Return<void> RadioResponse::getNeighboringCidsResponse(
@@ -480,8 +605,7 @@ Return<void> RadioResponse::getVoiceRadioTechnologyResponse(const V1_0::RadioRes
 
 Return<void> RadioResponse::getCellInfoListResponse(const V1_0::RadioResponseInfo& info,
                                                     const hidl_vec<V1_0::CellInfo>& cellInfo) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->getCellInfoListResponse_1_4(info, Create1_4CellInfoList(cellInfo));
 }
 
 Return<void> RadioResponse::setCellInfoListRateResponse(const V1_0::RadioResponseInfo& info) {
@@ -597,16 +721,23 @@ Return<void> RadioResponse::getModemActivityInfoResponse(
 }
 
 Return<void> RadioResponse::setAllowedCarriersResponse(const V1_0::RadioResponseInfo& info,
-                                                       int32_t numAllowed) {
-    // TODO implement
-    return Void();
+                                                       int32_t /* numAllowed */) {
+    return mRealRadioResponse->setAllowedCarriersResponse_1_4(info);
 }
 
 Return<void> RadioResponse::getAllowedCarriersResponse(const V1_0::RadioResponseInfo& info,
                                                        bool allAllowed,
                                                        const V1_0::CarrierRestrictions& carriers) {
-    // TODO implement
-    return Void();
+    V1_4::CarrierRestrictionsWithPriority newCarriers = {};
+    if(allAllowed){
+        newCarriers.allowedCarriersPrioritized = false;
+        return mRealRadioResponse->getAllowedCarriersResponse_1_4(info, newCarriers, V1_4::SimLockMultiSimPolicy::NO_MULTISIM_POLICY);
+    }
+
+    newCarriers.allowedCarriers = carriers.allowedCarriers;
+    newCarriers.excludedCarriers = carriers.excludedCarriers;
+    newCarriers.allowedCarriersPrioritized = true;
+    return mRealRadioResponse->getAllowedCarriersResponse_1_4(info, newCarriers, V1_4::SimLockMultiSimPolicy::NO_MULTISIM_POLICY);
 }
 
 Return<void> RadioResponse::sendDeviceStateResponse(const V1_0::RadioResponseInfo& info) {
@@ -618,8 +749,7 @@ Return<void> RadioResponse::setIndicationFilterResponse(const V1_0::RadioRespons
 }
 
 Return<void> RadioResponse::setSimCardPowerResponse(const V1_0::RadioResponseInfo& info) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->setSimCardPowerResponse_1_1(info);
 }
 
 Return<void> RadioResponse::acknowledgeRequest(int32_t serial) {
@@ -637,9 +767,9 @@ Return<void> RadioResponse::setSimCardPowerResponse_1_1(const V1_0::RadioRespons
 }
 
 Return<void> RadioResponse::startNetworkScanResponse(const V1_0::RadioResponseInfo& info) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->startNetworkScanResponse_1_4(info);
 }
+
 
 Return<void> RadioResponse::stopNetworkScanResponse(const V1_0::RadioResponseInfo& info) {
     return mRealRadioResponse->stopNetworkScanResponse(info);
@@ -657,14 +787,12 @@ Return<void> RadioResponse::stopKeepaliveResponse(const V1_0::RadioResponseInfo&
 // Methods from ::android::hardware::radio::V1_2::IRadioResponse follow.
 Return<void> RadioResponse::getCellInfoListResponse_1_2(const V1_0::RadioResponseInfo& info,
                                                         const hidl_vec<V1_2::CellInfo>& cellInfo) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->getCellInfoListResponse_1_4(info, Create1_4CellInfoList(cellInfo));
 }
 
 Return<void> RadioResponse::getIccCardStatusResponse_1_2(const V1_0::RadioResponseInfo& info,
                                                          const V1_2::CardStatus& cardStatus) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->getIccCardStatusResponse_1_4(info, {cardStatus, hidl_string("")});
 }
 
 Return<void> RadioResponse::setSignalStrengthReportingCriteriaResponse(
@@ -684,8 +812,7 @@ Return<void> RadioResponse::getCurrentCallsResponse_1_2(const V1_0::RadioRespons
 
 Return<void> RadioResponse::getSignalStrengthResponse_1_2(
         const V1_0::RadioResponseInfo& info, const V1_2::SignalStrength& signalStrength) {
-    // TODO implement
-    return Void();
+    return mRealRadioResponse->getSignalStrengthResponse_1_4(info, Create1_4SignalStrength(signalStrength));
 }
 
 Return<void> RadioResponse::getVoiceRegistrationStateResponse_1_2(
@@ -695,8 +822,10 @@ Return<void> RadioResponse::getVoiceRegistrationStateResponse_1_2(
 
 Return<void> RadioResponse::getDataRegistrationStateResponse_1_2(
         const V1_0::RadioResponseInfo& info, const V1_2::DataRegStateResult& dataRegResponse) {
-    // TODO implement
-    return Void();
+    mDataRoaming = (dataRegResponse.regState == V1_0::RegState::REG_ROAMING);
+    V1_4::DataRegStateResult newDRR = {};
+    newDRR.base = dataRegResponse;
+    return mRealRadioResponse->getDataRegistrationStateResponse_1_4(info, newDRR);
 }
 
 // Methods from ::android::hardware::radio::V1_3::IRadioResponse follow.
