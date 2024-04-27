@@ -11,46 +11,38 @@ namespace android::hardware::radio::implementation {
 // Methods from ::android::hardware::radio::V1_0::IRadioIndication follow.
 Return<void> RadioIndication::radioStateChanged(V1_0::RadioIndicationType type,
                                                 V1_0::RadioState radioState) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->radioStateChanged(type, radioState);
 }
 
 Return<void> RadioIndication::callStateChanged(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->callStateChanged(type);
 }
 
 Return<void> RadioIndication::networkStateChanged(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->networkStateChanged(type);
 }
 
 Return<void> RadioIndication::newSms(V1_0::RadioIndicationType type, const hidl_vec<uint8_t>& pdu) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->newSms(type, pdu);
 }
 
 Return<void> RadioIndication::newSmsStatusReport(V1_0::RadioIndicationType type,
                                                  const hidl_vec<uint8_t>& pdu) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->newSmsStatusReport(type, pdu);
 }
 
 Return<void> RadioIndication::newSmsOnSim(V1_0::RadioIndicationType type, int32_t recordNumber) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->newSmsOnSim(type, recordNumber);
 }
 
 Return<void> RadioIndication::onUssd(V1_0::RadioIndicationType type, V1_0::UssdModeType modeType,
                                      const hidl_string& msg) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->onUssd(type, modeType, msg);
 }
 
 Return<void> RadioIndication::nitzTimeReceived(V1_0::RadioIndicationType type,
                                                const hidl_string& nitzTime, uint64_t receivedTime) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->nitzTimeReceived(type, nitzTime, receivedTime);
 }
 
 Return<void> RadioIndication::currentSignalStrength(V1_0::RadioIndicationType type,
@@ -67,135 +59,111 @@ Return<void> RadioIndication::dataCallListChanged(
 
 Return<void> RadioIndication::suppSvcNotify(V1_0::RadioIndicationType type,
                                             const V1_0::SuppSvcNotification& suppSvc) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->suppSvcNotify(type, suppSvc);
 }
 
 Return<void> RadioIndication::stkSessionEnd(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->stkSessionEnd(type);
 }
 
 Return<void> RadioIndication::stkProactiveCommand(V1_0::RadioIndicationType type,
                                                   const hidl_string& cmd) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->stkProactiveCommand(type, cmd);
 }
 
 Return<void> RadioIndication::stkEventNotify(V1_0::RadioIndicationType type,
                                              const hidl_string& cmd) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->stkEventNotify(type, cmd);
 }
 
 Return<void> RadioIndication::stkCallSetup(V1_0::RadioIndicationType type, int64_t timeout) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->stkCallSetup(type, timeout);
 }
 
 Return<void> RadioIndication::simSmsStorageFull(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->simSmsStorageFull(type);
 }
 
 Return<void> RadioIndication::simRefresh(V1_0::RadioIndicationType type,
                                          const V1_0::SimRefreshResult& refreshResult) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->simRefresh(type, refreshResult);
 }
 
 Return<void> RadioIndication::callRing(V1_0::RadioIndicationType type, bool isGsm,
                                        const V1_0::CdmaSignalInfoRecord& record) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->callRing(type, isGsm, record);
 }
 
 Return<void> RadioIndication::simStatusChanged(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->simStatusChanged(type);
 }
 
 Return<void> RadioIndication::cdmaNewSms(V1_0::RadioIndicationType type,
                                          const V1_0::CdmaSmsMessage& msg) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cdmaNewSms(type, msg);
 }
 
 Return<void> RadioIndication::newBroadcastSms(V1_0::RadioIndicationType type,
                                               const hidl_vec<uint8_t>& data) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->newBroadcastSms(type, data);
 }
 
 Return<void> RadioIndication::cdmaRuimSmsStorageFull(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cdmaRuimSmsStorageFull(type);
 }
 
 Return<void> RadioIndication::restrictedStateChanged(V1_0::RadioIndicationType type,
                                                      V1_0::PhoneRestrictedState state) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->restrictedStateChanged(type, state);
 }
 
 Return<void> RadioIndication::enterEmergencyCallbackMode(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->enterEmergencyCallbackMode(type);
 }
 
 Return<void> RadioIndication::cdmaCallWaiting(V1_0::RadioIndicationType type,
                                               const V1_0::CdmaCallWaiting& callWaitingRecord) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cdmaCallWaiting(type, callWaitingRecord);
 }
 
 Return<void> RadioIndication::cdmaOtaProvisionStatus(V1_0::RadioIndicationType type,
                                                      V1_0::CdmaOtaProvisionStatus status) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cdmaOtaProvisionStatus(type, status);
 }
 
 Return<void> RadioIndication::cdmaInfoRec(V1_0::RadioIndicationType type,
                                           const V1_0::CdmaInformationRecords& records) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cdmaInfoRec(type, records);
 }
 
 Return<void> RadioIndication::indicateRingbackTone(V1_0::RadioIndicationType type, bool start) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->indicateRingbackTone(type, start);
 }
 
 Return<void> RadioIndication::resendIncallMute(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->resendIncallMute(type);
 }
 
 Return<void> RadioIndication::cdmaSubscriptionSourceChanged(
         V1_0::RadioIndicationType type, V1_0::CdmaSubscriptionSource cdmaSource) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cdmaSubscriptionSourceChanged(type, cdmaSource);
 }
 
 Return<void> RadioIndication::cdmaPrlChanged(V1_0::RadioIndicationType type, int32_t version) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cdmaPrlChanged(type, version);
 }
 
 Return<void> RadioIndication::exitEmergencyCallbackMode(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->exitEmergencyCallbackMode(type);
 }
 
 Return<void> RadioIndication::rilConnected(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->rilConnected(type);
 }
 
 Return<void> RadioIndication::voiceRadioTechChanged(V1_0::RadioIndicationType type,
                                                     V1_0::RadioTechnology rat) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->voiceRadioTechChanged(type, rat);
 }
 
 Return<void> RadioIndication::cellInfoList(V1_0::RadioIndicationType type,
@@ -205,68 +173,57 @@ Return<void> RadioIndication::cellInfoList(V1_0::RadioIndicationType type,
 }
 
 Return<void> RadioIndication::imsNetworkStateChanged(V1_0::RadioIndicationType type) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->imsNetworkStateChanged(type);
 }
 
 Return<void> RadioIndication::subscriptionStatusChanged(V1_0::RadioIndicationType type,
                                                         bool activate) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->subscriptionStatusChanged(type, activate);
 }
 
 Return<void> RadioIndication::srvccStateNotify(V1_0::RadioIndicationType type,
                                                V1_0::SrvccState state) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->srvccStateNotify(type, state);
 }
 
 Return<void> RadioIndication::hardwareConfigChanged(V1_0::RadioIndicationType type,
                                                     const hidl_vec<V1_0::HardwareConfig>& configs) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->hardwareConfigChanged(type, configs);
 }
 
 Return<void> RadioIndication::radioCapabilityIndication(V1_0::RadioIndicationType type,
                                                         const V1_0::RadioCapability& rc) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->radioCapabilityIndication(type, rc);
 }
 
 Return<void> RadioIndication::onSupplementaryServiceIndication(V1_0::RadioIndicationType type,
                                                                const V1_0::StkCcUnsolSsResult& ss) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->onSupplementaryServiceIndication(type, ss);
 }
 
 Return<void> RadioIndication::stkCallControlAlphaNotify(V1_0::RadioIndicationType type,
                                                         const hidl_string& alpha) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->stkCallControlAlphaNotify(type, alpha);
 }
 
 Return<void> RadioIndication::lceData(V1_0::RadioIndicationType type,
                                       const V1_0::LceDataInfo& lce) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->lceData(type, lce);
 }
 
 Return<void> RadioIndication::pcoData(V1_0::RadioIndicationType type,
                                       const V1_0::PcoDataInfo& pco) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->pcoData(type, pco);
 }
 
 Return<void> RadioIndication::modemReset(V1_0::RadioIndicationType type,
                                          const hidl_string& reason) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->modemReset(type, reason);
 }
 
 // Methods from ::android::hardware::radio::V1_1::IRadioIndication follow.
 Return<void> RadioIndication::carrierInfoForImsiEncryption(V1_0::RadioIndicationType info) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->carrierInfoForImsiEncryption(info);
 }
 
 Return<void> RadioIndication::networkScanResult(V1_0::RadioIndicationType type,
@@ -277,8 +234,7 @@ Return<void> RadioIndication::networkScanResult(V1_0::RadioIndicationType type,
 
 Return<void> RadioIndication::keepaliveStatus(V1_0::RadioIndicationType type,
                                               const V1_1::KeepaliveStatus& status) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->keepaliveStatus(type, status);
 }
 
 // Methods from ::android::hardware::radio::V1_2::IRadioIndication follow.
@@ -296,8 +252,7 @@ Return<void> RadioIndication::cellInfoList_1_2(V1_0::RadioIndicationType type,
 
 Return<void> RadioIndication::currentLinkCapacityEstimate(V1_0::RadioIndicationType type,
                                                           const V1_2::LinkCapacityEstimate& lce) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->currentLinkCapacityEstimate(type, lce);
 }
 
 Return<void> RadioIndication::currentPhysicalChannelConfigs(
@@ -316,38 +271,32 @@ Return<void> RadioIndication::currentSignalStrength_1_2(
 Return<void> RadioIndication::currentEmergencyNumberList(
         V1_0::RadioIndicationType type,
         const hidl_vec<V1_4::EmergencyNumber>& emergencyNumberList) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->currentEmergencyNumberList(type, emergencyNumberList);
 }
 
 Return<void> RadioIndication::cellInfoList_1_4(V1_0::RadioIndicationType type,
                                                const hidl_vec<V1_4::CellInfo>& records) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cellInfoList_1_4(type, records);
 }
 
 Return<void> RadioIndication::networkScanResult_1_4(V1_0::RadioIndicationType type,
                                                     const V1_4::NetworkScanResult& result) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->networkScanResult_1_4(type, result);
 }
 
 Return<void> RadioIndication::currentPhysicalChannelConfigs_1_4(
         V1_0::RadioIndicationType type, const hidl_vec<V1_4::PhysicalChannelConfig>& configs) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->currentPhysicalChannelConfigs_1_4(type, configs);
 }
 
 Return<void> RadioIndication::dataCallListChanged_1_4(
         V1_0::RadioIndicationType type, const hidl_vec<V1_4::SetupDataCallResult>& dcList) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->dataCallListChanged_1_4(type, dcList);
 }
 
 Return<void> RadioIndication::currentSignalStrength_1_4(
         V1_0::RadioIndicationType type, const V1_4::SignalStrength& signalStrength) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->currentSignalStrength_1_4(type, signalStrength);
 }
 
 }  // namespace android::hardware::radio::implementation
