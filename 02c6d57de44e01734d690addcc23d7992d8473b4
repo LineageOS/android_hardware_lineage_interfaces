@@ -123,6 +123,24 @@
       "parentUuid": "fbac9fcf_2759fad9",
       "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc44970_4fa90a7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-04-27T09:23:50Z",
+      "side": 1,
+      "message": "As far as building goes, I tried it with joan via installclean and it didn\u0027t flip out in horror. The needed libs got built etc.\n\nI do think duplicating PRODUCT_SOONG_NAMESPACES is kinda dumb (though, off the top of my head, I can\u0027t think of any device that isn\u0027t a Pixel that would do that...) so maybe dropping the commit is the correct solution. Could use some opinions.",
+      "parentUuid": "9e8a6ae1_21144c30",
+      "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
