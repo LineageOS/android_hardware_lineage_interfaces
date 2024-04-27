@@ -872,7 +872,7 @@ Return<void> RadioResponse::getIccCardStatusResponse_1_4(const V1_0::RadioRespon
 }
 
 Return<void> RadioResponse::getPreferredNetworkTypeBitmapResponse(
-        const V1_0::RadioResponseInfo& info, hidl_bitfield<RadioAccessFamily> networkTypeBitmap) {
+        const V1_0::RadioResponseInfo& info, hidl_bitfield<V1_4::RadioAccessFamily> networkTypeBitmap) {
     // TODO implement
     return Void();
 }
