@@ -141,6 +141,24 @@
       "parentUuid": "9e8a6ae1_21144c30",
       "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b1c336_bc7bc7b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-04-27T09:36:23Z",
+      "side": 1,
+      "message": "fyi people also uses Pixel thermal HAL as well, so that\u0027s a way of duplicating it",
+      "parentUuid": "7bc44970_4fa90a7a",
+      "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
