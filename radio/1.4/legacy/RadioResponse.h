@@ -21,6 +21,7 @@ using ::android::hardware::Return;
 using ::android::hardware::Void;
 
 struct RadioResponse : public V1_4::IRadioResponse {
+    sp<V1_4::IRadioResponse> mRealRadioResponse;
     // Methods from ::android::hardware::radio::V1_0::IRadioResponse follow.
     Return<void> getIccCardStatusResponse(const V1_0::RadioResponseInfo& info,
                                           const V1_0::CardStatus& cardStatus) override;

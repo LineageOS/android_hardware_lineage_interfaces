@@ -261,12 +261,8 @@ struct Radio : public V1_4::IRadio {
 
   private:
     sp<V1_0::IRadio> mRealRadio;
-
-    sp<V1_0::IRadioResponse> mRealRadioResponse;
-    sp<V1_0::IRadioIndication> mRealRadioIndication;
-
-    RadioResponse mRadioResponse;
-    RadioIndication mRadioIndication;
+    sp<RadioResponse> mRadioResponse = new RadioResponse();
+    sp<RadioIndication> mRadioIndication = new RadioIndication();
 
     sp<V1_1::IRadio> getRealRadio_V1_1();
     sp<V1_2::IRadio> getRealRadio_V1_2();
