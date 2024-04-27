@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "12893fd7_ae872921",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-04-27T09:06:16Z",
+      "side": 1,
+      "message": "This was part of the original commit message. Change anyway?",
+      "parentUuid": "bd9c39d5_4d2c7cf9",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a1d75c9b_3fa61a42",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-04-27T09:02:33Z",
       "side": 1,
       "message": "Not sure how to feel regarding adding namespaces there, what if someone already does in their device trees for other stuff?",
+      "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbac9fcf_2759fad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-04-27T09:06:16Z",
+      "side": 1,
+      "message": "I more or less cherry-picked it from hardware/oplus because a) turns out PRODUCT_SOONG_NAMESPACES is needed regardless of soong imports, and b) it made more sense in my head to abstract it all elsewhere.\n\nThe alternative is to add the namespaces to device tree. Which dissolves the need for this commit altogether...",
+      "parentUuid": "a1d75c9b_3fa61a42",
       "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
