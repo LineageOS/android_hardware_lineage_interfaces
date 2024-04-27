@@ -5,6 +5,7 @@
  */
 
 #include "RadioIndication.h"
+#include "Helpers.h"
 
 namespace android::hardware::radio::implementation {
 
@@ -47,14 +48,16 @@ Return<void> RadioIndication::nitzTimeReceived(V1_0::RadioIndicationType type,
 
 Return<void> RadioIndication::currentSignalStrength(V1_0::RadioIndicationType type,
                                                     const V1_0::SignalStrength& signalStrength) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->currentSignalStrength_1_4(type, Create1_4SignalStrength(signalStrength));
 }
 
 Return<void> RadioIndication::dataCallListChanged(
         V1_0::RadioIndicationType type, const hidl_vec<V1_0::SetupDataCallResult>& dcList) {
-    // TODO implement
-    return Void();
+    hidl_vec<V1_4::SetupDataCallResult> newDcList;
+    newDcList.resize(dcList.size());
+    for(int x = 0; x < dcList.size(); ++x)
+        newDcList[x] = Create1_4SetupDataCallResult(dcList[x]);
+    return mRealRadioIndication->dataCallListChanged_1_4(type, newDcList);
 }
 
 Return<void> RadioIndication::suppSvcNotify(V1_0::RadioIndicationType type,
@@ -168,8 +171,7 @@ Return<void> RadioIndication::voiceRadioTechChanged(V1_0::RadioIndicationType ty
 
 Return<void> RadioIndication::cellInfoList(V1_0::RadioIndicationType type,
                                            const hidl_vec<V1_0::CellInfo>& records) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cellInfoList_1_4(type, Create1_4CellInfoList(records));
 }
 
 Return<void> RadioIndication::imsNetworkStateChanged(V1_0::RadioIndicationType type) {
@@ -228,8 +230,11 @@ Return<void> RadioIndication::carrierInfoForImsiEncryption(V1_0::RadioIndication
 
 Return<void> RadioIndication::networkScanResult(V1_0::RadioIndicationType type,
                                                 const V1_1::NetworkScanResult& result) {
-    // TODO implement
-    return Void();
+    V1_4::NetworkScanResult newNSR = {};
+    newNSR.status = result.status;
+    newNSR.error = result.error;
+    newNSR.networkInfos = Create1_4CellInfoList(result.networkInfos);
+    return mRealRadioIndication->networkScanResult_1_4(type, newNSR);
 }
 
 Return<void> RadioIndication::keepaliveStatus(V1_0::RadioIndicationType type,
@@ -240,14 +245,16 @@ Return<void> RadioIndication::keepaliveStatus(V1_0::RadioIndicationType type,
 // Methods from ::android::hardware::radio::V1_2::IRadioIndication follow.
 Return<void> RadioIndication::networkScanResult_1_2(V1_0::RadioIndicationType type,
                                                     const V1_2::NetworkScanResult& result) {
-    // TODO implement
-    return Void();
+    V1_4::NetworkScanResult newNSR = {};
+    newNSR.status = result.status;
+    newNSR.error = result.error;
+    newNSR.networkInfos = Create1_4CellInfoList(result.networkInfos);
+    return mRealRadioIndication->networkScanResult_1_4(type, newNSR);
 }
 
 Return<void> RadioIndication::cellInfoList_1_2(V1_0::RadioIndicationType type,
                                                const hidl_vec<V1_2::CellInfo>& records) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->cellInfoList_1_4(type, Create1_4CellInfoList(records));
 }
 
 Return<void> RadioIndication::currentLinkCapacityEstimate(V1_0::RadioIndicationType type,
@@ -257,14 +264,19 @@ Return<void> RadioIndication::currentLinkCapacityEstimate(V1_0::RadioIndicationT
 
 Return<void> RadioIndication::currentPhysicalChannelConfigs(
         V1_0::RadioIndicationType type, const hidl_vec<V1_2::PhysicalChannelConfig>& configs) {
-    // TODO implement
-    return Void();
+    hidl_vec<V1_4::PhysicalChannelConfig> newConfigs;
+    newConfigs.resize(configs.size());
+    for(int x = 0; x < configs.size(); ++x){
+        newConfigs[x].base = configs[x];
+        newConfigs[x].rat = V1_4::RadioTechnology::UNKNOWN;
+        newConfigs[x].physicalCellId = -1;
+    }
+    return mRealRadioIndication->currentPhysicalChannelConfigs_1_4(type, newConfigs);
 }
 
 Return<void> RadioIndication::currentSignalStrength_1_2(
         V1_0::RadioIndicationType type, const V1_2::SignalStrength& signalStrength) {
-    // TODO implement
-    return Void();
+    return mRealRadioIndication->currentSignalStrength_1_4(type, Create1_4SignalStrength(signalStrength));
 }
 
 // Methods from ::android::hardware::radio::V1_4::IRadioIndication follow.
