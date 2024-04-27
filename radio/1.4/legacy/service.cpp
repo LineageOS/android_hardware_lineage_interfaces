@@ -26,39 +26,12 @@ using android::status_t;
 
 #define MAX_SLOT_ID 4
 
-sp<V1_0::IRadio> getRealRadio(int slotId) {
-    sp<V1_0::IRadio> realRadio = nullptr;
-    std::string serviceName = "slot" + std::to_string(slotId);
-
-    realRadio = V1_4::IRadio::getService(serviceName);
-    if (realRadio != nullptr) {
-        return realRadio;
-    }
-
-    realRadio = V1_3::IRadio::getService(serviceName);
-    if (realRadio != nullptr) {
-        return realRadio;
-    }
-
-    realRadio = V1_2::IRadio::getService(serviceName);
-    if (realRadio != nullptr) {
-        return realRadio;
-    }
-
-    realRadio = V1_1::IRadio::getService(serviceName);
-    if (realRadio != nullptr) {
-        return realRadio;
-    }
-
-    return V1_0::IRadio::getService(serviceName);
-}
-
 int main() {
     // Note: Starts from slot 1
     std::map<int, sp<V1_4::IRadio>> slotIdToRadio;
 
     for (int slotId = 1; slotId <= MAX_SLOT_ID; slotId++) {
-        sp<V1_0::IRadio> realRadio = getRealRadio(slotId);
+        sp<V1_0::IRadio> realRadio = V1_0::IRadio::getService("slot" + std::to_string(slotId));
         if (realRadio == nullptr) {
             LOG(INFO) << "Cannot get radio service for slot " << slotId;
 
