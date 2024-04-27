@@ -10,10 +10,12 @@
 #include <hidl/HidlTransportSupport.h>
 
 #include "Radio.h"
+#include "hidl-utils.h"
 
 #include <map>
 
 using namespace android::hardware::radio;
+using namespace android::hardware::hidl_utils;
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
@@ -43,9 +45,8 @@ int main() {
             break;
         }
 
-        // TODO: Use linkToDeath to monitor realRadio.
-
         slotIdToRadio[slotId] = new Radio(realRadio);
+        linkDeathToDeath(realRadio);
     }
 
     configureRpcThreadpool(1, true);
