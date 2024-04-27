@@ -87,6 +87,23 @@
       "message": "libperfmgr (the actual lib) refuses to build for some reason",
       "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8bd9ec_dfb4b321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-04-27T02:53:58Z",
+      "side": 1,
+      "message": "Reference commits to build:\nhttps://review.lineageos.org/c/LineageOS/android_device_lge_joan/+/391200",
+      "revId": "12d9661b88336da8fc02148aa5dad971ab2275cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
