@@ -16,6 +16,7 @@ cc_binary {
         "RadioIndication.cpp",
         "RadioResponse.cpp",
         "service.cpp",
+        "hidl-utils.cpp",
     ],
     shared_libs: [
         "libbase",
