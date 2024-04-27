@@ -105,6 +105,24 @@
       "parentUuid": "a1d75c9b_3fa61a42",
       "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8a6ae1_21144c30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-04-27T09:13:44Z",
+      "side": 1,
+      "message": "This depends on whether or not the build system is happy to have the namespace included two times",
+      "parentUuid": "fbac9fcf_2759fad9",
+      "revId": "02c6d57de44e01734d690addcc23d7992d8473b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
