@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f70293_e94c3508",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-04-28T13:29:02Z",
+      "side": 1,
+      "message": "Not true btw, getService will fail instantly if the requested interface isn\u0027t in the manifest",
+      "revId": "d9351b0481a36e88d354015365d888658c2ab1dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
