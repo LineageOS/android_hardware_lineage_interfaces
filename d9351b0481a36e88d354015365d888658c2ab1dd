@@ -16,6 +16,23 @@
       "message": "Not true btw, getService will fail instantly if the requested interface isn\u0027t in the manifest",
       "revId": "d9351b0481a36e88d354015365d888658c2ab1dd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac480d2f_8769dc51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-04-28T23:38:51Z",
+      "side": 1,
+      "message": "Squashed to first commit",
+      "revId": "d9351b0481a36e88d354015365d888658c2ab1dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
