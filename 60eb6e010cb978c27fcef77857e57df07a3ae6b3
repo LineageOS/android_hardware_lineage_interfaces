@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e576baac_6f18f310",
+        "filename": "radio/1.4/legacy/android.hardware.radio@1.4-service.wrapper.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-04-29T04:56:52Z",
+      "side": 1,
+      "message": "Should this not be `/slot#`?",
+      "revId": "60eb6e010cb978c27fcef77857e57df07a3ae6b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
