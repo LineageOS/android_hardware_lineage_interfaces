@@ -23,6 +23,7 @@
 #include <android/binder_process.h>
 #include <perfmgr/HintManager.h>
 
+#include <dlfcn.h>
 #include <thread>
 
 #include "Power.h"
@@ -46,6 +47,9 @@ int main() {
 
     // single thread
     ABinderProcess_setThreadPoolMaxThreadCount(0);
+
+    // load extension lib
+    dlopen("libperfmgr-ext.so", RTLD_NOW);
 
     // core service
     std::shared_ptr<Power> pw = ndk::SharedRefBase::make<Power>();

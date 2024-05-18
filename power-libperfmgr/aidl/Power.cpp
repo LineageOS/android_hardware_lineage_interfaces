@@ -31,6 +31,14 @@
 #include "PowerHintSession.h"
 #include "PowerSessionManager.h"
 
+#define CALL_EXT(func, ...) \
+    if (auto defaultImpl = getDefaultImpl()) { \
+        auto ret = defaultImpl->func(__VA_ARGS__); \
+        if (ret.getExceptionCode() != EX_UNSUPPORTED_OPERATION) { \
+            return ret; \
+        } \
+    }
+
 namespace aidl {
 namespace google {
 namespace hardware {
@@ -74,6 +82,7 @@ Power::Power()
 }
 
 ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
+    CALL_EXT(setMode, type, enabled)
     LOG(DEBUG) << "Power setMode: " << toString(type) << " to: " << enabled;
     if (HintManager::GetInstance()->GetAdpfProfile() &&
         HintManager::GetInstance()->GetAdpfProfile()->mReportingRateLimitNs > 0) {
@@ -120,6 +129,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 }
 
 ndk::ScopedAStatus Power::isModeSupported(Mode type, bool *_aidl_return) {
+    CALL_EXT(isModeSupported, type, _aidl_return)
     bool supported = HintManager::GetInstance()->IsHintSupported(toString(type));
     LOG(INFO) << "Power mode " << toString(type) << " isModeSupported: " << supported;
     *_aidl_return = supported;
@@ -127,6 +137,7 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool *_aidl_return) {
 }
 
 ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
+    CALL_EXT(setBoost, type, durationMs)
     LOG(DEBUG) << "Power setBoost: " << toString(type) << " duration: " << durationMs;
     if (HintManager::GetInstance()->GetAdpfProfile() &&
         HintManager::GetInstance()->GetAdpfProfile()->mReportingRateLimitNs > 0) {
@@ -164,6 +175,7 @@ ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
 }
 
 ndk::ScopedAStatus Power::isBoostSupported(Boost type, bool *_aidl_return) {
+    CALL_EXT(isBoostSupported, type, _aidl_return)
     bool supported = HintManager::GetInstance()->IsHintSupported(toString(type));
     LOG(INFO) << "Power boost " << toString(type) << " isBoostSupported: " << supported;
     *_aidl_return = supported;
@@ -194,6 +206,7 @@ ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,
                                             const std::vector<int32_t> &threadIds,
                                             int64_t durationNanos,
                                             std::shared_ptr<IPowerHintSession> *_aidl_return) {
+    CALL_EXT(createHintSession, tgid, uid, threadIds, durationNanos, _aidl_return)
     if (!HintManager::GetInstance()->GetAdpfProfile() ||
         HintManager::GetInstance()->GetAdpfProfile()->mReportingRateLimitNs <= 0) {
         *_aidl_return = nullptr;
@@ -211,6 +224,7 @@ ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,
 }
 
 ndk::ScopedAStatus Power::getHintSessionPreferredRate(int64_t *outNanoseconds) {
+    CALL_EXT(getHintSessionPreferredRate, outNanoseconds)
     *outNanoseconds = HintManager::GetInstance()->GetAdpfProfile()
                               ? HintManager::GetInstance()->GetAdpfProfile()->mReportingRateLimitNs
                               : 0;
