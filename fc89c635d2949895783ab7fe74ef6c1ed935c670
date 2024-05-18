@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de0d15f6_118fa583",
+        "filename": "power-libperfmgr/aidl/Power.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-05-18T17:16:32Z",
+      "side": 1,
+      "message": "Is it a good idea to bail out for all the functions?",
+      "revId": "fc89c635d2949895783ab7fe74ef6c1ed935c670",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
