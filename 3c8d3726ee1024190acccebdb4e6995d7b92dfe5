@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e10e85_a9dc91da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2024-05-23T10:53:47Z",
+      "side": 1,
+      "message": "Needs one sepolicy tweak, commented at 391357: sepolicy: Add rules for radio wrapper | https://review.lineageos.org/c/LineageOS/android_device_lineage_sepolicy/+/391357",
+      "revId": "3c8d3726ee1024190acccebdb4e6995d7b92dfe5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
