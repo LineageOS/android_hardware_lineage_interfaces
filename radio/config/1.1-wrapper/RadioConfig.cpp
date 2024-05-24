@@ -151,8 +151,11 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
                 continue;
             }
 
-            radio->setDataAllowed(-1, i == modemId);
+            if (i != modemId) radio->setDataAllowed(-1, false);
         }
+
+        auto dataRadio = radios[modemId];
+        if (dataRadio) dataRadio->setDataAllowed(-1, true);
     }
 
     auto radioConfigResponseV1_1 = mRadioConfigResponseV1_1;
