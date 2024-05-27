@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa205e1_c720bdbc",
+        "filename": "radio/config/1.1-wrapper/RadioConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2024-05-27T19:25:06Z",
+      "side": 1,
+      "message": "I don\u0027t think this can be null given previous checks?\n\n```suggestion\n        radios[modemId]-\u003esetDataAllowed(-1, true);\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 59
+      },
+      "revId": "bb206580f1452ef0ada774cc8bd5421e7dea08d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
