@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a0bd32b_cbfc3c64",
+        "filename": "radio/config/1.1-wrapper/RadioConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2024-05-27T19:29:03Z",
+      "side": 1,
+      "message": "Same here, you only push into radios if the element isn\u0027t a nullptr, and the if check ensures there\u0027s at least an entry and the modem you\u0027re requesting doesn\u0027t exceed the index.\n\n\n```suggestion\n            if (i !\u003d modemId) radios[i]-\u003esetDataAllowed(-1, false);\n```",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "bb206580f1452ef0ada774cc8bd5421e7dea08d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fa205e1_c720bdbc",
         "filename": "radio/config/1.1-wrapper/RadioConfig.cpp",
         "patchSetId": 3
