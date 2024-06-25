@@ -47,6 +47,26 @@ on early-boot
     chown system system /sys/class/leds/button-backlight2/ramp_step_ms
     chown system system /sys/class/leds/button-backlight2/start_idx
 
+    chown system system /sys/class/leds/keyboard-backlight/blink
+    chown system system /sys/class/leds/keyboard-backlight/breath
+    chown system system /sys/class/leds/keyboard-backlight/brightness
+    chown system system /sys/class/leds/keyboard-backlight/duty_pcts
+    chown system system /sys/class/leds/keyboard-backlight/max_brightness
+    chown system system /sys/class/leds/keyboard-backlight/pause_hi
+    chown system system /sys/class/leds/keyboard-backlight/pause_lo
+    chown system system /sys/class/leds/keyboard-backlight/ramp_step_ms
+    chown system system /sys/class/leds/keyboard-backlight/start_idx
+
+    chown system system /sys/class/leds/keyboard-backlight-ap/blink
+    chown system system /sys/class/leds/keyboard-backlight-ap/breath
+    chown system system /sys/class/leds/keyboard-backlight-ap/brightness
+    chown system system /sys/class/leds/keyboard-backlight-ap/duty_pcts
+    chown system system /sys/class/leds/keyboard-backlight-ap/max_brightness
+    chown system system /sys/class/leds/keyboard-backlight-ap/pause_hi
+    chown system system /sys/class/leds/keyboard-backlight-ap/pause_lo
+    chown system system /sys/class/leds/keyboard-backlight-ap/ramp_step_ms
+    chown system system /sys/class/leds/keyboard-backlight-ap/start_idx
+
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/green/breath
     chown system system /sys/class/leds/green/brightness
