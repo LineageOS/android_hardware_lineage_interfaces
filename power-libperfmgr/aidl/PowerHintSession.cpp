@@ -275,9 +275,9 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::pause()
     if (!mDescriptor->is_active.load())
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     // Reset to default uclamp value.
-    mPSManager->setThreadsFromPowerSession(mSessionId, {});
     mDescriptor->is_active.store(false);
     mPSManager->pause(mSessionId);
+    mPSManager->setThreadsFromPowerSession(mSessionId, {});
     ATRACE_INT(mAppDescriptorTrace->trace_active.c_str(), false);
     ATRACE_INT(mAppDescriptorTrace->trace_min.c_str(), 0);
     return ndk::ScopedAStatus::ok();
@@ -486,6 +486,9 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::reportA
         mPSManager->updateHboostStatistics(mSessionId, mJankyLevel, actualDurations.size());
         mPSManager->updateFrameBuckets(mSessionId, newFramesInBuckets);
         updateHeuristicBoost();
+        if (mPSManager->hasValidTaskRampupMultNode()) {
+            mPSManager->updateRampupBoostMode(mSessionId, mJankyLevel);
+        }
     }
 
     int64_t output = convertWorkDurationToBoostByPid(actualDurations);

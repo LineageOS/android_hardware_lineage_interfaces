@@ -41,6 +41,8 @@ namespace pixel {
 
 using ::android::perfmgr::HintManager;
 constexpr char kGameModeName[] = "GAME";
+constexpr int32_t kHighRampupVal = 8;
+constexpr int32_t kDefaultRampupVal = 1;
 
 namespace {
 /* there is no glibc or bionic wrapper */
@@ -258,6 +260,10 @@ void PowerSessionManager<HintManagerT>::pause(int64_t sessionId) {
             return;
         }
         sessValPtr->isActive = false;
+        if (sessValPtr->rampupBoostActive) {
+            sessValPtr->rampupBoostActive = false;
+            voteRampupBoostLocked(sessionId, false);
+        }
     }
     applyCpuAndGpuVotes(sessionId, std::chrono::steady_clock::now());
     updateUniversalBoostMode();
@@ -656,6 +662,77 @@ std::string PowerSessionManager<HintManagerT>::getSessionTaskProfile(int64_t ses
         }
     } else {
         return "SCHED_QOS_NONE";
+    }
+}
+
+template <class HintManagerT>
+bool PowerSessionManager<HintManagerT>::hasValidTaskRampupMultNode() {
+    return mTaskRampupMultNode->isValid();
+}
+
+template <class HintManagerT>
+void PowerSessionManager<HintManagerT>::voteRampupBoostLocked(int64_t sessionId,
+                                                              bool rampupBoostVote) {
+    auto threadIds = mSessionTaskMap.getTaskIds(sessionId);
+    for (auto tid : threadIds) {
+        auto sessionIds = mSessionTaskMap.getSessionIds(tid);
+        // Check the aggregated rampup boost status for all the other sessions.
+        bool otherSessionsRampupBoost = false;
+        for (auto sess : sessionIds) {
+            if (sess != sessionId && mSessionTaskMap.findSession(sess)->rampupBoostActive) {
+                otherSessionsRampupBoost = true;
+                break;
+            }
+        }
+
+        if (!otherSessionsRampupBoost) {
+            if (rampupBoostVote) {
+                if (!mTaskRampupMultNode->updateTaskRampupMult(tid, kHighRampupVal)) {
+                    ALOGE("Failed to set high rampup boost value for task %d", tid);
+                }
+            } else {
+                if (!mTaskRampupMultNode->updateTaskRampupMult(tid, kDefaultRampupVal)) {
+                    ALOGE("Failed to reset to default rampup boost value for task %d", tid);
+                }
+            }
+        }
+    }
+}
+
+template <class HintManagerT>
+void PowerSessionManager<HintManagerT>::updateRampupBoostMode(int64_t sessionId,
+                                                              SessionJankyLevel jankyLevel) {
+    std::lock_guard<std::mutex> lock(mSessionTaskMapMutex);
+    auto sessValPtr = mSessionTaskMap.findSession(sessionId);
+    if (nullptr == sessValPtr) {
+        return;
+    }
+    auto lastRampupBoostActive = sessValPtr->rampupBoostActive;
+    if (!sessValPtr->isActive) {
+        sessValPtr->rampupBoostActive = false;
+    } else {
+        switch (jankyLevel) {
+            case SessionJankyLevel::LIGHT:
+                sessValPtr->rampupBoostActive = false;
+                break;
+            case SessionJankyLevel::MODERATE:
+                sessValPtr->rampupBoostActive = true;
+                break;
+            case SessionJankyLevel::SEVERE:
+                sessValPtr->rampupBoostActive = true;
+                break;
+            default:
+                ALOGW("Unknown janky level during updateHboostStatistics");
+        }
+    }
+
+    if (ATRACE_ENABLED()) {
+        ATRACE_INT(sessValPtr->sessionTrace->trace_rampup_boost_active.c_str(),
+                   sessValPtr->rampupBoostActive);
+    }
+
+    if (sessValPtr->rampupBoostActive != lastRampupBoostActive) {
+        voteRampupBoostLocked(sessionId, sessValPtr->rampupBoostActive);
     }
 }
 

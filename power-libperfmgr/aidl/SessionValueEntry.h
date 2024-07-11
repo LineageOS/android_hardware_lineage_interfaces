@@ -57,6 +57,7 @@ struct SessionValueEntry {
     FrameBuckets sessFrameBuckets;
     bool isPowerEfficient{false};
     HeurBoostStatistics hBoostModeDist;
+    bool rampupBoostActive{false};
 
     // Write info about power session to ostream for logging and debugging
     std::ostream &dump(std::ostream &os) const;

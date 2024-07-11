@@ -27,6 +27,7 @@
 #include "BackgroundWorker.h"
 #include "GpuCapacityNode.h"
 #include "SessionTaskMap.h"
+#include "TaskRampupMultNode.h"
 
 namespace aidl {
 namespace google {
@@ -78,8 +79,9 @@ class PowerSessionManager : public Immobile {
 
     void updateHboostStatistics(int64_t sessionId, SessionJankyLevel jankyLevel,
                                 int32_t numOfFrames);
-
     void updateFrameBuckets(int64_t sessionId, const FrameBuckets &lastReportedFrames);
+    bool hasValidTaskRampupMultNode();
+    void updateRampupBoostMode(int64_t sessionId, SessionJankyLevel jankyLevel);
 
     // Singleton
     static PowerSessionManager *getInstance() {
@@ -126,6 +128,8 @@ class PowerSessionManager : public Immobile {
     void applyCpuAndGpuVotes(int64_t sessionId, std::chrono::steady_clock::time_point timePoint);
     // Force a session active or in-active, helper for other methods
     void forceSessionActive(int64_t sessionId, bool isActive);
+    std::string getSessionTaskProfile(int64_t sessionId, bool isSetProfile) const;
+    void voteRampupBoostLocked(int64_t sessionId, bool rampupBoostVote);
 
     // Singleton
     PowerSessionManager()
@@ -133,7 +137,8 @@ class PowerSessionManager : public Immobile {
                                                              "ADPF_DISABLE_TA_BOOST")),
           mPriorityQueueWorkerPool(new PriorityQueueWorkerPool(1, "adpf_handler")),
           mEventSessionTimeoutWorker([&](auto e) { handleEvent(e); }, mPriorityQueueWorkerPool),
-          mGpuCapacityNode(createGpuCapacityNode()) {}
+          mGpuCapacityNode(createGpuCapacityNode()),
+          mTaskRampupMultNode(TaskRampupMultNode::getInstance()) {}
     PowerSessionManager(PowerSessionManager const &) = delete;
     PowerSessionManager &operator=(PowerSessionManager const &) = delete;
 
@@ -143,8 +148,7 @@ class PowerSessionManager : public Immobile {
     std::unordered_map<int, std::weak_ptr<void>> mSessionMap GUARDED_BY(mSessionMapMutex);
 
     std::atomic<bool> mGameModeEnabled{false};
-
-    std::string getSessionTaskProfile(int64_t sessionId, bool isSetProfile) const;
+    std::shared_ptr<TaskRampupMultNode> mTaskRampupMultNode;
 };
 
 }  // namespace pixel

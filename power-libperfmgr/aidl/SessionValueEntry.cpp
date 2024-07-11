@@ -47,6 +47,8 @@ std::ostream &SessionValueEntry::dump(std::ostream &os) const {
        << (totalFrames <= 0 ? 0 : (hBoostModeDist.severeModeFrames * 10000 / totalFrames / 100.0))
        << "%-" << totalFrames << ", ";
     os << sessFrameBuckets.toString() << ", ";
+    os << "Ramup boost active: " << rampupBoostActive << ", ";
+
     return os;
 }
 

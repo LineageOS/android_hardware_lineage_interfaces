@@ -67,6 +67,8 @@ struct AppDescriptorTrace {
         trace_uclamp_min_floor =
                 StringPrintf("adpf.%s-%s", idString.c_str(), "hboost.uclampMinFloor");
         trace_hboost_pid_pu = StringPrintf("adpf.%s-%s", idString.c_str(), "hboost.uclampPidPu");
+        trace_rampup_boost_active =
+                StringPrintf("adpf.%s-%s", idString.c_str(), "hboost.rampupBoostActive");
 
         for (size_t i = 0; i < trace_modes.size(); ++i) {
             trace_modes[i] = StringPrintf(
@@ -108,6 +110,7 @@ struct AppDescriptorTrace {
     std::string trace_low_frame_rate;
     std::string trace_max_duration;
     std::string trace_missed_cycles;
+    std::string trace_rampup_boost_active;
     std::string trace_uclamp_min_ceiling;
     std::string trace_uclamp_min_floor;
 
