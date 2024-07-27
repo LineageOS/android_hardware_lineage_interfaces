@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "247e9723_d34b75a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-07-27T09:51:16Z",
+      "side": 1,
+      "message": "radxa0_tab / # dumpsys battery\nCurrent Battery Service state:\n  AC powered: true\n  USB powered: false\n  Wireless powered: false\n  Dock powered: false\n  Max charging current: 0\n  Max charging voltage: 0\n  Charge counter: 16\n  status: 1\n  health: 1\n  present: false\n  level: 100\n  scale: 100\n  voltage: 4\n  temperature: 424\n  technology: Li-ion\n  Charging state: 0\n  Charging policy: 0",
+      "revId": "c8272916cbade94fb98d164eae82d8b9119ab1aa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
