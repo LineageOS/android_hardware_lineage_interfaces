@@ -1,0 +1,31 @@
+//
+// SPDX-FileCopyrightText: 2024 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+ACCESSORIES_NDK_LIB = "vendor.lineage.accessories-V1-ndk"
+
+cc_library_static {
+    name: "vendor.lineage.accessories-support-ndk",
+    vendor_available: true,
+    srcs: [
+        "Accessories.cpp",
+        "Accessory.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        ACCESSORIES_NDK_LIB,
+    ],
+    export_include_dirs: ["include"],
+}
+
+cc_defaults {
+    name: "vendor.lineage.accessories-support-ndk-defaults",
+    shared_libs: [
+        ACCESSORIES_NDK_LIB,
+    ],
+    static_libs: [
+        "vendor.lineage.accessories-support-ndk",
+    ],
+}
