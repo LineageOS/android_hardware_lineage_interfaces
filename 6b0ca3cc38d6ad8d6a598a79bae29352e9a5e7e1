@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c98a38_893318c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31496
+      },
+      "writtenOn": "2024-08-20T18:55:09Z",
+      "side": 1,
+      "message": "LGE MSM8996 continues to use this service in hardware/lineage/interfaces, so I figured we may as well add this to make manifest management easier.\n\nA quick search on GitHub seems to show that no other device is affected from this change, as all of them died on 18.1 or below.",
+      "revId": "6b0ca3cc38d6ad8d6a598a79bae29352e9a5e7e1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
