@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c7cae4_1cf6464c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28223
+      },
+      "writtenOn": "2024-09-29T22:33:19Z",
+      "side": 1,
+      "message": "power-libperfmgr should be updated from hardware_google_pixel at some point",
+      "revId": "ba18d8263e6c96003e23594d93c6efe0e8f5acf5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
