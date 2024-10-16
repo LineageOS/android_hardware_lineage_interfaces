@@ -96,6 +96,10 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
             break;
         case Mode::LOW_POWER:
             if (enabled) {
+                std::vector<std::string> modes(HintManager::GetInstance()->GetHints());
+                for (const auto &mode : modes) {
+                    HintManager::GetInstance()->EndHint(mode.c_str());
+                }
                 HintManager::GetInstance()->DoHint("LOW_POWER");
             } else {
                 HintManager::GetInstance()->EndHint("LOW_POWER");
