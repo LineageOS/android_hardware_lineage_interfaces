@@ -20,6 +20,23 @@ namespace vendor {
 namespace lineage {
 namespace health {
 
+#define OPEN_RETRY_COUNT_DEFAULT 10
+#define OPEN_RETRY_COUNT_CUSTOM 100
+
+static bool tryOpenPath(const std::string& path, int retry_count = OPEN_RETRY_COUNT_DEFAULT) {
+    for (int i = 0; i < retry_count; i++) {
+        if (access(path.c_str(), R_OK | W_OK) == 0) {
+            return 1;
+        }
+
+        PLOG(WARNING) << "Failed to open() file " << path << ", retry counter: " << i;
+        usleep(100000);
+        continue;
+    }
+
+    return 0;
+}
+
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
 static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
         {HEALTH_CHARGING_CONTROL_CHARGING_PATH, HEALTH_CHARGING_CONTROL_CHARGING_ENABLED,
@@ -37,14 +54,20 @@ static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
 };
 
 ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
+    mUseCustomNode = strcmp(kChargingEnabledNodes[0].path.c_str(), "") != 0;
+    if (mUseCustomNode && tryOpenPath(kChargingEnabledNodes[0].path, OPEN_RETRY_COUNT_CUSTOM)) {
+        mChargingEnabledNode = &kChargingEnabledNodes[0];
+        return;
+    }
+
     while (!mChargingEnabledNode) {
         for (const auto& node : kChargingEnabledNodes) {
-            if (access(node.path.c_str(), R_OK | W_OK) == 0) {
-                mChargingEnabledNode = &node;
-                break;
+            for (int i = 0; i < 10; i++) {
+                if (tryOpenPath(node.path)) {
+                    mChargingEnabledNode = &node;
+                    break;
+                }
             }
-            PLOG(WARNING) << "Failed to access() file " << node.path;
-            usleep(100000);
         }
     }
 }
@@ -97,14 +120,18 @@ static const std::vector<std::string> kChargingDeadlineNodes = {
 };
 
 ChargingControl::ChargingControl() : mChargingDeadlineNode(nullptr) {
+    mUseCustomNode = strcmp(kChargingDeadlineNodes[0].c_str(), "") != 0;
+    if (mUseCustomNode && tryOpenPath(kChargingDeadlineNodes[0], OPEN_RETRY_COUNT_CUSTOM)) {
+        mChargingDeadlineNode = &kChargingDeadlineNodes[0];
+        return;
+    }
+
     while (!mChargingDeadlineNode) {
         for (const auto& node : kChargingDeadlineNodes) {
-            if (access(node.c_str(), R_OK | W_OK) == 0) {
+            if (tryOpenPath(node)) {
                 mChargingDeadlineNode = &node;
                 break;
             }
-            PLOG(WARNING) << "Failed to access() file " << node;
-            usleep(100000);
         }
     }
 }
@@ -166,6 +193,7 @@ binder_status_t ChargingControl::dump(int fd, const char** /* args */, uint32_t 
 #endif
 
     dprintf(fd, "Charging control supported mode: %d\n", supportedMode);
+    dprintf(fd, "Uses custom charging control node: %d\n", mUseCustomNode);
 
     return STATUS_OK;
 }

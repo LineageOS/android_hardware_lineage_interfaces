@@ -34,6 +34,7 @@ struct ChargingControl : public BnChargingControl {
     binder_status_t dump(int fd, const char** args, uint32_t numArgs) override;
 
   private:
+    bool mUseCustomNode;
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
     const ChargingEnabledNode* mChargingEnabledNode;
 #endif
