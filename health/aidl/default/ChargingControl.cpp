@@ -36,15 +36,38 @@ static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
          static_cast<int>(ChargingControlSupportedMode::TOGGLE)},
 };
 
+#define OPEN_RETRY_COUNT_DEFAULT 10
+#define OPEN_RETRY_COUNT_CUSTOM 100
+
+static bool tryOpenPath(const std::string& path, int retry_count = OPEN_RETRY_COUNT_DEFAULT) {
+    for (int i = 0; i < retry_count; i++) {
+        if (access(path.c_str(), R_OK | W_OK) == 0) {
+            return 1;
+        }
+
+        PLOG(WARNING) << "Failed to open() file " << path << ", retry counter: " << i;
+        usleep(100000);
+        continue;
+    }
+
+    return 0;
+}
+
 ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
+    int custom_node_avail = strcmp(kChargingEnabledNodes[0].path.c_str(), "") != 0;
+    if (custom_node_avail && tryOpenPath(kChargingEnabledNodes[0].path, OPEN_RETRY_COUNT_CUSTOM)) {
+        mChargingEnabledNode = &kChargingEnabledNodes[0];
+        return;
+    }
+
     while (!mChargingEnabledNode) {
         for (const auto& node : kChargingEnabledNodes) {
-            if (access(node.path.c_str(), R_OK | W_OK) == 0) {
-                mChargingEnabledNode = &node;
-                break;
+            for (int i = 0; i < 10; i++) {
+                if (tryOpenPath(node.path)) {
+                    mChargingEnabledNode = &node;
+                    break;
+                }
             }
-            PLOG(WARNING) << "Failed to access() file " << node.path;
-            usleep(100000);
         }
     }
 }
