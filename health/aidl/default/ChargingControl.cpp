@@ -23,11 +23,17 @@ namespace health {
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
 static const std::vector<ChargingEnabledNode> kChargingEnabledNodes = {
         {HEALTH_CHARGING_CONTROL_CHARGING_PATH, HEALTH_CHARGING_CONTROL_CHARGING_ENABLED,
-         HEALTH_CHARGING_CONTROL_CHARGING_DISABLED},
-        {"/sys/class/power_supply/battery/battery_charging_enabled", "1", "0"},
-        {"/sys/class/power_supply/battery/charging_enabled", "1", "0"},
-        {"/sys/class/power_supply/battery/input_suspend", "0", "1"},
-        {"/sys/class/qcom-battery/input_suspend", "0", "1"},
+         HEALTH_CHARGING_CONTROL_CHARGING_DISABLED, 0},
+        {"/sys/class/power_supply/battery/battery_charging_enabled", "1", "0",
+         static_cast<int>(ChargingControlSupportedMode::TOGGLE) |
+                 static_cast<int>(ChargingControlSupportedMode::BYPASS)},
+        {"/sys/class/power_supply/battery/charging_enabled", "1", "0",
+         static_cast<int>(ChargingControlSupportedMode::TOGGLE) |
+                 static_cast<int>(ChargingControlSupportedMode::BYPASS)},
+        {"/sys/class/power_supply/battery/input_suspend", "0", "1",
+         static_cast<int>(ChargingControlSupportedMode::TOGGLE)},
+        {"/sys/class/qcom-battery/input_suspend", "0", "1",
+         static_cast<int>(ChargingControlSupportedMode::TOGGLE)},
 };
 
 ChargingControl::ChargingControl() : mChargingEnabledNode(nullptr) {
@@ -122,6 +128,12 @@ ndk::ScopedAStatus ChargingControl::getSupportedMode(int* _aidl_return) {
     int mode = 0;
 
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE
+    mode = mChargingEnabledNode->default_cap;
+    if (mode) {
+        *_aidl_return = mode;
+        return ndk::ScopedAStatus::ok();
+    }
+
     mode |= static_cast<int>(ChargingControlSupportedMode::TOGGLE);
 #endif
 

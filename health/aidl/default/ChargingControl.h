@@ -21,6 +21,7 @@ struct ChargingEnabledNode {
     const std::string path;
     const std::string value_true;
     const std::string value_false;
+    const int default_cap;
 };
 
 struct ChargingControl : public BnChargingControl {
