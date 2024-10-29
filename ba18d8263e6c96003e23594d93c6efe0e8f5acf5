@@ -16,6 +16,23 @@
       "message": "power-libperfmgr should be updated from hardware_google_pixel at some point",
       "revId": "ba18d8263e6c96003e23594d93c6efe0e8f5acf5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86dbec5_f410431d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-10-29T05:58:14Z",
+      "side": 1,
+      "message": "Aryan - I agree - but perfection not standing in the way of progress - we can revert this later and pick from pixels as applicable.\n\nFor now, the common impl should build.",
+      "revId": "ba18d8263e6c96003e23594d93c6efe0e8f5acf5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
