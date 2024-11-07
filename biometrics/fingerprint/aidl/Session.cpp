@@ -320,7 +320,12 @@ void Session::notify(const fingerprint_msg_t* msg) {
             AcquiredInfo result =
                     VendorAcquiredFilter(msg->data.acquired.acquired_info, &vendorCode);
             ALOGD("onAcquired(%hhd, %d)", result, vendorCode);
-            mCb->onAcquired(result, vendorCode);
+            // don't process vendor messages further since frameworks try to disable
+            // udfps display mode on vendor acquired messages but our sensors send a
+            // vendor message during processing...
+            if (result != AcquiredInfo::VENDOR) {
+                mCb->onAcquired(result, vendorCode);
+            }
         } break;
         case FINGERPRINT_TEMPLATE_ENROLLING: {
             ALOGD("onEnrollResult(fid=%d, gid=%d, rem=%d)", msg->data.enroll.finger.fid,
