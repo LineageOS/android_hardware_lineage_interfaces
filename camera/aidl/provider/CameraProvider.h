@@ -12,6 +12,7 @@
 #include <aidl/android/hardware/camera/provider/BnCameraProvider.h>
 
 #include <map>
+#include <set>
 
 namespace android {
 namespace hardware {
@@ -58,6 +59,7 @@ class CameraProvider : public BnCameraProvider, protected camera_module_callback
 
     int mNumberOfLegacyCameras;
     std::map<std::string, camera_device_status_t> mCameraStatusMap;  // camera id -> status
+    std::set<int> mLegacyCameras;                                    // non-external cameras
     SortedVector<std::string> mCameraIds;  // the "0"/"1" legacy camera Ids
     // (cameraId string, hidl device name) pairs
     SortedVector<std::pair<std::string, std::string>> mCameraDeviceNames;
