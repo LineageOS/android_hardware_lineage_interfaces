@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#define ATRACE_TAG (ATRACE_TAG_POWER | ATRACE_TAG_HAL)
 #define LOG_TAG "android.hardware.power-service.lineage.ext-libperfmgr"
 
 #include "PowerExt.h"
@@ -25,6 +26,7 @@
 #include <android-base/strings.h>
 #include <perfmgr/HintManager.h>
 #include <utils/Log.h>
+#include <utils/Trace.h>
 
 #include <mutex>
 
@@ -41,6 +43,7 @@ using ::android::perfmgr::HintManager;
 
 ndk::ScopedAStatus PowerExt::setMode(const std::string &mode, bool enabled) {
     LOG(DEBUG) << "PowerExt setMode: " << mode << " to: " << enabled;
+    ATRACE_NAME(("xM:" + mode + ":" + (enabled ? "on" : "off")).c_str());
 
     if (enabled) {
         HintManager::GetInstance()->DoHint(mode);
@@ -67,6 +70,7 @@ ndk::ScopedAStatus PowerExt::isModeSupported(const std::string &mode, bool *_aid
 
 ndk::ScopedAStatus PowerExt::setBoost(const std::string &boost, int32_t durationMs) {
     LOG(DEBUG) << "PowerExt setBoost: " << boost << " duration: " << durationMs;
+    ATRACE_NAME(("xB:" + boost + ":" + std::to_string(durationMs)).c_str());
 
     if (durationMs > 0) {
         HintManager::GetInstance()->DoHint(boost, std::chrono::milliseconds(durationMs));

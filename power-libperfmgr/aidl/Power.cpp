@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#define ATRACE_TAG (ATRACE_TAG_POWER | ATRACE_TAG_HAL)
 #define LOG_TAG "powerhal-libperfmgr"
 
 #include "Power.h"
@@ -26,6 +27,7 @@
 #include <fmq/EventFlag.h>
 #include <perfmgr/HintManager.h>
 #include <utils/Log.h>
+#include <utils/Trace.h>
 
 #include <cstdint>
 #include <memory>
@@ -87,6 +89,7 @@ Power::Power()
 
 ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     LOG(DEBUG) << "Power setMode: " << toString(type) << " to: " << enabled;
+    ATRACE_NAME(("M:" + toString(type) + ":" + (enabled ? "on" : "off")).c_str());
     if (HintManager::GetInstance()->IsAdpfSupported()) {
         PowerSessionManager<>::getInstance()->updateHintMode(toString(type), enabled);
     }
@@ -146,6 +149,7 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool *_aidl_return) {
 
 ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
     LOG(DEBUG) << "Power setBoost: " << toString(type) << " duration: " << durationMs;
+    ATRACE_NAME(("B:" + toString(type) + ":" + std::to_string(durationMs)).c_str());
     switch (type) {
         case Boost::INTERACTION:
             if (mSustainedPerfModeOn) {
