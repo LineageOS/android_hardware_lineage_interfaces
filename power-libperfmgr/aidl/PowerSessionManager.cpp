@@ -27,6 +27,7 @@
 #include <sys/syscall.h>
 #include <utils/Trace.h>
 
+#include "AdpfTypes.h"
 #include "AppDescriptorTrace.h"
 #include "AppHintDesc.h"
 #include "tests/mocks/MockHintManager.h"
@@ -99,7 +100,7 @@ template <class HintManagerT>
 void PowerSessionManager<HintManagerT>::addPowerSession(
         const std::string &idString, const std::shared_ptr<AppHintDesc> &sessionDescriptor,
         const std::shared_ptr<AppDescriptorTrace> &sessionTrace,
-        const std::vector<int32_t> &threadIds, const ProcessTag procTag) {
+        const std::vector<int32_t> &threadIds) {
     if (!sessionDescriptor) {
         ALOGE("sessionDescriptor is null. PowerSessionManager failed to add power session: %s",
               idString.c_str());
@@ -112,6 +113,8 @@ void PowerSessionManager<HintManagerT>::addPowerSession(
     sve.idString = idString;
     sve.isActive = sessionDescriptor->is_active;
     sve.isAppSession = sessionDescriptor->uid >= AID_APP_START;
+    sve.tag = sessionDescriptor->tag;
+    sve.procTag = sessionDescriptor->procTag;
     sve.lastUpdatedTime = timeNow;
     sve.votes = std::make_shared<Votes>();
     sve.sessionTrace = sessionTrace;
@@ -128,12 +131,11 @@ void PowerSessionManager<HintManagerT>::addPowerSession(
         ALOGE("sessionTaskMap failed to add power session: %" PRId64, sessionDescriptor->sessionId);
     }
 
-    setThreadsFromPowerSession(sessionDescriptor->sessionId, threadIds, procTag);
+    setThreadsFromPowerSession(sessionDescriptor->sessionId, threadIds);
 }
 
 template <class HintManagerT>
-void PowerSessionManager<HintManagerT>::removePowerSession(int64_t sessionId,
-                                                           const ProcessTag procTag) {
+void PowerSessionManager<HintManagerT>::removePowerSession(int64_t sessionId) {
     // To remove a session we also need to undo the effects the session
     // has on currently enabled votes which means setting vote to inactive
     // and then forceing a uclamp update to occur
@@ -141,6 +143,7 @@ void PowerSessionManager<HintManagerT>::removePowerSession(int64_t sessionId,
 
     std::vector<pid_t> addedThreads;
     std::vector<pid_t> removedThreads;
+    std::string profile = getSessionTaskProfile(sessionId);
 
     {
         // Wait till end to remove session because it needs to be around for apply U clamp
@@ -150,19 +153,9 @@ void PowerSessionManager<HintManagerT>::removePowerSession(int64_t sessionId,
         mSessionTaskMap.remove(sessionId);
     }
 
-    if (procTag == ProcessTag::SYSTEM_UI) {
-        for (auto tid : removedThreads) {
-            if (!SetTaskProfiles(tid, {"SCHED_QOS_SENSITIVE_EXTREME_CLEAR"})) {
-                ALOGE("Failed to set SCHED_QOS_SENSITIVE_EXTREME_CLEAR task profile for tid:%d",
-                      tid);
-            }
-        }
-    } else {
-        for (auto tid : removedThreads) {
-            if (!SetTaskProfiles(tid, {"SCHED_QOS_SENSITIVE_STANDARD_CLEAR"})) {
-                ALOGE("Failed to set SCHED_QOS_SENSITIVE_STANDARD_CLEAR task profile for tid:%d",
-                      tid);
-            }
+    for (auto tid : removedThreads) {
+        if (!SetTaskProfiles(tid, {profile + "_CLEAR"})) {
+            ALOGE("Failed to set %s_CLEAR task profile for tid:%d", profile.c_str(), tid);
         }
     }
 
@@ -171,41 +164,24 @@ void PowerSessionManager<HintManagerT>::removePowerSession(int64_t sessionId,
 
 template <class HintManagerT>
 void PowerSessionManager<HintManagerT>::setThreadsFromPowerSession(
-        int64_t sessionId, const std::vector<int32_t> &threadIds, const ProcessTag procTag) {
+        int64_t sessionId, const std::vector<int32_t> &threadIds) {
     std::vector<pid_t> addedThreads;
     std::vector<pid_t> removedThreads;
     forceSessionActive(sessionId, false);
+    std::string profile = getSessionTaskProfile(sessionId);
     {
         std::lock_guard<std::mutex> lock(mSessionTaskMapMutex);
         mSessionTaskMap.replace(sessionId, threadIds, &addedThreads, &removedThreads);
     }
-    if (procTag == ProcessTag::SYSTEM_UI) {
-        for (auto tid : addedThreads) {
-            if (!SetTaskProfiles(tid, {"SCHED_QOS_SENSITIVE_EXTREME_SET"})) {
-                ALOGE("Failed to set SCHED_QOS_SENSITIVE_EXTREME_SET task profile for tid:%d", tid);
-            }
-        }
-    } else {
-        for (auto tid : addedThreads) {
-            if (!SetTaskProfiles(tid, {"SCHED_QOS_SENSITIVE_STANDARD_SET"})) {
-                ALOGE("Failed to set SCHED_QOS_SENSITIVE_STANDARD_SET task profile for tid:%d",
-                      tid);
-            }
+
+    for (auto tid : addedThreads) {
+        if (!SetTaskProfiles(tid, {profile + "_SET"})) {
+            ALOGE("Failed to set %s_SET task profile for tid:%d", profile.c_str(), tid);
         }
     }
-    if (procTag == ProcessTag::SYSTEM_UI) {
-        for (auto tid : removedThreads) {
-            if (!SetTaskProfiles(tid, {"SCHED_QOS_SENSITIVE_EXTREME_CLEAR"})) {
-                ALOGE("Failed to set SCHED_QOS_SENSITIVE_EXTREME_CLEAR task profile for tid:%d",
-                      tid);
-            }
-        }
-    } else {
-        for (auto tid : removedThreads) {
-            if (!SetTaskProfiles(tid, {"SCHED_QOS_SENSITIVE_STANDARD_CLEAR"})) {
-                ALOGE("Failed to set SCHED_QOS_SENSITIVE_STANDARD_CLEAR task profile for tid:%d",
-                      tid);
-            }
+    for (auto tid : removedThreads) {
+        if (!SetTaskProfiles(tid, {profile + "_CLEAR"})) {
+            ALOGE("Failed to set %s_CLEAR task profile for tid:%d", profile.c_str(), tid);
         }
     }
     forceSessionActive(sessionId, true);
@@ -655,6 +631,20 @@ void PowerSessionManager<HintManagerT>::updateHboostStatistics(int64_t sessionId
         default:
             ALOGW("Unknown janky level during updateHboostStatistics");
     }
+}
+
+template <class HintManagerT>
+std::string PowerSessionManager<HintManagerT>::getSessionTaskProfile(int64_t sessionId) const {
+    auto sessValPtr = mSessionTaskMap.findSession(sessionId);
+    if (nullptr == sessValPtr) {
+        return "SCHED_QOS_SENSITIVE_STANDARD";
+    }
+    if (sessValPtr->procTag == ProcessTag::SYSTEM_UI)
+        return "SCHED_QOS_SENSITIVE_EXTREME";
+    else if (sessValPtr->tag == SessionTag::SURFACEFLINGER)
+        return "SCHED_QOS_SENSITIVE_EXTREME";
+    else
+        return "SCHED_QOS_SENSITIVE_STANDARD";
 }
 
 template class PowerSessionManager<>;

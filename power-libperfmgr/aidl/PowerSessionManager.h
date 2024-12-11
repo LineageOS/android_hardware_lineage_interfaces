@@ -23,7 +23,6 @@
 #include <mutex>
 #include <optional>
 
-#include "AdpfTypes.h"
 #include "AppHintDesc.h"
 #include "BackgroundWorker.h"
 #include "GpuCapacityNode.h"
@@ -51,11 +50,10 @@ class PowerSessionManager : public Immobile {
     void addPowerSession(const std::string &idString,
                          const std::shared_ptr<AppHintDesc> &sessionDescriptor,
                          const std::shared_ptr<AppDescriptorTrace> &sessionTrace,
-                         const std::vector<int32_t> &threadIds, const ProcessTag procTag);
-    void removePowerSession(int64_t sessionId, const ProcessTag procTag);
+                         const std::vector<int32_t> &threadIds);
+    void removePowerSession(int64_t sessionId);
     // Replace current threads in session with threadIds
-    void setThreadsFromPowerSession(int64_t sessionId, const std::vector<int32_t> &threadIds,
-                                    const ProcessTag procTag);
+    void setThreadsFromPowerSession(int64_t sessionId, const std::vector<int32_t> &threadIds);
     // Pause and resume power hint session
     void pause(int64_t sessionId);
     void resume(int64_t sessionId);
@@ -145,6 +143,8 @@ class PowerSessionManager : public Immobile {
     std::unordered_map<int, std::weak_ptr<void>> mSessionMap GUARDED_BY(mSessionMapMutex);
 
     std::atomic<bool> mGameModeEnabled{false};
+
+    std::string getSessionTaskProfile(int64_t sessionId) const;
 };
 
 }  // namespace pixel

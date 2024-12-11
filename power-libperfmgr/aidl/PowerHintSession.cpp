@@ -177,7 +177,7 @@ PowerHintSession<HintManagerT, PowerSessionManagerT>::PowerHintSession(
       mProcTag(getProcessTag(tgid)),
       mIdString(StringPrintf("%" PRId32 "-%" PRId32 "-%" PRId64 "-%s-%" PRId32, tgid, uid,
                              mSessionId, toString(tag).c_str(), static_cast<int32_t>(mProcTag))),
-      mDescriptor(std::make_shared<AppHintDesc>(mSessionId, tgid, uid, threadIds, tag,
+      mDescriptor(std::make_shared<AppHintDesc>(mSessionId, tgid, uid, threadIds, tag, mProcTag,
                                                 std::chrono::nanoseconds(durationNs))),
       mAppDescriptorTrace(std::make_shared<AppDescriptorTrace>(mIdString)),
       mAdpfProfile(mProcTag != ProcessTag::DEFAULT
@@ -202,7 +202,7 @@ PowerHintSession<HintManagerT, PowerSessionManagerT>::PowerHintSession(
     }
 
     mLastUpdatedTime = std::chrono::steady_clock::now();
-    mPSManager->addPowerSession(mIdString, mDescriptor, mAppDescriptorTrace, threadIds, mProcTag);
+    mPSManager->addPowerSession(mIdString, mDescriptor, mAppDescriptorTrace, threadIds);
     // init boost
     auto adpfConfig = getAdpfProfile();
     mPSManager->voteSet(
@@ -275,7 +275,7 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::pause()
     if (!mDescriptor->is_active.load())
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     // Reset to default uclamp value.
-    mPSManager->setThreadsFromPowerSession(mSessionId, {}, mProcTag);
+    mPSManager->setThreadsFromPowerSession(mSessionId, {});
     mDescriptor->is_active.store(false);
     mPSManager->pause(mSessionId);
     ATRACE_INT(mAppDescriptorTrace->trace_active.c_str(), false);
@@ -293,7 +293,7 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::resume(
     if (mDescriptor->is_active.load()) {
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
-    mPSManager->setThreadsFromPowerSession(mSessionId, mDescriptor->thread_ids, mProcTag);
+    mPSManager->setThreadsFromPowerSession(mSessionId, mDescriptor->thread_ids);
     mDescriptor->is_active.store(true);
     // resume boost
     mPSManager->resume(mSessionId);
@@ -310,7 +310,7 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::close()
     }
     mSessionClosed = true;
     // Remove the session from PowerSessionManager first to avoid racing.
-    mPSManager->removePowerSession(mSessionId, mProcTag);
+    mPSManager->removePowerSession(mSessionId);
     mDescriptor->is_active.store(false);
 
     if (mProcTag != ProcessTag::DEFAULT) {
@@ -673,7 +673,7 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::setThre
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
     }
     mDescriptor->thread_ids = threadIds;
-    mPSManager->setThreadsFromPowerSession(mSessionId, threadIds, mProcTag);
+    mPSManager->setThreadsFromPowerSession(mSessionId, threadIds);
     // init boost
     updatePidControlVariable(getAdpfProfile()->mUclampMinInit);
     return ndk::ScopedAStatus::ok();

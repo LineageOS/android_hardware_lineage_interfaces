@@ -21,6 +21,8 @@
 
 #include <chrono>
 
+#include "AdpfTypes.h"
+
 namespace aidl::google::hardware::power::impl::pixel {
 
 // The App Hint Descriptor struct manages information necessary
@@ -29,13 +31,15 @@ namespace aidl::google::hardware::power::impl::pixel {
 // easily passing to the pid function
 struct AppHintDesc {
     AppHintDesc(int64_t sessionId, int32_t tgid, int32_t uid, const std::vector<int32_t> &threadIds,
-                android::hardware::power::SessionTag tag, std::chrono::nanoseconds pTargetNs)
+                android::hardware::power::SessionTag tag, ProcessTag procTag,
+                std::chrono::nanoseconds pTargetNs)
         : sessionId(sessionId),
           tgid(tgid),
           uid(uid),
           targetNs(pTargetNs),
           thread_ids(threadIds),
           tag(tag),
+          procTag(procTag),
           pidControlVariable(0),
           is_active(true),
           update_count(0),
@@ -49,6 +53,7 @@ struct AppHintDesc {
     std::chrono::nanoseconds targetNs;
     std::vector<int32_t> thread_ids;
     android::hardware::power::SessionTag tag;
+    ProcessTag procTag;
     int pidControlVariable;
     // status
     std::atomic<bool> is_active;
