@@ -9,12 +9,12 @@
 #include <android/hardware/radio/1.0/IRadio.h>
 #include <android/hardware/radio/config/1.0/IRadioConfig.h>
 #include <android/hardware/radio/config/1.1/IRadioConfig.h>
-#include <android/hardware/radio/config/1.1/IRadioConfigResponse.h>
+#include <android/hardware/radio/config/1.2/IRadioConfigResponse.h>
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
 #include <lineage/hardware/radio/config/1.1/IRadioConfig.h>
-#include <lineage/hardware/radio/config/1.1/IRadioConfigIndication.h>
-#include <lineage/hardware/radio/config/1.1/IRadioConfigResponse.h>
+#include <lineage/hardware/radio/config/1.2/IRadioConfigIndication.h>
+#include <lineage/hardware/radio/config/1.2/IRadioConfigResponse.h>
 
 #include <map>
 #include <mutex>
@@ -57,6 +57,7 @@ struct RadioConfig : public V1_1::IRadioConfig {
 
     sp<::android::hardware::radio::config::V1_0::IRadioConfigResponse> mRadioConfigResponse;
     sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse> mRadioConfigResponseV1_1;
+    sp<::android::hardware::radio::config::V1_2::IRadioConfigResponse> mRadioConfigResponseV1_2;
 
     std::map<uint8_t, sp<::android::hardware::radio::V1_0::IRadio>> mModemIdToRadioCache;
 

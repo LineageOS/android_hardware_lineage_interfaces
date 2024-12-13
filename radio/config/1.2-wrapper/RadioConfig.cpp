@@ -59,6 +59,10 @@ Return<void> RadioConfig::setResponseFunctions(
             ::android::hardware::radio::config::V1_1::IRadioConfigResponse::castFrom(
                     mRadioConfigResponse)
                     .withDefault(nullptr);
+    mRadioConfigResponseV1_2 =
+            ::android::hardware::radio::config::V1_2::IRadioConfigResponse::castFrom(
+                    mRadioConfigResponse)
+                    .withDefault(nullptr);
 
     auto realRadioConfig = mRealRadioConfig;
     if (realRadioConfig == nullptr) {
