@@ -31,8 +31,8 @@ using ::android::hardware::Void;
 
 struct RadioConfig : public V1_1::IRadioConfig {
   public:
-    RadioConfig(sp<::lineage::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig,
-                sp<::lineage::hardware::radio::config::V1_1::IRadioConfig> realRadioConfigV1_1);
+    RadioConfig(sp<::lineage::hardware::radio::config::V1_0::IRadioConfig> backendRadioConfig,
+                sp<::lineage::hardware::radio::config::V1_1::IRadioConfig> backendRadioConfigV1_1);
 
     // Methods from ::android::hardware::radio::config::V1_0::IRadioConfig follow.
     Return<void> setResponseFunctions(
@@ -52,8 +52,8 @@ struct RadioConfig : public V1_1::IRadioConfig {
     Return<void> getModemsConfig(int32_t serial) override;
 
   private:
-    sp<::lineage::hardware::radio::config::V1_0::IRadioConfig> mRealRadioConfig;
-    sp<::lineage::hardware::radio::config::V1_1::IRadioConfig> mRealRadioConfigV1_1;
+    sp<::lineage::hardware::radio::config::V1_0::IRadioConfig> mBackendRadioConfig;
+    sp<::lineage::hardware::radio::config::V1_1::IRadioConfig> mBackendRadioConfigV1_1;
 
     sp<::android::hardware::radio::config::V1_0::IRadioConfigResponse> mRadioConfigResponse;
     sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse> mRadioConfigResponseV1_1;

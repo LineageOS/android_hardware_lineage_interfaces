@@ -15,20 +15,20 @@
 
 #define WRAP_V1_0_CALL(method, ...)                                            \
     do {                                                                       \
-        auto realRadioConfig = mRealRadioConfig;                               \
-        if (realRadioConfig != nullptr) {                                      \
-            return realRadioConfig->method(__VA_ARGS__);                       \
+        auto backendRadioConfig = mBackendRadioConfig;                         \
+        if (backendRadioConfig != nullptr) {                                   \
+            return backendRadioConfig->method(__VA_ARGS__);                    \
         }                                                                      \
-        LOG(ERROR) << __func__ << ": realRadioConfig is null";                 \
+        LOG(ERROR) << __func__ << ": backendRadioConfig is null";              \
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE); \
     } while (0)
 
-#define MAYBE_WRAP_V1_1_CALL(method, ...)                    \
-    do {                                                     \
-        auto realRadioConfigV1_1 = mRealRadioConfigV1_1;     \
-        if (realRadioConfigV1_1 != nullptr) {                \
-            return realRadioConfigV1_1->method(__VA_ARGS__); \
-        }                                                    \
+#define MAYBE_WRAP_V1_1_CALL(method, ...)                       \
+    do {                                                        \
+        auto backendRadioConfigV1_1 = mBackendRadioConfigV1_1;  \
+        if (backendRadioConfigV1_1 != nullptr) {                \
+            return backendRadioConfigV1_1->method(__VA_ARGS__); \
+        }                                                       \
     } while (0)
 
 namespace android::hardware::radio::config::implementation {
@@ -41,9 +41,9 @@ using ::android::hardware::radio::V1_0::RadioResponseInfo;
 using ::android::hardware::radio::V1_0::RadioResponseType;
 
 RadioConfig::RadioConfig(
-        sp<::lineage::hardware::radio::config::V1_0::IRadioConfig> realRadioConfig,
-        sp<::lineage::hardware::radio::config::V1_1::IRadioConfig> realRadioConfigV1_1)
-    : mRealRadioConfig(realRadioConfig), mRealRadioConfigV1_1(realRadioConfigV1_1) {
+        sp<::lineage::hardware::radio::config::V1_0::IRadioConfig> backendRadioConfig,
+        sp<::lineage::hardware::radio::config::V1_1::IRadioConfig> backendRadioConfigV1_1)
+    : mBackendRadioConfig(backendRadioConfig), mBackendRadioConfigV1_1(backendRadioConfigV1_1) {
     android::base::SetLogger(android::base::LogdLogger(android::base::RADIO));
 }
 
@@ -64,13 +64,13 @@ Return<void> RadioConfig::setResponseFunctions(
                     mRadioConfigResponse)
                     .withDefault(nullptr);
 
-    auto realRadioConfig = mRealRadioConfig;
-    if (realRadioConfig == nullptr) {
-        LOG(ERROR) << __func__ << ": realRadioConfig is null";
+    auto backendRadioConfig = mBackendRadioConfig;
+    if (backendRadioConfig == nullptr) {
+        LOG(ERROR) << __func__ << ": backendRadioConfig is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
-    return realRadioConfig->setResponseFunctions(
+    return backendRadioConfig->setResponseFunctions(
             reinterpret_cast<
                     const sp<::lineage::hardware::radio::config::V1_0::IRadioConfigResponse>&>(
                     radioConfigResponse),
@@ -175,9 +175,9 @@ Return<void> RadioConfig::setModemsConfig(
         int32_t serial,
         const ::android::hardware::radio::config::V1_1::ModemsConfig& modemsConfig) {
     // Cannot use MAYBE_WRAP_V1_1_CALL, needs reinterpret_cast
-    auto realRadioConfigV1_1 = mRealRadioConfigV1_1;
-    if (realRadioConfigV1_1 != nullptr) {
-        return realRadioConfigV1_1->setModemsConfig(
+    auto backendRadioConfigV1_1 = mBackendRadioConfigV1_1;
+    if (backendRadioConfigV1_1 != nullptr) {
+        return backendRadioConfigV1_1->setModemsConfig(
                 serial,
                 reinterpret_cast<const ::lineage::hardware::radio::config::V1_1::ModemsConfig&>(
                         modemsConfig));
