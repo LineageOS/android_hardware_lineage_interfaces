@@ -16,6 +16,9 @@
 #include <lineage/hardware/radio/config/1.2/IRadioConfigIndication.h>
 #include <lineage/hardware/radio/config/1.2/IRadioConfigResponse.h>
 
+#include "LineageRadioConfigIndication.h"
+#include "LineageRadioConfigResponse.h"
+
 #include <map>
 #include <mutex>
 
@@ -58,6 +61,13 @@ struct RadioConfig : public V1_1::IRadioConfig {
     sp<::android::hardware::radio::config::V1_0::IRadioConfigResponse> mRadioConfigResponse;
     sp<::android::hardware::radio::config::V1_1::IRadioConfigResponse> mRadioConfigResponseV1_1;
     sp<::android::hardware::radio::config::V1_2::IRadioConfigResponse> mRadioConfigResponseV1_2;
+
+    sp<::lineage::hardware::radio::config::implementation::RadioConfigIndication>
+            mLineageRadioConfigIndication =
+                    new ::lineage::hardware::radio::config::implementation::RadioConfigIndication();
+    sp<::lineage::hardware::radio::config::implementation::RadioConfigResponse>
+            mLineageRadioConfigResponse =
+                    new ::lineage::hardware::radio::config::implementation::RadioConfigResponse();
 
     std::map<uint8_t, sp<::android::hardware::radio::V1_0::IRadio>> mModemIdToRadioCache;
 

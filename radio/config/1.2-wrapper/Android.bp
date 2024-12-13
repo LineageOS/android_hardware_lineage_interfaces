@@ -12,6 +12,8 @@ cc_binary {
     init_rc: ["android.hardware.radio.config@1.2-service.wrapper.rc"],
     vintf_fragments: ["android.hardware.radio.config@1.2-service.wrapper.xml"],
     srcs: [
+        "LineageRadioConfigIndication.cpp",
+        "LineageRadioConfigResponse.cpp",
         "RadioConfig.cpp",
         "hidl-utils.cpp",
         "service.cpp",

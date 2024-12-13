@@ -64,19 +64,17 @@ Return<void> RadioConfig::setResponseFunctions(
                     mRadioConfigResponse)
                     .withDefault(nullptr);
 
+    mLineageRadioConfigIndication->setResponseFunction(radioConfigIndication);
+    // mLineageRadioConfigResponse->setResponseFunction(radioConfigResponse);
+
     auto backendRadioConfig = mBackendRadioConfig;
     if (backendRadioConfig == nullptr) {
         LOG(ERROR) << __func__ << ": backendRadioConfig is null";
         return Status::fromExceptionCode(Status::Exception::EX_ILLEGAL_STATE);
     }
 
-    return backendRadioConfig->setResponseFunctions(
-            reinterpret_cast<
-                    const sp<::lineage::hardware::radio::config::V1_0::IRadioConfigResponse>&>(
-                    radioConfigResponse),
-            reinterpret_cast<
-                    const sp<::lineage::hardware::radio::config::V1_0::IRadioConfigIndication>&>(
-                    radioConfigIndication));
+    return backendRadioConfig->setResponseFunctions(mLineageRadioConfigResponse,
+                                                    mLineageRadioConfigIndication);
 }
 
 Return<void> RadioConfig::getSimSlotsStatus(int32_t serial) {
