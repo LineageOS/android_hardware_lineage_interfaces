@@ -643,6 +643,8 @@ std::string PowerSessionManager<HintManagerT>::getSessionTaskProfile(int64_t ses
         return "SCHED_QOS_SENSITIVE_EXTREME";
     else if (sessValPtr->tag == SessionTag::SURFACEFLINGER)
         return "SCHED_QOS_SENSITIVE_EXTREME";
+    else if (sessValPtr->tag == SessionTag::HWUI)
+        return "SCHED_QOS_SENSITIVE_EXTREME";
     else
         return "SCHED_QOS_SENSITIVE_STANDARD";
 }
