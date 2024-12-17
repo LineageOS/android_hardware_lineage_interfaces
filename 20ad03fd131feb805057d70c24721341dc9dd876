@@ -34,6 +34,24 @@
       "parentUuid": "136c2f0f_93fe8d51",
       "revId": "20ad03fd131feb805057d70c24721341dc9dd876",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadadb85_d2680540",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28223
+      },
+      "writtenOn": "2024-12-17T19:20:15Z",
+      "side": 1,
+      "message": "Yeah I agree, just tried removing it, and it\u0027d require a lot of changes which is probably better in a separate commit. Most of these commits aren\u0027t 1:1 since we never had power-libperfmgr/aidl/tests/, power-libperfmgr/disp-power/, power-libperfmgr/libperfmgr/, power-libperfmgr/utilities and so on, but it retains the changes done in power-libperfmgr/aidl/. The chain introduces a few changes which don\u0027t seem to be needed for us (like some just seem to be test related?), so there should be some separate clean-up commit later on at some point.",
+      "parentUuid": "cce44b65_f6691b33",
+      "revId": "20ad03fd131feb805057d70c24721341dc9dd876",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
