@@ -95,7 +95,6 @@ constexpr SupportList<SessionTag> kSessionTagEarliestVersion {
   {SessionTag::GAME, 5},
   {SessionTag::APP, 5},
   {SessionTag::SYSUI, 6},
-  {SessionTag::WEB, 6},
 };
 // clang-format on
 
