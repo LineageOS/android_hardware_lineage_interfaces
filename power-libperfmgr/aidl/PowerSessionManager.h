@@ -144,7 +144,7 @@ class PowerSessionManager : public Immobile {
 
     std::atomic<bool> mGameModeEnabled{false};
 
-    std::string getSessionTaskProfile(int64_t sessionId) const;
+    std::string getSessionTaskProfile(int64_t sessionId, bool isSetProfile) const;
 };
 
 }  // namespace pixel

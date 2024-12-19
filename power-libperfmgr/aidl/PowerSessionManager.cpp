@@ -143,7 +143,7 @@ void PowerSessionManager<HintManagerT>::removePowerSession(int64_t sessionId) {
 
     std::vector<pid_t> addedThreads;
     std::vector<pid_t> removedThreads;
-    std::string profile = getSessionTaskProfile(sessionId);
+    std::string profile = getSessionTaskProfile(sessionId, false);
 
     {
         // Wait till end to remove session because it needs to be around for apply U clamp
@@ -154,8 +154,8 @@ void PowerSessionManager<HintManagerT>::removePowerSession(int64_t sessionId) {
     }
 
     for (auto tid : removedThreads) {
-        if (!SetTaskProfiles(tid, {profile + "_CLEAR"})) {
-            ALOGE("Failed to set %s_CLEAR task profile for tid:%d", profile.c_str(), tid);
+        if (!SetTaskProfiles(tid, {profile})) {
+            ALOGE("Failed to set %s task profile for tid:%d", profile.c_str(), tid);
         }
     }
 
@@ -168,20 +168,22 @@ void PowerSessionManager<HintManagerT>::setThreadsFromPowerSession(
     std::vector<pid_t> addedThreads;
     std::vector<pid_t> removedThreads;
     forceSessionActive(sessionId, false);
-    std::string profile = getSessionTaskProfile(sessionId);
+    std::string profile;
     {
         std::lock_guard<std::mutex> lock(mSessionTaskMapMutex);
         mSessionTaskMap.replace(sessionId, threadIds, &addedThreads, &removedThreads);
     }
 
+    profile = getSessionTaskProfile(sessionId, true);
     for (auto tid : addedThreads) {
-        if (!SetTaskProfiles(tid, {profile + "_SET"})) {
-            ALOGE("Failed to set %s_SET task profile for tid:%d", profile.c_str(), tid);
+        if (!SetTaskProfiles(tid, {profile})) {
+            ALOGE("Failed to set %s task profile for tid:%d", profile.c_str(), tid);
         }
     }
+    profile = getSessionTaskProfile(sessionId, false);
     for (auto tid : removedThreads) {
-        if (!SetTaskProfiles(tid, {profile + "_CLEAR"})) {
-            ALOGE("Failed to set %s_CLEAR task profile for tid:%d", profile.c_str(), tid);
+        if (!SetTaskProfiles(tid, {profile})) {
+            ALOGE("Failed to set %s task profile for tid:%d", profile.c_str(), tid);
         }
     }
     forceSessionActive(sessionId, true);
@@ -634,19 +636,40 @@ void PowerSessionManager<HintManagerT>::updateHboostStatistics(int64_t sessionId
 }
 
 template <class HintManagerT>
-std::string PowerSessionManager<HintManagerT>::getSessionTaskProfile(int64_t sessionId) const {
+std::string PowerSessionManager<HintManagerT>::getSessionTaskProfile(int64_t sessionId,
+                                                                     bool isSetProfile) const {
     auto sessValPtr = mSessionTaskMap.findSession(sessionId);
-    if (nullptr == sessValPtr) {
-        return "SCHED_QOS_SENSITIVE_STANDARD";
+    if (isSetProfile) {
+        if (nullptr == sessValPtr) {
+            return "SCHED_QOS_SENSITIVE_STANDARD_SET";
+        }
+        if (sessValPtr->procTag == ProcessTag::SYSTEM_UI) {
+            return "SCHED_QOS_SENSITIVE_EXTREME_SET";
+        } else {
+            switch (sessValPtr->tag) {
+                case SessionTag::SURFACEFLINGER:
+                case SessionTag::HWUI:
+                    return "SCHED_QOS_SENSITIVE_EXTREME_SET";
+                default:
+                    return "SCHED_QOS_SENSITIVE_STANDARD_SET";
+            }
+        }
+    } else {
+        if (nullptr == sessValPtr) {
+            return "SCHED_QOS_SENSITIVE_STANDARD_CLEAR";
+        }
+        if (sessValPtr->procTag == ProcessTag::SYSTEM_UI) {
+            return "SCHED_QOS_SENSITIVE_EXTREME_CLEAR";
+        } else {
+            switch (sessValPtr->tag) {
+                case SessionTag::SURFACEFLINGER:
+                case SessionTag::HWUI:
+                    return "SCHED_QOS_SENSITIVE_EXTREME_CLEAR";
+                default:
+                    return "SCHED_QOS_SENSITIVE_STANDARD_CLEAR";
+            }
+        }
     }
-    if (sessValPtr->procTag == ProcessTag::SYSTEM_UI)
-        return "SCHED_QOS_SENSITIVE_EXTREME";
-    else if (sessValPtr->tag == SessionTag::SURFACEFLINGER)
-        return "SCHED_QOS_SENSITIVE_EXTREME";
-    else if (sessValPtr->tag == SessionTag::HWUI)
-        return "SCHED_QOS_SENSITIVE_EXTREME";
-    else
-        return "SCHED_QOS_SENSITIVE_STANDARD";
 }
 
 template class PowerSessionManager<>;
