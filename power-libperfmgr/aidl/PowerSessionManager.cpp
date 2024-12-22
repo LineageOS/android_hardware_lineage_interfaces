@@ -641,34 +641,21 @@ std::string PowerSessionManager<HintManagerT>::getSessionTaskProfile(int64_t ses
     auto sessValPtr = mSessionTaskMap.findSession(sessionId);
     if (isSetProfile) {
         if (nullptr == sessValPtr) {
-            return "SCHED_QOS_SENSITIVE_STANDARD_SET";
+            return "SCHED_QOS_SENSITIVE_STANDARD";
         }
         if (sessValPtr->procTag == ProcessTag::SYSTEM_UI) {
-            return "SCHED_QOS_SENSITIVE_EXTREME_SET";
+            return "SCHED_QOS_SENSITIVE_EXTREME";
         } else {
             switch (sessValPtr->tag) {
                 case SessionTag::SURFACEFLINGER:
                 case SessionTag::HWUI:
-                    return "SCHED_QOS_SENSITIVE_EXTREME_SET";
+                    return "SCHED_QOS_SENSITIVE_EXTREME";
                 default:
-                    return "SCHED_QOS_SENSITIVE_STANDARD_SET";
+                    return "SCHED_QOS_SENSITIVE_STANDARD";
             }
         }
     } else {
-        if (nullptr == sessValPtr) {
-            return "SCHED_QOS_SENSITIVE_STANDARD_CLEAR";
-        }
-        if (sessValPtr->procTag == ProcessTag::SYSTEM_UI) {
-            return "SCHED_QOS_SENSITIVE_EXTREME_CLEAR";
-        } else {
-            switch (sessValPtr->tag) {
-                case SessionTag::SURFACEFLINGER:
-                case SessionTag::HWUI:
-                    return "SCHED_QOS_SENSITIVE_EXTREME_CLEAR";
-                default:
-                    return "SCHED_QOS_SENSITIVE_STANDARD_CLEAR";
-            }
-        }
+        return "SCHED_QOS_NONE";
     }
 }
 
