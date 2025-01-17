@@ -27,11 +27,9 @@ RgbLedDevice::RgbLedDevice(LedDevice red, LedDevice green, LedDevice blue, std::
     if (mBlue.exists()) {
         mColors |= Color::BLUE;
     }
-    if (supportsRgbSync()) {
-        mRed.setIdx(0);
-        mGreen.setIdx(1);
-        mBlue.setIdx(2);
-    }
+    mRed.setIdx(0);
+    mGreen.setIdx(1);
+    mBlue.setIdx(2);
 }
 
 bool RgbLedDevice::exists() const {
