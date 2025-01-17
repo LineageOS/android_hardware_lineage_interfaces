@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6bfe260_091f4d17",
+        "filename": "light/android.hardware.light-service.lineage.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-01-17T16:00:53Z",
+      "side": 1,
+      "message": "Alphabetical order please, move those down",
+      "revId": "130696a18e3cfa4d0a6ba3a34c639c9cf67f0c61",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
