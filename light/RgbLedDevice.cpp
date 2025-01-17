@@ -27,7 +27,7 @@ RgbLedDevice::RgbLedDevice(LedDevice red, LedDevice green, LedDevice blue, std::
     if (mBlue.exists()) {
         mColors |= Color::BLUE;
     }
-    if (supportsRgbSync()) {
+    if (supportsTimed()) {
         mRed.setIdx(0);
         mGreen.setIdx(1);
         mBlue.setIdx(2);
