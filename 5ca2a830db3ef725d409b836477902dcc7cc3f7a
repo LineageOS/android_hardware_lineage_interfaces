@@ -16,6 +16,23 @@
       "message": "verified on enchilada, pioneer, natrium.",
       "revId": "5ca2a830db3ef725d409b836477902dcc7cc3f7a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98de4796_1ea1f7d3",
+        "filename": "light/RgbLedDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-01-18T02:16:03Z",
+      "side": 1,
+      "message": "I\u0027d say just set it unconditionally?",
+      "revId": "5ca2a830db3ef725d409b836477902dcc7cc3f7a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
