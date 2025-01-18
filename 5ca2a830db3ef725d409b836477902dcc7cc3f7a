@@ -33,6 +33,24 @@
       "message": "I\u0027d say just set it unconditionally?",
       "revId": "5ca2a830db3ef725d409b836477902dcc7cc3f7a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1cb27c_c95c43c4",
+        "filename": "light/RgbLedDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-18T09:41:19Z",
+      "side": 1,
+      "message": "I guess I could? it\u0027s only used for timed tho.",
+      "parentUuid": "98de4796_1ea1f7d3",
+      "revId": "5ca2a830db3ef725d409b836477902dcc7cc3f7a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
