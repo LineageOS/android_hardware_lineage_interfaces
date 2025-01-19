@@ -16,6 +16,24 @@
       "message": "what about to add an ability to specify max charging current or power?",
       "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad51454_6eace5a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2025-01-19T23:40:00Z",
+      "side": 1,
+      "message": "do you have an usecase for this?",
+      "parentUuid": "57fee23e_2bb40846",
+      "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
