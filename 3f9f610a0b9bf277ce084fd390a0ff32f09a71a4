@@ -70,6 +70,24 @@
       "parentUuid": "eafc3af0_9f3a7a42",
       "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dcf1e33_e6afc8c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 30475
+      },
+      "writtenOn": "2025-01-20T10:43:54Z",
+      "side": 1,
+      "message": "All devices that exposes `/sys/class/qcom-battery`\n\nE.g.\n```\npyxis:/sys/class/qcom-battery # ls /sys/class/qcom-battery/restricted_*        \n/sys/class/qcom-battery/restricted_charging\n/sys/class/qcom-battery/restricted_current\n```\n\n`restricted_current` contains max current for charging in mA (default: `1000000` -\u003e 1A)\n`restricted_charging` contains 1 if restricted current policy is applied or 0 if not (default is 0)",
+      "parentUuid": "2dcf6595_cec3e7d7",
+      "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
