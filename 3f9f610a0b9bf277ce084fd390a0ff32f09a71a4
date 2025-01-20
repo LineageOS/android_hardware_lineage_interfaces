@@ -52,6 +52,24 @@
       "parentUuid": "4ad51454_6eace5a5",
       "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcf6595_cec3e7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2025-01-20T05:53:10Z",
+      "side": 1,
+      "message": "it is defined by OEM, see https://review.lineageos.org/c/LineageOS/android_packages_apps_Settings/+/402877\n\ndo you have a device that can do this?",
+      "parentUuid": "eafc3af0_9f3a7a42",
+      "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
