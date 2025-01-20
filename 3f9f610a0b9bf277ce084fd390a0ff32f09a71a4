@@ -34,6 +34,24 @@
       "parentUuid": "57fee23e_2bb40846",
       "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafc3af0_9f3a7a42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 30475
+      },
+      "writtenOn": "2025-01-20T05:34:55Z",
+      "side": 1,
+      "message": "An user can specify for fast charge:\n* None\n* Fast charge \n* Super fastcharge \n* Custom (defined by him/her directly)\n\nbtw. how fast and super fast are defined?\nfast for \u003e5W\nsuper for \u003e7.5W\n?",
+      "parentUuid": "4ad51454_6eace5a5",
+      "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
