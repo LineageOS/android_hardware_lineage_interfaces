@@ -156,6 +156,11 @@ ndk::ScopedAStatus ChargingControl::getSupportedMode(int* _aidl_return) {
     mode |= static_cast<int>(ChargingControlSupportedMode::BYPASS);
 #endif
 
+    if (access(mChargingEnabledNode.path.c_str(), R_OK | W_OK) != 0) {
+        LOG(ERROR) << "Failed to access() file " << mChargingEnabledNode.path;
+        mode = 0;
+    }
+
 #ifdef HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE
     mode |= static_cast<int>(ChargingControlSupportedMode::DEADLINE);
 #endif
