@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391f6e6e_47799a41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-01-21T11:30:39Z",
+      "side": 1,
+      "message": "Now it builds and boots at least. Need to test on affected devices",
+      "revId": "1fd6293cec348d757eb5cf86c7dda39eda1d3711",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
