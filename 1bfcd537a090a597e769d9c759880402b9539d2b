@@ -52,6 +52,24 @@
       "parentUuid": "63ef8cfc_70062e7e",
       "revId": "1bfcd537a090a597e769d9c759880402b9539d2b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c5c014_ac10340e",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-01-22T14:38:04Z",
+      "side": 1,
+      "message": "This was added for all tensor pixels, since they don\u0027t support toggle and we don\u0027t want to modify the kernel (it\u0027s prebuilt)",
+      "parentUuid": "ffb628e9_847aaa1c",
+      "revId": "1bfcd537a090a597e769d9c759880402b9539d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
