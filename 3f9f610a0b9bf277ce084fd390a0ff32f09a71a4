@@ -88,6 +88,24 @@
       "parentUuid": "2dcf6595_cec3e7d7",
       "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51dde0dc_58b1f96c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2025-01-22T08:46:49Z",
+      "side": 1,
+      "message": "After some discussion, I think exposing custom current limit might not be a good idea. The device can still use the fastcharge interface to control the charging current anyway.",
+      "parentUuid": "7dcf1e33_e6afc8c6",
+      "revId": "3f9f610a0b9bf277ce084fd390a0ff32f09a71a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
