@@ -16,6 +16,23 @@
       "message": "Now it builds and boots at least. Need to test on affected devices",
       "revId": "1fd6293cec348d757eb5cf86c7dda39eda1d3711",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97e07fe_ed4ea852",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20520
+      },
+      "writtenOn": "2025-01-22T02:54:26Z",
+      "side": 1,
+      "message": "fixed pipa boots up normally for me now",
+      "revId": "1fd6293cec348d757eb5cf86c7dda39eda1d3711",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
