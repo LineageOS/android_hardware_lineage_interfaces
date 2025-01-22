@@ -34,6 +34,24 @@
       "parentUuid": "e844ddad_da4ea168",
       "revId": "1bfcd537a090a597e769d9c759880402b9539d2b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb628e9_847aaa1c",
+        "filename": "health/aidl/vendor/lineage/health/IChargingControl.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2025-01-22T08:45:40Z",
+      "side": 1,
+      "message": "Hi @1desaichirayu@gmail.com do you still need to limit interface? what device needs this interface?",
+      "parentUuid": "63ef8cfc_70062e7e",
+      "revId": "1bfcd537a090a597e769d9c759880402b9539d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
