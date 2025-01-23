@@ -77,7 +77,9 @@ class MockPowerSessionManager {
     MOCK_METHOD(void, updateFrameBuckets,
                 (int64_t sessionId, const impl::pixel::FrameBuckets &lastReportedFrames), ());
     MOCK_METHOD(void, updateRampupBoostMode,
-                (int64_t sessionId, impl::pixel::SessionJankyLevel jankyLevel), ());
+                (int64_t sessionId, impl::pixel::SessionJankyLevel jankyLevel,
+                 int32_t defaultRampupVal, int32_t highRampupVal),
+                ());
 
     static testing::NiceMock<MockPowerSessionManager> *getInstance() {
         static testing::NiceMock<MockPowerSessionManager> instance{};

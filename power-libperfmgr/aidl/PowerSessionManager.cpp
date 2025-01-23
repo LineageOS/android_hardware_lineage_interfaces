@@ -41,8 +41,7 @@ namespace pixel {
 
 using ::android::perfmgr::HintManager;
 constexpr char kGameModeName[] = "GAME";
-constexpr int32_t kHighRampupVal = 8;
-constexpr int32_t kDefaultRampupVal = 1;
+constexpr int32_t kBGRampupVal = 1;
 
 namespace {
 /* there is no glibc or bionic wrapper */
@@ -262,7 +261,9 @@ void PowerSessionManager<HintManagerT>::pause(int64_t sessionId) {
         sessValPtr->isActive = false;
         if (sessValPtr->rampupBoostActive) {
             sessValPtr->rampupBoostActive = false;
-            voteRampupBoostLocked(sessionId, false);
+            // TODO(guibing): cancel the per task rampup qos vote instead of voting the
+            // default low value when session gets paused.
+            voteRampupBoostLocked(sessionId, false, kBGRampupVal, kBGRampupVal);
         }
     }
     applyCpuAndGpuVotes(sessionId, std::chrono::steady_clock::now());
@@ -672,7 +673,9 @@ bool PowerSessionManager<HintManagerT>::hasValidTaskRampupMultNode() {
 
 template <class HintManagerT>
 void PowerSessionManager<HintManagerT>::voteRampupBoostLocked(int64_t sessionId,
-                                                              bool rampupBoostVote) {
+                                                              bool rampupBoostVote,
+                                                              int32_t defaultRampupVal,
+                                                              int32_t highRampupVal) {
     auto threadIds = mSessionTaskMap.getTaskIds(sessionId);
     for (auto tid : threadIds) {
         auto sessionIds = mSessionTaskMap.getSessionIds(tid);
@@ -687,11 +690,11 @@ void PowerSessionManager<HintManagerT>::voteRampupBoostLocked(int64_t sessionId,
 
         if (!otherSessionsRampupBoost) {
             if (rampupBoostVote) {
-                if (!mTaskRampupMultNode->updateTaskRampupMult(tid, kHighRampupVal)) {
+                if (!mTaskRampupMultNode->updateTaskRampupMult(tid, highRampupVal)) {
                     ALOGE("Failed to set high rampup boost value for task %d", tid);
                 }
             } else {
-                if (!mTaskRampupMultNode->updateTaskRampupMult(tid, kDefaultRampupVal)) {
+                if (!mTaskRampupMultNode->updateTaskRampupMult(tid, defaultRampupVal)) {
                     ALOGE("Failed to reset to default rampup boost value for task %d", tid);
                 }
             }
@@ -701,7 +704,9 @@ void PowerSessionManager<HintManagerT>::voteRampupBoostLocked(int64_t sessionId,
 
 template <class HintManagerT>
 void PowerSessionManager<HintManagerT>::updateRampupBoostMode(int64_t sessionId,
-                                                              SessionJankyLevel jankyLevel) {
+                                                              SessionJankyLevel jankyLevel,
+                                                              int32_t defaultRampupVal,
+                                                              int32_t highRampupVal) {
     std::lock_guard<std::mutex> lock(mSessionTaskMapMutex);
     auto sessValPtr = mSessionTaskMap.findSession(sessionId);
     if (nullptr == sessValPtr) {
@@ -732,7 +737,8 @@ void PowerSessionManager<HintManagerT>::updateRampupBoostMode(int64_t sessionId,
     }
 
     if (sessValPtr->rampupBoostActive != lastRampupBoostActive) {
-        voteRampupBoostLocked(sessionId, sessValPtr->rampupBoostActive);
+        voteRampupBoostLocked(sessionId, sessValPtr->rampupBoostActive, defaultRampupVal,
+                              highRampupVal);
     }
 }
 

@@ -477,6 +477,8 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::reportA
 
     bool hboostEnabled =
             adpfConfig->mHeuristicBoostOn.has_value() && adpfConfig->mHeuristicBoostOn.value();
+    bool heurRampupEnabled =
+            adpfConfig->mHeuristicRampup.has_value() && adpfConfig->mHeuristicRampup.value();
 
     if (hboostEnabled) {
         FrameBuckets newFramesInBuckets;
@@ -486,8 +488,10 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::reportA
         mPSManager->updateHboostStatistics(mSessionId, mJankyLevel, actualDurations.size());
         mPSManager->updateFrameBuckets(mSessionId, newFramesInBuckets);
         updateHeuristicBoost();
-        if (mPSManager->hasValidTaskRampupMultNode()) {
-            mPSManager->updateRampupBoostMode(mSessionId, mJankyLevel);
+        if (heurRampupEnabled && mPSManager->hasValidTaskRampupMultNode()) {
+            mPSManager->updateRampupBoostMode(mSessionId, mJankyLevel,
+                                              adpfConfig->mDefaultRampupMult.value(),
+                                              adpfConfig->mHighRampupMult.value());
         }
     }
 

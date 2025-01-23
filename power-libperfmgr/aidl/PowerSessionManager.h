@@ -81,7 +81,8 @@ class PowerSessionManager : public Immobile {
                                 int32_t numOfFrames);
     void updateFrameBuckets(int64_t sessionId, const FrameBuckets &lastReportedFrames);
     bool hasValidTaskRampupMultNode();
-    void updateRampupBoostMode(int64_t sessionId, SessionJankyLevel jankyLevel);
+    void updateRampupBoostMode(int64_t sessionId, SessionJankyLevel jankyLevel,
+                               int32_t defaultRampupVal, int32_t highRampupVal);
 
     // Singleton
     static PowerSessionManager *getInstance() {
@@ -129,7 +130,8 @@ class PowerSessionManager : public Immobile {
     // Force a session active or in-active, helper for other methods
     void forceSessionActive(int64_t sessionId, bool isActive);
     std::string getSessionTaskProfile(int64_t sessionId, bool isSetProfile) const;
-    void voteRampupBoostLocked(int64_t sessionId, bool rampupBoostVote);
+    void voteRampupBoostLocked(int64_t sessionId, bool rampupBoostVote, int32_t defaultRampupVal,
+                               int32_t highRampupVal);
 
     // Singleton
     PowerSessionManager()
