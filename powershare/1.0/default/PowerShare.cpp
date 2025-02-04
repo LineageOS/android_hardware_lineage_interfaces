@@ -28,7 +28,7 @@ Return<bool> PowerShare::isEnabled() {
 
     value = android::base::Trim(value);
 
-    return value == POWERSHARE_ENABLED;
+    return value != POWERSHARE_DISABLED;
 }
 
 Return<bool> PowerShare::setEnabled(bool enable) {
