@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6c0077_334d7bf0",
+        "filename": "light/Devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-02-06T00:45:34Z",
+      "side": 1,
+      "message": "```suggestion\n        \"sprd_backlight\",\n```",
+      "revId": "48affb64e1c6e0f048bc04739e0244451ee704c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
