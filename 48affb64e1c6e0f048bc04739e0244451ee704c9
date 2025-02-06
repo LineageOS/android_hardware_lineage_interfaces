@@ -16,6 +16,24 @@
       "message": "```suggestion\n        \"sprd_backlight\",\n```",
       "revId": "48affb64e1c6e0f048bc04739e0244451ee704c9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2ab850_99a7a965",
+        "filename": "light/Devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 24442
+      },
+      "writtenOn": "2025-02-06T11:51:24Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "cf6c0077_334d7bf0",
+      "revId": "48affb64e1c6e0f048bc04739e0244451ee704c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
