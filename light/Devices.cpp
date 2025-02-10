@@ -18,6 +18,7 @@ namespace light {
 static const std::string kBacklightDevices[] = {
         "backlight",
         "panel0-backlight",
+        "panel0-backlight-ex",
         "sprd_backlight",
 };
 

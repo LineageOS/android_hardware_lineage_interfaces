@@ -6,6 +6,9 @@ on early-boot
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
 
+    chown system system /sys/class/backlight/panel0-backlight-ex/brightness
+    chown system system /sys/class/backlight/panel0-backlight-ex/max_brightness
+
     chown system system /sys/class/backlight/sprd_backlight/brightness
     chown system system /sys/class/backlight/sprd_backlight/max_brightness
 
