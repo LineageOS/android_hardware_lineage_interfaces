@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d104c80e_24f629a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-02-10T11:59:29Z",
+      "side": 1,
+      "message": "might make sense to remove unwanted chowns in a separate change at some point...",
+      "revId": "a90b7f9b0802f0311970390bc6cc608a5ce18aa8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
