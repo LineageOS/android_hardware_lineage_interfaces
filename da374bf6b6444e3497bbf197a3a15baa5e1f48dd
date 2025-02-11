@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "179cf106_24c63102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 17401
+      },
+      "writtenOn": "2025-02-11T14:32:00Z",
+      "side": 1,
+      "message": "should cover all current implementation as far as i can tell https://github.com/search?q\u003dorg%3ALineageOS+%22vendor.lineage.fastcharge%401.0-service%22\u0026type\u003dcode\u0026p\u003d1",
+      "revId": "da374bf6b6444e3497bbf197a3a15baa5e1f48dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
