@@ -16,6 +16,24 @@
       "message": "this has to be renamed as anyone building xiaomi will get:\n\nbuild/make/core/base_rules.mk:300: error: hardware/xiaomi/aidl/fingerprint: MODULE.TARGET.JAVA_LIBRARIES.android.hardware.biometrics.fingerprint.Props already defined by hardware/lineage/interfaces/biometrics/fingerprint/aidl.",
       "revId": "a3d6e47cbb94a75c7ea3fc0a50f5aa0bf2f43902",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e810e059_d0f0353d",
+        "filename": "biometrics/fingerprint/aidl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-02-11T11:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d8022f9_525b87d5",
+      "revId": "a3d6e47cbb94a75c7ea3fc0a50f5aa0bf2f43902",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
