@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a957d44b_d3e58e28",
+        "filename": "power-libperfmgr/aidl/InteractionHandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-02-14T18:09:09Z",
+      "side": 1,
+      "message": "```suggestion\n    } else {\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 8
+      },
+      "revId": "3982893dd6c00719f1d7c51dc6d700bddf16779a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
