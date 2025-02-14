@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7546d052_1515b123",
+        "filename": "power-libperfmgr/aidl/InteractionHandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-02-14T18:41:36Z",
+      "side": 1,
+      "message": "yeah I pushed it before amending",
+      "parentUuid": "04094cb6_145199a3",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 26
+      },
+      "revId": "3982893dd6c00719f1d7c51dc6d700bddf16779a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a957d44b_d3e58e28",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-14T18:09:09Z",
       "side": 1,
       "message": "```suggestion\n    } else {\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 8
+      },
+      "revId": "3982893dd6c00719f1d7c51dc6d700bddf16779a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7a130b_726b3627",
+        "filename": "power-libperfmgr/aidl/InteractionHandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-02-14T18:41:36Z",
+      "side": 1,
+      "message": "yeah I pushed it before amending",
+      "parentUuid": "a957d44b_d3e58e28",
       "range": {
         "startLine": 79,
         "startChar": 4,
