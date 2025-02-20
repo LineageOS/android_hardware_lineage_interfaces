@@ -80,6 +80,39 @@ struct FrameBuckets {
     }
 };
 
+enum class ScenarioType : int32_t { DEFAULT = 0, GAME };
+
+constexpr const char *toString(ScenarioType scenType) {
+    switch (scenType) {
+        case ScenarioType::DEFAULT:
+            return "DEFAULT";
+        case ScenarioType::GAME:
+            return "GAME";
+        default:
+            return "INVALID_SCENARIO_TYPE";
+    }
+}
+
+enum class FrameTimelineType : int32_t { SURFACEFLINGER = 0, APP };
+
+constexpr const char *toString(FrameTimelineType timelineType) {
+    switch (timelineType) {
+        case FrameTimelineType::APP:
+            return "APP";
+        case FrameTimelineType::SURFACEFLINGER:
+            return "SURFACEFLINGER";
+        default:
+            return "INVALID_FRAME_TIMELINE_TYPE";
+    }
+}
+
+struct SessionJankStatsWithThermal {
+    std::optional<int32_t> uid;
+    ScenarioType scenarioType;
+    FrameTimelineType frameTimelineType;
+    // TODO(guibing) add more detailed definition of the jank metrics.
+};
+
 }  // namespace pixel
 }  // namespace impl
 }  // namespace power

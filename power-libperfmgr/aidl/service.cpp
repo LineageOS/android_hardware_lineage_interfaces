@@ -25,10 +25,12 @@
 
 #include <thread>
 
+#include "MetricUploader.h"
 #include "Power.h"
 #include "PowerExt.h"
 #include "PowerSessionManager.h"
 
+using aidl::google::hardware::power::impl::pixel::MetricUploader;
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
 using ::android::perfmgr::HintManager;
@@ -68,6 +70,7 @@ int main() {
     std::thread initThread([&]() {
         ::android::base::WaitForProperty(kPowerHalInitProp.data(), "1");
         HintManager::GetInstance()->Start();
+        MetricUploader::getInstance()->init();
     });
     initThread.detach();
 

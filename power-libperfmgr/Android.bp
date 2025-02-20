@@ -33,12 +33,14 @@ cc_binary {
         "libprocessgroup",
         "libutils",
         "pixel-power-ext-V1-ndk",
+        "android.frameworks.stats-V2-ndk",
         "android.hardware.common.fmq-V1-ndk",
         "libfmq",
     ],
     static_libs: [
         "libgmock",
         "libgtest",
+        "libpixelstats",
     ],
     whole_static_libs: select(soong_config_variable("power_libperfmgr", "mode_extension_lib"), {
         any @ flag_val: [flag_val],
@@ -48,6 +50,7 @@ cc_binary {
         "aidl/BackgroundWorker.cpp",
         "aidl/ChannelGroup.cpp",
         "aidl/ChannelManager.cpp",
+        "aidl/MetricUploader.cpp",
         "aidl/GpuCalculationHelpers.cpp",
         "aidl/GpuCapacityNode.cpp",
         "aidl/service.cpp",
