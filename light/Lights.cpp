@@ -28,6 +28,10 @@ Lights::Lights() {
         mLights.push_back(AutoHwLight(LightType::BUTTONS));
     }
 
+    if (mDevices.hasKeyboardDevices()) {
+        mLights.push_back(AutoHwLight(LightType::KEYBOARD));
+    }
+
     if (mDevices.hasNotificationDevices()) {
         mLights.push_back(AutoHwLight(LightType::BATTERY));
         mLights.push_back(AutoHwLight(LightType::NOTIFICATIONS));
@@ -42,6 +46,9 @@ ndk::ScopedAStatus Lights::setLightState(int32_t id, const HwLightState& state) 
     switch (type) {
         case LightType::BACKLIGHT:
             mDevices.setBacklightColor(color);
+            break;
+        case LightType::KEYBOARD:
+            mDevices.setKeyboardColor(color);
             break;
         case LightType::BUTTONS:
             mDevices.setButtonsColor(color);
