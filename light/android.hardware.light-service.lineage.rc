@@ -53,6 +53,16 @@ on early-boot
     chown system system /sys/class/leds/button-backlight2/ramp_step_ms
     chown system system /sys/class/leds/button-backlight2/start_idx
 
+    chown system system /sys/class/leds/button-backlight-ap/blink
+    chown system system /sys/class/leds/button-backlight-ap/breath
+    chown system system /sys/class/leds/button-backlight-ap/brightness
+    chown system system /sys/class/leds/button-backlight-ap/duty_pcts
+    chown system system /sys/class/leds/button-backlight-ap/max_brightn
+    chown system system /sys/class/leds/button-backlight-ap/pause_hi
+    chown system system /sys/class/leds/button-backlight-ap/pause_lo
+    chown system system /sys/class/leds/button-backlight-ap/ramp_step_m
+    chown system system /sys/class/leds/button-backlight-ap/start_idx
+
     chown system system /sys/class/leds/charging/blink
     chown system system /sys/class/leds/charging/brightness
     chown system system /sys/class/leds/charging/duty_pcts
