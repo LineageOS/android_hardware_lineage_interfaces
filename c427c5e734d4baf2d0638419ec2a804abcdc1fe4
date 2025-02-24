@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05e7886_c67aef98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32253
+      },
+      "writtenOn": "2025-02-24T17:58:32Z",
+      "side": 1,
+      "message": "Breaks Honor 9 side buttons backlight, despite finding the correct device path \n\n```\nI Devices : Found backlight LED device: lcd_backlight0\nI Devices : Found keyboard LED device: keyboard-backlight\nI Devices : Found keyboard LED device: keyboard-backlight-ap\nI Devices : Found notification RGB LED device: red, green, blue\n```",
+      "revId": "c427c5e734d4baf2d0638419ec2a804abcdc1fe4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
