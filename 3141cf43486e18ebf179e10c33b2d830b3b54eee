@@ -16,6 +16,24 @@
       "message": "according to I0d434451433ad557017f894826b9ffb2b1e7180c, it was added for hisi, which I doubt has any keyboard phones...",
       "revId": "3141cf43486e18ebf179e10c33b2d830b3b54eee",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed96442_c10c8489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-02-24T08:48:07Z",
+      "side": 1,
+      "message": "Then they have to fix their kernel",
+      "parentUuid": "465c100f_3f42a2b0",
+      "revId": "3141cf43486e18ebf179e10c33b2d830b3b54eee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
