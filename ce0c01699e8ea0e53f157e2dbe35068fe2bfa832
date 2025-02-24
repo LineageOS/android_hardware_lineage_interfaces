@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1932809_56c92091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32253
+      },
+      "writtenOn": "2025-02-24T20:16:00Z",
+      "side": 1,
+      "message": "^ https://github.com/hisi-oss/android_kernel_huawei_hi3660/commit/45c5d8594cece2a117a7d7cf3b285cd8b8341a0b",
+      "revId": "ce0c01699e8ea0e53f157e2dbe35068fe2bfa832",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
