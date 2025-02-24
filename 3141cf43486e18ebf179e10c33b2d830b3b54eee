@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465c100f_3f42a2b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-02-24T08:42:18Z",
+      "side": 1,
+      "message": "according to I0d434451433ad557017f894826b9ffb2b1e7180c, it was added for hisi, which I doubt has any keyboard phones...",
+      "revId": "3141cf43486e18ebf179e10c33b2d830b3b54eee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
