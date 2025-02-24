@@ -24,10 +24,12 @@ class Devices : public IDumpable {
 
     bool hasBacklightDevices() const;
     bool hasButtonDevices() const;
+    bool hasKeyboardDevices() const;
     bool hasNotificationDevices() const;
 
     void setBacklightColor(rgb color);
     void setButtonsColor(rgb color);
+    void setKeyboardColor(rgb color);
     void setNotificationColor(rgb color, LightMode mode = LightMode::STATIC, uint32_t flashOnMs = 0,
                               uint32_t flashOffMs = 0);
 
@@ -40,6 +42,9 @@ class Devices : public IDumpable {
 
     // Buttons
     std::vector<LedDevice> mButtonLedDevices;
+
+    // Keyboard
+    std::vector<LedDevice> mKeyboardLedDevices;
 
     // Notifications
     std::vector<RgbLedDevice> mNotificationRgbLedDevices;

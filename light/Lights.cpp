@@ -43,6 +43,9 @@ ndk::ScopedAStatus Lights::setLightState(int32_t id, const HwLightState& state) 
         case LightType::BACKLIGHT:
             mDevices.setBacklightColor(color);
             break;
+        case LightType::KEYBOARD:
+            mDevices.setKeyboardColor(color);
+            break;
         case LightType::BUTTONS:
             mDevices.setButtonsColor(color);
             break;
