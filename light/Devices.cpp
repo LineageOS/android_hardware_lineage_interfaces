@@ -60,8 +60,6 @@ static const std::string kButtonLedDevices[] = {
         "button-backlight",
         "button-backlight1",
         "button-backlight2",
-        "keyboard-backlight",
-        "keyboard-backlight-ap",
 };
 
 static std::vector<LedDevice> getButtonLedDevices() {
@@ -72,6 +70,25 @@ static std::vector<LedDevice> getButtonLedDevices() {
         if (button.exists()) {
             LOG(INFO) << "Found button LED device: " << button.getName();
             devices.emplace_back(button);
+        }
+    }
+
+    return devices;
+}
+
+static const std::string kKeyboardLedDevices[] = {
+        "keyboard-backlight",
+        "keyboard-backlight-ap",
+};
+
+static std::vector<LedDevice> getKeyboardLedDevices() {
+    std::vector<LedDevice> devices;
+
+    for (const auto& device : kKeyboardLedDevices) {
+        LedDevice keyboard(device);
+        if (keyboard.exists()) {
+            LOG(INFO) << "Found keyboard LED device: " << keyboard.getName();
+            devices.emplace_back(keyboard);
         }
     }
 
@@ -124,6 +141,7 @@ Devices::Devices()
     : mBacklightDevices(getBacklightDevices()),
       mBacklightLedDevices(getBacklightLedDevices()),
       mButtonLedDevices(getButtonLedDevices()),
+      mKeyboardLedDevices(getKeyboardLedDevices()),
       mNotificationRgbLedDevices(getNotificationRgbLedDevices()),
       mNotificationLedDevices(getNotificationLedDevices()) {
     if (!hasBacklightDevices()) {
@@ -132,6 +150,10 @@ Devices::Devices()
 
     if (!hasButtonDevices()) {
         LOG(INFO) << "No button devices found";
+    }
+
+    if (!hasKeyboardDevices()) {
+        LOG(INFO) << "No keyboard devices found";
     }
 
     if (!hasNotificationDevices()) {
@@ -145,6 +167,10 @@ bool Devices::hasBacklightDevices() const {
 
 bool Devices::hasButtonDevices() const {
     return !mButtonLedDevices.empty();
+}
+
+bool Devices::hasKeyboardDevices() const {
+    return !mKeyboardLedDevices.empty();
 }
 
 bool Devices::hasNotificationDevices() const {
@@ -162,6 +188,12 @@ void Devices::setBacklightColor(rgb color) {
 
 void Devices::setButtonsColor(rgb color) {
     for (auto& device : mButtonLedDevices) {
+        device.setBrightness(color.toBrightness());
+    }
+}
+
+void Devices::setKeyboardColor(rgb color) {
+    for (auto& device : mKeyboardLedDevices) {
         device.setBrightness(color.toBrightness());
     }
 }
@@ -201,6 +233,13 @@ void Devices::dump(int fd) const {
         dprintf(fd, "\n");
     }
     dprintf(fd, "\n");
+
+    dprintf(fd, "Keyboard LED devices:\n");
+    for (const auto& device : mKeyboardLedDevices) {
+        dprintf(fd, "- ");
+        device.dump(fd);
+        dprintf(fd, "\n");
+    }
 
     dprintf(fd, "Notification RGB LED devices:\n");
     for (const auto& device : mNotificationRgbLedDevices) {
