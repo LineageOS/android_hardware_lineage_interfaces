@@ -38,8 +38,6 @@ namespace pixel {
 
 using ::android::Thread;
 
-constexpr char kPowerHalAdpfDisableTopAppBoost[] = "vendor.powerhal.adpf.disable.hint";
-
 template <class HintManagerT = ::android::perfmgr::HintManager>
 class PowerSessionManager : public Immobile {
   public:
@@ -59,7 +57,6 @@ class PowerSessionManager : public Immobile {
     void pause(int64_t sessionId);
     void resume(int64_t sessionId);
 
-    void updateUniversalBoostMode();
     void dumpToFd(int fd);
 
     void updateTargetWorkDuration(int64_t sessionId, AdpfVoteType voteId,
@@ -101,8 +98,6 @@ class PowerSessionManager : public Immobile {
 
   private:
     std::optional<bool> isAnyAppSessionActive();
-    void disableSystemTopAppBoost();
-    void enableSystemTopAppBoost();
     const std::string kDisableBoostHintName;
 
     // Rewrite specific
@@ -135,9 +130,7 @@ class PowerSessionManager : public Immobile {
 
     // Singleton
     PowerSessionManager()
-        : kDisableBoostHintName(::android::base::GetProperty(kPowerHalAdpfDisableTopAppBoost,
-                                                             "ADPF_DISABLE_TA_BOOST")),
-          mPriorityQueueWorkerPool(new PriorityQueueWorkerPool(1, "adpf_handler")),
+        : mPriorityQueueWorkerPool(new PriorityQueueWorkerPool(1, "adpf_handler")),
           mEventSessionTimeoutWorker([&](auto e) { handleEvent(e); }, mPriorityQueueWorkerPool),
           mGpuCapacityNode(createGpuCapacityNode()),
           mTaskRampupMultNode(TaskRampupMultNode::getInstance()) {}

@@ -44,7 +44,6 @@ class MockPowerSessionManager {
                 (int64_t sessionId, const std::vector<int32_t> &threadIds), ());
     MOCK_METHOD(void, pause, (int64_t sessionId), ());
     MOCK_METHOD(void, resume, (int64_t sessionId), ());
-    MOCK_METHOD(void, updateUniversalBoostMode, (), ());
     MOCK_METHOD(void, dumpToFd, (int fd), ());
     MOCK_METHOD(void, updateTargetWorkDuration,
                 (int64_t sessionId, impl::pixel::AdpfVoteType voteId,

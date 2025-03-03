@@ -74,7 +74,7 @@ int64_t PowerHintSession<HintManagerT, PowerSessionManagerT>::convertWorkDuratio
     uint64_t samplingWindowP = adpfConfig->mSamplingWindowP;
     uint64_t samplingWindowI = adpfConfig->mSamplingWindowI;
     uint64_t samplingWindowD = adpfConfig->mSamplingWindowD;
-    int64_t targetDurationNanos = (int64_t)targetDuration.count();
+    int64_t targetDurationNanos = static_cast<int64_t>(targetDuration.count());
     int64_t length = actualDurations.size();
     int64_t p_start =
             samplingWindowP == 0 || samplingWindowP > length ? 0 : length - samplingWindowP;
@@ -464,9 +464,6 @@ ndk::ScopedAStatus PowerHintSession<HintManagerT, PowerSessionManagerT>::reportA
                actualDurations.back().gpuDurationNanos);
 
     mLastUpdatedTime = std::chrono::steady_clock::now();
-    if (isFirstFrame) {
-        mPSManager->updateUniversalBoostMode();
-    }
 
     mPSManager->disableBoosts(mSessionId);
 

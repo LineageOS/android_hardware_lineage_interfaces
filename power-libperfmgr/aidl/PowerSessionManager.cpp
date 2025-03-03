@@ -202,19 +202,6 @@ std::optional<bool> PowerSessionManager<HintManagerT>::isAnyAppSessionActive() {
 }
 
 template <class HintManagerT>
-void PowerSessionManager<HintManagerT>::updateUniversalBoostMode() {
-    const auto active = isAnyAppSessionActive();
-    if (!active.has_value()) {
-        return;
-    }
-    if (active.value()) {
-        disableSystemTopAppBoost();
-    } else {
-        enableSystemTopAppBoost();
-    }
-}
-
-template <class HintManagerT>
 void PowerSessionManager<HintManagerT>::dumpToFd(int fd) {
     std::ostringstream dump_buf;
     dump_buf << "========== Begin PowerSessionManager ADPF list ==========\n";
@@ -267,7 +254,6 @@ void PowerSessionManager<HintManagerT>::pause(int64_t sessionId) {
         }
     }
     applyCpuAndGpuVotes(sessionId, std::chrono::steady_clock::now());
-    updateUniversalBoostMode();
 }
 
 template <class HintManagerT>
@@ -287,7 +273,6 @@ void PowerSessionManager<HintManagerT>::resume(int64_t sessionId) {
         sessValPtr->isActive = true;
     }
     applyCpuAndGpuVotes(sessionId, std::chrono::steady_clock::now());
-    updateUniversalBoostMode();
 }
 
 template <class HintManagerT>
@@ -403,22 +388,6 @@ void PowerSessionManager<HintManagerT>::disableBoosts(int64_t sessionId) {
 }
 
 template <class HintManagerT>
-void PowerSessionManager<HintManagerT>::enableSystemTopAppBoost() {
-    if (HintManagerT::GetInstance()->IsHintSupported(kDisableBoostHintName)) {
-        ALOGV("PowerSessionManager::enableSystemTopAppBoost!!");
-        HintManagerT::GetInstance()->EndHint(kDisableBoostHintName);
-    }
-}
-
-template <class HintManagerT>
-void PowerSessionManager<HintManagerT>::disableSystemTopAppBoost() {
-    if (HintManagerT::GetInstance()->IsHintSupported(kDisableBoostHintName)) {
-        ALOGV("PowerSessionManager::disableSystemTopAppBoost!!");
-        HintManagerT::GetInstance()->DoHint(kDisableBoostHintName);
-    }
-}
-
-template <class HintManagerT>
 void PowerSessionManager<HintManagerT>::handleEvent(const EventSessionTimeout &eventTimeout) {
     bool recalcUclamp = false;
     const auto tNow = std::chrono::steady_clock::now();
@@ -466,7 +435,6 @@ void PowerSessionManager<HintManagerT>::handleEvent(const EventSessionTimeout &e
     // than trying to use the event's timestamp which will be slightly off given
     // the background priority queue introduces latency
     applyCpuAndGpuVotes(eventTimeout.sessionId, tNow);
-    updateUniversalBoostMode();
 }
 
 template <class HintManagerT>
@@ -556,7 +524,6 @@ void PowerSessionManager<HintManagerT>::forceSessionActive(int64_t sessionId, bo
     // that the SessionId remains valid and mapped to the proper threads/tasks
     // which enables apply u clamp to work correctly
     applyCpuAndGpuVotes(sessionId, std::chrono::steady_clock::now());
-    updateUniversalBoostMode();
 }
 
 template <class HintManagerT>
