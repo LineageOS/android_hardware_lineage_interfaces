@@ -21,7 +21,6 @@
 
 #include <android-base/file.h>
 #include <log/log.h>
-#include <perfmgr/HintManager.h>
 #include <private/android_filesystem_config.h>
 #include <processgroup/processgroup.h>
 #include <sys/syscall.h>
@@ -39,7 +38,6 @@ namespace power {
 namespace impl {
 namespace pixel {
 
-using ::android::perfmgr::HintManager;
 constexpr char kGameModeName[] = "GAME";
 constexpr int32_t kBGRampupVal = 1;
 
@@ -87,8 +85,8 @@ void PowerSessionManager<HintManagerT>::updateHintMode(const std::string &mode, 
     }
 
     // TODO(jimmyshiu@): Deprecated. Remove once all powerhint.json up-to-date.
-    if (enabled && HintManager::GetInstance()->GetAdpfProfileFromDoHint()) {
-        HintManager::GetInstance()->SetAdpfProfileFromDoHint(mode);
+    if (enabled && HintManagerT::GetInstance()->GetAdpfProfileFromDoHint()) {
+        HintManagerT::GetInstance()->SetAdpfProfileFromDoHint(mode);
     }
 }
 
