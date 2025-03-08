@@ -22,6 +22,9 @@ namespace aidl {
 namespace android {
 namespace hardware {
 namespace fastboot {
+
+#define FB_OEM_GET_PROP "getprop"
+
 class Fastboot : public BnFastboot {
     ::ndk::ScopedAStatus doOemCommand(const std::string& in_oemCmd,
                                       std::string* _aidl_return) override;
