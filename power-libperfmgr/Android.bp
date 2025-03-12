@@ -14,7 +14,6 @@ soong_namespace {
 cc_binary {
     name: "android.hardware.power-service.lineage-libperfmgr",
     defaults: [
-        "android.hardware.power-ndk_shared",
         "power_libperfmgr_defaults",
     ],
     relative_install_path: "hw",
@@ -27,6 +26,7 @@ cc_binary {
         "-Wthread-safety",
     ],
     shared_libs: [
+        "android.hardware.power-V5-ndk",
         "libbase",
         "libbinder_ndk",
         "libcutils",
@@ -63,9 +63,11 @@ cc_binary {
 
 cc_library_static {
     name: "libperfmgr-ext",
-    defaults: ["android.hardware.power-ndk_shared"],
     vendor: true,
     srcs: [
         "aidl/PowerModeExtension.cpp",
+    ],
+    shared_libs: [
+        "android.hardware.power-V5-ndk",
     ],
 }
