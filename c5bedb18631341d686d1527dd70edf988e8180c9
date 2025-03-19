@@ -16,6 +16,47 @@
       "message": "Do we instead want to make this an enum so that we can manage name string (don\u0027t even know how we\u0027re doing l18n in vendor HAL, lol) and keycode ID in framework?",
       "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c17d0c6_d309da58",
+        "filename": "touch/aidl/vendor/lineage/touch/Gesture.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-03-19T20:29:38Z",
+      "side": 1,
+      "message": "We probably want that, yes",
+      "parentUuid": "ae9081fd_4328a5fd",
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623d0d46_92cb3550",
+        "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-03-19T20:29:38Z",
+      "side": 1,
+      "message": "as mentioned by @javelinanddart@gmail.com this should rather work with int{s}, to allow reporting/setting a specific value",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
