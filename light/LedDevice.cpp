@@ -35,6 +35,8 @@ static const std::string kDutyPctsNode = "duty_pcts";
 static const std::string kPauseLoNode = "pause_lo";
 static const std::string kPauseHiNode = "pause_hi";
 static const std::string kRampStepMsNode = "ramp_step_ms";
+static const std::string kRgbStartNode = "rgb_start";
+static const std::string kOnOffMsNode = "on_off_ms";
 
 static constexpr int kRampSteps = 8;
 static constexpr int kRampMaxStepDurationMs = 50;
@@ -58,6 +60,8 @@ LedDevice::LedDevice(std::string name)
                      std::ifstream(mBasePath + kPauseLoNode).good() &&
                      std::ifstream(mBasePath + kPauseHiNode).good() &&
                      std::ifstream(mBasePath + kRampStepMsNode).good();
+    mSupportsSimpleRgbTimed = std::ifstream(mBasePath + kRgbStartNode).good() &&
+                              std::ifstream(mBasePath + kOnOffMsNode).good();
 }
 
 std::string LedDevice::getName() const {
@@ -69,7 +73,7 @@ bool LedDevice::supportsBreath() const {
 }
 
 bool LedDevice::supportsTimed() const {
-    return mSupportsTimed;
+    return mSupportsTimed || mSupportsSimpleRgbTimed;
 }
 
 bool LedDevice::exists() const {
@@ -99,6 +103,14 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
 
     switch (mode) {
         case LightMode::TIMED:
+            if (mSupportsSimpleRgbTimed) {
+                std::string onOff = std::to_string(flashOnMs) + " " + std::to_string(flashOffMs);
+
+                return writeToFile(mBasePath + kOnOffMsNode, onOff) &&
+                       writeToFile(mBasePath + kBrightnessNode, scaleBrightness(value, mMaxBrightness)) &&
+                       writeToFile(mBasePath + kRgbStartNode, 1);
+            }
+
             if (mSupportsTimed) {
                 int32_t stepDuration = kRampMaxStepDurationMs;
                 int32_t pauseLo = flashOffMs;

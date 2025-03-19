@@ -22,6 +22,8 @@ on early-boot
     chown system system /sys/class/leds/blue/pause_lo
     chown system system /sys/class/leds/blue/ramp_step_ms
     chown system system /sys/class/leds/blue/start_idx
+    chown system system /sys/class/leds/blue/rgb_start
+    chown system system /sys/class/leds/blue/on_off_ms
 
     chown system system /sys/class/leds/button-backlight/blink
     chown system system /sys/class/leds/button-backlight/breath
@@ -71,6 +73,8 @@ on early-boot
     chown system system /sys/class/leds/green/pause_lo
     chown system system /sys/class/leds/green/ramp_step_ms
     chown system system /sys/class/leds/green/start_idx
+    chown system system /sys/class/leds/green/rgb_start
+    chown system system /sys/class/leds/green/on_off_ms
 
     chown system system /sys/class/leds/keyboard-backlight/blink
     chown system system /sys/class/leds/keyboard-backlight/breath
@@ -141,6 +145,8 @@ on early-boot
     chown system system /sys/class/leds/red/pause_lo
     chown system system /sys/class/leds/red/ramp_step_ms
     chown system system /sys/class/leds/red/start_idx
+    chown system system /sys/class/leds/red/rgb_start
+    chown system system /sys/class/leds/red/on_off_ms
 
     chown system system /sys/class/leds/rgb/rgb_blink
 
