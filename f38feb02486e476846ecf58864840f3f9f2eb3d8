@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41920729_86144258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-03-19T20:26:02Z",
+      "side": 1,
+      "message": "This HAL was made to just support standard Linux sysfs API nodes tho...",
+      "revId": "f38feb02486e476846ecf58864840f3f9f2eb3d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886101a8_686fcbab",
+        "filename": "light/LedDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-03-19T20:26:02Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "f38feb02486e476846ecf58864840f3f9f2eb3d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c37ae0_3afcd271",
+        "filename": "light/android.hardware.light-service.lineage.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-03-19T20:26:02Z",
+      "side": 1,
+      "message": "Alphabetical order",
+      "revId": "f38feb02486e476846ecf58864840f3f9f2eb3d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b760b2a_e24a752e",
+        "filename": "light/android.hardware.light-service.lineage.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-03-19T20:26:02Z",
+      "side": 1,
+      "message": "Apply to all LED devices",
+      "revId": "f38feb02486e476846ecf58864840f3f9f2eb3d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
