@@ -1,4 +1,3 @@
-3f10a20f2c040621554f909359fb6ead3102e009600803f0e6131d676b505a5f vendor.lineage.camera.motor@1.0::ICameraMotor
 9632cd2e5268a185483234f660bd7fdfc99b9c3684d3a28f7fffd4a5b1e95afc vendor.lineage.fastcharge@1.0::IFastCharge
 8dd63c1acda6a1b08076d601848ce19b550079a01abaf925b39fbd8e88f5831f vendor.lineage.livedisplay@2.0::types
 897294c2e66cc92496b2c098c0a2faf7cb7837f6ba314bbb080631481c1e48bb vendor.lineage.livedisplay@2.0::IAdaptiveBacklight
