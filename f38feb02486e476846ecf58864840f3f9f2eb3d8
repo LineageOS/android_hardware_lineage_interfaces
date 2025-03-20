@@ -18,6 +18,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "482f4e3d_b7a07e4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-03-20T14:31:14Z",
+      "side": 1,
+      "message": "Yeah not really a fan of this just for 1 device that\u0027s doing things differently, plus we are also missing the simple blink implementation like moto sm6225 light hal does, which is used in all newer devices",
+      "revId": "f38feb02486e476846ecf58864840f3f9f2eb3d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "886101a8_686fcbab",
