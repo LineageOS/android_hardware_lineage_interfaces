@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2024 The LineageOS Project
+ * Copyright (C) 2021-2025 The LineageOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -10,6 +10,7 @@
 
 #include <android-base/logging.h>
 #include <fstream>
+#include <thread>
 #include "Utils.h"
 
 namespace aidl {
@@ -35,6 +36,10 @@ static const std::string kDutyPctsNode = "duty_pcts";
 static const std::string kPauseLoNode = "pause_lo";
 static const std::string kPauseHiNode = "pause_hi";
 static const std::string kRampStepMsNode = "ramp_step_ms";
+
+static const std::string kTriggerNode = "trigger";
+static const std::string kDelayOffNode = "delay_off";
+static const std::string kDelayOnNode = "delay_on";
 
 static constexpr int kRampSteps = 8;
 static constexpr int kRampMaxStepDurationMs = 50;
@@ -89,9 +94,13 @@ static std::string getScaledDutyPercent(uint8_t brightness) {
 
 bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                               uint32_t flashOffMs) {
+    bool ok = false;
+
     // Disable current blinking
     if (mSupportsTimed) {
         writeToFile(mBasePath + kBlinkNode, 0);
+    } else {
+        writeToFile(mBasePath + kTriggerNode, "none");
     }
     if (supportsBreath()) {
         writeToFile(mBasePath + mBreathNode, 0);
@@ -115,6 +124,22 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                        writeToFile(mBasePath + kPauseHiNode, pauseHi) &&
                        writeToFile(mBasePath + kRampStepMsNode, stepDuration) &&
                        writeToFile(mBasePath + kBlinkNode, 1);
+            } else {
+                ok = writeToFile(mBasePath + kTriggerNode, "timer");
+                if (ok) {
+                    using namespace std::chrono_literals;
+                    auto retries = 20;
+                    while (retries--) {
+                        std::this_thread::sleep_for(2ms);
+
+                        ok = writeToFile(mBasePath + kDelayOffNode, flashOffMs);
+                        if (!ok) continue;
+
+                        ok = writeToFile(mBasePath + kDelayOnNode, flashOnMs);
+                        if (ok) break;
+                    }
+                }
+                if (ok) return true;
             }
 
             // Fallthrough to breath mode if timed is not supported

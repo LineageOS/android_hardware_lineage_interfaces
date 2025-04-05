@@ -61,6 +61,7 @@ on early-boot
     chown system system /sys/class/leds/charging/pause_lo
     chown system system /sys/class/leds/charging/ramp_step_ms
     chown system system /sys/class/leds/charging/start_idx
+    chown system system /sys/class/leds/charging/trigger
 
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/green/breath
@@ -131,6 +132,7 @@ on early-boot
     chown system system /sys/class/leds/left/pause_lo
     chown system system /sys/class/leds/left/ramp_step_ms
     chown system system /sys/class/leds/left/start_idx
+    chown system system /sys/class/leds/left/trigger
 
     chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/red/breath
@@ -153,6 +155,7 @@ on early-boot
     chown system system /sys/class/leds/white/pause_lo
     chown system system /sys/class/leds/white/ramp_step_ms
     chown system system /sys/class/leds/white/start_idx
+    chown system system /sys/class/leds/white/trigger
 
 service vendor.light-default /vendor/bin/hw/android.hardware.light-service.lineage
     class hal
