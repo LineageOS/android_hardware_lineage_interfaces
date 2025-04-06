@@ -16,6 +16,23 @@
       "message": "Meant V+, for motorola families",
       "revId": "bd8caf3d01904748a14ef1c904c8b6e1c839a319",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519e5a61_7f4d231b",
+        "filename": "light/android.hardware.light-service.lineage.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-04-06T20:17:24Z",
+      "side": 1,
+      "message": "This must be added for all LED devices",
+      "revId": "bd8caf3d01904748a14ef1c904c8b6e1c839a319",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
