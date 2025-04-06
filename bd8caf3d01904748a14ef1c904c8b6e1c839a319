@@ -33,6 +33,24 @@
       "message": "This must be added for all LED devices",
       "revId": "bd8caf3d01904748a14ef1c904c8b6e1c839a319",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c021dc_1f06f70b",
+        "filename": "light/android.hardware.light-service.lineage.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-04-06T20:50:33Z",
+      "side": 1,
+      "message": "Why? The feature was added only for the single color LEDs and so I added it here only on the devices that LedDevice supports",
+      "parentUuid": "519e5a61_7f4d231b",
+      "revId": "bd8caf3d01904748a14ef1c904c8b6e1c839a319",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
