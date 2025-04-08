@@ -16,6 +16,24 @@
       "message": "`module: \"vendor.lineageos.ir.IrProperties\"` or similar\n\nPlus license",
       "revId": "50ee0ce617b885c81d3f2bbb51e943770f15f346",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "965290f1_25cc62f8",
+        "filename": "ir/ir.sysprop",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2025-04-08T22:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86de7fb8_5a9e9421",
+      "revId": "50ee0ce617b885c81d3f2bbb51e943770f15f346",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
