@@ -18,4 +18,14 @@ cc_binary {
         "libbinder_ndk",
         "android.hardware.ir-V1-ndk",
     ],
+    static_libs: [
+        "libvendor.lineage.ir.Props",
+    ],
+}
+
+sysprop_library {
+    name: "vendor.lineage.ir.Props",
+    srcs: ["ir.sysprop"],
+    property_owner: "Vendor",
+    vendor: true,
 }
