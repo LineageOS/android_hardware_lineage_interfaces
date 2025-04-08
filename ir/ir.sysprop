@@ -1,0 +1,10 @@
+module: "android.ir.IrProperties"
+owner: Vendor
+
+prop {
+    api_name: "carrier_freqs"
+    type: IntegerList
+    scope: Internal
+    access: ReadWrite
+    prop_name: "vendor.ir.carrier_freqs"
+}
