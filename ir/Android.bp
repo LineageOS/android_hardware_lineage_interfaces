@@ -9,6 +9,10 @@ cc_binary {
     vendor: true,
     init_rc: ["android.hardware.ir-service.lineage.rc"],
     vintf_fragments: ["android.hardware.ir-service.lineage.xml"],
+    cflags: select(soong_config_variable("lineage_ir", "distinct_carrier_freqs"), {
+        any @ val: ["-DDISTINCT_CARRIER_FREQS=" + val],
+        default: [],
+    }),
     srcs: [
         "ConsumerIr.cpp",
         "service.cpp",
