@@ -1,0 +1,17 @@
+#
+# SPDX-FileCopyrightText: 2025 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+module: "vendor.lineage.ir.IrProperties"
+owner: Vendor
+
+# carrier_freqs ranges (default: 30000,60000)
+#    <minHz>,<maxHz>[,<minHz>,<maxHz>] can have multiple ranges separated by comma
+prop {
+    api_name: "carrier_freqs"
+    type: IntegerList
+    scope: Internal
+    access: ReadWrite
+    prop_name: "vendor.ir.carrier_freqs"
+}

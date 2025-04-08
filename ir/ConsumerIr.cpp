@@ -7,12 +7,16 @@
 
 #include "ConsumerIr.h"
 
+#include <ir.sysprop.h>
+
 #include <android-base/logging.h>
 #include <fcntl.h>
 #include <linux/lirc.h>
 #include <string>
 
 using std::vector;
+
+using namespace ::vendor::lineage::ir;
 
 namespace aidl {
 namespace android {
@@ -21,9 +25,26 @@ namespace ir {
 
 static const std::string kIrDevice = "/dev/lirc0";
 
-static vector<ConsumerIrFreqRange> kRangeVec{
-        {.minHz = 30000, .maxHz = 60000},
-};
+static vector<ConsumerIrFreqRange> kRangeVec;
+
+ConsumerIr::ConsumerIr() {
+    auto carrier_freqs = IrProperties::carrier_freqs();
+
+    if (carrier_freqs.size() >= 2) {
+        for (size_t i = 0; i < carrier_freqs.size() - 1; i += 2) {
+            if (!carrier_freqs[i] || !carrier_freqs[i + 1]) {
+                continue;
+            }
+
+            kRangeVec.push_back({
+                    .minHz = carrier_freqs[i].value(),
+                    .maxHz = carrier_freqs[i + 1].value(),
+            });
+        }
+    } else {
+        kRangeVec.push_back({.minHz = 30000, .maxHz = 60000});
+    }
+}
 
 ::ndk::ScopedAStatus ConsumerIr::getCarrierFreqs(vector<ConsumerIrFreqRange>* _aidl_return) {
     *_aidl_return = kRangeVec;

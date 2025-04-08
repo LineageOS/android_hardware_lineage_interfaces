@@ -14,6 +14,7 @@ namespace ir {
 
 class ConsumerIr : public BnConsumerIr {
   public:
+    ConsumerIr();
     ::ndk::ScopedAStatus getCarrierFreqs(
             ::std::vector<::aidl::android::hardware::ir::ConsumerIrFreqRange>* _aidl_return)
             override;
