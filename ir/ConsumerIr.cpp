@@ -22,8 +22,20 @@ namespace ir {
 static const std::string kIrDevice = "/dev/lirc0";
 
 static vector<ConsumerIrFreqRange> kRangeVec{
+#ifndef DISTINCT_CARRIER_FREQS
         {.minHz = 30000, .maxHz = 60000},
+#endif
 };
+
+ConsumerIr::ConsumerIr() {
+#ifdef DISTINCT_CARRIER_FREQS
+    std::vector<int32_t> carrierFreqs = { DISTINCT_CARRIER_FREQS };
+
+    for (auto freq : carrierFreqs) {
+        kRangeVec.push_back({ .minHz = freq, .maxHz = freq });
+    }
+#endif
+}
 
 ::ndk::ScopedAStatus ConsumerIr::getCarrierFreqs(vector<ConsumerIrFreqRange>* _aidl_return) {
     *_aidl_return = kRangeVec;
