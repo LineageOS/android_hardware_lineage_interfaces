@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de49ad6_108f03c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-04-08T20:53:20Z",
+      "side": 1,
+      "message": "Would it be better to use a prop instead? Props properly supports both commas and spaces",
+      "revId": "e1ffed57151a4ee881e915fd208def18d573afdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
