@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ecb3f4_492718eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14010
+      },
+      "writtenOn": "2025-04-10T19:07:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is the acceptable solution but it seems to be working fine and it is grounded in the fact that now in LedDevice.cpp we unconditionally use the upstream blinking nodes if the client requests a Timed blink and the other Timed sysfs nodes are not supported.",
+      "revId": "a4dd1d47339d5d8dcfe326a0c5347541147f454f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
