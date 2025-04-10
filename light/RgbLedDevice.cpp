@@ -61,11 +61,6 @@ bool RgbLedDevice::setBrightness(rgb color, LightMode mode, uint32_t flashOnMs,
         return false;
     }
 
-    if (mode == LightMode::TIMED && !supportsTimed()) {
-        // Not all LEDs support timed mode, force breathing mode
-        mode = LightMode::BREATH;
-    }
-
     if (mode == LightMode::BREATH && !supportsBreath()) {
         // Not all LEDs support breathing, force static mode
         mode = LightMode::STATIC;
