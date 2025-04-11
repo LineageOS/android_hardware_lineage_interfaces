@@ -28,6 +28,15 @@ static const std::string kIrDevice = "/dev/lirc0";
 
 static vector<ConsumerIrFreqRange> kRangeVec;
 
+bool isInRange(int32_t carrierFreqHz) {
+    for (const auto& range : kRangeVec) {
+        if (carrierFreqHz >= range.minHz && carrierFreqHz <= range.maxHz) {
+            return true;
+        }
+    }
+    return false;
+}
+
 ConsumerIr::ConsumerIr() {
     auto carrier_freqs = IrProperties::carrier_freqs();
 
@@ -58,6 +67,11 @@ ConsumerIr::ConsumerIr() {
 
     if (entries == 0) {
         return ::ndk::ScopedAStatus::ok();
+    }
+
+    if (!isInRange(carrierFreqHz)) {
+        LOG(ERROR) << "Unsupported carrier " << carrierFreqHz;
+        return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
     ::android::base::unique_fd fd(open(kIrDevice.c_str(), O_WRONLY));
