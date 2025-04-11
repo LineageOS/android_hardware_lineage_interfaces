@@ -51,12 +51,6 @@ ConsumerIr::ConsumerIr() {
 }
 
 ::ndk::ScopedAStatus ConsumerIr::transmit(int32_t carrierFreqHz, const vector<int32_t>& pattern) {
-    size_t entries = pattern.size();
-
-    if (entries == 0) {
-        return ::ndk::ScopedAStatus::ok();
-    }
-
     ::android::base::unique_fd fd(open(kIrDevice.c_str(), O_WRONLY));
     if (!fd.ok()) {
         LOG(ERROR) << "Failed to open " << kIrDevice << ", error: " << strerror(errno);
@@ -69,9 +63,9 @@ ConsumerIr::ConsumerIr() {
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
-    rc = write(fd, pattern.data(), entries * sizeof(int32_t));
+    rc = write(fd, pattern.data(), pattern.size() * sizeof(int32_t));
     if (rc < 0) {
-        LOG(ERROR) << "Failed to write pattern, " << entries << " entries, error: " << errno;
+        LOG(ERROR) << "Failed to write pattern, error: " << errno;
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
 
