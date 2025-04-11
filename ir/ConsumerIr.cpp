@@ -69,12 +69,7 @@ ConsumerIr::ConsumerIr() {
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
-    if ((entries & 1) != 0) {
-        rc = write(fd, pattern.data(), entries * sizeof(int32_t));
-    } else {
-        rc = write(fd, pattern.data(), (entries - 1) * sizeof(int32_t));
-    }
-
+    rc = write(fd, pattern.data(), entries * sizeof(int32_t));
     if (rc < 0) {
         LOG(ERROR) << "Failed to write pattern, " << entries << " entries, error: " << errno;
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
