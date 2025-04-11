@@ -64,7 +64,6 @@ ConsumerIr::ConsumerIr() {
 
 ::ndk::ScopedAStatus ConsumerIr::transmit(int32_t carrierFreqHz, const vector<int32_t>& pattern) {
     size_t entries = pattern.size();
-
     if (entries == 0) {
         return ::ndk::ScopedAStatus::ok();
     }
@@ -86,14 +85,18 @@ ConsumerIr::ConsumerIr() {
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
-    if ((entries & 1) != 0) {
-        rc = write(fd, pattern.data(), entries * sizeof(int32_t));
-    } else {
-        rc = write(fd, pattern.data(), (entries - 1) * sizeof(int32_t));
+    /*
+     * Pattern is an alternating series of on and off periods.
+     * Kernel needs pattern to have an odd size, which means ending with
+     * an on period. If pattern is even in size, drop the last off period.
+     */
+    if (entries % 2 == 0) {
+        entries--;
     }
 
+    rc = write(fd, pattern.data(), entries * sizeof(int32_t));
     if (rc < 0) {
-        LOG(ERROR) << "Failed to write pattern, " << entries << " entries, error: " << errno;
+        LOG(ERROR) << "Failed to write pattern, error: " << errno;
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
 
