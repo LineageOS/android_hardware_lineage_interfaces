@@ -10,6 +10,7 @@
 #include <ir.sysprop.h>
 
 #include <android-base/logging.h>
+#include <android-base/unique_fd.h>
 #include <fcntl.h>
 #include <linux/lirc.h>
 #include <string>
@@ -59,19 +60,15 @@ ConsumerIr::ConsumerIr() {
         return ::ndk::ScopedAStatus::ok();
     }
 
-    int fd = open(kIrDevice.c_str(), O_RDWR);
-    if (fd < 0) {
-        LOG(ERROR) << "Failed to open " << kIrDevice << ", error " << fd;
-
+    ::android::base::unique_fd fd(open(kIrDevice.c_str(), O_WRONLY));
+    if (!fd.ok()) {
+        LOG(ERROR) << "Failed to open " << kIrDevice << ", error: " << strerror(errno);
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
 
     int rc = ioctl(fd, LIRC_SET_SEND_CARRIER, &carrierFreqHz);
     if (rc < 0) {
         LOG(ERROR) << "Failed to set carrier " << carrierFreqHz << ", error: " << errno;
-
-        close(fd);
-
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
@@ -83,13 +80,8 @@ ConsumerIr::ConsumerIr() {
 
     if (rc < 0) {
         LOG(ERROR) << "Failed to write pattern, " << entries << " entries, error: " << errno;
-
-        close(fd);
-
         return ::ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
-
-    close(fd);
 
     return ::ndk::ScopedAStatus::ok();
 }
