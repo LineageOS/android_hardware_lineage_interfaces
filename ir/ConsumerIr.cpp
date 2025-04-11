@@ -5,17 +5,15 @@
 
 #define LOG_TAG "ConsumerIr"
 
-#include "ConsumerIr.h"
-
-#include <ir.sysprop.h>
-
-#include <android-base/logging.h>
-#include <android-base/unique_fd.h>
 #include <fcntl.h>
 #include <linux/lirc.h>
 #include <string>
 
-using std::vector;
+#include <android-base/logging.h>
+#include <android-base/unique_fd.h>
+#include <ir.sysprop.h>
+
+#include "ConsumerIr.h"
 
 using namespace ::vendor::lineage::ir;
 
@@ -26,7 +24,7 @@ namespace ir {
 
 static const std::string kIrDevice = "/dev/lirc0";
 
-static vector<ConsumerIrFreqRange> kRangeVec;
+static std::vector<ConsumerIrFreqRange> kRangeVec;
 
 bool isInRange(int32_t carrierFreqHz) {
     for (const auto& range : kRangeVec) {
@@ -56,13 +54,14 @@ ConsumerIr::ConsumerIr() {
     }
 }
 
-::ndk::ScopedAStatus ConsumerIr::getCarrierFreqs(vector<ConsumerIrFreqRange>* _aidl_return) {
+::ndk::ScopedAStatus ConsumerIr::getCarrierFreqs(std::vector<ConsumerIrFreqRange>* _aidl_return) {
     *_aidl_return = kRangeVec;
 
     return ::ndk::ScopedAStatus::ok();
 }
 
-::ndk::ScopedAStatus ConsumerIr::transmit(int32_t carrierFreqHz, const vector<int32_t>& pattern) {
+::ndk::ScopedAStatus ConsumerIr::transmit(int32_t carrierFreqHz,
+                                          const std::vector<int32_t>& pattern) {
     size_t entries = pattern.size();
 
     if (entries == 0) {
