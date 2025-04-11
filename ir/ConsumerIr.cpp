@@ -79,7 +79,6 @@ ConsumerIr::ConsumerIr() {
         rc = write(fd, pattern.data(), entries * sizeof(int32_t));
     } else {
         rc = write(fd, pattern.data(), (entries - 1) * sizeof(int32_t));
-        usleep(pattern[entries - 1]);
     }
 
     if (rc < 0) {
