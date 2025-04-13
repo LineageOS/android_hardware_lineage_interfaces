@@ -34,7 +34,11 @@ Fingerprint::Fingerprint(std::shared_ptr<FingerprintConfig> config)
     sInstance = this;  // keep track of the most recent instance
 
     std::string sensorTypeProp = mConfig->get<std::string>("type");
-    if (sensorTypeProp == "side") {
+    if (sensorTypeProp == "udfps") {
+        mSensorType = FingerprintSensorType::UNDER_DISPLAY_ULTRASONIC;
+    } else if (sensorTypeProp == "udfps_optical") {
+        mSensorType = FingerprintSensorType::UNDER_DISPLAY_OPTICAL;
+    } else if (sensorTypeProp == "side") {
         mSensorType = FingerprintSensorType::POWER_BUTTON;
     } else if (sensorTypeProp == "home") {
         mSensorType = FingerprintSensorType::HOME_BUTTON;
