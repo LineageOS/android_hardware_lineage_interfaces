@@ -17,6 +17,7 @@
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 namespace {
+constexpr size_t MAX_WORKER_QUEUE_SIZE = 5;
 constexpr int MAX_ENROLLMENTS_PER_USER = 5;
 constexpr char HW_COMPONENT_ID[] = "fingerprintSensor";
 constexpr char HW_VERSION[] = "vendor/model/revision";
@@ -29,7 +30,7 @@ constexpr char SW_VERSION[] = "vendor/version/revision";
 static const uint16_t kVersion = HARDWARE_MODULE_API_VERSION(2, 1);
 static Fingerprint* sInstance;
 
-Fingerprint::Fingerprint() : mDevice(openHal()) {
+Fingerprint::Fingerprint() : mWorker(MAX_WORKER_QUEUE_SIZE), mDevice(openHal()) {
     sInstance = this;  // keep track of the most recent instance
 
     std::string sensorTypeProp = Fingerprint::cfg().get<std::string>("type");
@@ -186,7 +187,7 @@ ndk::ScopedAStatus Fingerprint::createSession(int32_t sensorId, int32_t userId,
                                               std::shared_ptr<ISession>* out) {
     CHECK(mSession == nullptr || mSession->isClosed()) << "Open session already exists!";
 
-    mSession = SharedRefBase::make<Session>(mDevice, sensorId, userId, cb, mLockoutTracker);
+    mSession = SharedRefBase::make<Session>(mDevice, sensorId, userId, cb, mLockoutTracker, &mWorker);
     *out = mSession;
 
     mSession->linkToDeath(cb->asBinder().get());

@@ -12,6 +12,7 @@
 #include "FingerprintConfig.h"
 #include "LockoutTracker.h"
 #include "Session.h"
+#include "thread/WorkerThread.h"
 
 using ::aidl::android::hardware::biometrics::fingerprint::FingerprintSensorType;
 using ::aidl::android::hardware::biometrics::fingerprint::ISession;
@@ -44,6 +45,7 @@ class Fingerprint : public BnFingerprint {
     std::vector<SensorLocation> getSensorLocations();
     static void notify(const fingerprint_msg_t* msg);
 
+    WorkerThread mWorker;
     std::shared_ptr<Session> mSession;
     LockoutTracker mLockoutTracker;
     FingerprintSensorType mSensorType;

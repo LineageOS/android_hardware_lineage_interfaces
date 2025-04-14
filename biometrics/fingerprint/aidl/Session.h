@@ -15,6 +15,7 @@
 #include <log/log.h>
 
 #include "LockoutTracker.h"
+#include "thread/WorkerThread.h"
 
 using ::aidl::android::hardware::biometrics::common::ICancellationSignal;
 using ::aidl::android::hardware::biometrics::common::OperationContext;
@@ -28,7 +29,8 @@ void onClientDeath(void* cookie);
 class Session : public BnSession {
   public:
     Session(fingerprint_device_t* device, int sensorId, int userId,
-            std::shared_ptr<ISessionCallback> cb, LockoutTracker lockoutTracker);
+            std::shared_ptr<ISessionCallback> cb, LockoutTracker lockoutTracker,
+            WorkerThread* worker);
     ndk::ScopedAStatus generateChallenge() override;
     ndk::ScopedAStatus revokeChallenge(int64_t challenge) override;
     ndk::ScopedAStatus enroll(const HardwareAuthToken& hat,
@@ -90,6 +92,9 @@ class Session : public BnSession {
     // threads to prevent nested binder calls and consequently a binder thread exhaustion.
     // Practically, it means that this callback should always be called from the worker thread.
     std::shared_ptr<ISessionCallback> mCb;
+
+    // Worker thread that allows to schedule tasks for asynchronous execution.
+    WorkerThread* mWorker;
 
     // Binder death handler.
     AIBinder_DeathRecipient* mDeathRecipient;
