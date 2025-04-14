@@ -29,11 +29,10 @@ constexpr char SW_VERSION[] = "vendor/version/revision";
 static const uint16_t kVersion = HARDWARE_MODULE_API_VERSION(2, 1);
 static Fingerprint* sInstance;
 
-Fingerprint::Fingerprint(std::shared_ptr<FingerprintConfig> config)
-    : mConfig(std::move(config)), mDevice(openHal()) {
+Fingerprint::Fingerprint() : mDevice(openHal()) {
     sInstance = this;  // keep track of the most recent instance
 
-    std::string sensorTypeProp = mConfig->get<std::string>("type");
+    std::string sensorTypeProp = Fingerprint::cfg().get<std::string>("type");
     if (sensorTypeProp == "udfps") {
         mSensorType = FingerprintSensorType::UNDER_DISPLAY_ULTRASONIC;
     } else if (sensorTypeProp == "udfps_optical") {
@@ -112,7 +111,7 @@ fingerprint_device_t* Fingerprint::openHal() {
 std::vector<SensorLocation> Fingerprint::getSensorLocations() {
     std::vector<SensorLocation> locations;
 
-    auto loc = mConfig->get<std::string>("sensor_location");
+    auto loc = Fingerprint::cfg().get<std::string>("sensor_location");
     auto entries = ::android::base::Split(loc, ",");
 
     for (const auto& entry : entries) {
@@ -157,12 +156,12 @@ ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
             {HW_COMPONENT_ID, HW_VERSION, FW_VERSION, SERIAL_NUMBER, "" /* softwareVersion */},
             {SW_COMPONENT_ID, "" /* hardwareVersion */, "" /* firmwareVersion */,
              "" /* serialNumber */, SW_VERSION}};
-    auto sensorId = mConfig->get<std::int32_t>("sensor_id");
-    auto sensorStrength = mConfig->get<std::int32_t>("sensor_strength");
-    auto navigationGuesture = mConfig->get<bool>("navigation_gesture");
-    auto detectInteraction = mConfig->get<bool>("detect_interaction");
-    auto displayTouch = mConfig->get<bool>("display_touch");
-    auto controlIllumination = mConfig->get<bool>("control_illumination");
+    auto sensorId = Fingerprint::cfg().get<std::int32_t>("sensor_id");
+    auto sensorStrength = Fingerprint::cfg().get<std::int32_t>("sensor_strength");
+    auto navigationGuesture = Fingerprint::cfg().get<bool>("navigation_gesture");
+    auto detectInteraction = Fingerprint::cfg().get<bool>("detect_interaction");
+    auto displayTouch = Fingerprint::cfg().get<bool>("display_touch");
+    auto controlIllumination = Fingerprint::cfg().get<bool>("control_illumination");
 
     common::CommonProps commonProps = {sensorId, (common::SensorStrength)sensorStrength,
                                        MAX_ENROLLMENTS_PER_USER, componentInfo};

@@ -22,7 +22,7 @@ namespace aidl::android::hardware::biometrics::fingerprint {
 
 class Fingerprint : public BnFingerprint {
   public:
-    Fingerprint(std::shared_ptr<FingerprintConfig> config);
+    Fingerprint();
     ~Fingerprint();
 
     ndk::ScopedAStatus getSensorProps(std::vector<SensorProps>* _aidl_return) override;
@@ -30,12 +30,20 @@ class Fingerprint : public BnFingerprint {
                                      const std::shared_ptr<ISessionCallback>& cb,
                                      std::shared_ptr<ISession>* out) override;
 
+    static FingerprintConfig& cfg() {
+        static FingerprintConfig* cfg = nullptr;
+        if (cfg == nullptr) {
+            cfg = new FingerprintConfig();
+            cfg->init();
+        }
+        return *cfg;
+    }
+
   private:
     fingerprint_device_t* openHal(void);
     std::vector<SensorLocation> getSensorLocations();
     static void notify(const fingerprint_msg_t* msg);
 
-    std::shared_ptr<FingerprintConfig> mConfig;
     std::shared_ptr<Session> mSession;
     LockoutTracker mLockoutTracker;
     FingerprintSensorType mSensorType;
