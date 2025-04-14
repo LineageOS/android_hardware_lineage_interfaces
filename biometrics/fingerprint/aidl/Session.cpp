@@ -21,9 +21,13 @@ void onClientDeath(void* cookie) {
     }
 }
 
-Session::Session(fingerprint_device_t* device, int userId, std::shared_ptr<ISessionCallback> cb,
-                 LockoutTracker lockoutTracker)
-    : mDevice(device), mLockoutTracker(lockoutTracker), mUserId(userId), mCb(cb) {
+Session::Session(fingerprint_device_t* device, int sensorId, int userId,
+                 std::shared_ptr<ISessionCallback> cb, LockoutTracker lockoutTracker)
+    : mDevice(device),
+      mLockoutTracker(lockoutTracker),
+      mSensorId(sensorId),
+      mUserId(userId),
+      mCb(cb) {
     mDeathRecipient = AIBinder_DeathRecipient_new(onClientDeath);
 
     auto path = std::format("/data/vendor_de/{}/fpdata/", userId);

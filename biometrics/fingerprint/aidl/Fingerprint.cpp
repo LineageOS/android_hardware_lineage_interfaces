@@ -181,12 +181,12 @@ ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
     return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus Fingerprint::createSession(int32_t /*sensorId*/, int32_t userId,
+ndk::ScopedAStatus Fingerprint::createSession(int32_t sensorId, int32_t userId,
                                               const std::shared_ptr<ISessionCallback>& cb,
                                               std::shared_ptr<ISession>* out) {
     CHECK(mSession == nullptr || mSession->isClosed()) << "Open session already exists!";
 
-    mSession = SharedRefBase::make<Session>(mDevice, userId, cb, mLockoutTracker);
+    mSession = SharedRefBase::make<Session>(mDevice, sensorId, userId, cb, mLockoutTracker);
     *out = mSession;
 
     mSession->linkToDeath(cb->asBinder().get());

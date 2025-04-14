@@ -27,8 +27,8 @@ void onClientDeath(void* cookie);
 
 class Session : public BnSession {
   public:
-    Session(fingerprint_device_t* device, int userId, std::shared_ptr<ISessionCallback> cb,
-            LockoutTracker lockoutTracker);
+    Session(fingerprint_device_t* device, int sensorId, int userId,
+            std::shared_ptr<ISessionCallback> cb, LockoutTracker lockoutTracker);
     ndk::ScopedAStatus generateChallenge() override;
     ndk::ScopedAStatus revokeChallenge(int64_t challenge) override;
     ndk::ScopedAStatus enroll(const HardwareAuthToken& hat,
@@ -82,7 +82,8 @@ class Session : public BnSession {
     bool mIsLockoutTimerStarted = false;
     bool mIsLockoutTimerAborted = false;
 
-    // The user ID for which this session was created.
+    // The sensor and user ID for which this session was created.
+    int32_t mSensorId;
     int32_t mUserId;
 
     // Callback for talking to the framework. This callback must only be called from non-binder
