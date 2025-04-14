@@ -31,7 +31,9 @@ Session::Session(fingerprint_device_t* device, int sensorId, int userId,
       mSensorId(sensorId),
       mUserId(userId),
       mCb(cb),
-      mWorker(worker) {
+      mWorker(worker),
+      mScheduledState(SessionState::IDLING),
+      mCurrentState(SessionState::IDLING) {
     mDeathRecipient = AIBinder_DeathRecipient_new(onClientDeath);
 
     auto path = std::format("/data/vendor_de/{}/fpdata/", userId);

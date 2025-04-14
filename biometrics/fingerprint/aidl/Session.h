@@ -24,6 +24,21 @@ using ::aidl::android::hardware::keymaster::HardwareAuthToken;
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
+enum class SessionState {
+    IDLING,
+    CLOSED,
+    GENERATING_CHALLENGE,
+    REVOKING_CHALLENGE,
+    ENROLLING,
+    AUTHENTICATING,
+    DETECTING_INTERACTION,
+    ENUMERATING_ENROLLMENTS,
+    REMOVING_ENROLLMENTS,
+    GETTING_AUTHENTICATOR_ID,
+    INVALIDATING_AUTHENTICATOR_ID,
+    RESETTING_LOCKOUT,
+};
+
 void onClientDeath(void* cookie);
 
 class Session : public BnSession {
@@ -95,6 +110,11 @@ class Session : public BnSession {
 
     // Worker thread that allows to schedule tasks for asynchronous execution.
     WorkerThread* mWorker;
+
+    // Simple representation of the session's state machine. These are atomic because they can be
+    // modified from both the main and the worker threads.
+    std::atomic<SessionState> mScheduledState;
+    std::atomic<SessionState> mCurrentState;
 
     // Binder death handler.
     AIBinder_DeathRecipient* mDeathRecipient;
