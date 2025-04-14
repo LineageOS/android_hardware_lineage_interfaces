@@ -9,12 +9,14 @@
 #include "Legacy2Aidl.h"
 #include "Session.h"
 
+#include <android-base/logging.h>
+
 #include "util/CancellationSignal.h"
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 void onClientDeath(void* cookie) {
-    ALOGI("FingerprintService has died");
+    LOG(INFO) << "FingerprintService has died";
     Session* session = static_cast<Session*>(cookie);
     if (session && !session->isClosed()) {
         session->close();
@@ -37,15 +39,15 @@ Session::Session(fingerprint_device_t* device, int sensorId, int userId,
 }
 
 ndk::ScopedAStatus Session::generateChallenge() {
+    LOG(INFO) << "generateChallenge";
     uint64_t challenge = mDevice->pre_enroll(mDevice);
-    ALOGI("generateChallenge: %ld", challenge);
     mCb->onChallengeGenerated(challenge);
 
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::revokeChallenge(int64_t challenge) {
-    ALOGI("revokeChallenge: %ld", challenge);
+    LOG(INFO) << "revokeChallenge";
     mDevice->post_enroll(mDevice);
     mCb->onChallengeRevoked(challenge);
 
@@ -54,6 +56,8 @@ ndk::ScopedAStatus Session::revokeChallenge(int64_t challenge) {
 
 ndk::ScopedAStatus Session::enroll(const HardwareAuthToken& hat,
                                    std::shared_ptr<ICancellationSignal>* out) {
+    LOG(INFO) << "enroll";
+
     std::promise<void> cancellationPromise;
     hw_auth_token_t authToken;
     translate(hat, authToken);
@@ -69,6 +73,8 @@ ndk::ScopedAStatus Session::enroll(const HardwareAuthToken& hat,
 
 ndk::ScopedAStatus Session::authenticate(int64_t operationId,
                                          std::shared_ptr<ICancellationSignal>* out) {
+    LOG(INFO) << "authenticate";
+
     std::promise<void> cancPromise;
     checkSensorLockout();
     int error = mDevice->authenticate(mDevice, operationId, mUserId);
@@ -82,7 +88,8 @@ ndk::ScopedAStatus Session::authenticate(int64_t operationId,
 }
 
 ndk::ScopedAStatus Session::detectInteraction(std::shared_ptr<ICancellationSignal>* out) {
-    ALOGD("Detect interaction is not supported");
+    LOG(INFO) << "detectInteraction";
+
     std::promise<void> cancellationPromise;
     mCb->onError(Error::UNABLE_TO_PROCESS, 0 /* vendorCode */);
 
@@ -91,6 +98,8 @@ ndk::ScopedAStatus Session::detectInteraction(std::shared_ptr<ICancellationSigna
 }
 
 ndk::ScopedAStatus Session::enumerateEnrollments() {
+    LOG(INFO) << "enumerateEnrollments";
+
     int error = mDevice->enumerate(mDevice);
     if (error) {
         ALOGE("enumerate failed: %d", error);
@@ -100,7 +109,7 @@ ndk::ScopedAStatus Session::enumerateEnrollments() {
 }
 
 ndk::ScopedAStatus Session::removeEnrollments(const std::vector<int32_t>& enrollmentIds) {
-    ALOGI("removeEnrollments, size: %zu", enrollmentIds.size());
+    LOG(INFO) << "removeEnrollments, size:" << enrollmentIds.size();
 
     for (int32_t fid : enrollmentIds) {
         int error = mDevice->remove(mDevice, mUserId, fid);
@@ -112,20 +121,24 @@ ndk::ScopedAStatus Session::removeEnrollments(const std::vector<int32_t>& enroll
 }
 
 ndk::ScopedAStatus Session::getAuthenticatorId() {
+    LOG(INFO) << "getAuthenticatorId";
+
     uint64_t auth_id = mDevice->get_authenticator_id(mDevice);
-    ALOGI("getAuthenticatorId: %ld", auth_id);
     mCb->onAuthenticatorIdRetrieved(auth_id);
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::invalidateAuthenticatorId() {
+    LOG(INFO) << "invalidateAuthenticatorId";
+
     uint64_t auth_id = mDevice->get_authenticator_id(mDevice);
-    ALOGI("invalidateAuthenticatorId: %ld", auth_id);
     mCb->onAuthenticatorIdInvalidated(auth_id);
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::resetLockout(const HardwareAuthToken& /*hat*/) {
+    LOG(INFO) << "resetLockout";
+
     clearLockout(true);
     if (mIsLockoutTimerStarted) mIsLockoutTimerAborted = true;
 
@@ -134,18 +147,20 @@ ndk::ScopedAStatus Session::resetLockout(const HardwareAuthToken& /*hat*/) {
 
 ndk::ScopedAStatus Session::onPointerDown(int32_t /*pointerId*/, int32_t /*x*/, int32_t /*y*/,
                                           float /*minor*/, float /*major*/) {
+    LOG(INFO) << "onPointerDown";
     // Not implemented
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::onPointerUp(int32_t /*pointerId*/) {
+    LOG(INFO) << "onPointerUp";
     // Not implemented
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::onUiReady() {
+    LOG(INFO) << "onUiReady";
     // TODO: stub
-
     return ndk::ScopedAStatus::ok();
 }
 
@@ -199,6 +214,8 @@ ndk::ScopedAStatus Session::cancel() {
 }
 
 ndk::ScopedAStatus Session::close() {
+    LOG(INFO) << "close";
+
     mClosed = true;
     mCb->onSessionClosed();
     AIBinder_DeathRecipient_delete(mDeathRecipient);
