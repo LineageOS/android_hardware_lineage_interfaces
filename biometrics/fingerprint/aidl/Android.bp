@@ -35,7 +35,6 @@ cc_binary {
     init_rc: ["android.hardware.biometrics.fingerprint-service.lineage.rc"],
     vintf_fragments: ["android.hardware.biometrics.fingerprint-service.lineage.xml"],
     srcs: [
-        "CancellationSignal.cpp",
         "Fingerprint.cpp",
         "FingerprintConfig.cpp",
         "LockoutTracker.cpp",

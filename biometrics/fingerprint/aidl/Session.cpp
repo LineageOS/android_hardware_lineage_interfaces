@@ -9,7 +9,7 @@
 #include "Legacy2Aidl.h"
 #include "Session.h"
 
-#include "CancellationSignal.h"
+#include "util/CancellationSignal.h"
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
@@ -54,6 +54,7 @@ ndk::ScopedAStatus Session::revokeChallenge(int64_t challenge) {
 
 ndk::ScopedAStatus Session::enroll(const HardwareAuthToken& hat,
                                    std::shared_ptr<ICancellationSignal>* out) {
+    std::promise<void> cancellationPromise;
     hw_auth_token_t authToken;
     translate(hat, authToken);
     int error = mDevice->enroll(mDevice, &authToken, mUserId, 60);
@@ -62,12 +63,13 @@ ndk::ScopedAStatus Session::enroll(const HardwareAuthToken& hat,
         mCb->onError(Error::UNABLE_TO_PROCESS, error);
     }
 
-    *out = SharedRefBase::make<CancellationSignal>(this);
+    *out = SharedRefBase::make<CancellationSignal>(std::move(cancellationPromise));
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::authenticate(int64_t operationId,
                                          std::shared_ptr<ICancellationSignal>* out) {
+    std::promise<void> cancPromise;
     checkSensorLockout();
     int error = mDevice->authenticate(mDevice, operationId, mUserId);
     if (error) {
@@ -75,15 +77,16 @@ ndk::ScopedAStatus Session::authenticate(int64_t operationId,
         mCb->onError(Error::UNABLE_TO_PROCESS, error);
     }
 
-    *out = SharedRefBase::make<CancellationSignal>(this);
+    *out = SharedRefBase::make<CancellationSignal>(std::move(cancPromise));
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::detectInteraction(std::shared_ptr<ICancellationSignal>* out) {
     ALOGD("Detect interaction is not supported");
+    std::promise<void> cancellationPromise;
     mCb->onError(Error::UNABLE_TO_PROCESS, 0 /* vendorCode */);
 
-    *out = SharedRefBase::make<CancellationSignal>(this);
+    *out = SharedRefBase::make<CancellationSignal>(std::move(cancellationPromise));
     return ndk::ScopedAStatus::ok();
 }
 
