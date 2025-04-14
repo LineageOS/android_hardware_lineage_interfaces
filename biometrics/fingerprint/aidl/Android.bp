@@ -37,6 +37,7 @@ cc_binary {
     srcs: [
         "Fingerprint.cpp",
         "FingerprintConfig.cpp",
+        "FingerprintEngine.cpp",
         "LockoutTracker.cpp",
         "Session.cpp",
         "service.cpp",

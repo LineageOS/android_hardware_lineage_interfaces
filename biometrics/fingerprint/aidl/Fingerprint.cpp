@@ -27,11 +27,12 @@ constexpr char SW_COMPONENT_ID[] = "matchingAlgorithm";
 constexpr char SW_VERSION[] = "vendor/version/revision";
 }  // namespace
 
-static const uint16_t kVersion = HARDWARE_MODULE_API_VERSION(2, 1);
 static Fingerprint* sInstance;
 
-Fingerprint::Fingerprint() : mWorker(MAX_WORKER_QUEUE_SIZE), mDevice(openHal()) {
+Fingerprint::Fingerprint() : mWorker(MAX_WORKER_QUEUE_SIZE) {
     sInstance = this;  // keep track of the most recent instance
+
+    mEngine = std::make_unique<FingerprintEngine>();
 
     std::string sensorTypeProp = Fingerprint::cfg().get<std::string>("type");
     if (sensorTypeProp == "udfps") {
@@ -50,63 +51,6 @@ Fingerprint::Fingerprint() : mWorker(MAX_WORKER_QUEUE_SIZE), mDevice(openHal()) 
                              << sensorTypeProp;
     }
     ALOGI("sensorTypeProp: %s", sensorTypeProp.c_str());
-}
-
-Fingerprint::~Fingerprint() {
-    ALOGV("~Fingerprint()");
-    if (mDevice == nullptr) {
-        ALOGE("No valid device");
-        return;
-    }
-    int err;
-    if (0 != (err = mDevice->common.close(reinterpret_cast<hw_device_t*>(mDevice)))) {
-        ALOGE("Can't close fingerprint module, error: %d", err);
-        return;
-    }
-    mDevice = nullptr;
-}
-
-fingerprint_device_t* Fingerprint::openHal() {
-    int err;
-    const hw_module_t* hw_mdl = nullptr;
-    ALOGD("Opening fingerprint hal library...");
-    if (0 != (err = hw_get_module(FINGERPRINT_HARDWARE_MODULE_ID, &hw_mdl))) {
-        ALOGE("Can't open fingerprint HW Module, error: %d", err);
-        return nullptr;
-    }
-
-    if (hw_mdl == nullptr) {
-        ALOGE("No valid fingerprint module");
-        return nullptr;
-    }
-
-    fingerprint_module_t const* module = reinterpret_cast<const fingerprint_module_t*>(hw_mdl);
-    if (module->common.methods->open == nullptr) {
-        ALOGE("No valid open method");
-        return nullptr;
-    }
-
-    hw_device_t* device = nullptr;
-
-    if (0 != (err = module->common.methods->open(hw_mdl, nullptr, &device))) {
-        ALOGE("Can't open fingerprint methods, error: %d", err);
-        return nullptr;
-    }
-
-    if (kVersion != device->version) {
-        // enforce version on new devices because of HIDL@2.1 translation layer
-        ALOGE("Wrong fp version. Expected %d, got %d", kVersion, device->version);
-        return nullptr;
-    }
-
-    fingerprint_device_t* fp_device = reinterpret_cast<fingerprint_device_t*>(device);
-
-    if (0 != (err = fp_device->set_notify(fp_device, Fingerprint::notify))) {
-        ALOGE("Can't register fingerprint module callback, error: %d", err);
-        return nullptr;
-    }
-
-    return fp_device;
 }
 
 std::vector<SensorLocation> Fingerprint::getSensorLocations() {
@@ -141,15 +85,6 @@ std::vector<SensorLocation> Fingerprint::getSensorLocations() {
     }
 
     return locations;
-}
-
-void Fingerprint::notify(const fingerprint_msg_t* msg) {
-    Fingerprint* thisPtr = sInstance;
-    if (thisPtr == nullptr || thisPtr->mSession == nullptr || thisPtr->mSession->isClosed()) {
-        ALOGE("Receiving callbacks before a session is opened.");
-        return;
-    }
-    thisPtr->mSession->notify(msg);
 }
 
 ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
@@ -187,7 +122,7 @@ ndk::ScopedAStatus Fingerprint::createSession(int32_t sensorId, int32_t userId,
                                               std::shared_ptr<ISession>* out) {
     CHECK(mSession == nullptr || mSession->isClosed()) << "Open session already exists!";
 
-    mSession = SharedRefBase::make<Session>(mDevice, sensorId, userId, cb, mLockoutTracker, &mWorker);
+    mSession = SharedRefBase::make<Session>(sensorId, userId, cb, mEngine.get(), &mWorker);
     *out = mSession;
 
     mSession->linkToDeath(cb->asBinder().get());

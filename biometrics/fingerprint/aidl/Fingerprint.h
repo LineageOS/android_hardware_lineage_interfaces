@@ -10,7 +10,7 @@
 #include <aidl/android/hardware/biometrics/fingerprint/BnFingerprint.h>
 
 #include "FingerprintConfig.h"
-#include "LockoutTracker.h"
+#include "FingerprintEngine.h"
 #include "Session.h"
 #include "thread/WorkerThread.h"
 
@@ -24,7 +24,6 @@ namespace aidl::android::hardware::biometrics::fingerprint {
 class Fingerprint : public BnFingerprint {
   public:
     Fingerprint();
-    ~Fingerprint();
 
     ndk::ScopedAStatus getSensorProps(std::vector<SensorProps>* _aidl_return) override;
     ndk::ScopedAStatus createSession(int32_t sensorId, int32_t userId,
@@ -41,16 +40,12 @@ class Fingerprint : public BnFingerprint {
     }
 
   private:
-    fingerprint_device_t* openHal(void);
     std::vector<SensorLocation> getSensorLocations();
-    static void notify(const fingerprint_msg_t* msg);
 
+    std::unique_ptr<FingerprintEngine> mEngine;
     WorkerThread mWorker;
     std::shared_ptr<Session> mSession;
-    LockoutTracker mLockoutTracker;
     FingerprintSensorType mSensorType;
-
-    fingerprint_device_t* mDevice;
 };
 
 }  // namespace aidl::android::hardware::biometrics::fingerprint

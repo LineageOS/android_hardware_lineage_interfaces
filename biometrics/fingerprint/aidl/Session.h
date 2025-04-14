@@ -10,11 +10,9 @@
 #include <aidl/android/hardware/biometrics/fingerprint/BnSession.h>
 #include <aidl/android/hardware/biometrics/fingerprint/ISessionCallback.h>
 #include <android/log.h>
-#include <hardware/fingerprint.h>
-#include <hardware/hardware.h>
 #include <log/log.h>
 
-#include "LockoutTracker.h"
+#include "FingerprintEngine.h"
 #include "thread/WorkerThread.h"
 
 using ::aidl::android::hardware::biometrics::common::ICancellationSignal;
@@ -43,9 +41,8 @@ void onClientDeath(void* cookie);
 
 class Session : public BnSession {
   public:
-    Session(fingerprint_device_t* device, int sensorId, int userId,
-            std::shared_ptr<ISessionCallback> cb, LockoutTracker lockoutTracker,
-            WorkerThread* worker);
+    Session(int sensorId, int userId, std::shared_ptr<ISessionCallback> cb,
+            FingerprintEngine* engine, WorkerThread* worker);
     ndk::ScopedAStatus generateChallenge() override;
     ndk::ScopedAStatus revokeChallenge(int64_t challenge) override;
     ndk::ScopedAStatus enroll(const HardwareAuthToken& hat,
@@ -79,25 +76,20 @@ class Session : public BnSession {
     ndk::ScopedAStatus cancel();
     binder_status_t linkToDeath(AIBinder* binder);
     bool isClosed();
-    void notify(const fingerprint_msg_t* msg);
 
   private:
-    fingerprint_device_t* mDevice;
-    LockoutTracker mLockoutTracker;
-    bool mClosed = false;
+    // Crashes the HAL if it's not currently idling because that would be an invalid state machine
+    // transition. Otherwise, sets the scheduled state to the given state.
+    void scheduleStateOrCrash(SessionState state);
 
-    // static ndk::ScopedAStatus ErrorFilter(int32_t error);
-    static Error VendorErrorFilter(int32_t error, int32_t* vendorCode);
-    static AcquiredInfo VendorAcquiredFilter(int32_t info, int32_t* vendorCode);
+    // Crashes the HAL if the provided state doesn't match the previously scheduled state.
+    // Otherwise, transitions into the provided state, clears the scheduled state, and notifies
+    // the client about the transition by calling ISessionCallback#onStateChanged.
+    void enterStateOrCrash(SessionState state);
 
-    bool checkSensorLockout();
-    void clearLockout(bool clearAttemptCounter);
-    void startLockoutTimer(int64_t timeout);
-    void lockoutTimerExpired();
-
-    // lockout timer
-    bool mIsLockoutTimerStarted = false;
-    bool mIsLockoutTimerAborted = false;
+    // Sets the current state to SessionState::IDLING and notifies the client about the transition
+    // by calling ISessionCallback#onStateChanged.
+    void enterIdling();
 
     // The sensor and user ID for which this session was created.
     int32_t mSensorId;
@@ -107,6 +99,12 @@ class Session : public BnSession {
     // threads to prevent nested binder calls and consequently a binder thread exhaustion.
     // Practically, it means that this callback should always be called from the worker thread.
     std::shared_ptr<ISessionCallback> mCb;
+
+    // Module that communicates to the actual fingerprint hardware, keystore, TEE, etc. In real
+    // life such modules typically consume a lot of memory and are slow to initialize. This is here
+    // to showcase how such a module can be used within a Session without incurring the high
+    // initialization costs every time a Session is constructed.
+    FingerprintEngine* mEngine;
 
     // Worker thread that allows to schedule tasks for asynchronous execution.
     WorkerThread* mWorker;
