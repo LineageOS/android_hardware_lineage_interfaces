@@ -36,6 +36,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f04414a_327a922c",
+        "filename": "powershare/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-20T15:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "996a3c3f_50dd4a51",
+      "revId": "72e623c10a7a72bbaf62e0756898192373590993",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bba9cf67_6d15bea6",
@@ -114,6 +132,24 @@
       "side": 1,
       "message": "done!",
       "parentUuid": "84ab8fb3_b4d86c94",
+      "revId": "72e623c10a7a72bbaf62e0756898192373590993",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7636d25e_8385da72",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-20T15:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaf86d52_206d1934",
       "revId": "72e623c10a7a72bbaf62e0756898192373590993",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
