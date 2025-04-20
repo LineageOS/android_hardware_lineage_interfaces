@@ -1,10 +1,14 @@
+//
+// SPDX-FileCopyrightText: 2025 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
 cc_binary {
-    name: "vendor.lineage.powershare@1.0-service.default",
-    defaults: ["hidl_defaults"],
-    init_rc: ["vendor.lineage.powershare@1.0-service.default.rc"],
-    vintf_fragments: ["vendor.lineage.powershare@1.0-service.default.xml"],
-    vendor: true,
+    name: "vendor.lineage.powershare-service.default",
+    vintf_fragments: ["vendor.lineage.powershare-service.default.xml"],
+    init_rc: ["vendor.lineage.powershare-service.default.rc"],
     relative_install_path: "hw",
+    vendor: true,
     cflags: select(soong_config_variable("lineage_powershare", "powershare_path"), {
         any @ flag_val: ["-DPOWERSHARE_PATH=\"" + flag_val + "\""],
         default: [],
@@ -16,13 +20,14 @@ cc_binary {
         default: ["-DPOWERSHARE_DISABLED=\"0\""],
     }),
     srcs: [
-        "service.cpp",
         "PowerShare.cpp",
+        "service.cpp",
     ],
     shared_libs: [
         "libbase",
-        "libhidlbase",
+        "liblog",
+        "libbinder_ndk",
         "libutils",
-        "vendor.lineage.powershare@1.0",
+        "vendor.lineage.powershare-V1-ndk",
     ],
 }
