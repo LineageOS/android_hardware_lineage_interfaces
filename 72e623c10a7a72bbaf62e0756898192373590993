@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a218cef2_1ab0fbc1",
+        "filename": "powershare/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-04-20T15:07:27Z",
+      "side": 1,
+      "message": "you should freeze the hal",
+      "revId": "72e623c10a7a72bbaf62e0756898192373590993",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba9cf67_6d15bea6",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-04-20T15:07:27Z",
+      "side": 1,
+      "message": "hmm probably another error should be used?",
+      "range": {
+        "startLine": 24,
+        "startChar": 53,
+        "endLine": 24,
+        "endChar": 74
+      },
+      "revId": "72e623c10a7a72bbaf62e0756898192373590993",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ab8fb3_b4d86c94",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-04-20T15:07:27Z",
+      "side": 1,
+      "message": "stray space",
+      "revId": "72e623c10a7a72bbaf62e0756898192373590993",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
