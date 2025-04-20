@@ -370,6 +370,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e167b6_75d8e0f7",
+        "filename": "powershare/aidl/default/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe202bc7_741e6c54",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f101610_e73995ad",
