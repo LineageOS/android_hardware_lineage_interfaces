@@ -34,6 +34,24 @@
       "parentUuid": "97730861_3e50a292",
       "revId": "3f5c98bba41e7fa6faef58c62238ba93c3b94b9a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "539f78f2_a2c0e1e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-20T14:21:59Z",
+      "side": 1,
+      "message": "hello, is it fine if i do this in another commit? \nhttps://review.lineageos.org/c/LineageOS/android_hardware_lineage_interfaces/+/428211",
+      "parentUuid": "40e75e8e_379c0c3f",
+      "revId": "3f5c98bba41e7fa6faef58c62238ba93c3b94b9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
