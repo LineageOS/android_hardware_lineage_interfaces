@@ -16,6 +16,24 @@
       "message": "Might be better to split this into two changes, one introducing AIDL and a follow-up one deprecating HIDL. Depending on how many devices are currently using the HIDL implementation it might be difficult to merge this as is in the mid-cycle.",
       "revId": "3f5c98bba41e7fa6faef58c62238ba93c3b94b9a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e75e8e_379c0c3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-20T12:19:28Z",
+      "side": 1,
+      "message": "i see. so i keep the hidl files as it is and just add the aidl folder?",
+      "parentUuid": "97730861_3e50a292",
+      "revId": "3f5c98bba41e7fa6faef58c62238ba93c3b94b9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
