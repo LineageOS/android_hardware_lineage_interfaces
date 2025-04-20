@@ -22,6 +22,30 @@
       },
       "revId": "994232de97007aae8f1f723e3d84977606a3cd4f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8168eedb_8577ac4b",
+        "filename": "powershare/aidl/default/vendor.lineage.powershare-service.default.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-20T16:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b084037_e0ad31cd",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "994232de97007aae8f1f723e3d84977606a3cd4f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
