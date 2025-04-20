@@ -41,6 +41,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d9d1ea0_daa539c5",
+        "filename": "powershare/aidl/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d731b9d2_75c7425f",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 72
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66198a0f_b8531892",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-04-20T11:21:28Z",
       "side": 1,
       "message": "```suggestion\n//\n// SPDX-FileCopyrightText: 2025 The LineageOS Project\n// SPDX-License-Identifier: Apache-2.0\n//\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35861cb1_bf8142f6",
+        "filename": "powershare/aidl/aidl_api/vendor.lineage.powershare/1/vendor/lineage/powershare/IPowerShare.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66198a0f_b8531892",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d98fbd2c_6c9b636c",
+        "filename": "powershare/aidl/aidl_api/vendor.lineage.powershare/current/vendor/lineage/powershare/IPowerShare.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da1583b_fd8b6ab1",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0809fdaa_e015c497",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-04-20T11:21:28Z",
       "side": 1,
       "message": "```suggestion\n//\n// SPDX-FileCopyrightText: 2025 The LineageOS Project\n// SPDX-License-Identifier: Apache-2.0\n//\n\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 2
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d90c466_936529bd",
+        "filename": "powershare/aidl/default/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0809fdaa_e015c497",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64074992_daf6e771",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e00ae78a_809b1b4a",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f5b53e9_2c926559",
@@ -156,6 +276,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b963cde4_4146543e",
+        "filename": "powershare/aidl/default/PowerShare.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f5b53e9_2c926559",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2831a03f_36e1e68e",
@@ -169,6 +313,30 @@
       "writtenOn": "2025-04-20T11:21:28Z",
       "side": 1,
       "message": "```suggestion\n/*\n * SPDX-FileCopyrightText: 2025 The LineageOS Project\n * SPDX-License-Identifier: Apache-2.0\n */\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6299d08_d29cecb9",
+        "filename": "powershare/aidl/default/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2831a03f_36e1e68e",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -215,6 +383,30 @@
       "writtenOn": "2025-04-20T11:21:28Z",
       "side": 1,
       "message": "```suggestion\n/*\n * SPDX-FileCopyrightText: 2025 The LineageOS Project\n * SPDX-License-Identifier: Apache-2.0\n */\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "9b738f7b82a39542a94e4f2f222451544cf15cbf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3befe50_d962884c",
+        "filename": "powershare/aidl/vendor/lineage/powershare/IPowerShare.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-20T11:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f101610_e73995ad",
       "range": {
         "startLine": 1,
         "startChar": 0,
