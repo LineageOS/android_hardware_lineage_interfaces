@@ -1,0 +1,4 @@
+service vendor.powershare-default /vendor/bin/hw/vendor.lineage.powershare-service.default
+    class hal
+    user system
+    group system
