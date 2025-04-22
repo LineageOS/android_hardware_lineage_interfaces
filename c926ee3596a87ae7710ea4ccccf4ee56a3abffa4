@@ -22,6 +22,30 @@
       },
       "revId": "c926ee3596a87ae7710ea4ccccf4ee56a3abffa4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7c8fd6_e5179c3d",
+        "filename": "powershare/aidl/default/Android.bp",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-22T17:17:07Z",
+      "side": 1,
+      "message": "https://github.com/LineageOS/android_vendor_lineage/blob/eef4080d27ad48596d78875efb80d2ac27768fe5/build/soong/Android.bp#L332",
+      "parentUuid": "8a89fc5c_532446b3",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "c926ee3596a87ae7710ea4ccccf4ee56a3abffa4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
