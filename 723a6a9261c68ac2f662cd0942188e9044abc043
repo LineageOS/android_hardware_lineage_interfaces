@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b814ace_b049735c",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-23T23:28:44Z",
+      "side": 1,
+      "message": "Out of curiosity, is this working fine for you? When you click the tile to disable powershare, does the tile change its status? I had to return bool `in_enable` instead on Oplus service.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "723a6a9261c68ac2f662cd0942188e9044abc043",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
