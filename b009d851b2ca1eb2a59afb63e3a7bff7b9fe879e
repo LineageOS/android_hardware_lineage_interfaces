@@ -70,6 +70,30 @@
       },
       "revId": "b009d851b2ca1eb2a59afb63e3a7bff7b9fe879e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e430456_e0a2a45c",
+        "filename": "powershare/aidl/vendor/lineage/powershare/IPowerShare.aidl",
+        "patchSetId": 19
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-23T22:53:21Z",
+      "side": 1,
+      "message": "i guess these should work.",
+      "parentUuid": "e21054ff_557f81e7",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 101
+      },
+      "revId": "b009d851b2ca1eb2a59afb63e3a7bff7b9fe879e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
