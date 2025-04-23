@@ -22,6 +22,30 @@
       },
       "revId": "4ca52f04902a385595f8d1152170f7c1bf74a7ff",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fa53a6_c982007d",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-23T23:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8dacea3_9fee1a10",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "4ca52f04902a385595f8d1152170f7c1bf74a7ff",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
