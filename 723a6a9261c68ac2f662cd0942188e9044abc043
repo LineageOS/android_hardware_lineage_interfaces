@@ -22,6 +22,30 @@
       },
       "revId": "723a6a9261c68ac2f662cd0942188e9044abc043",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1340059_c38d49b1",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-23T23:30:23Z",
+      "side": 1,
+      "message": "Yeah I had that as well. But that was the normal behaviour on the HIDL implementation too so I didn\u0027t bother trying to fix it.",
+      "parentUuid": "2b814ace_b049735c",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "723a6a9261c68ac2f662cd0942188e9044abc043",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
