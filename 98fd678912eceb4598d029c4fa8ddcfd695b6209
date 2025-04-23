@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d06d441_c373c8c2",
+        "filename": "powershare/aidl/default/PowerShare.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-23T22:58:04Z",
+      "side": 1,
+      "message": "```suggestion\n    std::string value \u003d in_enable ? POWERSHARE_ENABLED : POWERSHARE_DISABLED;\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 45
+      },
+      "revId": "98fd678912eceb4598d029c4fa8ddcfd695b6209",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
