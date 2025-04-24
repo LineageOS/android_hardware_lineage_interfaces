@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9ef2ad_f1365cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-24T22:47:15Z",
+      "side": 1,
+      "message": "This issue was noticed in the initial migration to AIDL. Since then, the setEnabled() function now returns void instead of bool and the issue was fixed in fwb directly ( see: https://review.lineageos.org/c/LineageOS/android_frameworks_base/+/428436/8..11 ).",
+      "revId": "02ea3e91f39c0c6949aab3ae5dfeb4a6e3b0e2c3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
