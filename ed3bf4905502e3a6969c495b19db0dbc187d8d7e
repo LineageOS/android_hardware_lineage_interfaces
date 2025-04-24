@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8794bc0_50993b30",
+        "filename": "powershare/aidl/vendor/lineage/powershare/IPowerShare.aidl",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-04-24T08:30:55Z",
+      "side": 1,
+      "message": "I don\u0027t know how to feel about returning boolean and int in these methods.\nI\u0027d expect them to either work or fail.\n\nI\u0027d make them void and have the hal return EX_SERVICE_SPECIFIC in case the write fails/doesn\u0027t match?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "ed3bf4905502e3a6969c495b19db0dbc187d8d7e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
