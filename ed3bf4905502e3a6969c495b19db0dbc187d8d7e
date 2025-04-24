@@ -22,6 +22,30 @@
       },
       "revId": "ed3bf4905502e3a6969c495b19db0dbc187d8d7e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f08595_9915c1e5",
+        "filename": "powershare/aidl/vendor/lineage/powershare/IPowerShare.aidl",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 35199
+      },
+      "writtenOn": "2025-04-24T09:10:42Z",
+      "side": 1,
+      "message": "hi, remind me if my change has issues.",
+      "parentUuid": "d8794bc0_50993b30",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "ed3bf4905502e3a6969c495b19db0dbc187d8d7e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
