@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 The LineageOS Project
+ * Copyright (C) 2024-2025 The LineageOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -33,7 +33,8 @@ Return<bool> PowerShare::isEnabled() {
 
 Return<bool> PowerShare::setEnabled(bool enable) {
     const auto& value = enable ? POWERSHARE_ENABLED : POWERSHARE_DISABLED;
-    return WriteStringToFile(value, POWERSHARE_PATH, true);
+    WriteStringToFile(value, POWERSHARE_PATH, true);
+    return isEnabled();
 }
 
 Return<uint32_t> PowerShare::getMinBattery() {
