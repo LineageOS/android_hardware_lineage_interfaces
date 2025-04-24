@@ -1,13 +1,20 @@
 cc_binary {
     name: "vendor.lineage.powershare@1.0-service.default",
-    defaults: [
-        "hidl_defaults",
-        "powershare_defaults",
-    ],
+    defaults: ["hidl_defaults"],
     init_rc: ["vendor.lineage.powershare@1.0-service.default.rc"],
     vintf_fragments: ["vendor.lineage.powershare@1.0-service.default.xml"],
     vendor: true,
     relative_install_path: "hw",
+    cflags: select(soong_config_variable("lineage_powershare", "powershare_path"), {
+        any @ flag_val: ["-DPOWERSHARE_PATH=\"" + flag_val + "\""],
+        default: [],
+    }) + select(soong_config_variable("lineage_powershare", "powershare_enabled"), {
+        any @ flag_val: ["-DPOWERSHARE_ENABLED=\"" + flag_val + "\""],
+        default: ["-DPOWERSHARE_ENABLED=\"1\""],
+    }) + select(soong_config_variable("lineage_powershare", "powershare_disabled"), {
+        any @ flag_val: ["-DPOWERSHARE_DISABLED=\"" + flag_val + "\""],
+        default: ["-DPOWERSHARE_DISABLED=\"0\""],
+    }),
     srcs: [
         "service.cpp",
         "PowerShare.cpp",
