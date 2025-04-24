@@ -13,10 +13,7 @@ soong_namespace {
 
 cc_binary {
     name: "android.hardware.power-service.lineage-libperfmgr",
-    defaults: [
-        "android.hardware.power-ndk_shared",
-        "power_libperfmgr_defaults",
-    ],
+    defaults: ["android.hardware.power-ndk_shared"],
     relative_install_path: "hw",
     init_rc: ["aidl/android.hardware.power-service.lineage-libperfmgr.rc"],
     vintf_fragments: ["aidl/android.hardware.power-service.lineage.xml"],
@@ -43,6 +40,10 @@ cc_binary {
         "libgmock",
         "libgtest",
     ],
+    whole_static_libs: select(soong_config_variable("power_libperfmgr", "mode_extension_lib"), {
+        any @ flag_val: [flag_val],
+        default: ["libperfmgr-ext"],
+    }),
     srcs: [
         "aidl/BackgroundWorker.cpp",
         "aidl/ChannelGroup.cpp",
