@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d76e0ca_6b481bce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-25T20:33:28Z",
+      "side": 1,
+      "message": "Do you still care about custom fastboot HAL?",
+      "revId": "b86236e8959239eca9ae2a47fa2a744be5019a5c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
