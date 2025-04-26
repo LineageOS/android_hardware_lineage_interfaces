@@ -16,6 +16,24 @@
       "message": "How many HIDL HALs are gonna be converted? Just touch and PowerShare?",
       "revId": "8c9826d9f1e6f297012401b567b05aaa7b763901",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3a0cc0_4f794254",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-26T10:11:13Z",
+      "side": 1,
+      "message": "Also LiveDisplay needs to be converted and Fastcharge must be implemented in Health.",
+      "parentUuid": "05341f29_33ae5ea0",
+      "revId": "8c9826d9f1e6f297012401b567b05aaa7b763901",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
