@@ -52,6 +52,24 @@
       "parentUuid": "3d3a0cc0_4f794254",
       "revId": "8c9826d9f1e6f297012401b567b05aaa7b763901",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b248585d_72e351f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-04-27T17:58:24Z",
+      "side": 1,
+      "message": "\u003e Fastcharge must be implemented in Health\n\nShould be the same for this interface...",
+      "parentUuid": "95a94680_c7230271",
+      "revId": "8c9826d9f1e6f297012401b567b05aaa7b763901",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
