@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7328e5b9_7ca97a2d",
+        "filename": "ir/ConsumerIr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2025-04-30T13:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a01a9161_2da1bfe6",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "285d56ac3d14cfa06226b30af70b058fa0aa170d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c7bb24ed_709ee7cd",
         "filename": "ir/ConsumerIr.cpp",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2025-04-11T20:30:07Z",
       "side": 1,
       "message": "```suggestion\n    for (size_t i \u003d 0; i \u003c carrier_freqs.size() - 1; i +\u003d 2) {\n        if (carrier_freqs[i] \u0026\u0026 carrier_freqs[i + 1]) {\n            kRangeVec.push_back({\n                .minHz \u003d carrier_freqs[i].value(),\n                .maxHz \u003d carrier_freqs[i + 1].value(),\n            });\n        }\n    }\n```\n\ni+1 is nasty I have to say",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "285d56ac3d14cfa06226b30af70b058fa0aa170d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e33c151_1b3ae31b",
+        "filename": "ir/ConsumerIr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 17257
+      },
+      "writtenOn": "2025-04-30T13:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7950caa2_60066a04",
       "range": {
         "startLine": 34,
         "startChar": 0,
