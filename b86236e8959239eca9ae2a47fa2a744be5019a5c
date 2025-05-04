@@ -16,6 +16,24 @@
       "message": "Do you still care about custom fastboot HAL?",
       "revId": "b86236e8959239eca9ae2a47fa2a744be5019a5c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2024857f_a2221a89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-05-04T21:32:45Z",
+      "side": 1,
+      "message": "I don\u0027t use it for anything but others might find getprop useful",
+      "parentUuid": "3d76e0ca_6b481bce",
+      "revId": "b86236e8959239eca9ae2a47fa2a744be5019a5c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
