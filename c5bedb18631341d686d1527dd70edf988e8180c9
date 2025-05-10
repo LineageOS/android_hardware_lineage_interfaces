@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7697215b_123d54c1",
+        "filename": "touch/aidl/vendor/lineage/touch/Gesture.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-05-10T20:34:25Z",
+      "side": 1,
+      "message": "So, what do we want to do here?",
+      "parentUuid": "3c17d0c6_d309da58",
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "623d0d46_92cb3550",
         "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
         "patchSetId": 2
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Initial thought was just to add a gaming ready™ toggle, most ts drivers won\u0027t allow setting a specific rate, and users both don\u0027t know what polling rate is and will pretend it improves responsiveness (FYI on Xiaomi SM8250 we shipped this toggle w/o adding kernel changes for a year, absolutely no one noticed)",
       "parentUuid": "623d0d46_92cb3550",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd80941e_3842ab8c",
+        "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-05-10T20:34:25Z",
+      "side": 1,
+      "message": "Leave as is?",
+      "parentUuid": "a4c2ae8f_fbf2283e",
       "range": {
         "startLine": 11,
         "startChar": 0,
