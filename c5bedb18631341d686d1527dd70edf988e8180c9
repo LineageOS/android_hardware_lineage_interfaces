@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "963ba802_6e51e2d3",
+        "filename": "touch/aidl/vendor/lineage/touch/Gesture.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-05-11T01:17:34Z",
+      "side": 1,
+      "message": "Let\u0027s enumerate the gesture types here, framework will then handle name and keycode\n\nThis needs checking all devices implementations (is oplus the only shipping OEM using it?)",
+      "parentUuid": "7697215b_123d54c1",
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "623d0d46_92cb3550",
         "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
         "patchSetId": 2
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "Leave as is?",
       "parentUuid": "a4c2ae8f_fbf2283e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781e0282_a2da01ab",
+        "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-05-11T01:17:34Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "fd80941e_3842ab8c",
       "range": {
         "startLine": 11,
         "startChar": 0,
