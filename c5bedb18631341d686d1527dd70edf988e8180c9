@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8f4935b_6c298127",
+        "filename": "touch/aidl/vendor/lineage/touch/Gesture.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-05-11T10:25:51Z",
+      "side": 1,
+      "message": "Don\u0027t we also need change LineageParts afterwards and with that break compatibility with touch HIDL?",
+      "parentUuid": "963ba802_6e51e2d3",
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "623d0d46_92cb3550",
         "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
         "patchSetId": 2
