@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93727600_5bc8ded3",
+        "filename": "touch/aidl/vendor/lineage/touch/Gesture.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-05-11T22:34:50Z",
+      "side": 1,
+      "message": "\u003e Don\u0027t we also need change LineageParts afterwards and with that break compatibility with touch HIDL?\n\nFine for me\n\n\u003e single tap only as far as I can see\n\nWe should force them to use the sensor HAL solution instead",
+      "parentUuid": "75791717_69cda6e2",
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "623d0d46_92cb3550",
         "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
         "patchSetId": 2
