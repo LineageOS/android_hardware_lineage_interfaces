@@ -21,8 +21,25 @@
 // later when a module using the interface is updated, e.g., Mainline modules.
 
 package vendor.lineage.touch;
-@VintfStability
-parcelable Gesture {
-  vendor.lineage.touch.GestureType type;
-  int keycode;
+@Backing(type="int") @VintfStability
+enum GestureType {
+  TWO_FINGERS_DOWN_SWIPE,
+  ONE_FINGER_UP_SWIPE,
+  ONE_FINGER_UP_SWIPE_HOME,
+  ONE_FINGER_DOWN_SWIPE,
+  ONE_FINGER_LEFT_SWIPE,
+  ONE_FINGER_RIGHT_SWIPE,
+  SINGLE_TAP,
+  UP_ARROW,
+  DOWN_ARROW,
+  LEFT_ARROW,
+  RIGHT_ARROW,
+  LETTER_C,
+  LETTER_E,
+  LETTER_O,
+  LETTER_M,
+  LETTER_S,
+  LETTER_V,
+  LETTER_W,
+  LETTER_Z,
 }

@@ -5,9 +5,10 @@
 
 package vendor.lineage.touch;
 
+import vendor.lineage.touch.GestureType;
+
 @VintfStability
 parcelable Gesture {
-    int id;
-    String name;
+    GestureType type;
     int keycode;
 }

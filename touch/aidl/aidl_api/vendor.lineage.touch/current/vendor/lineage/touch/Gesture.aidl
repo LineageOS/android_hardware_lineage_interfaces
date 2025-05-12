@@ -23,7 +23,6 @@
 package vendor.lineage.touch;
 @VintfStability
 parcelable Gesture {
-  int id;
-  String name;
+  vendor.lineage.touch.GestureType type;
   int keycode;
 }
