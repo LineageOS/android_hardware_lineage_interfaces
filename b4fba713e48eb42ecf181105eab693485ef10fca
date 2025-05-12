@@ -52,6 +52,24 @@
       "parentUuid": "c0653641_2e189815",
       "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48287217_e47e12ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-05-12T16:44:06Z",
+      "side": 1,
+      "message": "Doing that comes with less code in vendor HALs (no need to manage keycodes and name anymore) and proper localization (that would be done with LineageParts or sdk strings)",
+      "parentUuid": "62621c58_5f18904e",
+      "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
