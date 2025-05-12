@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d24c5af_dac78516",
+        "filename": "touch/aidl/vendor/lineage/touch/Gesture.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-05-12T08:25:30Z",
+      "side": 1,
+      "message": "Then all that will just take us to a dead end. The goal here was that touch HIDL and AIDL could co-exist until next major is out.",
+      "parentUuid": "93727600_5bc8ded3",
+      "revId": "c5bedb18631341d686d1527dd70edf988e8180c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "623d0d46_92cb3550",
         "filename": "touch/aidl/vendor/lineage/touch/IHighTouchPollingRate.aidl",
         "patchSetId": 2
