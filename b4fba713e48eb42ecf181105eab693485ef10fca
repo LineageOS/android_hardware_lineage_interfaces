@@ -16,6 +16,24 @@
       "message": "Let\u0027s do the minimal amount of work needed to convert from hidl to aidl\n\nWe can easily fix aidl once we migrated, as we don\u0027t have to deal with migration + rewrite, just the latter",
       "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0653641_2e189815",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-05-12T16:22:15Z",
+      "side": 1,
+      "message": "But then the build system will complain about broken ABI (rightfully), we would then have to make vendor.lineage.touch2 (see AOSP hwc fiasco)\n\nIf you still want to go that way then I propose to just do this on 23.0",
+      "parentUuid": "a30609f4_a3eb87eb",
+      "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
