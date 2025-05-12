@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a30609f4_a3eb87eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-05-12T08:27:42Z",
+      "side": 1,
+      "message": "Let\u0027s do the minimal amount of work needed to convert from hidl to aidl\n\nWe can easily fix aidl once we migrated, as we don\u0027t have to deal with migration + rewrite, just the latter",
+      "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
