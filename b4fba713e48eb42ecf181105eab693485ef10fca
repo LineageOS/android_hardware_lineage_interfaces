@@ -34,6 +34,24 @@
       "parentUuid": "a30609f4_a3eb87eb",
       "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62621c58_5f18904e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-05-12T16:41:06Z",
+      "side": 1,
+      "message": "We can probably make an ugly Gesture2 HAL only...\nI think current impl is fine and easily extensible for our usecases, if we ever need a new gesture we\u0027d need to uprev+freeze the hal, kinda annoying when it works just be fine now",
+      "parentUuid": "c0653641_2e189815",
+      "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
