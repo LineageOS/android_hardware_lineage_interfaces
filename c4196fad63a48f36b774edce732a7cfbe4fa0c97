@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a870b7e4_4c9cf6e9",
+        "filename": "touch/aidl/vendor/lineage/touch/GestureType.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-05-13T09:28:03Z",
+      "side": 1,
+      "message": "Wait, do we need to bump version if we ever want to support more gestures?",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "c4196fad63a48f36b774edce732a7cfbe4fa0c97",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
