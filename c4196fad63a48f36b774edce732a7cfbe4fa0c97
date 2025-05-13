@@ -70,6 +70,30 @@
       },
       "revId": "c4196fad63a48f36b774edce732a7cfbe4fa0c97",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d04bd0c_51070c3a",
+        "filename": "touch/aidl/vendor/lineage/touch/GestureType.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-05-13T17:29:33Z",
+      "side": 1,
+      "message": "Alright, but I am fine with this change being only merged in lineage-23.",
+      "parentUuid": "8f3acdfe_6f609303",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "c4196fad63a48f36b774edce732a7cfbe4fa0c97",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
