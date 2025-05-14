@@ -106,6 +106,24 @@
       "parentUuid": "ec6d11c7_c9e1bf95",
       "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aadcd7a_a0cfcbef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-05-14T15:56:54Z",
+      "side": 1,
+      "message": "`vendor.lineage.touch.IGesture2` it is then",
+      "parentUuid": "10ee29c1_431f4c5c",
+      "revId": "b4fba713e48eb42ecf181105eab693485ef10fca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
