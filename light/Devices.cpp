@@ -10,22 +10,36 @@
 
 #include <android-base/logging.h>
 
+#include <filesystem>
+
 namespace aidl {
 namespace android {
 namespace hardware {
 namespace light {
 
-static const std::string kBacklightDevices[] = {
-        "backlight",
-        "panel0-backlight",
-        "panel0-backlight-ex",
-        "sprd_backlight",
-};
+namespace {
+
+std::vector<std::string> getSubDirs(const std::string& path) {
+    std::vector<std::string> subdirs;
+    std::filesystem::path p(path);
+
+    CHECK(std::filesystem::is_directory(p));
+
+    for (const auto& entry : std::filesystem::directory_iterator(p)) {
+        if (entry.is_directory()) {
+            subdirs.push_back(entry.path().filename().string());
+        }
+    }
+
+    return subdirs;
+}
+
+}  // namespace
 
 static std::vector<BacklightDevice> getBacklightDevices() {
     std::vector<BacklightDevice> devices;
 
-    for (const auto& device : kBacklightDevices) {
+    for (const auto& device : getSubDirs("/sys/class/backlight/")) {
         BacklightDevice backlight(device);
         if (backlight.exists()) {
             LOG(INFO) << "Found backlight device: " << backlight.getName();
