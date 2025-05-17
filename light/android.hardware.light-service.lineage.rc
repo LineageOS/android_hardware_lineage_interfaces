@@ -24,6 +24,17 @@ on early-boot
     chown system system /sys/class/leds/blue/start_idx
     chown system system /sys/class/leds/blue/trigger
 
+    chown system system /sys/class/leds/blue:status/blink
+    chown system system /sys/class/leds/blue:status/breath
+    chown system system /sys/class/leds/blue:status/brightness
+    chown system system /sys/class/leds/blue:status/duty_pcts
+    chown system system /sys/class/leds/blue:status/max_brightness
+    chown system system /sys/class/leds/blue:status/pause_hi
+    chown system system /sys/class/leds/blue:status/pause_lo
+    chown system system /sys/class/leds/blue:status/ramp_step_ms
+    chown system system /sys/class/leds/blue:status/start_idx
+    chown system system /sys/class/leds/blue:status/trigger
+
     chown system system /sys/class/leds/button-backlight/blink
     chown system system /sys/class/leds/button-backlight/breath
     chown system system /sys/class/leds/button-backlight/brightness
@@ -77,6 +88,17 @@ on early-boot
     chown system system /sys/class/leds/green/ramp_step_ms
     chown system system /sys/class/leds/green/start_idx
     chown system system /sys/class/leds/green/trigger
+
+    chown system system /sys/class/leds/green:status/blink
+    chown system system /sys/class/leds/green:status/breath
+    chown system system /sys/class/leds/green:status/brightness
+    chown system system /sys/class/leds/green:status/duty_pcts
+    chown system system /sys/class/leds/green:status/max_brightness
+    chown system system /sys/class/leds/green:status/pause_hi
+    chown system system /sys/class/leds/green:status/pause_lo
+    chown system system /sys/class/leds/green:status/ramp_step_ms
+    chown system system /sys/class/leds/green:status/start_idx
+    chown system system /sys/class/leds/green:status/trigger
 
     chown system system /sys/class/leds/keyboard-backlight/blink
     chown system system /sys/class/leds/keyboard-backlight/breath
@@ -155,6 +177,17 @@ on early-boot
     chown system system /sys/class/leds/red/start_idx
     chown system system /sys/class/leds/red/trigger
 
+    chown system system /sys/class/leds/red:status/blink
+    chown system system /sys/class/leds/red:status/breath
+    chown system system /sys/class/leds/red:status/brightness
+    chown system system /sys/class/leds/red:status/duty_pcts
+    chown system system /sys/class/leds/red:status/max_brightness
+    chown system system /sys/class/leds/red:status/pause_hi
+    chown system system /sys/class/leds/red:status/pause_lo
+    chown system system /sys/class/leds/red:status/ramp_step_ms
+    chown system system /sys/class/leds/red:status/start_idx
+    chown system system /sys/class/leds/red:status/trigger
+
     chown system system /sys/class/leds/rgb/rgb_blink
 
     chown system system /sys/class/leds/white/blink
@@ -167,6 +200,17 @@ on early-boot
     chown system system /sys/class/leds/white/ramp_step_ms
     chown system system /sys/class/leds/white/start_idx
     chown system system /sys/class/leds/white/trigger
+
+    chown system system /sys/class/leds/white:status/blink
+    chown system system /sys/class/leds/white:status/breath
+    chown system system /sys/class/leds/white:status/brightness
+    chown system system /sys/class/leds/white:status/duty_pcts
+    chown system system /sys/class/leds/white:status/max_brightness
+    chown system system /sys/class/leds/white:status/pause_hi
+    chown system system /sys/class/leds/white:status/pause_lo
+    chown system system /sys/class/leds/white:status/ramp_step_ms
+    chown system system /sys/class/leds/white:status/start_idx
+    chown system system /sys/class/leds/white:status/trigger
 
 service vendor.light-default /vendor/bin/hw/android.hardware.light-service.lineage
     class hal
