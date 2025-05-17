@@ -110,6 +110,7 @@ static std::vector<LedDevice> getKeyboardLedDevices() {
 
 static const std::string kRgbLedDevices[][4] = {
         {"red", "green", "blue", "/sys/class/leds/rgb/rgb_blink"},
+        {"red:status", "green:status", "blue:status", ""},
 };
 
 static std::vector<RgbLedDevice> getNotificationRgbLedDevices() {
@@ -135,6 +136,7 @@ static const std::string kNotificationLedDevices[] = {
         "charging",
         "left",
         "white",
+        "white:status",
 };
 
 static std::vector<LedDevice> getNotificationLedDevices() {
