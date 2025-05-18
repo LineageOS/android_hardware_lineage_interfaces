@@ -52,6 +52,24 @@
       "parentUuid": "c335f0e9_35a9cddd",
       "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691694a5_10b415f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2025-05-18T22:42:02Z",
+      "side": 1,
+      "message": "`1a94000` is the base address of the display controller\n\nthere\u0027ll be endless variants of that, right?",
+      "parentUuid": "ee34fd34_64de38a2",
+      "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
