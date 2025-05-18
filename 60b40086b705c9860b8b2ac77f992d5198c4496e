@@ -16,6 +16,24 @@
       "message": "Backlight devices are also enumerated in `android.hardware.light-service.lineage.rc` - either nuke them from there as well or accept that LED and backlight devices deserves an allowlist",
       "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c335f0e9_35a9cddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2025-05-18T22:10:55Z",
+      "side": 1,
+      "message": "nuking them from the rc shall break a lot of current devices... idc, that\u0027s up to you guys to decide... really?\n\nI want to support backlight devices like `1a94000.dsi`, so obviously no allowlist\n\nif you want to convince me to implement it in drm HWC again... at least before anyone fork the repo into lineageos org and implement it, let\u0027s have that... and there\u0027s no other need to fork that repo yet",
+      "parentUuid": "80a65837_1fe80276",
+      "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
