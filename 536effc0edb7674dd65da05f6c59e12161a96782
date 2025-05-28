@@ -16,6 +16,24 @@
       "message": "does it really help at all when we only use the first token anyway?",
       "revId": "536effc0edb7674dd65da05f6c59e12161a96782",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8f7617_015920e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34887
+      },
+      "writtenOn": "2025-05-28T15:48:27Z",
+      "side": 1,
+      "message": "Only using the first token is immaterial to the problem with strtok() — it still uses the — and I don\u0027t really see a reason to except a blanket-delete on strtok() here.",
+      "parentUuid": "3f6703e6_62810b22",
+      "revId": "536effc0edb7674dd65da05f6c59e12161a96782",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
