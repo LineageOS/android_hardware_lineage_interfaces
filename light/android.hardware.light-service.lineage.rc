@@ -58,7 +58,10 @@ on early-boot
     chown system system /sys/class/leds/button-backlight2/trigger
 
     chown system system /sys/class/leds/charging/blink
+    chown system system /sys/class/leds/charging/breath
     chown system system /sys/class/leds/charging/brightness
+    chown system system /sys/class/leds/charging/delay_off
+    chown system system /sys/class/leds/charging/delay_on
     chown system system /sys/class/leds/charging/duty_pcts
     chown system system /sys/class/leds/charging/max_brightness
     chown system system /sys/class/leds/charging/pause_hi
