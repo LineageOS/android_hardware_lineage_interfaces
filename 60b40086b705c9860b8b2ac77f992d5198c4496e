@@ -87,6 +87,24 @@
       "message": "wait, i was testing in permissive lol",
       "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fbae27_5d8e8ac7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-06-09T22:11:43Z",
+      "side": 1,
+      "message": "\u003e `1a94000` is the base address of the display controller\n\u003e \n\u003e there\u0027ll be endless variants of that, right?\n\nnewest PS leaves whitelist, then searches, fine by me",
+      "parentUuid": "691694a5_10b415f8",
+      "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
