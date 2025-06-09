@@ -105,6 +105,24 @@
       "parentUuid": "691694a5_10b415f8",
       "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff9c6c5_b7f1e341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-06-09T22:53:28Z",
+      "side": 1,
+      "message": "This doesn\u0027t make sense, the allowlist exists because we only target \"old\" devices, while name-by-address devices are typically used by hwc, possibly breaking ownership of those nodes (not even talking about missing nodes chown in init script).\n\nWe have two ways: either guard this search logic with a runtime prop (must be opt-in!!) or just remove backlight handling from here, it\u0027s deprecated anyway, Google really wants us to use HWC per-display backlight handling",
+      "parentUuid": "c5fbae27_5d8e8ac7",
+      "revId": "60b40086b705c9860b8b2ac77f992d5198c4496e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
