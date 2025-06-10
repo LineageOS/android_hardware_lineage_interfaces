@@ -16,6 +16,23 @@
       "message": "works fine, and would not affect any device",
       "revId": "0c2d090ed66da74dd0c4e231b9aa68b56e0bc9f2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2585dca7_053d77ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-06-10T07:44:44Z",
+      "side": 1,
+      "message": "The owner of display brightness moved to HWC for clear reasons.\nIf you still want to use this interface you have to make it opt-in",
+      "revId": "0c2d090ed66da74dd0c4e231b9aa68b56e0bc9f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
