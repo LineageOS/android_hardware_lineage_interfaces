@@ -99,6 +99,11 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
     // Disable current blinking
     if (mSupportsTimed) {
         writeToFile(mBasePath + kBlinkNode, 0);
+        writeToFile(mBasePath + kStartIdxNode, 0);
+        writeToFile(mBasePath + kDutyPctsNode, 0);
+        writeToFile(mBasePath + kPauseLoNode, 0);
+        writeToFile(mBasePath + kPauseHiNode, 0);
+        writeToFile(mBasePath + kRampStepMsNode, 0);
     } else {
         writeToFile(mBasePath + kTriggerNode, "none");
     }
