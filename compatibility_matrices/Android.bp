@@ -1,0 +1,12 @@
+//
+// SPDX-FileCopyrightText: 2021-2025 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+vintf_compatibility_matrix {
+    name: "framework_compatibility_matrix.lineage.xml",
+    stem: "compatibility_matrix.lineage.xml",
+    srcs: [
+        "compatibility_matrix.lineage.xml",
+    ],
+}
