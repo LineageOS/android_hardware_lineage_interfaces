@@ -4,13 +4,31 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+apex {
+    name: "com.android.hardware.light.lineage",
+    manifest: "apex_manifest.json",
+    file_contexts: "file_contexts",
+    key: "com.android.hardware.key",
+    certificate: ":com.android.hardware.certificate",
+    updatable: false,
+    vendor: true,
+
+    binaries: [
+        "android.hardware.light-service.lineage",
+    ],
+    prebuilts: [
+        "lineage_light_apex_init_rc",
+        "lineage_light_apex_vintf",
+    ],
+}
+
 cc_binary {
     name: "android.hardware.light-service.lineage",
     defaults: ["hidl_defaults"],
     vendor: true,
     relative_install_path: "hw",
-    init_rc: ["android.hardware.light-service.lineage.rc"],
-    vintf_fragments: ["android.hardware.light-service.lineage.xml"],
+    init_rc: [":lineage_light_init_rc"],
+    vintf_fragments: [":lineage_light_vintf_manifest"],
     cflags: select(soong_config_variable("lineagelight", "scan_for_backlight_devices"), {
         true: ["-DSCAN_FOR_BACKLIGHT_DEVICES"],
         default: [],
@@ -29,4 +47,44 @@ cc_binary {
         "libbinder_ndk",
         "android.hardware.light-V2-ndk",
     ],
+}
+
+filegroup {
+    name: "lineage_light_init_rc",
+    srcs: [
+        "android.hardware.light-service.lineage.rc",
+    ],
+}
+
+filegroup {
+    name: "lineage_light_vintf_manifest",
+    srcs: [
+        "android.hardware.light-service.lineage.xml",
+    ],
+}
+
+genrule {
+    name: "gen-lineage_light_apex_init_rc",
+    srcs: [":lineage_light_init_rc"],
+    out: ["lineage-light.apex.rc"],
+    cmd: "sed " +
+        // Update the binary location to inside the Apex:
+        "-e 's%/vendor/bin/%/apex/com.android.hardware.light.lineage/bin/%' " +
+        "$(in) > $(out)",
+}
+
+prebuilt_etc {
+    name: "lineage_light_apex_init_rc",
+    filename_from_src: true,
+    src: ":gen-lineage_light_apex_init_rc",
+    vendor: true,
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "lineage_light_apex_vintf",
+    src: ":lineage_light_vintf_manifest",
+    sub_dir: "vintf",
+    vendor: true,
+    installable: false,
 }
