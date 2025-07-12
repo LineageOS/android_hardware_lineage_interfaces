@@ -16,6 +16,23 @@
       "message": "all the APEXs are confirmed to be working",
       "revId": "bdc1e99bd6f2c247efd57ab6066b9acbc84c72bf",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24dbc16_a679dfd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-07-12T20:24:21Z",
+      "side": 1,
+      "message": "using APEXes for those provides 0 gain.\nand if someone starts using them (because they exist) we\u0027d need to gen keys for them",
+      "revId": "bdc1e99bd6f2c247efd57ab6066b9acbc84c72bf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
