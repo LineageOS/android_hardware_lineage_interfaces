@@ -212,6 +212,9 @@ on early-boot
     chown system system /sys/class/leds/white:status/start_idx
     chown system system /sys/class/leds/white:status/trigger
 
+on property:apex.com.android.hardware.light.lineage.ready=true
+    start vendor.light-default
+
 service vendor.light-default /vendor/bin/hw/android.hardware.light-service.lineage
     class hal
     user system
