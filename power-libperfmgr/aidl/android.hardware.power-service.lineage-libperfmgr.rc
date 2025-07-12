@@ -7,6 +7,9 @@ service vendor.power-hal-aidl /vendor/bin/hw/android.hardware.power-service.line
 on late-fs
     start vendor.power-hal-aidl
 
+on property:apex.com.android.hardware.power.lineage_libperfmgr.ready=true
+    start vendor.power-hal-aidl
+
 # Unblock thermalHAL under off mode charge
 on charger
     start vendor.power-hal-aidl
