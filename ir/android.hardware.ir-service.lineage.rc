@@ -7,6 +7,9 @@ on early-boot
     # IR device
     chown system system /dev/lirc0
 
+on property:apex.com.android.hardware.ir.lineage.ready=true
+    start vendor.ir-default
+
 service vendor.ir-default /vendor/bin/hw/android.hardware.ir-service.lineage
     class hal
     user system
