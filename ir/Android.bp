@@ -3,12 +3,30 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+apex {
+    name: "com.android.hardware.ir.lineage",
+    manifest: "apex_manifest.json",
+    file_contexts: "file_contexts",
+    key: "com.android.hardware.key",
+    certificate: ":com.android.hardware.certificate",
+    updatable: false,
+    vendor: true,
+
+    binaries: [
+        "android.hardware.ir-service.lineage",
+    ],
+    prebuilts: [
+        "lineage_ir_apex_init_rc",
+        "lineage_ir_apex_vintf",
+    ],
+}
+
 cc_binary {
     name: "android.hardware.ir-service.lineage",
     relative_install_path: "hw",
     vendor: true,
-    init_rc: ["android.hardware.ir-service.lineage.rc"],
-    vintf_fragments: ["android.hardware.ir-service.lineage.xml"],
+    init_rc: [":lineage_ir_init_rc"],
+    vintf_fragments: [":lineage_ir_vintf_manifest"],
     srcs: [
         "ConsumerIr.cpp",
         "service.cpp",
@@ -21,6 +39,46 @@ cc_binary {
     static_libs: [
         "libvendor.lineage.ir.Props",
     ],
+}
+
+filegroup {
+    name: "lineage_ir_init_rc",
+    srcs: [
+        "android.hardware.ir-service.lineage.rc",
+    ],
+}
+
+filegroup {
+    name: "lineage_ir_vintf_manifest",
+    srcs: [
+        "android.hardware.ir-service.lineage.xml",
+    ],
+}
+
+genrule {
+    name: "gen-lineage_ir_apex_init_rc",
+    srcs: [":lineage_ir_init_rc"],
+    out: ["lineage-ir.apex.rc"],
+    cmd: "sed " +
+        // Update the binary location to inside the Apex:
+        "-e 's%/vendor/bin/%/apex/com.android.hardware.ir.lineage/bin/%' " +
+        "$(in) > $(out)",
+}
+
+prebuilt_etc {
+    name: "lineage_ir_apex_init_rc",
+    filename_from_src: true,
+    src: ":gen-lineage_ir_apex_init_rc",
+    vendor: true,
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "lineage_ir_apex_vintf",
+    src: ":lineage_ir_vintf_manifest",
+    sub_dir: "vintf",
+    vendor: true,
+    installable: false,
 }
 
 sysprop_library {
