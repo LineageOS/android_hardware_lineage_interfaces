@@ -11,12 +11,30 @@ soong_namespace {
     ],
 }
 
+apex {
+    name: "com.android.hardware.power.lineage_libperfmgr",
+    manifest: "aidl/apex_manifest.json",
+    file_contexts: "aidl/file_contexts",
+    key: "com.android.hardware.key",
+    certificate: ":com.android.hardware.certificate",
+    updatable: false,
+    vendor: true,
+
+    binaries: [
+        "android.hardware.power-service.lineage-libperfmgr",
+    ],
+    prebuilts: [
+        "lineage_power_libperfmgr_apex_init_rc",
+        "lineage_power_libperfmgr_apex_vintf",
+    ],
+}
+
 cc_binary {
     name: "android.hardware.power-service.lineage-libperfmgr",
     defaults: ["android.hardware.power-ndk_shared"],
     relative_install_path: "hw",
-    init_rc: ["aidl/android.hardware.power-service.lineage-libperfmgr.rc"],
-    vintf_fragments: ["aidl/android.hardware.power-service.lineage.xml"],
+    init_rc: [":lineage_power_libperfmgr_init_rc"],
+    vintf_fragments: [":lineage_power_libperfmgr_vintf_manifest"],
     vendor: true,
     cflags: [
         "-Wno-unused-variable",
@@ -73,4 +91,44 @@ cc_library_static {
     srcs: [
         "aidl/PowerModeExtension.cpp",
     ],
+}
+
+filegroup {
+    name: "lineage_power_libperfmgr_init_rc",
+    srcs: [
+        "aidl/android.hardware.power-service.lineage-libperfmgr.rc",
+    ],
+}
+
+filegroup {
+    name: "lineage_power_libperfmgr_vintf_manifest",
+    srcs: [
+        "aidl/android.hardware.power-service.lineage.xml",
+    ],
+}
+
+genrule {
+    name: "gen-lineage_power_libperfmgr_apex_init_rc",
+    srcs: [":lineage_power_libperfmgr_init_rc"],
+    out: ["lineage-power-libperfmgr.apex.rc"],
+    cmd: "sed " +
+        // Update the binary location to inside the Apex:
+        "-e 's%/vendor/bin/%/apex/com.android.hardware.power.lineage_libperfmgr/bin/%' " +
+        "$(in) > $(out)",
+}
+
+prebuilt_etc {
+    name: "lineage_power_libperfmgr_apex_init_rc",
+    filename_from_src: true,
+    src: ":gen-lineage_power_libperfmgr_apex_init_rc",
+    vendor: true,
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "lineage_power_libperfmgr_apex_vintf",
+    src: ":lineage_power_libperfmgr_vintf_manifest",
+    sub_dir: "vintf",
+    vendor: true,
+    installable: false,
 }
