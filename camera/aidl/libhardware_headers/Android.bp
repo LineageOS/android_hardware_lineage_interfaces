@@ -1,0 +1,24 @@
+soong_config_module_type {
+    name: "lineage_camera3",
+    module_type: "cc_defaults",
+    config_namespace: "lineageCameraVars",
+    bool_variables: [
+        "needs_get_cam_pos",
+    ],
+    properties: ["cflags"],
+}
+
+lineage_camera3 {
+    name: "lineage_camera3_defaults",
+    soong_config_variables: {
+        needs_get_cam_pos: {
+            cflags: ["-DCAMERA_NEEDS_GET_CAM_POS"],
+        },
+    },
+}
+
+cc_library_headers {
+    name: "libhardware_headers.camera3_lineage",
+    export_include_dirs: ["include"],
+    vendor_available: true,
+}
