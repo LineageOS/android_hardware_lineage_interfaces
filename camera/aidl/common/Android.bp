@@ -1,0 +1,42 @@
+cc_library_static {
+    name: "android.hardware.camera.common-helper.lineage",
+    defaults: [
+        "hidl_defaults",
+        "lineage_camera3_defaults",
+    ],
+    vendor_available: true,
+    srcs: [
+        "CameraModule.cpp",
+        "CameraMetadata.cpp",
+        "CameraParameters.cpp",
+        "VendorTagDescriptor.cpp",
+        "HandleImporter.cpp",
+        "Exif.cpp",
+        "SimpleThread.cpp",
+    ],
+    cflags: [
+        "-Werror",
+        "-Wextra",
+        "-Wall",
+    ],
+    shared_libs: [
+        "liblog",
+        "libgralloctypes",
+        "libhardware",
+        "libcamera_metadata",
+        "libexif",
+        "libui",
+    ],
+    include_dirs: ["system/media/private/camera/include"],
+    header_libs: ["libhardware_headers.camera3_lineage"],
+    export_include_dirs: ["include"],
+    export_shared_lib_headers: ["libui"],
+}
+
+// NOTE: Deprecated module kept for compatibility reasons.
+// Depend on "android.hardware.camera.common-helper.lineage" instead
+cc_library_static {
+    name: "android.hardware.camera.common@1.0-helper.lineage",
+    vendor_available: true,
+    whole_static_libs: ["android.hardware.camera.common-helper.lineage"],
+}
