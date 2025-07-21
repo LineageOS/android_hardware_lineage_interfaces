@@ -6,6 +6,7 @@
 
 cc_binary {
     name: "android.hardware.camera.provider-service.lineage",
+    defaults: ["lineage_camera3_defaults"],
     compile_multilib: "32",
     init_rc: ["android.hardware.camera.provider-service.lineage.rc"],
     vintf_fragments: ["android.hardware.camera.provider-service.lineage.xml"],
@@ -30,7 +31,10 @@ cc_binary {
         "libutils",
     ],
     static_libs: [
-        "android.hardware.camera.common-helper",
+        "android.hardware.camera.common-helper.lineage",
         "libaidlcommonsupport",
+    ],
+    header_libs: [
+        "libhardware_headers.camera3_lineage",
     ],
 }
