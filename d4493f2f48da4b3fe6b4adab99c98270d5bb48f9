@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78cbe14f_36adce0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33194
+      },
+      "writtenOn": "2025-08-08T21:36:36Z",
+      "side": 1,
+      "message": "Fixes light blinking on sake, unsure if it broke something for other devices",
+      "revId": "d4493f2f48da4b3fe6b4adab99c98270d5bb48f9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
