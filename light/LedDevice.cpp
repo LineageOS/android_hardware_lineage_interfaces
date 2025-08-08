@@ -57,12 +57,24 @@ LedDevice::LedDevice(std::string name)
         }
     }
 
-    mSupportsTimed = std::ifstream(mBasePath + kBlinkNode).good() &&
-                     std::ifstream(mBasePath + kStartIdxNode).good() &&
-                     std::ifstream(mBasePath + kDutyPctsNode).good() &&
-                     std::ifstream(mBasePath + kPauseLoNode).good() &&
-                     std::ifstream(mBasePath + kPauseHiNode).good() &&
-                     std::ifstream(mBasePath + kRampStepMsNode).good();
+    mSupportsQcomTimed = std::ifstream(mBasePath + kBlinkNode).good() &&
+                         std::ifstream(mBasePath + kStartIdxNode).good() &&
+                         std::ifstream(mBasePath + kDutyPctsNode).good() &&
+                         std::ifstream(mBasePath + kPauseLoNode).good() &&
+                         std::ifstream(mBasePath + kPauseHiNode).good() &&
+                         std::ifstream(mBasePath + kRampStepMsNode).good();
+
+    mSupportsUpstreamTimed = false;
+    std::ifstream file(mBasePath + kTriggerNode);
+    if (file.good()) {
+        std::string line;
+        while (std::getline(file, line)) {
+            if (line.find("timer") != std::string::npos) {
+                mSupportsUpstreamTimed = true;
+                break;
+            }
+        }
+    }
 }
 
 std::string LedDevice::getName() const {
@@ -74,7 +86,7 @@ bool LedDevice::supportsBreath() const {
 }
 
 bool LedDevice::supportsTimed() const {
-    return mSupportsTimed;
+    return mSupportsQcomTimed || mSupportsUpstreamTimed;
 }
 
 bool LedDevice::exists() const {
@@ -97,7 +109,7 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
     bool ok = false;
 
     // Disable current blinking
-    if (mSupportsTimed) {
+    if (mSupportsQcomTimed) {
         writeToFile(mBasePath + kBlinkNode, 0);
     } else {
         writeToFile(mBasePath + kTriggerNode, "none");
@@ -108,7 +120,7 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
 
     switch (mode) {
         case LightMode::TIMED:
-            if (mSupportsTimed) {
+            if (mSupportsQcomTimed) {
                 int32_t stepDuration = kRampMaxStepDurationMs;
                 int32_t pauseLo = flashOffMs;
                 int32_t pauseHi = flashOnMs - (stepDuration * kRampSteps * 2);
@@ -124,7 +136,16 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                        writeToFile(mBasePath + kPauseHiNode, pauseHi) &&
                        writeToFile(mBasePath + kRampStepMsNode, stepDuration) &&
                        writeToFile(mBasePath + kBlinkNode, 1);
-            } else {
+            }
+
+            // Fallthrough to upstream timed mode if qcom timed is not supported
+            FALLTHROUGH_INTENDED;
+        case LightMode::UPSTREAM_TIMED:
+            if (mSupportsUpstreamTimed) {
+                if (value == 0) {
+                    return true;
+                }
+
                 ok = writeToFile(mBasePath + kTriggerNode, "timer");
                 if (ok) {
                     using namespace std::chrono_literals;
@@ -142,7 +163,7 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                 if (ok) return true;
             }
 
-            // Fallthrough to breath mode if timed is not supported
+            // Fallthrough to breath mode if upstream timed is not supported
             FALLTHROUGH_INTENDED;
         case LightMode::BREATH:
             if (supportsBreath()) {
