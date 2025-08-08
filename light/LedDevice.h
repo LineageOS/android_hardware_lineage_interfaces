@@ -19,6 +19,7 @@ enum LightMode {
     STATIC,
     BREATH,
     TIMED,
+    UPSTREAM_TIMED,
 };
 
 /**
@@ -62,7 +63,7 @@ class LedDevice : public IDumpable {
     /**
      * Return whether this LED device supports timed mode.
      * When it doesn't, calling setBrightness with LightMode::TIMED will behave like
-     * LightMode::BREATH.
+     * LightMode::UPSTREAM_TIMED.
      *
      * @return bool true if the LED device supports timed mode, false otherwise
      */
@@ -93,7 +94,8 @@ class LedDevice : public IDumpable {
     std::string mBasePath;
     uint32_t mMaxBrightness;
     std::string mBreathNode;
-    bool mSupportsTimed;
+    bool mSupportsQcomTimed;
+    bool mSupportsUpstreamTimed;
 };
 
 }  // namespace light
