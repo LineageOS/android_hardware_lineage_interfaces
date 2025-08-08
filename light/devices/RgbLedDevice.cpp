@@ -53,7 +53,7 @@ bool RgbLedDevice::setState(const State& state) {
             mode = LedDevice::LightMode::BREATH;
             break;
         case Effect::Type::TIMED:
-            mode = LedDevice::LightMode::TIMED;
+            mode = LedDevice::LightMode::TIMED_QCOM;
             break;
     }
 
@@ -64,7 +64,13 @@ bool RgbLedDevice::setState(const State& state) {
     }
 
     switch (mode) {
-        case LedDevice::LightMode::TIMED:
+        case LedDevice::LightMode::TIMED_QCOM:
+            if (supportsMode(mode)) {
+                break;
+            }
+            mode = LedDevice::LightMode::TIMED_UPSTREAM;
+            FALLTHROUGH_INTENDED;
+        case LedDevice::LightMode::TIMED_UPSTREAM:
             if (supportsMode(mode)) {
                 break;
             }
@@ -80,7 +86,7 @@ bool RgbLedDevice::setState(const State& state) {
             break;
     }
 
-    if (mode == LedDevice::LightMode::TIMED && supportsRgbSync()) {
+    if (mode == LedDevice::LightMode::TIMED_QCOM && supportsRgbSync()) {
         rc &= writeToFile(mRgbSyncNode, 0);
     }
 
@@ -117,7 +123,7 @@ bool RgbLedDevice::setState(const State& state) {
         }
     }
 
-    if (mode == LedDevice::LightMode::TIMED && supportsRgbSync()) {
+    if (mode == LedDevice::LightMode::TIMED_QCOM && supportsRgbSync()) {
         rc &= writeToFile(mRgbSyncNode, 1);
     }
 
@@ -127,7 +133,9 @@ bool RgbLedDevice::setState(const State& state) {
 void RgbLedDevice::dump(int fd) const {
     dprintf(fd, "Is ok: %d", isOk());
     dprintf(fd, ", supports breath: %d", supportsMode(LedDevice::LightMode::BREATH));
-    dprintf(fd, ", supports timed: %d", supportsMode(LedDevice::LightMode::TIMED));
+    dprintf(fd, ", supports timed upstream: %d",
+            supportsMode(LedDevice::LightMode::TIMED_UPSTREAM));
+    dprintf(fd, ", supports timed qcom: %d", supportsMode(LedDevice::LightMode::TIMED_QCOM));
     dprintf(fd, ", supports RGB sync: %d", supportsRgbSync());
     dprintf(fd, ", roles:");
     if (mRoles != Role::NONE) {
