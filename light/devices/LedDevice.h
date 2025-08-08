@@ -36,9 +36,14 @@ class LedDevice : public IDevice {
         BREATH,
 
         /**
-         * Timed blinking.
+         * Upstream implementation of timed blinking.
          */
-        TIMED,
+        TIMED_UPSTREAM,
+
+        /**
+         * Qualcomm implementation of timed blinking.
+         */
+        TIMED_QCOM,
     };
 
     LedDevice() = delete;
@@ -92,7 +97,8 @@ class LedDevice : public IDevice {
     std::string mBasePath;
     uint32_t mMaxBrightness;
     std::string mBreathNode;
-    bool mSupportsTimed;
+    bool mSupportsTimedUpstream;
+    bool mSupportsTimedQcom;
 };
 
 }  // namespace light
