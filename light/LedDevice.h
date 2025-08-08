@@ -94,6 +94,7 @@ class LedDevice : public IDumpable {
     uint32_t mMaxBrightness;
     std::string mBreathNode;
     bool mSupportsTimed;
+    bool mSupportsUpstreamTimed;
 };
 
 }  // namespace light

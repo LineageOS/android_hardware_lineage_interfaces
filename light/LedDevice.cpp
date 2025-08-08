@@ -63,6 +63,8 @@ LedDevice::LedDevice(std::string name)
                      std::ifstream(mBasePath + kPauseLoNode).good() &&
                      std::ifstream(mBasePath + kPauseHiNode).good() &&
                      std::ifstream(mBasePath + kRampStepMsNode).good();
+
+    mSupportsUpstreamTimed = std::ifstream(mBasePath + kTriggerNode).good();
 }
 
 std::string LedDevice::getName() const {
@@ -74,7 +76,7 @@ bool LedDevice::supportsBreath() const {
 }
 
 bool LedDevice::supportsTimed() const {
-    return mSupportsTimed;
+    return mSupportsTimed || mSupportsUpstreamTimed;
 }
 
 bool LedDevice::exists() const {
@@ -124,7 +126,11 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                        writeToFile(mBasePath + kPauseHiNode, pauseHi) &&
                        writeToFile(mBasePath + kRampStepMsNode, stepDuration) &&
                        writeToFile(mBasePath + kBlinkNode, 1);
-            } else {
+            } else if (mSupportsUpstreamTimed) {
+                if (value == 0) {
+                    return true;
+                }
+
                 ok = writeToFile(mBasePath + kTriggerNode, "timer");
                 if (ok) {
                     using namespace std::chrono_literals;
