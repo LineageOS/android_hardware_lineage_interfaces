@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21d4ecd_3662a356",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-14T16:06:09Z",
+      "side": 1,
+      "message": "make it a class and do `static FastChargeConfig fastChargeConfig;` ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d687d7_a2d48ff4",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-14T16:06:09Z",
+      "side": 1,
+      "message": "I\u0027m surprised this compiles?\n\nI\u0027d expect compares to be value \u003d\u003d *valueNone?\n\n```\n        if (valueNone \u0026\u0026 value \u003d\u003d *valueNone) return FastChargeMode::NONE;\n        if (valueFastCharge \u0026\u0026 value \u003d\u003d *valueFastCharge) return FastChargeMode::FAST_CHARGE;\n        if (valueSuperFastCharge \u0026\u0026 value \u003d\u003d *valueSuperFastCharge) return FastChargeMode::SUPER_FAST_CHARGE;\n        return {};\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fff90b_fb7c0930",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-14T16:06:09Z",
+      "side": 1,
+      "message": "switch?",
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1342dfcf_d2837f91",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-14T16:06:09Z",
+      "side": 1,
+      "message": "I\u0027d make this a member of the class at the ctor level? We don\u0027t need to run this every time",
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642d1811_3b82d765",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-14T16:06:09Z",
+      "side": 1,
+      "message": "early ret if !node ret 0 else ...",
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
