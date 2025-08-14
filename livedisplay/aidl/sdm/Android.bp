@@ -1,0 +1,69 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2025 The LineageOS Project
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+filegroup {
+    name: "vendor.lineage.livedisplay-sdm-dm",
+    srcs: [
+        "DisplayModes.cpp",
+    ],
+}
+
+filegroup {
+    name: "vendor.lineage.livedisplay-sdm-pa",
+    srcs: [
+        "PictureAdjustment.cpp",
+    ],
+}
+
+filegroup {
+    name: "vendor.lineage.livedisplay-sdm-utils",
+    srcs: [
+        "SDMController.cpp",
+        "Utils.cpp",
+    ],
+}
+
+cc_library_headers {
+    name: "vendor.lineage.livedisplay-sdm-headers",
+    vendor_available: true,
+    export_include_dirs: ["include"],
+}
+
+cc_binary {
+    name: "vendor.lineage.livedisplay-service.sdm",
+    vendor: true,
+    relative_install_path: "hw",
+    init_rc: ["vendor.lineage.livedisplay-service.sdm.rc"],
+    vintf_fragments: select(soong_config_variable("livedisplay_sdm", "enable_dm"), {
+        "false": [],
+        default: ["vendor.lineage.livedisplay-service.sdm-dm.xml"],
+    }) + select(soong_config_variable("livedisplay_sdm", "enable_pa"), {
+        "false": [],
+        default: ["vendor.lineage.livedisplay-service.sdm-pa.xml"],
+    }),
+    cflags: select(soong_config_variable("livedisplay_sdm", "enable_dm"), {
+        "false": ["-DENABLE_DM=false"],
+        default: ["-DENABLE_DM=true"],
+    }) + select(soong_config_variable("livedisplay_sdm", "enable_pa"), {
+        "false": ["-DENABLE_PA=false"],
+        default: ["-DENABLE_PA=true"],
+    }),
+    srcs: [
+        ":vendor.lineage.livedisplay-sdm-dm",
+        ":vendor.lineage.livedisplay-sdm-pa",
+        ":vendor.lineage.livedisplay-sdm-utils",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libbinder_ndk",
+        "libutils",
+        "vendor.lineage.livedisplay-V1-ndk",
+    ],
+    header_libs: [
+        "vendor.lineage.livedisplay-sdm-headers",
+    ],
+}
