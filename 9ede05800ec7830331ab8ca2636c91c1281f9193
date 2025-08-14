@@ -88,6 +88,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c585ff_ee36a9b1",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-14T16:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87fff90b_fb7c0930",
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1342dfcf_d2837f91",
