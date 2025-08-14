@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a09bff3_fb453266",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-14T16:08:50Z",
+      "side": 1,
+      "message": "it checks has_value automatically afaict.",
+      "parentUuid": "03d687d7_a2d48ff4",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87fff90b_fb7c0930",
         "filename": "health/aidl/default/FastCharge.cpp",
         "patchSetId": 11
