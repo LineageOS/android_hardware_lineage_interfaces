@@ -204,6 +204,24 @@
       "message": "early ret if !node ret 0 else ...",
       "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3092f35_652a8bf1",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-14T16:28:10Z",
+      "side": 1,
+      "message": "eh, prefer one big if here.",
+      "parentUuid": "642d1811_3b82d765",
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
