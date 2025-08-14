@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05e0a0e_d8a946a8",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-14T16:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c21d4ecd_3662a356",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03d687d7_a2d48ff4",
@@ -143,6 +167,24 @@
       "writtenOn": "2025-08-14T16:06:09Z",
       "side": 1,
       "message": "I\u0027d make this a member of the class at the ctor level? We don\u0027t need to run this every time",
+      "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16071445_bb945d8c",
+        "filename": "health/aidl/default/FastCharge.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-14T16:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1342dfcf_d2837f91",
       "revId": "9ede05800ec7830331ab8ca2636c91c1281f9193",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
