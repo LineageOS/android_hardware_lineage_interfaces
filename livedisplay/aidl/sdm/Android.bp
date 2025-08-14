@@ -1,0 +1,56 @@
+/*
+ * SPDX-FileCopyrightText: 2025 The LineageOS Project
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+filegroup {
+    name: "vendor.lineage.livedisplay-sdm-dm",
+    srcs: [
+        "DisplayModes.cpp",
+    ],
+}
+
+filegroup {
+    name: "vendor.lineage.livedisplay-sdm-pa",
+    srcs: [
+        "PictureAdjustment.cpp",
+    ],
+}
+
+filegroup {
+    name: "vendor.lineage.livedisplay-sdm-utils",
+    srcs: [
+        "SDMController.cpp",
+        "Utils.cpp",
+    ],
+}
+
+cc_library_headers {
+    name: "vendor.lineage.livedisplay-sdm-headers",
+    vendor_available: true,
+    export_include_dirs: ["include"],
+}
+
+cc_binary {
+    name: "vendor.lineage.livedisplay-service.sdm",
+    init_rc: ["vendor.lineage.livedisplay-service.sdm.rc"],
+    vintf_fragments: ["vendor.lineage.livedisplay-service.sdm.xml"],
+    relative_install_path: "hw",
+    srcs: [
+        ":vendor.lineage.livedisplay-sdm-dm",
+        ":vendor.lineage.livedisplay-sdm-pa",
+        ":vendor.lineage.livedisplay-sdm-utils",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "libdl",
+        "libutils",
+        "vendor.lineage.livedisplay-V1-ndk",
+    ],
+    header_libs: [
+        "vendor.lineage.livedisplay-sdm-headers",
+    ],
+    vendor: true,
+}
