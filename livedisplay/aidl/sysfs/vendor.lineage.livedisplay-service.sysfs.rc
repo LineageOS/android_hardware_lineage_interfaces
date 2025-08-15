@@ -1,0 +1,4 @@
+service vendor.livedisplay-sysfs /vendor/bin/hw/vendor.lineage.livedisplay-service.sysfs
+    class hal
+    user system
+    group system
