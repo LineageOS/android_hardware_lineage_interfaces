@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5430513_30e4e0f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-08-15T09:40:11Z",
+      "side": 1,
+      "message": "what about moving classes like SDMController to common place and share them between hidl/aidl impl?",
+      "revId": "40e81ecb42c33778ce31fb15327c385f4c0655ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
