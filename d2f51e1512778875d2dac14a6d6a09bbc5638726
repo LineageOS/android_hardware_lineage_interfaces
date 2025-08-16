@@ -46,6 +46,30 @@
       },
       "revId": "d2f51e1512778875d2dac14a6d6a09bbc5638726",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99131240_41fc9f9b",
+        "filename": "livedisplay/aidl/sysfs/simple_mode.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-08-16T13:29:05Z",
+      "side": 1,
+      "message": "It would look better, but nevermind then.",
+      "parentUuid": "f5c5c273_c6c80824",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 88
+      },
+      "revId": "d2f51e1512778875d2dac14a6d6a09bbc5638726",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
