@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0909f810_6e37d1ab",
+        "filename": "livedisplay/aidl/sysfs/simple_mode.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-08-16T13:18:06Z",
+      "side": 1,
+      "message": "Make this look like the ones that follow",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 88
+      },
+      "revId": "d2f51e1512778875d2dac14a6d6a09bbc5638726",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
