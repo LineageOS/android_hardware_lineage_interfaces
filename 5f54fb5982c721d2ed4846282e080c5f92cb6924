@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55614f30_c7f4de27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-08-17T16:39:17Z",
+      "side": 1,
+      "message": "I\u0027m wondering if waiting for the backend to be ready is better that crash immediately, just like what I did for oplus nrmodeswitcher",
+      "revId": "5f54fb5982c721d2ed4846282e080c5f92cb6924",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
