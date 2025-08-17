@@ -18,6 +18,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1f1a91_e6be8dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-08-17T02:53:34Z",
+      "side": 1,
+      "message": "I don\u0027t like the idea of the common HAL being in rust, while nothing else here is in rust. SDM one is also cpp",
+      "revId": "d2f51e1512778875d2dac14a6d6a09bbc5638726",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0909f810_6e37d1ab",
