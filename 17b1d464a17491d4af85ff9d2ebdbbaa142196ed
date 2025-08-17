@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "806ed2a2_35b0a624",
+        "filename": "livedisplay/aidl/sdm/DisplayModes.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-17T14:55:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5d01dbcf_2f8a7800",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "17b1d464a17491d4af85ff9d2ebdbbaa142196ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33e7838c_381e5d59",
@@ -71,6 +95,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "947892de_0741e398",
+        "filename": "livedisplay/aidl/sdm/PictureAdjustment.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-17T14:55:27Z",
+      "side": 1,
+      "message": "i like isReady() not being static, I made supported non-static tho.",
+      "parentUuid": "39b808e8_9d30a482",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "17b1d464a17491d4af85ff9d2ebdbbaa142196ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e56d4e3b_98e17b86",
@@ -84,6 +132,30 @@
       "writtenOn": "2025-08-17T14:41:18Z",
       "side": 1,
       "message": "Are PA and DM allowed to co-exist?\n\nIf so the std::move in the ctor of the classes is wrong as we don\u0027t want to change ownership, I\u0027d simply store the std::shared_ptr",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "17b1d464a17491d4af85ff9d2ebdbbaa142196ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab0e1e8_1999d300",
+        "filename": "livedisplay/aidl/sdm/service.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-17T14:55:27Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "e56d4e3b_98e17b86",
       "range": {
         "startLine": 24,
         "startChar": 0,
