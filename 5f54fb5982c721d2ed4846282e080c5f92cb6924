@@ -57,6 +57,30 @@
       },
       "revId": "5f54fb5982c721d2ed4846282e080c5f92cb6924",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ec7599_710a0efa",
+        "filename": "livedisplay/aidl/sdm/service.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-18T06:19:22Z",
+      "side": 1,
+      "message": "this is more flexible since you can disable each interface separately, which let\u0027s you build your own hal for display modes, while using sdm one for picture adjustment.",
+      "parentUuid": "dcc06d71_4adca1dc",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 90
+      },
+      "revId": "5f54fb5982c721d2ed4846282e080c5f92cb6924",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
