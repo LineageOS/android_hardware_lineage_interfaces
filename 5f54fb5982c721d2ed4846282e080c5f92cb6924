@@ -81,6 +81,30 @@
       },
       "revId": "5f54fb5982c721d2ed4846282e080c5f92cb6924",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4add0a_6afa4209",
+        "filename": "livedisplay/aidl/sdm/service.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-08-18T06:23:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "08ec7599_710a0efa",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 90
+      },
+      "revId": "5f54fb5982c721d2ed4846282e080c5f92cb6924",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
