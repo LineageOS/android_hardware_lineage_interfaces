@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdfd51df_c200b3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-23T07:21:58Z",
+      "side": 1,
+      "message": "dropped libbinder since you don\u0027t depend on any vndservice, also changed class to hal since it should work fine here.",
+      "revId": "c47de87f362670e23e56e5d06551b8174a2784b8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
