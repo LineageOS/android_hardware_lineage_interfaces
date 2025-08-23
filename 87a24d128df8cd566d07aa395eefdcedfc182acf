@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "922e63d1_ce70c2bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-23T14:54:51Z",
+      "side": 1,
+      "message": "This on itself it looks good, I\u0027d make some clean-ups based on HAL version that seems to only create dead code.\n\nI\u0027ll check the \"figure this out\" but even google does that for external cameras...",
+      "revId": "87a24d128df8cd566d07aa395eefdcedfc182acf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2dd9a1_3a1a82c0",
+        "filename": "camera/aidl/device/CameraDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-23T14:54:51Z",
+      "side": 1,
+      "message": "make it fail?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "87a24d128df8cd566d07aa395eefdcedfc182acf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fee008_93b3a068",
+        "filename": "camera/aidl/device/CameraDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-23T14:54:51Z",
+      "side": 1,
+      "message": "This is fine, but I\u0027d make a stupid define that does it for you...\n\n```c\n#define CHECK_INIT_STATUS_OR_RETURN() \\\n    do { \\\n        Status status \u003d initStatus(); \\\n        if (status !\u003d Status::OK) { \\\n            return fromStatus(status); \\\n        } \\\n    } while(0)\n```\n\nYou\u0027d get rid of the if block and so on.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "87a24d128df8cd566d07aa395eefdcedfc182acf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fe1727_6beaa71d",
+        "filename": "camera/aidl/device/CameraDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-08-23T14:54:51Z",
+      "side": 1,
+      "message": "All those checks are now useless (for 2.4 \u0026 2.5), remove?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 77
+      },
+      "revId": "87a24d128df8cd566d07aa395eefdcedfc182acf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
