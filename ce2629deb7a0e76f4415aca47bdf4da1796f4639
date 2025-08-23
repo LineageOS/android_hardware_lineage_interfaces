@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ad5a10_e4564d1f",
+        "filename": "camera/aidl/provider/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2025-08-23T12:02:16Z",
+      "side": 1,
+      "message": "remove this, duplicated",
+      "revId": "ce2629deb7a0e76f4415aca47bdf4da1796f4639",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
