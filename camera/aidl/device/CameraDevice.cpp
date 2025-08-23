@@ -77,7 +77,7 @@ ndk::ScopedAStatus CameraDevice::getCameraCharacteristics(CameraMetadata* _aidl_
 }
 
 ndk::ScopedAStatus CameraDevice::getPhysicalCameraCharacteristics(
-        const std::string& in_physicalCameraId, CameraMetadata* _aidl_return) {
+        const std::string& physicalCameraId, CameraMetadata* _aidl_return) {
     if (_aidl_return == nullptr) {
         return fromStatus(Status::ILLEGAL_ARGUMENT);
     }
@@ -92,10 +92,10 @@ ndk::ScopedAStatus CameraDevice::getPhysicalCameraCharacteristics(
         } else {
             char* end;
             errno = 0;
-            long id = strtol(in_physicalCameraId.c_str(), &end, 0);
+            long id = strtol(physicalCameraId.c_str(), &end, 0);
             if (id > INT_MAX || (errno == ERANGE && id == LONG_MAX) || id < INT_MIN ||
                 (errno == ERANGE && id == LONG_MIN) || *end != '\0') {
-                ALOGE("%s: Invalid physicalCameraId %s", __FUNCTION__, in_physicalCameraId.c_str());
+                ALOGE("%s: Invalid physicalCameraId %s", __FUNCTION__, physicalCameraId.c_str());
                 status = Status::ILLEGAL_ARGUMENT;
             } else {
                 camera_metadata_t* physicalInfo = nullptr;
@@ -104,11 +104,11 @@ ndk::ScopedAStatus CameraDevice::getPhysicalCameraCharacteristics(
                     convertToAidl(physicalInfo, _aidl_return);
                 } else if (ret == -EINVAL) {
                     ALOGE("%s: %s is not a valid physical camera Id outside of getCameraIdList()",
-                          __FUNCTION__, in_physicalCameraId.c_str());
+                          __FUNCTION__, physicalCameraId.c_str());
                     status = Status::ILLEGAL_ARGUMENT;
                 } else {
                     ALOGE("%s: Failed to get physical camera %s info: %s (%d)!", __FUNCTION__,
-                          in_physicalCameraId.c_str(), strerror(-ret), ret);
+                          physicalCameraId.c_str(), strerror(-ret), ret);
                     status = Status::INTERNAL_ERROR;
                 }
             }
@@ -196,7 +196,7 @@ ndk::ScopedAStatus CameraDevice::getResourceCost(CameraResourceCost* _aidl_retur
     return fromStatus(status);
 }
 
-ndk::ScopedAStatus CameraDevice::isStreamCombinationSupported(const StreamConfiguration& in_streams,
+ndk::ScopedAStatus CameraDevice::isStreamCombinationSupported(const StreamConfiguration& streams,
                                                               bool* _aidl_return) {
     Status status;
     *_aidl_return = false;
@@ -209,12 +209,12 @@ ndk::ScopedAStatus CameraDevice::isStreamCombinationSupported(const StreamConfig
         status = Status::INTERNAL_ERROR;
     } else {
         camera_stream_combination_t streamComb{};
-        streamComb.operation_mode = static_cast<uint32_t>(in_streams.operationMode);
-        streamComb.num_streams = in_streams.streams.size();
+        streamComb.operation_mode = static_cast<uint32_t>(streams.operationMode);
+        streamComb.num_streams = streams.streams.size();
         camera_stream_t* streamBuffer = new camera_stream_t[streamComb.num_streams];
 
         size_t i = 0;
-        for (const auto& it : in_streams.streams) {
+        for (const auto& it : streams.streams) {
             streamBuffer[i].stream_type = static_cast<int>(it.streamType);
             streamBuffer[i].width = it.width;
             streamBuffer[i].height = it.height;
@@ -247,7 +247,7 @@ ndk::ScopedAStatus CameraDevice::isStreamCombinationSupported(const StreamConfig
     return fromStatus(status);
 }
 
-ndk::ScopedAStatus CameraDevice::open(const std::shared_ptr<ICameraDeviceCallback>& in_callback,
+ndk::ScopedAStatus CameraDevice::open(const std::shared_ptr<ICameraDeviceCallback>& callback,
                                       std::shared_ptr<ICameraDeviceSession>* _aidl_return) {
     if (_aidl_return == nullptr) {
         ALOGE("%s: cannot open camera %s. return session ptr is null!", __FUNCTION__,
@@ -258,7 +258,7 @@ ndk::ScopedAStatus CameraDevice::open(const std::shared_ptr<ICameraDeviceCallbac
     Status status = initStatus();
     std::shared_ptr<CameraDeviceSession> session = nullptr;
 
-    if (in_callback == nullptr) {
+    if (callback == nullptr) {
         ALOGE("%s: cannot open camera %s. callback is null!", __FUNCTION__, mCameraId.c_str());
         return fromStatus(Status::ILLEGAL_ARGUMENT);
     }
@@ -313,7 +313,7 @@ ndk::ScopedAStatus CameraDevice::open(const std::shared_ptr<ICameraDeviceCallbac
             return fromStatus(Status::ILLEGAL_ARGUMENT);
         }
 
-        session = createSession(device, info.static_camera_characteristics, in_callback);
+        session = createSession(device, info.static_camera_characteristics, callback);
         if (session == nullptr) {
             ALOGE("%s: camera device session allocation failed", __FUNCTION__);
             mLock.unlock();
@@ -339,14 +339,14 @@ ndk::ScopedAStatus CameraDevice::openInjectionSession(const std::shared_ptr<ICam
     return fromStatus(Status::OPERATION_NOT_SUPPORTED);
 }
 
-ndk::ScopedAStatus CameraDevice::setTorchMode(bool in_on) {
+ndk::ScopedAStatus CameraDevice::setTorchMode(bool on) {
     if (!mModule->isSetTorchModeSupported()) {
         return fromStatus(Status::OPERATION_NOT_SUPPORTED);
     }
 
     Status status = initStatus();
     if (status == Status::OK) {
-        status = getAidlStatus(mModule->setTorchMode(mCameraId.c_str(), in_on));
+        status = getAidlStatus(mModule->setTorchMode(mCameraId.c_str(), on));
     }
     return fromStatus(status);
 }

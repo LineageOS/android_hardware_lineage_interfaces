@@ -163,7 +163,7 @@ bool CameraDeviceSession::isClosed() {
 }
 
 ndk::ScopedAStatus CameraDeviceSession::repeatingRequestEnd(
-        int32_t /*in_frameNumber*/, const std::vector<int32_t>& /*in_streamIds*/) {
+        int32_t /*frameNumber*/, const std::vector<int32_t>& /*streamIds*/) {
     // TODO: Figure this one out.
     return fromStatus(Status::OK);
 }
@@ -857,8 +857,7 @@ void CameraDeviceSession::ResultBatcher::processCaptureResult(CaptureResult& res
 }
 
 ndk::ScopedAStatus CameraDeviceSession::configureStreams(
-        const StreamConfiguration& in_requestedConfiguration,
-        std::vector<HalStream>* _aidl_return) {
+        const StreamConfiguration& requestedConfiguration, std::vector<HalStream>* _aidl_return) {
     Status status = initStatus();
 
     // hold the inflight lock for entire configureStreams scope since there must not be any
@@ -889,17 +888,17 @@ ndk::ScopedAStatus CameraDeviceSession::configureStreams(
     }
 
     const camera_metadata_t* paramBuffer = nullptr;
-    if (0 < in_requestedConfiguration.sessionParams.metadata.size()) {
-        convertFromAidl(in_requestedConfiguration.sessionParams, &paramBuffer);
+    if (0 < requestedConfiguration.sessionParams.metadata.size()) {
+        convertFromAidl(requestedConfiguration.sessionParams, &paramBuffer);
     }
 
     camera3_stream_configuration_t stream_list{};
     // Block reading mStreamConfigCounter until configureStream returns
     Mutex::Autolock _sccl(mStreamConfigCounterLock);
-    mStreamConfigCounter = in_requestedConfiguration.streamConfigCounter;
+    mStreamConfigCounter = requestedConfiguration.streamConfigCounter;
     std::vector<camera3_stream_t*> streams;
     stream_list.session_parameters = paramBuffer;
-    if (!preProcessConfigurationLocked(in_requestedConfiguration, &stream_list, &streams)) {
+    if (!preProcessConfigurationLocked(requestedConfiguration, &stream_list, &streams)) {
         return fromStatus(Status::INTERNAL_ERROR);
     }
 
@@ -910,9 +909,9 @@ ndk::ScopedAStatus CameraDeviceSession::configureStreams(
     // In case Hal returns error most likely it was not able to release
     // the corresponding resources of the deleted streams.
     if (ret == OK) {
-        postProcessConfigurationLocked(in_requestedConfiguration);
+        postProcessConfigurationLocked(requestedConfiguration);
     } else {
-        postProcessConfigurationFailureLocked(in_requestedConfiguration);
+        postProcessConfigurationFailureLocked(requestedConfiguration);
     }
 
     if (ret == -EINVAL) {
@@ -1141,30 +1140,30 @@ ndk::ScopedAStatus CameraDeviceSession::getCaptureResultMetadataQueue(
 }
 
 ndk::ScopedAStatus CameraDeviceSession::isReconfigurationRequired(
-        const CameraMetadata& in_oldSessionParams, const CameraMetadata& in_newSessionParams,
+        const CameraMetadata& oldSessionParams, const CameraMetadata& newSessionParams,
         bool* _aidl_return) {
     // reconfiguration required if there is any change in the session params
-    *_aidl_return = in_oldSessionParams != in_newSessionParams;
+    *_aidl_return = oldSessionParams != newSessionParams;
     return fromStatus(Status::OK);
 }
 
 ndk::ScopedAStatus CameraDeviceSession::processCaptureRequest(
-        const std::vector<CaptureRequest>& in_requests,
-        const std::vector<BufferCache>& in_cachesToRemove, int32_t* _aidl_return) {
-    updateBufferCaches(in_cachesToRemove);
+        const std::vector<CaptureRequest>& requests, const std::vector<BufferCache>& cachesToRemove,
+        int32_t* _aidl_return) {
+    updateBufferCaches(cachesToRemove);
 
     *_aidl_return = 0;
     Status s = Status::OK;
-    for (size_t i = 0; i < in_requests.size(); i++) {
-        s = processOneCaptureRequest(in_requests[i]);
+    for (size_t i = 0; i < requests.size(); i++) {
+        s = processOneCaptureRequest(requests[i]);
         if (s != Status::OK) {
             break;
         }
         *_aidl_return = static_cast<int32_t>(i) + 1;
     }
 
-    if (s == Status::OK && in_requests.size() > 1) {
-        mResultBatcher.registerBatch(in_requests[0].frameNumber, in_requests.size());
+    if (s == Status::OK && requests.size() > 1) {
+        mResultBatcher.registerBatch(requests[0].frameNumber, requests.size());
     }
 
     return fromStatus(s);
@@ -1708,8 +1707,8 @@ void CameraDeviceSession::sNotify(const camera3_callback_ops* cb, const camera3_
 }
 
 ndk::ScopedAStatus CameraDeviceSession::switchToOffline(
-        const std::vector<int32_t>& /*in_streamsToKeep*/,
-        CameraOfflineSessionInfo* /*out_offlineSessionInfo*/,
+        const std::vector<int32_t>& /*streamsToKeep*/,
+        CameraOfflineSessionInfo* /*offlineSessionInfo*/,
         std::shared_ptr<ICameraOfflineSession>* /*_aidl_return*/) {
     return fromStatus(Status::OPERATION_NOT_SUPPORTED);
 }

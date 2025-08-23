@@ -40,18 +40,18 @@ class CameraDevice : public BnCameraDevice {
     virtual ~CameraDevice();
 
     ndk::ScopedAStatus getCameraCharacteristics(CameraMetadata* _aidl_return) override;
-    ndk::ScopedAStatus getPhysicalCameraCharacteristics(const std::string& in_physicalCameraId,
+    ndk::ScopedAStatus getPhysicalCameraCharacteristics(const std::string& physicalCameraId,
                                                         CameraMetadata* _aidl_return) override;
     ndk::ScopedAStatus getResourceCost(CameraResourceCost* _aidl_return) override;
-    ndk::ScopedAStatus isStreamCombinationSupported(const StreamConfiguration& in_streams,
+    ndk::ScopedAStatus isStreamCombinationSupported(const StreamConfiguration& streams,
                                                     bool* _aidl_return) override;
-    ndk::ScopedAStatus open(const std::shared_ptr<ICameraDeviceCallback>& in_callback,
+    ndk::ScopedAStatus open(const std::shared_ptr<ICameraDeviceCallback>& callback,
                             std::shared_ptr<ICameraDeviceSession>* _aidl_return) override;
     ndk::ScopedAStatus openInjectionSession(
-            const std::shared_ptr<ICameraDeviceCallback>& in_callback,
+            const std::shared_ptr<ICameraDeviceCallback>& callback,
             std::shared_ptr<ICameraInjectionSession>* _aidl_return) override;
-    ndk::ScopedAStatus setTorchMode(bool in_on) override;
-    ndk::ScopedAStatus turnOnTorchWithStrengthLevel(int32_t in_torchStrength) override;
+    ndk::ScopedAStatus setTorchMode(bool on) override;
+    ndk::ScopedAStatus turnOnTorchWithStrengthLevel(int32_t torchStrength) override;
     ndk::ScopedAStatus getTorchStrengthLevel(int32_t* _aidl_return) override;
 
     binder_status_t dump(int fd, const char** args, uint32_t numArgs) override;

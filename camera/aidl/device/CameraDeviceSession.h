@@ -71,29 +71,28 @@ class CameraDeviceSession : public BnCameraDeviceSession, protected camera3_call
     bool isClosed();
 
     ndk::ScopedAStatus close() override;
-    ndk::ScopedAStatus configureStreams(const StreamConfiguration& in_requestedConfiguration,
+    ndk::ScopedAStatus configureStreams(const StreamConfiguration& requestedConfiguration,
                                         std::vector<HalStream>* _aidl_return) override;
-    ndk::ScopedAStatus constructDefaultRequestSettings(RequestTemplate in_type,
+    ndk::ScopedAStatus constructDefaultRequestSettings(RequestTemplate type,
                                                        CameraMetadata* _aidl_return) override;
     ndk::ScopedAStatus flush() override;
     ndk::ScopedAStatus getCaptureRequestMetadataQueue(
             MQDescriptor<int8_t, SynchronizedReadWrite>* _aidl_return) override;
     ndk::ScopedAStatus getCaptureResultMetadataQueue(
             MQDescriptor<int8_t, SynchronizedReadWrite>* _aidl_return) override;
-    ndk::ScopedAStatus isReconfigurationRequired(const CameraMetadata& in_oldSessionParams,
-                                                 const CameraMetadata& in_newSessionParams,
+    ndk::ScopedAStatus isReconfigurationRequired(const CameraMetadata& oldSessionParams,
+                                                 const CameraMetadata& newSessionParams,
                                                  bool* _aidl_return) override;
-    ndk::ScopedAStatus processCaptureRequest(const std::vector<CaptureRequest>& in_requests,
-                                             const std::vector<BufferCache>& in_cachesToRemove,
+    ndk::ScopedAStatus processCaptureRequest(const std::vector<CaptureRequest>& requests,
+                                             const std::vector<BufferCache>& cachesToRemove,
                                              int32_t* _aidl_return) override;
-    ndk::ScopedAStatus signalStreamFlush(const std::vector<int32_t>& in_streamIds,
-                                         int32_t in_streamConfigCounter) override;
+    ndk::ScopedAStatus signalStreamFlush(const std::vector<int32_t>& streamIds,
+                                         int32_t streamConfigCounter) override;
     ndk::ScopedAStatus switchToOffline(
-            const std::vector<int32_t>& in_streamsToKeep,
-            CameraOfflineSessionInfo* out_offlineSessionInfo,
+            const std::vector<int32_t>& streamsToKeep, CameraOfflineSessionInfo* offlineSessionInfo,
             std::shared_ptr<ICameraOfflineSession>* _aidl_return) override;
-    ndk::ScopedAStatus repeatingRequestEnd(int32_t in_frameNumber,
-                                           const std::vector<int32_t>& in_streamIds) override;
+    ndk::ScopedAStatus repeatingRequestEnd(int32_t frameNumber,
+                                           const std::vector<int32_t>& streamIds) override;
 
   protected:
     // Helper methods

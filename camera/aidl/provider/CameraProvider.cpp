@@ -402,19 +402,19 @@ ndk::ScopedAStatus CameraProvider::getCameraIdList(std::vector<std::string>* _ai
 }
 
 ndk::ScopedAStatus CameraProvider::getCameraDeviceInterface(
-        const std::string& in_cameraDeviceName, std::shared_ptr<ICameraDevice>* _aidl_return) {
+        const std::string& cameraDeviceName, std::shared_ptr<ICameraDevice>* _aidl_return) {
     if (_aidl_return == nullptr) {
         return fromStatus(Status::ILLEGAL_ARGUMENT);
     }
     std::string cameraId, deviceVersion;
-    bool match = matchDeviceName(in_cameraDeviceName, &deviceVersion, &cameraId);
+    bool match = matchDeviceName(cameraDeviceName, &deviceVersion, &cameraId);
 
     if (!match) {
         *_aidl_return = nullptr;
         return fromStatus(Status::ILLEGAL_ARGUMENT);
     }
 
-    ssize_t index = mCameraDeviceNames.indexOf(std::make_pair(cameraId, in_cameraDeviceName));
+    ssize_t index = mCameraDeviceNames.indexOf(std::make_pair(cameraId, cameraDeviceName));
     if (index == NAME_NOT_FOUND) {  // Either an illegal name or a device version mismatch
         Status status = Status::OK;
         ssize_t idx = mCameraIds.indexOf(cameraId);

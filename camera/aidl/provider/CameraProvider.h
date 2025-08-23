@@ -38,18 +38,17 @@ class CameraProvider : public BnCameraProvider, protected camera_module_callback
     bool isInitFailed() { return mInitFailed; }
 
     ndk::ScopedAStatus setCallback(
-            const std::shared_ptr<ICameraProviderCallback>& in_callback) override;
+            const std::shared_ptr<ICameraProviderCallback>& callback) override;
     ndk::ScopedAStatus getVendorTags(std::vector<VendorTagSection>* _aidl_return) override;
     ndk::ScopedAStatus getCameraIdList(std::vector<std::string>* _aidl_return) override;
     ndk::ScopedAStatus getCameraDeviceInterface(
-            const std::string& in_cameraDeviceName,
+            const std::string& cameraDeviceName,
             std::shared_ptr<ICameraDevice>* _aidl_return) override;
-    ndk::ScopedAStatus notifyDeviceStateChange(int64_t in_deviceState) override;
+    ndk::ScopedAStatus notifyDeviceStateChange(int64_t deviceState) override;
     ndk::ScopedAStatus getConcurrentCameraIds(
             std::vector<ConcurrentCameraIdCombination>* _aidl_return) override;
     ndk::ScopedAStatus isConcurrentStreamCombinationSupported(
-            const std::vector<CameraIdAndStreamCombination>& in_configs,
-            bool* _aidl_return) override;
+            const std::vector<CameraIdAndStreamCombination>& configs, bool* _aidl_return) override;
 
   protected:
     Mutex mCbLock;
