@@ -89,6 +89,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "568c4314_9e3cd396",
+        "filename": "camera/aidl/device/CameraDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-23T15:13:23Z",
+      "side": 1,
+      "message": "android oems are very creative.",
+      "parentUuid": "830c7dd3_3861bb63",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "87a24d128df8cd566d07aa395eefdcedfc182acf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38fee008_93b3a068",
