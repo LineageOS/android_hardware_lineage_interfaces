@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc487fa6_5b4863e6",
+        "filename": "light/LedDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-08-23T06:28:46Z",
+      "side": 1,
+      "message": "We only write timer to the kTriggerNode inside setBrightness, how does this check work here?",
+      "revId": "4468948e36cd97c0370184192f60c7a95f854089",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
