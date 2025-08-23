@@ -33,6 +33,29 @@
       "message": "Depends on 442816",
       "revId": "2ad40b885c7f2c25eab33bec8730e34a5be2cb76",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849d317b_52328da3",
+        "filename": "livedisplay/aidl/sysfs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-08-23T06:49:51Z",
+      "side": 1,
+      "message": "I think opt-in is better than opt-out?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 7
+      },
+      "revId": "2ad40b885c7f2c25eab33bec8730e34a5be2cb76",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
