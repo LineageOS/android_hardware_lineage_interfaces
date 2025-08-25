@@ -50,6 +50,29 @@
       "message": "```river / # ls -alZ /sys/class/graphics/fb0/cabc\n-rw-rw---- 1 system system u:object_r:sysfs_livedisplay_tuneable:s0  4096 2025-08-24 23:02 /sys/class/graphics/fb0/cabc\n```\n\nso things are labeled right...",
       "revId": "856a192f1856c241a484b4cade9c6d82f0364df2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbeca454_d83ed8da",
+        "filename": "livedisplay/aidl/sysfs/include/livedisplay/sysfs/DualStateMode.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-08-25T03:09:08Z",
+      "side": 1,
+      "message": "this should be sth like ModeTrait\u003cDualStateMode\u003cBn##T\u003e::kName",
+      "range": {
+        "startLine": 75,
+        "startChar": 46,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "856a192f1856c241a484b4cade9c6d82f0364df2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
