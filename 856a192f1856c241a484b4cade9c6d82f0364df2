@@ -73,6 +73,30 @@
       },
       "revId": "856a192f1856c241a484b4cade9c6d82f0364df2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb91c4e8_bedddc4e",
+        "filename": "livedisplay/aidl/sysfs/include/livedisplay/sysfs/DualStateMode.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-08-25T05:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbeca454_d83ed8da",
+      "range": {
+        "startLine": 75,
+        "startChar": 46,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "856a192f1856c241a484b4cade9c6d82f0364df2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
