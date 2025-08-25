@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b8cbad_492e1441",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-08-25T02:59:45Z",
+      "side": 1,
+      "message": "Tested:\n\naf - berlin\nab, se - lake, mata, Nash\n\nAnyone have devices to test:\n\nac, ce, dcc, re?",
+      "revId": "856a192f1856c241a484b4cade9c6d82f0364df2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
