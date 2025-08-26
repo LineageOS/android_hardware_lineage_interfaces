@@ -16,6 +16,23 @@
       "message": "should be good now",
       "revId": "da846050ca417bdf15a64dddf7847e9fa50d8847",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58a133e_1117ead6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-08-26T20:29:36Z",
+      "side": 1,
+      "message": "new one works on sm8250/sm7325",
+      "revId": "da846050ca417bdf15a64dddf7847e9fa50d8847",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
