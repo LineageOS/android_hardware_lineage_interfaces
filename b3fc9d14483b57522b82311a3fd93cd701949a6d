@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ecf3845_f863e65c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-26T21:13:07Z",
+      "side": 1,
+      "message": "please retest your devices.\n\nI got rid of isSupported() since it\u0027s pointless when you have to register the interface anyway, I also made it die if none of the paths can be opened for given interface.",
+      "revId": "b3fc9d14483b57522b82311a3fd93cd701949a6d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
