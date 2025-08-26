@@ -16,6 +16,24 @@
       "message": "please retest your devices.\n\nI got rid of isSupported() since it\u0027s pointless when you have to register the interface anyway, I also made it die if none of the paths can be opened for given interface.",
       "revId": "b3fc9d14483b57522b82311a3fd93cd701949a6d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c6a350_8eff8bc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-26T21:13:47Z",
+      "side": 1,
+      "message": "tho not sure if latter of which won\u0027t get triggered for interfaces you aren\u0027t registering...",
+      "parentUuid": "6ecf3845_f863e65c",
+      "revId": "b3fc9d14483b57522b82311a3fd93cd701949a6d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
