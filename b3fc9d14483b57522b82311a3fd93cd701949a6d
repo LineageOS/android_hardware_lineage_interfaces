@@ -85,6 +85,23 @@
       "message": "fine on moto 8250 and sm7325",
       "revId": "b3fc9d14483b57522b82311a3fd93cd701949a6d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da183e29_78cee025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-08-28T03:50:54Z",
+      "side": 1,
+      "message": "can we support multiple anti flicker levels while converting to aidl? for instance dodge has two af levels",
+      "revId": "b3fc9d14483b57522b82311a3fd93cd701949a6d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
