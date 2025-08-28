@@ -138,6 +138,24 @@
       "parentUuid": "7d96cd7f_ba7a9d40",
       "revId": "b3fc9d14483b57522b82311a3fd93cd701949a6d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04bbe96_b278dd1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-08-28T11:10:43Z",
+      "side": 1,
+      "message": "AIDL API is already merged",
+      "parentUuid": "92f512ca_963a928a",
+      "revId": "b3fc9d14483b57522b82311a3fd93cd701949a6d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
