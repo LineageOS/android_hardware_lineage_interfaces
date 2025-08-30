@@ -16,6 +16,23 @@
       "message": "Matches https://github.com/LineageOS/android_hardware_lineage_livedisplay/blob/lineage-22.2/sysfs/lineage.livedisplay%402.0-service-sysfs.rc#L1",
       "revId": "eaa88af0df381a436b83ac17e08cba474656d3b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62cd3992_087b6d04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-08-30T16:45:42Z",
+      "side": 1,
+      "message": "cherry pick to 23.",
+      "revId": "eaa88af0df381a436b83ac17e08cba474656d3b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
