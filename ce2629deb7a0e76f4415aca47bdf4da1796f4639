@@ -16,6 +16,24 @@
       "message": "remove this, duplicated",
       "revId": "ce2629deb7a0e76f4415aca47bdf4da1796f4639",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8d71ec_3cdad1f0",
+        "filename": "camera/aidl/provider/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-08-31T04:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4ad5a10_e4564d1f",
+      "revId": "ce2629deb7a0e76f4415aca47bdf4da1796f4639",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
