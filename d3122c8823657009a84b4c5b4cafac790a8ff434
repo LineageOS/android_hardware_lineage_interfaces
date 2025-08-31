@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fd2e10_b378e6cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35551
+      },
+      "writtenOn": "2025-08-31T11:42:53Z",
+      "side": 1,
+      "message": "can sysfs combination with sdm?\n\nthis log use with on boot before on sm8250\n[   18.191215] init: starting service \u0027vendor.livedisplay-sysfs\u0027...\n[   18.191215] init: ... started service \u0027vendor.livedisplay-sysfs\u0027 has pid 2332\n[   18.202247] vendor.lineage.:2332 binder: 2332:2332 ioctl 40046210 7fdbe572b4 returned -22\n[   18.221066] init: Service \u0027vendor.livedisplay-sysfs\u0027 (pid 2332) received signal 6\n[   18.221088] init: Sending signal 9 to service \u0027vendor.livedisplay-sysfs\u0027 (pid 2332) process group...\n[   18.221364] init: Removed cgroup /sys/fs/cgroup/system/uid_1000/pid_2332\n[   18.221721] init: Untracked pid 2337 exited with status 0\n[   18.221726] init: Untracked pid 2337 did not have an associated service entry and will not be reaped\n[   18.221744] init: Untracked pid 2335 exited with status 0\n[   18.221747] init: Untracked pid 2335 did not have an associated service entry and will not be reaped",
+      "revId": "d3122c8823657009a84b4c5b4cafac790a8ff434",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
