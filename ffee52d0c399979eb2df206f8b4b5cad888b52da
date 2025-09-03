@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444bec14_24baeba5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35551
+      },
+      "writtenOn": "2025-09-03T11:06:58Z",
+      "side": 1,
+      "message": "sdm-DM crash on me\nsdm livedisplay\nDppsFactoryImpSDM::GetLtmXmlParser():863 ltm_xml_file /vendor/etc/ltm_config_SW43103_cmd_mode_dsc_dsi_panel.xml\nDpiXmlImpl::parse():154 Could not load XML file /vendor/etc/ltm_config_SW43103_cmd_mode_dsc_dsi_panel.xml. Error: 3\nDppsFactoryImpSDM::GetLtmXmlParser():872 failed to call ProcessOps(kParseConfig) ret -22\nvendor.lineage.livedisplay-service.sdm: Thread Pool max thread count is 0. Cannot cache binder as linkToDeath cannot be implemented.",
+      "revId": "ffee52d0c399979eb2df206f8b4b5cad888b52da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
