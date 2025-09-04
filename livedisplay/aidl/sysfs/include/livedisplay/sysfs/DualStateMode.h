@@ -84,14 +84,12 @@ class DualStateMode : public T, public PathManager<DualStateMode<T>> {
 
 DEFINE_DUAL_STATE_MODE(AdaptiveBacklight, "/sys/class/graphics/fb0/acl",
                        "/sys/class/graphics/fb0/cabc",
-                       "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/cabc",
-                       "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_acl",
-                       "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_cabc")
+                       "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/acl",
+                       "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/cabc")
 
 DEFINE_DUAL_STATE_MODE(AutoContrast, "/sys/class/graphics/fb0/aco")
 
-DEFINE_DUAL_STATE_MODE(AntiFlicker, "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dc",
-                       "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_dc")
+DEFINE_DUAL_STATE_MODE(AntiFlicker, "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dc")
 
 DEFINE_DUAL_STATE_MODE(ColorEnhancement, "/sys/class/graphics/fb0/color_enhance")
 
