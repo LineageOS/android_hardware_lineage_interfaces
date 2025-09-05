@@ -34,6 +34,24 @@
       "parentUuid": "a7b81284_2225cba4",
       "revId": "556ad979d8f8ea5b6487dd4754a7045e13e7ffe9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd2070b_02537a5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35551
+      },
+      "writtenOn": "2025-09-05T12:36:03Z",
+      "side": 1,
+      "message": "my lge use this path, just add to the list source ?\n/sys/devices/virtual/input/lge_touch/film_status",
+      "parentUuid": "885ed087_8b59f5c7",
+      "revId": "556ad979d8f8ea5b6487dd4754a7045e13e7ffe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
