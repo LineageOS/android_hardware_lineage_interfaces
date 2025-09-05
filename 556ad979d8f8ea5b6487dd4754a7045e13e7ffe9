@@ -88,6 +88,24 @@
       "parentUuid": "8d037ddd_2f31854c",
       "revId": "556ad979d8f8ea5b6487dd4754a7045e13e7ffe9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b84999_ff6db8e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-05T20:01:15Z",
+      "side": 1,
+      "message": "Yes, these are sysfs nodes exposed from kernel to userspace.",
+      "parentUuid": "2a75b93d_d79ee2ff",
+      "revId": "556ad979d8f8ea5b6487dd4754a7045e13e7ffe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
