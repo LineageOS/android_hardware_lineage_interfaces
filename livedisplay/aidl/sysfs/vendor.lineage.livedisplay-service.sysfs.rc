@@ -1,5 +1,6 @@
 on init
     # LiveDisplay sysfs
+    chown system system /sys/class/backlight/panel0-hbm/brightness
     chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/cabc
     chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dc
     chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_acl
