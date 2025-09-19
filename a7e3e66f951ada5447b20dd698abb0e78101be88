@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c3f01e_186eebc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-09-19T18:41:21Z",
+      "side": 1,
+      "message": "This allows Lenovo sm8150-common devices to use livedisplay sysfs. The kernel hbm path unfortunately doesn\u0027t work, but the dc one works for anti-flicker\n\nStock Lenovo ZUI ROM uses the path from this commit",
+      "revId": "a7e3e66f951ada5447b20dd698abb0e78101be88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
