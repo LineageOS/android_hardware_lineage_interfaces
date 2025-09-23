@@ -16,6 +16,23 @@
       "message": "This allows Lenovo sm8150-common devices to use livedisplay sysfs. The kernel hbm path unfortunately doesn\u0027t work, but the dc one works for anti-flicker\n\nStock Lenovo ZUI ROM uses the path from this commit",
       "revId": "a7e3e66f951ada5447b20dd698abb0e78101be88",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6c499f_733dd9e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-09-23T22:01:16Z",
+      "side": 1,
+      "message": "I\u0027d rather not add even more non-standard paths here but make device able to set custom path via soong config",
+      "revId": "a7e3e66f951ada5447b20dd698abb0e78101be88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
