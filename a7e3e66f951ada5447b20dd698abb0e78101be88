@@ -33,6 +33,23 @@
       "message": "I\u0027d rather not add even more non-standard paths here but make device able to set custom path via soong config",
       "revId": "a7e3e66f951ada5447b20dd698abb0e78101be88",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d981ad4e_bbd29e35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-09-23T22:13:34Z",
+      "side": 1,
+      "message": "aight, @mard, think you can handle that?",
+      "revId": "a7e3e66f951ada5447b20dd698abb0e78101be88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
