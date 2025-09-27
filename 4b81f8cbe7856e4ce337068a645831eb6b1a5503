@@ -16,6 +16,24 @@
       "message": "Need to remove from hw/mediatek.",
       "revId": "4b81f8cbe7856e4ce337068a645831eb6b1a5503",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10424dd2_9c0c7c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-09-27T12:15:24Z",
+      "side": 1,
+      "message": "aware.",
+      "parentUuid": "1af5f0da_92f75fa8",
+      "revId": "4b81f8cbe7856e4ce337068a645831eb6b1a5503",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
