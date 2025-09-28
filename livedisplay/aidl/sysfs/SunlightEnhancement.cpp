@@ -24,12 +24,20 @@ namespace sysfs {
 SunlightEnhancement::SunlightEnhancement()
     : SunlightEnhancement([]() {
           constexpr const char* kHBMPaths[] = {
+#ifdef SE_PATH
+                  SE_PATH,
+#else
                   "/sys/class/graphics/fb0/hbm",
                   "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_hbm",
                   "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm",
+#endif
           };
           constexpr const char* kSREPaths[] = {
+#ifdef SRE_PATH
+                  SRE_PATH,
+#else
                   "/sys/class/graphics/fb0/sre",
+#endif
           };
 
           for (const auto& path : kHBMPaths) {
