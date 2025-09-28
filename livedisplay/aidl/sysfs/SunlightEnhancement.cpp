@@ -24,7 +24,7 @@ namespace sysfs {
 SunlightEnhancement::SunlightEnhancement()
     : SunlightEnhancement([]() {
           constexpr const char* kHBMPaths[] = {
-                  "/sys/class/graphics/fb0/hbm",
+                  SE_PATH,
                   "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_hbm",
                   "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm",
           };

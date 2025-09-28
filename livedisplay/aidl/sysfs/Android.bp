@@ -72,6 +72,10 @@ cc_binary {
         "true": ["-DENABLE_SE=true"],
         default: ["-DENABLE_SE=false"],
     }),
+    cppflags: select(soong_config_variable("livedisplay_sysfs", "se_path"), {
+        any @ flag_val: ["-DSE_PATH=\"" + flag_val + "\""],
+        default: ["-DSE_PATH=\"/sys/class/graphics/fb0/hbm\""],
+    }),
     srcs: [
         ":vendor.lineage.livedisplay-sysfs-dcc",
         ":vendor.lineage.livedisplay-sysfs-se",
