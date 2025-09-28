@@ -71,6 +71,12 @@ cc_binary {
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_se"), {
         "true": ["-DENABLE_SE=true"],
         default: ["-DENABLE_SE=false"],
+    }) + select(soong_config_variable("livedisplay_sysfs", "se_path"), {
+        any @ flag_val: ["-DSE_PATH=\"" + flag_val + "\""],
+        default: [],
+    }) + select(soong_config_variable("livedisplay_sysfs", "sre_path"), {
+        any @ flag_val: ["-DSRE_PATH=\"" + flag_val + "\""],
+        default: [],
     }),
     srcs: [
         ":vendor.lineage.livedisplay-sysfs-dcc",
