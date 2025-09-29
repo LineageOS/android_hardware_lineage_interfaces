@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2a58e91_73e0bdd2",
+        "filename": "livedisplay/aidl/sysfs/SunlightEnhancement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-09-29T11:08:48Z",
+      "side": 1,
+      "message": "Maybe just something like:\n```\nifdef SE_PATH\n    SE_PATH\nelse\n    current paths\nendif\n```\nand make soong default option empty?",
+      "revId": "d89559ff7ec1c0314831f45c00e2495ae9475f41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f97e393_acb730f3",
         "filename": "livedisplay/aidl/sysfs/SunlightEnhancement.cpp",
         "patchSetId": 1
