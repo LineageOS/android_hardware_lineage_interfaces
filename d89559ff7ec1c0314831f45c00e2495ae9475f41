@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c06b99_5fa5f863",
+        "filename": "livedisplay/aidl/sysfs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-29T10:28:14Z",
+      "side": 1,
+      "message": "why cppflags if others entries are already here as cflags?",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "d89559ff7ec1c0314831f45c00e2495ae9475f41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
