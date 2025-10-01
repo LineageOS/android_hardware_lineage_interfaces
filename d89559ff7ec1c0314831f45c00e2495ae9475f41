@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55469e08_94a05479",
+        "filename": "livedisplay/aidl/sysfs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-10-01T01:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3c06b99_5fa5f863",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "d89559ff7ec1c0314831f45c00e2495ae9475f41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2a58e91_73e0bdd2",
@@ -41,6 +65,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ccfe5df_19d4f982",
+        "filename": "livedisplay/aidl/sysfs/SunlightEnhancement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-10-01T01:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a58e91_73e0bdd2",
+      "revId": "d89559ff7ec1c0314831f45c00e2495ae9475f41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f97e393_acb730f3",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-09-29T10:32:02Z",
       "side": 1,
       "message": "Btw, looks kinda meh no doing the same here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "d89559ff7ec1c0314831f45c00e2495ae9475f41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92ee8df_515f6d98",
+        "filename": "livedisplay/aidl/sysfs/SunlightEnhancement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-10-01T01:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f97e393_acb730f3",
       "range": {
         "startLine": 32,
         "startChar": 19,

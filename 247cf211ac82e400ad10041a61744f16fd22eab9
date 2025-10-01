@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "865bd5dd_3ea49ee1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-10-01T01:35:10Z",
+      "side": 1,
+      "message": "Pushed a new patchset for review if you could please\n\nVerified fine for devices with and without defining that soong config flag\n\n~/android/lineage-23/out/target/product/heart/vendor/bin/hw$ strings vendor.lineage.livedisplay-service.sysfs | grep hbm\n/sys/class/backlight/panel0-hbm/brightness\n\n~/android/lineage-23/out/target/product/rtwo/vendor/bin/hw$ strings vendor.lineage.livedisplay-service.sysfs | grep hbm\n/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_hbm\n/sys/class/graphics/fb0/hbm\n/sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm",
+      "revId": "247cf211ac82e400ad10041a61744f16fd22eab9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
