@@ -16,6 +16,24 @@
       "message": "@themard85@gmail.com I recall one of your device had some issues with `early-boot` trigger. Can you try this one instead? It fixes the chown command on one of my devices",
       "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7869ee9b_29ba9a68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-10-17T19:50:29Z",
+      "side": 1,
+      "message": "Wasn\u0027t the correct fix to move HAL to late_start class?",
+      "parentUuid": "3deb92b6_a7987014",
+      "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
