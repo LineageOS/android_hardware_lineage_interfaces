@@ -34,6 +34,24 @@
       "parentUuid": "3deb92b6_a7987014",
       "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25417d3e_40a39d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32253
+      },
+      "writtenOn": "2025-10-17T19:59:28Z",
+      "side": 1,
+      "message": "`late_start` won\u0027t set the correct chowns",
+      "parentUuid": "7869ee9b_29ba9a68",
+      "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
