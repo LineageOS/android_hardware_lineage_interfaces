@@ -105,6 +105,24 @@
       "parentUuid": "e1622f35_80ef1543",
       "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9eece60_3082d449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32253
+      },
+      "writtenOn": "2025-10-20T07:23:15Z",
+      "side": 1,
+      "message": "Another solution would be to duplicate the chown list to also trigger on `boot`, but that would look ugly and most likely prone to cause unwanted issues. I\u0027m fine with moving this to the device-specific tree if no one else has a better solution.",
+      "parentUuid": "6a1f389c_aa376647",
+      "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
