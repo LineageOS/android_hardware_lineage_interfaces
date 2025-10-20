@@ -87,6 +87,24 @@
       "parentUuid": "272c8b84_eb49d29d",
       "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a1f389c_aa376647",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-10-20T06:39:22Z",
+      "side": 1,
+      "message": "That\u0027s gross. If you have to do that, might just throw proper chowns into device tree.",
+      "parentUuid": "e1622f35_80ef1543",
+      "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
