@@ -52,6 +52,23 @@
       "parentUuid": "7869ee9b_29ba9a68",
       "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "272c8b84_eb49d29d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-10-20T03:21:02Z",
+      "side": 1,
+      "message": "I just tried this on my rtwo and HBM no longer works... but this works fine on Lenovo sm8150-common devices (which is the one that had the too late issue before)\n\nIf there\u0027s only some devices that need it on boot, maybe they should just keep it defined in their device trees? I\u0027m starting to think there isn\u0027t a solution that will work for everyone sadly",
+      "revId": "6e0ca57c5eb68b4435480a4d6d8be2c627f775ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
