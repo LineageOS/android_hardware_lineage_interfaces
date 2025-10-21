@@ -56,6 +56,30 @@
       },
       "revId": "a76f275d31c40882103f89ad5ff498255468cb05",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "021d9a17_537457bb",
+        "filename": "livedisplay/aidl/sysfs/vendor.lineage.livedisplay-service.sysfs.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 32253
+      },
+      "writtenOn": "2025-10-21T09:02:27Z",
+      "side": 1,
+      "message": "Yep it does, renamed the trigger to be more specific.",
+      "parentUuid": "e8baf31a_16eceaa8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 70
+      },
+      "revId": "a76f275d31c40882103f89ad5ff498255468cb05",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
