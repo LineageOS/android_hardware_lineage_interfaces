@@ -16,6 +16,46 @@
       "message": "@themard85@gmail.com Can you retest? It should be fine now",
       "revId": "a76f275d31c40882103f89ad5ff498255468cb05",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ab9f59_896aa890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-10-21T08:56:51Z",
+      "side": 1,
+      "message": "See if this works.",
+      "revId": "a76f275d31c40882103f89ad5ff498255468cb05",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8baf31a_16eceaa8",
+        "filename": "livedisplay/aidl/sysfs/vendor.lineage.livedisplay-service.sysfs.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-10-21T08:56:51Z",
+      "side": 1,
+      "message": "```suggestion\non boot\n    trigger set-perms\n\non init\n    trigger set-perms\n\non set-perms\n    # LiveDisplay sysfs\n    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/cabc\n    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dc\n    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_acl\n    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_cabc\n    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_dc\n    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dsi_display_hbm\n    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm\n    chown system system /sys/devices/virtual/graphics/fb0/acl\n    chown system system /sys/devices/virtual/graphics/fb0/aco\n    chown system system /sys/devices/virtual/graphics/fb0/cabc\n    chown system system /sys/devices/virtual/graphics/fb0/hbm\n    chown system system /sys/devices/virtual/graphics/fb0/rgb\n    chown system system /sys/devices/virtual/graphics/fb0/sre\n    chown system system /sys/devices/virtual/graphics/fb0/color_enhance\n    chown system system /sys/devices/virtual/graphics/fb0/reading_mode\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 70
+      },
+      "revId": "a76f275d31c40882103f89ad5ff498255468cb05",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
