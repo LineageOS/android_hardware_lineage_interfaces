@@ -16,6 +16,23 @@
       "message": "Waiting for Marc reply",
       "revId": "99431ba76c42fabd571c3e451b32bd51401a7099",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9736d26c_5b67195f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-10-24T00:04:59Z",
+      "side": 1,
+      "message": "Seems fine to me\n\n01-15 19:29:25.585     1     1 I init    : processing action (init) from (/vendor/etc/init/vendor.lineage.livedisplay-service.sysfs.rc:4)\n01-15 19:29:25.591     1     1 I init    : processing action (set-lineage-sysfs-perms) from (/vendor/etc/init/vendor.lineage.livedisplay-service.sysfs.rc:7)\n\n\n10-22 20:40:07.693     1     1 I init    : processing action (boot) from (/vendor/etc/init/vendor.lineage.livedisplay-service.sysfs.rc:1)\n10-22 20:40:08.081     1     1 I init    : processing action (set-lineage-sysfs-perms) from (/vendor/etc/init/vendor.lineage.livedisplay-service.sysfs.rc:7)",
+      "revId": "99431ba76c42fabd571c3e451b32bd51401a7099",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
