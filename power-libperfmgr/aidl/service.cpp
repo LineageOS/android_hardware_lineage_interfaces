@@ -21,8 +21,8 @@
 #include <android/binder_ibinder_platform.h>
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
-#include <processgroup/processgroup.h>
 #include <perfmgr/HintManager.h>
+#include <processgroup/processgroup.h>
 
 #include <thread>
 

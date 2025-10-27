@@ -25,15 +25,15 @@ namespace pixel {
 
 using ::aidl::android::hardware::power::Mode;
 
-bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
-    (void) type;
-    (void) _aidl_return;
+bool isDeviceSpecificModeSupported(Mode type, bool *_aidl_return) {
+    (void)type;
+    (void)_aidl_return;
     return false;
 }
 
 bool setDeviceSpecificMode(Mode type, bool enabled) {
-    (void) type;
-    (void) enabled;
+    (void)type;
+    (void)enabled;
     return false;
 }
 

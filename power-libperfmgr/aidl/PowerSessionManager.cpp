@@ -692,8 +692,8 @@ void PowerSessionManager<HintManagerT>::updateHboostStatistics(int64_t sessionId
 }
 
 template <class HintManagerT>
-std::vector<std::string> PowerSessionManager<HintManagerT>::getSessionTaskProfiles(int64_t sessionId,
-                                                                     bool isSetProfile) const {
+std::vector<std::string> PowerSessionManager<HintManagerT>::getSessionTaskProfiles(
+        int64_t sessionId, bool isSetProfile) const {
     auto sessValPtr = mSessionTaskMap.findSession(sessionId);
     if (isSetProfile) {
         if (nullptr == sessValPtr) {

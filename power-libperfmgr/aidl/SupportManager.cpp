@@ -158,10 +158,10 @@ SupportInfo SupportManager::makeSupportInfo() {
             .alwaysBatch = false,
     };
     out.headroom = {
-        .isCpuSupported = false,
-        .isGpuSupported = false,
-        .cpuMinIntervalMillis = 0,
-        .gpuMinIntervalMillis = 0,
+            .isCpuSupported = false,
+            .isGpuSupported = false,
+            .cpuMinIntervalMillis = 0,
+            .gpuMinIntervalMillis = 0,
     };
 
     return out;

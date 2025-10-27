@@ -51,12 +51,10 @@ constexpr char kPowerHalStateProp[] = "vendor.powerhal.state";
 constexpr char kPowerHalAudioProp[] = "vendor.powerhal.audio";
 constexpr char kPowerHalRenderingProp[] = "vendor.powerhal.rendering";
 
-extern bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return);
+extern bool isDeviceSpecificModeSupported(Mode type, bool *_aidl_return);
 extern bool setDeviceSpecificMode(Mode type, bool enabled);
 
-Power::Power()
-    : mInteractionHandler(nullptr),
-      mSustainedPerfModeOn(false) {
+Power::Power() : mInteractionHandler(nullptr), mSustainedPerfModeOn(false) {
     mInteractionHandler = std::make_unique<InteractionHandler>();
     mInteractionHandler->Init();
 
@@ -196,11 +194,11 @@ constexpr const char *boolToString(bool b) {
 }
 
 binder_status_t Power::dump(int fd, const char **, uint32_t) {
-    std::string buf(::android::base::StringPrintf(
-            "HintManager Running: %s\n"
-            "SustainedPerformanceMode: %s\n",
-            boolToString(HintManager::GetInstance()->IsRunning()),
-            boolToString(mSustainedPerfModeOn)));
+    std::string buf(
+            ::android::base::StringPrintf("HintManager Running: %s\n"
+                                          "SustainedPerformanceMode: %s\n",
+                                          boolToString(HintManager::GetInstance()->IsRunning()),
+                                          boolToString(mSustainedPerfModeOn)));
     // Dump nodes through libperfmgr
     HintManager::GetInstance()->DumpToFd(fd);
     PowerSessionManager<>::getInstance()->dumpToFd(fd);
