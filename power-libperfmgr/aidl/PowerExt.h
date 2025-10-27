@@ -16,12 +16,12 @@
 
 #pragma once
 
+#include <aidl/google/hardware/power/extension/pixel/BnPowerExt.h>
+#include <perfmgr/HintManager.h>
+
 #include <atomic>
 #include <memory>
 #include <thread>
-
-#include <aidl/google/hardware/power/extension/pixel/BnPowerExt.h>
-#include <perfmgr/HintManager.h>
 
 namespace aidl {
 namespace google {
