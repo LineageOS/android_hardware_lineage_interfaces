@@ -86,8 +86,8 @@ ChannelGroup<PowerSessionManagerT, PowerHintSessionT>::createChannel(int32_t tgi
     }
     LOG_ALWAYS_FATAL_IF(slot == kMaxChannels, "Failed to create channel!");
     ++mLiveChannels;
-    ChannelManager<SessionChannel>::ChannelMapValue channelId{
-            {.groupId = static_cast<int32_t>(mGroupId), .offset = slot}};
+    typename ChannelManager<ChannelGroup<PowerSessionManagerT, PowerHintSessionT>>::ChannelMapValue
+            channelId{{.groupId = static_cast<int32_t>(mGroupId), .offset = slot}};
     mChannels[slot] = std::make_shared<SessionChannel>(tgid, uid, channelId, slot);
     ALOGV("Channel created on group: %" PRId32 " slot: %" PRId32, mGroupId, slot);
     return mChannels[slot];
@@ -215,7 +215,8 @@ void ChannelGroup<PowerSessionManagerT, PowerHintSessionT>::runChannelGroup() {
     }
 }
 
-template class ChannelGroup<>;
+template class ChannelGroup<PowerSessionManager<::android::perfmgr::HintManager>,
+                            PowerHintSession<::android::perfmgr::HintManager>>;
 template class ChannelGroup<testing::NiceMock<mock::pixel::MockPowerSessionManager>,
                             testing::NiceMock<mock::pixel::MockPowerHintSession>>;
 

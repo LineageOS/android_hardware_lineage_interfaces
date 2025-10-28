@@ -830,7 +830,7 @@ bool PowerSessionManager<HintManagerT>::updateCollectedSessionMetrics(int64_t se
     return false;
 }
 
-template class PowerSessionManager<>;
+template class PowerSessionManager<::android::perfmgr::HintManager>;
 template class PowerSessionManager<testing::NiceMock<mock::pixel::MockHintManager>>;
 
 }  // namespace pixel

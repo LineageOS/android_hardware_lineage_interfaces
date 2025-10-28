@@ -121,7 +121,7 @@ ChannelManager<ChannelGroupT> *ChannelManager<ChannelGroupT>::getInstance() {
     return &instance;
 }
 
-template class ChannelManager<>;
+template class ChannelManager<ChannelGroupFor<::android::perfmgr::HintManager>>;
 template class ChannelManager<testing::NiceMock<mock::pixel::MockChannelGroup>>;
 template class ChannelManager<ChannelGroup<testing::NiceMock<mock::pixel::MockPowerSessionManager>,
                                            testing::NiceMock<mock::pixel::MockPowerHintSession>>>;

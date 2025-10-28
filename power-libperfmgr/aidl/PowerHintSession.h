@@ -50,8 +50,7 @@ using std::chrono::time_point;
 // interface for creating, updating, and closing power hints
 // for a Session. Each sesion that is mapped to multiple
 // threads (or task ids).
-template <class HintManagerT = ::android::perfmgr::HintManager,
-          class PowerSessionManagerT = PowerSessionManager<>>
+template <class HintManagerT, class PowerSessionManagerT = PowerSessionManager<HintManagerT>>
 class PowerHintSession : public BnPowerHintSession, public Immobile {
   public:
     explicit PowerHintSession(int32_t tgid, int32_t uid, const std::vector<int32_t> &threadIds,

@@ -25,7 +25,7 @@
 
 namespace aidl::google::hardware::power::impl::pixel {
 
-template <class ChannelGroupT = ChannelGroup<>>
+template <class ChannelGroupT>
 class ChannelManager : public Immobile {
   public:
     ~ChannelManager() = default;
@@ -65,5 +65,8 @@ class ChannelManager : public Immobile {
     // Used to look up where channels actually are in this data structure, and guarantee uniqueness
     std::unordered_map<int64_t, int64_t> mChannelMap GUARDED_BY(mChannelManagerMutex);
 };
+
+template <class HintManagerT>
+using ChannelManagerFor = ChannelManager<ChannelGroupFor<HintManagerT>>;
 
 }  // namespace aidl::google::hardware::power::impl::pixel

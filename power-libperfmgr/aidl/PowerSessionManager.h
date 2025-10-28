@@ -39,7 +39,7 @@ namespace pixel {
 
 using ::android::Thread;
 
-template <class HintManagerT = ::android::perfmgr::HintManager>
+template <class HintManagerT>
 class PowerSessionManager : public Immobile {
   public:
     ~PowerSessionManager() = default;
@@ -135,7 +135,7 @@ class PowerSessionManager : public Immobile {
     PowerSessionManager()
         : mPriorityQueueWorkerPool(new PriorityQueueWorkerPool(1, "adpf_handler")),
           mEventSessionTimeoutWorker([&](auto e) { handleEvent(e); }, mPriorityQueueWorkerPool),
-          mGpuCapacityNode(createGpuCapacityNode()),
+          mGpuCapacityNode(createGpuCapacityNode<HintManagerT>()),
           mTaskRampupMultNode(TaskRampupMultNode::getInstance()),
           kMaxNumOfCachedSessionMetrics(HintManagerT::GetInstance()
                                                 ->GetOtherConfigs()

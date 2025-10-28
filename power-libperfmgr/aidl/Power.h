@@ -17,6 +17,7 @@
 #pragma once
 
 #include <aidl/android/hardware/power/BnPower.h>
+#include <perfmgr/HintManager.h>
 
 #include <atomic>
 #include <memory>
@@ -32,6 +33,7 @@ namespace power {
 namespace impl {
 namespace pixel {
 
+template <class HintManagerT>
 class Power : public ::aidl::android::hardware::power::BnPower {
   public:
     Power();
@@ -62,7 +64,7 @@ class Power : public ::aidl::android::hardware::power::BnPower {
 
   private:
     void initSupportStatus();
-    std::unique_ptr<InteractionHandler> mInteractionHandler;
+    std::unique_ptr<InteractionHandler<HintManagerT>> mInteractionHandler;
     std::atomic<bool> mSustainedPerfModeOn;
     int32_t mServiceVersion;
     SupportInfo mSupportInfo;

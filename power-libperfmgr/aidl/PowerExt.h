@@ -30,6 +30,7 @@ namespace power {
 namespace impl {
 namespace pixel {
 
+template <class HintManagerT>
 class PowerExt : public ::aidl::google::hardware::power::extension::pixel::BnPowerExt {
   public:
     PowerExt() {}

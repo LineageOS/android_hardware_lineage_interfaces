@@ -38,8 +38,7 @@ namespace aidl::google::hardware::power::impl::pixel {
 // the manager, because adding/removing is only done by the manager while locked.
 // Thus, only the manager lock is required to count the group size when figuring out where
 // to insert a new channel.
-template <class PowerSessionManagerT = PowerSessionManager<>,
-          class PowerHintSessionT = PowerHintSession<>>
+template <class PowerSessionManagerT, class PowerHintSessionT>
 class ChannelGroup : public Immobile {
   public:
     ~ChannelGroup();
@@ -69,5 +68,9 @@ class ChannelGroup : public Immobile {
 
     std::thread mGroupThread;
 };
+
+template <class HintManagerT>
+using ChannelGroupFor =
+        ChannelGroup<PowerSessionManager<HintManagerT>, PowerHintSession<HintManagerT>>;
 
 }  // namespace aidl::google::hardware::power::impl::pixel

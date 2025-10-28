@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include <perfmgr/HintManager.h>
+
 #include <condition_variable>
 #include <memory>
 #include <mutex>
@@ -36,6 +38,7 @@ enum InteractionState {
     INTERACTION_STATE_WAITING,
 };
 
+template <class HintManagerT>
 class InteractionHandler {
   public:
     InteractionHandler();
