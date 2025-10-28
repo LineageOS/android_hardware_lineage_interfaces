@@ -21,7 +21,6 @@
 
 #include <android-base/properties.h>
 #include <fcntl.h>
-#include <perfmgr/HintManager.h>
 #include <poll.h>
 #include <sys/eventfd.h>
 #include <time.h>
@@ -84,16 +83,17 @@ static int FbIdleOpen(void) {
 
 }  // namespace
 
-using ::android::perfmgr::HintManager;
-
-InteractionHandler::InteractionHandler()
+template <class HintManagerT>
+InteractionHandler<HintManagerT>::InteractionHandler()
     : mState(INTERACTION_STATE_UNINITIALIZED), mDurationMs(0) {}
 
-InteractionHandler::~InteractionHandler() {
+template <class HintManagerT>
+InteractionHandler<HintManagerT>::~InteractionHandler() {
     Exit();
 }
 
-bool InteractionHandler::Init() {
+template <class HintManagerT>
+bool InteractionHandler<HintManagerT>::Init() {
     std::lock_guard<std::mutex> lk(mLock);
 
     if (mState != INTERACTION_STATE_UNINITIALIZED)
@@ -117,7 +117,8 @@ bool InteractionHandler::Init() {
     return true;
 }
 
-void InteractionHandler::Exit() {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::Exit() {
     std::unique_lock<std::mutex> lk(mLock);
     if (mState == INTERACTION_STATE_UNINITIALIZED)
         return;
@@ -133,21 +134,24 @@ void InteractionHandler::Exit() {
     close(mIdleFd);
 }
 
-void InteractionHandler::PerfLock() {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::PerfLock() {
     ALOGV("%s: acquiring perf lock", __func__);
-    if (!HintManager::GetInstance()->DoHint("INTERACTION")) {
+    if (!HintManagerT::GetInstance()->DoHint("INTERACTION")) {
         ALOGE("%s: do hint INTERACTION failed", __func__);
     }
 }
 
-void InteractionHandler::PerfRel() {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::PerfRel() {
     ALOGV("%s: releasing perf lock", __func__);
-    if (!HintManager::GetInstance()->EndHint("INTERACTION")) {
+    if (!HintManagerT::GetInstance()->EndHint("INTERACTION")) {
         ALOGE("%s: end hint INTERACTION failed", __func__);
     }
 }
 
-void InteractionHandler::Acquire(int32_t duration) {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::Acquire(int32_t duration) {
     ATRACE_CALL();
 
     std::lock_guard<std::mutex> lk(mLock);
@@ -165,7 +169,8 @@ void InteractionHandler::Acquire(int32_t duration) {
     // 1) override property is set OR
     // 2) InteractionHandler not initialized
     if (!kDisplayIdleSupport || mState == INTERACTION_STATE_UNINITIALIZED) {
-        HintManager::GetInstance()->DoHint("INTERACTION", std::chrono::milliseconds(finalDuration));
+        HintManagerT::GetInstance()->DoHint("INTERACTION",
+                                            std::chrono::milliseconds(finalDuration));
         return;
     }
 
@@ -195,7 +200,8 @@ void InteractionHandler::Acquire(int32_t duration) {
     mCond.notify_one();
 }
 
-void InteractionHandler::Release() {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::Release() {
     std::lock_guard<std::mutex> lk(mLock);
     if (mState == INTERACTION_STATE_WAITING) {
         ATRACE_CALL();
@@ -211,14 +217,16 @@ void InteractionHandler::Release() {
 }
 
 // should be called while locked
-void InteractionHandler::AbortWaitLocked() {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::AbortWaitLocked() {
     uint64_t val = 1;
     ssize_t ret = write(mEventFd, &val, sizeof(val));
     if (ret != sizeof(val))
         ALOGW("Unable to write to event fd (%zd)", ret);
 }
 
-void InteractionHandler::WaitForIdle(int32_t wait_ms, int32_t timeout_ms) {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::WaitForIdle(int32_t wait_ms, int32_t timeout_ms) {
     char data[MAX_LENGTH];
     ssize_t ret;
     struct pollfd pfd[2];
@@ -263,7 +271,8 @@ void InteractionHandler::WaitForIdle(int32_t wait_ms, int32_t timeout_ms) {
         ALOGV("%s: idle detected", __func__);
 }
 
-void InteractionHandler::Routine() {
+template <class HintManagerT>
+void InteractionHandler<HintManagerT>::Routine() {
     pthread_setname_np(pthread_self(), "DispIdle");
     std::unique_lock<std::mutex> lk(mLock, std::defer_lock);
 
@@ -279,6 +288,8 @@ void InteractionHandler::Routine() {
         Release();
     }
 }
+
+template class InteractionHandler<>;
 
 }  // namespace pixel
 }  // namespace impl

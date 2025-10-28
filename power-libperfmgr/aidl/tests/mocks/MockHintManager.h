@@ -35,7 +35,17 @@ class MockHintManager {
     MOCK_METHOD(bool, IsHintSupported, (const std::string &hint_type), (const));
     MOCK_METHOD(bool, IsHintEnabled, (const std::string &hint_type), (const));
     MOCK_METHOD(bool, SetAdpfProfile, (const std::string &profile_name), ());
+    MOCK_METHOD(void, RegisterAdpfUpdateEvent,
+                (const std::string &tag,
+                 ::android::perfmgr::HintManager::AdpfCallback *update_adpf_func),
+                ());
+    MOCK_METHOD(void, UnregisterAdpfUpdateEvent,
+                (const std::string &tag,
+                 ::android::perfmgr::HintManager::AdpfCallback *update_adpf_func),
+                ());
     MOCK_METHOD(std::shared_ptr<::android::perfmgr::AdpfConfig>, GetAdpfProfile, (), (const));
+    MOCK_METHOD(std::shared_ptr<::android::perfmgr::AdpfConfig>, GetAdpfProfile,
+                (const std::string), (const));
     MOCK_METHOD(bool, IsAdpfProfileSupported, (const std::string &name), (const));
     MOCK_METHOD(std::vector<std::string>, GetHints, (), (const));
     MOCK_METHOD(::android::perfmgr::HintStats, GetHintStats, (const std::string &hint_type),

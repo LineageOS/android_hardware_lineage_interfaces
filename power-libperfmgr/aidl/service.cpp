@@ -28,9 +28,9 @@
 #include "MetricUploader.h"
 #include "Power.h"
 #include "PowerExt.h"
-#include "PowerSessionManager.h"
 #include "utils/ThermalStateListener.h"
 
+using aidl::android::hardware::power::IPower;
 using aidl::google::hardware::power::impl::pixel::MetricUploader;
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
@@ -52,19 +52,19 @@ int main() {
     ABinderProcess_setThreadPoolMaxThreadCount(0);
 
     // core service
-    std::shared_ptr<Power> pw = ndk::SharedRefBase::make<Power>();
+    auto pw = ndk::SharedRefBase::make<Power<HintManager>>();
     ndk::SpAIBinder pwBinder = pw->asBinder();
     AIBinder_setMinSchedulerPolicy(pwBinder.get(), SCHED_NORMAL, -20);
 
     // extension service
-    std::shared_ptr<PowerExt> pwExt = ndk::SharedRefBase::make<PowerExt>();
+    auto pwExt = ndk::SharedRefBase::make<PowerExt<HintManager>>();
     auto pwExtBinder = pwExt->asBinder();
     AIBinder_setMinSchedulerPolicy(pwExtBinder.get(), SCHED_NORMAL, -20);
 
     // attach the extension to the same binder we will be registering
     CHECK(STATUS_OK == AIBinder_setExtension(pwBinder.get(), pwExt->asBinder().get()));
 
-    const std::string instance = std::string() + Power::descriptor + "/default";
+    const std::string instance = std::string() + IPower::descriptor + "/default";
     binder_status_t status = AServiceManager_addService(pw->asBinder().get(), instance.c_str());
     CHECK(status == STATUS_OK);
     LOG(INFO) << "Lineage Power HAL AIDL Service with Extension is started.";

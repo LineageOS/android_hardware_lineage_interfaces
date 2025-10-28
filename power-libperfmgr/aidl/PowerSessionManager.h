@@ -132,7 +132,7 @@ class PowerSessionManager : public Immobile {
     PowerSessionManager()
         : mPriorityQueueWorkerPool(new PriorityQueueWorkerPool(1, "adpf_handler")),
           mEventSessionTimeoutWorker([&](auto e) { handleEvent(e); }, mPriorityQueueWorkerPool),
-          mGpuCapacityNode(createGpuCapacityNode()),
+          mGpuCapacityNode(createGpuCapacityNode<HintManagerT>()),
           mTaskRampupMultNode(TaskRampupMultNode::getInstance()) {}
     PowerSessionManager(PowerSessionManager const &) = delete;
     PowerSessionManager &operator=(PowerSessionManager const &) = delete;
