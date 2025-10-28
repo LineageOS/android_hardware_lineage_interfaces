@@ -16,10 +16,13 @@
 
 #pragma once
 
+#include <perfmgr/HintManager.h>
+
 #include "AdpfTypes.h"
 
 namespace aidl::google::hardware::power::impl::pixel {
 
+template <class HintManagerT = ::android::perfmgr::HintManager>
 class SupportManager {
   public:
     static SupportInfo makeSupportInfo();

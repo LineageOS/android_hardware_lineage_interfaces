@@ -111,9 +111,10 @@ std::map<SessionHint, int32_t> kSessionHintEarliestVersionMap = kSessionHintEarl
 std::map<SessionMode, int32_t> kSessionModeEarliestVersionMap = kSessionModeEarliestVersion;
 std::map<SessionTag, int32_t> kSessionTagEarliestVersionMap = kSessionTagEarliestVersion;
 
-SupportInfo SupportManager::makeSupportInfo() {
+template <class HintManagerT>
+SupportInfo SupportManager<HintManagerT>::makeSupportInfo() {
     SupportInfo out;
-    out.usesSessions = HintManager::GetInstance()->IsAdpfSupported();
+    out.usesSessions = HintManagerT::GetInstance()->IsAdpfSupported();
 
     // Assume all are unsupported
     std::bitset<64> modeBits(0);
@@ -167,35 +168,38 @@ SupportInfo SupportManager::makeSupportInfo() {
     return out;
 }
 
-bool SupportManager::modeSupported(Mode type) {
+template <class HintManagerT>
+bool SupportManager<HintManagerT>::modeSupported(Mode type) {
     auto it = kModeEarliestVersionMap.find(type);
     if (it == kModeEarliestVersionMap.end() || IPower::version < it->second) {
         return false;
     }
-    bool supported = HintManager::GetInstance()->IsHintSupported(toString(type));
+    bool supported = HintManagerT::GetInstance()->IsHintSupported(toString(type));
     // LOW_POWER handled insides PowerHAL specifically
     if (type == Mode::LOW_POWER) {
         return true;
     }
-    if (!supported && HintManager::GetInstance()->IsAdpfProfileSupported(toString(type))) {
+    if (!supported && HintManagerT::GetInstance()->IsAdpfProfileSupported(toString(type))) {
         return true;
     }
     return supported;
 }
 
-bool SupportManager::boostSupported(Boost type) {
+template <class HintManagerT>
+bool SupportManager<HintManagerT>::boostSupported(Boost type) {
     auto it = kBoostEarliestVersionMap.find(type);
     if (it == kBoostEarliestVersionMap.end() || IPower::version < it->second) {
         return false;
     }
-    bool supported = HintManager::GetInstance()->IsHintSupported(toString(type));
-    if (!supported && HintManager::GetInstance()->IsAdpfProfileSupported(toString(type))) {
+    bool supported = HintManagerT::GetInstance()->IsHintSupported(toString(type));
+    if (!supported && HintManagerT::GetInstance()->IsAdpfProfileSupported(toString(type))) {
         return true;
     }
     return supported;
 }
 
-bool SupportManager::sessionHintSupported(SessionHint type) {
+template <class HintManagerT>
+bool SupportManager<HintManagerT>::sessionHintSupported(SessionHint type) {
     auto it = kSessionHintEarliestVersionMap.find(type);
     if (it == kSessionHintEarliestVersionMap.end() || IPower::version < it->second) {
         return false;
@@ -208,7 +212,8 @@ bool SupportManager::sessionHintSupported(SessionHint type) {
     }
 }
 
-bool SupportManager::sessionModeSupported(SessionMode type) {
+template <class HintManagerT>
+bool SupportManager<HintManagerT>::sessionModeSupported(SessionMode type) {
     auto it = kSessionModeEarliestVersionMap.find(type);
     if (it == kSessionModeEarliestVersionMap.end() || IPower::version < it->second) {
         return false;
@@ -223,12 +228,15 @@ bool SupportManager::sessionModeSupported(SessionMode type) {
     }
 }
 
-bool SupportManager::sessionTagSupported(SessionTag type) {
+template <class HintManagerT>
+bool SupportManager<HintManagerT>::sessionTagSupported(SessionTag type) {
     auto it = kSessionTagEarliestVersionMap.find(type);
     if (it == kSessionTagEarliestVersionMap.end() || IPower::version < it->second) {
         return false;
     }
     return true;
 }
+
+template class SupportManager<>;
 
 }  // namespace aidl::google::hardware::power::impl::pixel

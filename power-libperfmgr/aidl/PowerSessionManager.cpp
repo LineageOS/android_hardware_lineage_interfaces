@@ -30,6 +30,7 @@
 #include "AdpfTypes.h"
 #include "AppDescriptorTrace.h"
 #include "AppHintDesc.h"
+#include "HintManagerQti.h"
 #include "tests/mocks/MockHintManager.h"
 #include "utils/ThermalStateListener.h"
 
@@ -692,8 +693,8 @@ void PowerSessionManager<HintManagerT>::updateHboostStatistics(int64_t sessionId
 }
 
 template <class HintManagerT>
-std::vector<std::string> PowerSessionManager<HintManagerT>::getSessionTaskProfiles(int64_t sessionId,
-                                                                     bool isSetProfile) const {
+std::vector<std::string> PowerSessionManager<HintManagerT>::getSessionTaskProfiles(
+        int64_t sessionId, bool isSetProfile) const {
     auto sessValPtr = mSessionTaskMap.findSession(sessionId);
     if (isSetProfile) {
         if (nullptr == sessValPtr) {
@@ -831,6 +832,7 @@ bool PowerSessionManager<HintManagerT>::updateCollectedSessionMetrics(int64_t se
 }
 
 template class PowerSessionManager<>;
+template class PowerSessionManager<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>;
 template class PowerSessionManager<testing::NiceMock<mock::pixel::MockHintManager>>;
 
 }  // namespace pixel

@@ -24,6 +24,7 @@
 
 #include <charconv>
 
+#include "HintManagerQti.h"
 #include "perfmgr/HintManager.h"
 
 namespace aidl {
@@ -128,13 +129,19 @@ std::optional<Frequency> GpuCapacityNode::gpu_frequency() const {
     return frequency;
 }
 
+template <class HintManagerT>
 std::optional<std::unique_ptr<GpuCapacityNode>> createGpuCapacityNode() {
-    auto const path = ::android::perfmgr::HintManager::GetInstance()->gpu_sysfs_config_path();
+    auto const path = HintManagerT::GetInstance()->gpu_sysfs_config_path();
     if (!path) {
         return {};
     }
     return {GpuCapacityNode::init_gpu_capacity_node(std::make_unique<FdWriter>(), *path)};
 }
+
+template std::optional<std::unique_ptr<GpuCapacityNode>>
+createGpuCapacityNode<::android::perfmgr::HintManager>();
+template std::optional<std::unique_ptr<GpuCapacityNode>>
+createGpuCapacityNode<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>();
 
 }  // namespace pixel
 }  // namespace impl

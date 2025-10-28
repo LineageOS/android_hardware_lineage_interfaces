@@ -51,7 +51,7 @@ using std::chrono::time_point;
 // for a Session. Each sesion that is mapped to multiple
 // threads (or task ids).
 template <class HintManagerT = ::android::perfmgr::HintManager,
-          class PowerSessionManagerT = PowerSessionManager<>>
+          class PowerSessionManagerT = PowerSessionManager<HintManagerT>>
 class PowerHintSession : public BnPowerHintSession, public Immobile {
   public:
     explicit PowerHintSession(int32_t tgid, int32_t uid, const std::vector<int32_t> &threadIds,

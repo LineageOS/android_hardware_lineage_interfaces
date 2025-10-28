@@ -84,6 +84,7 @@ struct GpuCapacityNode final {
 
 // There's not a global object factory or context in PowerHal, maybe introducing one would simplify
 // resource management.
+template <class HintManagerT>
 std::optional<std::unique_ptr<GpuCapacityNode>> createGpuCapacityNode();
 
 }  // namespace pixel
