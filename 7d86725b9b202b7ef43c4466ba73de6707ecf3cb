@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02314c07_e8536e3c",
+        "filename": "light/Devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2025-11-09T14:39:29Z",
+      "side": 0,
+      "message": "clang-format did this btw, and it didn\u0027t do before my change",
+      "revId": "7d86725b9b202b7ef43c4466ba73de6707ecf3cb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
