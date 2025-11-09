@@ -24,6 +24,17 @@ on early-boot
     chown system system /sys/class/leds/blue/start_idx
     chown system system /sys/class/leds/blue/trigger
 
+    chown system system /sys/class/leds/blue:indicator/blink
+    chown system system /sys/class/leds/blue:indicator/breath
+    chown system system /sys/class/leds/blue:indicator/brightness
+    chown system system /sys/class/leds/blue:indicator/duty_pcts
+    chown system system /sys/class/leds/blue:indicator/max_brightness
+    chown system system /sys/class/leds/blue:indicator/pause_hi
+    chown system system /sys/class/leds/blue:indicator/pause_lo
+    chown system system /sys/class/leds/blue:indicator/ramp_step_ms
+    chown system system /sys/class/leds/blue:indicator/start_idx
+    chown system system /sys/class/leds/blue:indicator/trigger
+
     chown system system /sys/class/leds/blue:status/blink
     chown system system /sys/class/leds/blue:status/breath
     chown system system /sys/class/leds/blue:status/brightness
@@ -88,6 +99,17 @@ on early-boot
     chown system system /sys/class/leds/green/ramp_step_ms
     chown system system /sys/class/leds/green/start_idx
     chown system system /sys/class/leds/green/trigger
+
+    chown system system /sys/class/leds/green:indicator/blink
+    chown system system /sys/class/leds/green:indicator/breath
+    chown system system /sys/class/leds/green:indicator/brightness
+    chown system system /sys/class/leds/green:indicator/duty_pcts
+    chown system system /sys/class/leds/green:indicator/max_brightness
+    chown system system /sys/class/leds/green:indicator/pause_hi
+    chown system system /sys/class/leds/green:indicator/pause_lo
+    chown system system /sys/class/leds/green:indicator/ramp_step_ms
+    chown system system /sys/class/leds/green:indicator/start_idx
+    chown system system /sys/class/leds/green:indicator/trigger
 
     chown system system /sys/class/leds/green:status/blink
     chown system system /sys/class/leds/green:status/breath
@@ -177,6 +199,17 @@ on early-boot
     chown system system /sys/class/leds/red/start_idx
     chown system system /sys/class/leds/red/trigger
 
+    chown system system /sys/class/leds/red:indicator/blink
+    chown system system /sys/class/leds/red:indicator/breath
+    chown system system /sys/class/leds/red:indicator/brightness
+    chown system system /sys/class/leds/red:indicator/duty_pcts
+    chown system system /sys/class/leds/red:indicator/max_brightness
+    chown system system /sys/class/leds/red:indicator/pause_hi
+    chown system system /sys/class/leds/red:indicator/pause_lo
+    chown system system /sys/class/leds/red:indicator/ramp_step_ms
+    chown system system /sys/class/leds/red:indicator/start_idx
+    chown system system /sys/class/leds/red:indicator/trigger
+
     chown system system /sys/class/leds/red:status/blink
     chown system system /sys/class/leds/red:status/breath
     chown system system /sys/class/leds/red:status/brightness
@@ -200,6 +233,17 @@ on early-boot
     chown system system /sys/class/leds/white/ramp_step_ms
     chown system system /sys/class/leds/white/start_idx
     chown system system /sys/class/leds/white/trigger
+
+    chown system system /sys/class/leds/white:indicator/blink
+    chown system system /sys/class/leds/white:indicator/breath
+    chown system system /sys/class/leds/white:indicator/brightness
+    chown system system /sys/class/leds/white:indicator/duty_pcts
+    chown system system /sys/class/leds/white:indicator/max_brightness
+    chown system system /sys/class/leds/white:indicator/pause_hi
+    chown system system /sys/class/leds/white:indicator/pause_lo
+    chown system system /sys/class/leds/white:indicator/ramp_step_ms
+    chown system system /sys/class/leds/white:indicator/start_idx
+    chown system system /sys/class/leds/white:indicator/trigger
 
     chown system system /sys/class/leds/white:status/blink
     chown system system /sys/class/leds/white:status/breath
