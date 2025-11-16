@@ -3,14 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "LedDevice.h"
+#include <devices/LedDevice.h>
 
 #define LOG_TAG "LedDevice"
+
+#include <Utils.h>
 
 #include <android-base/logging.h>
 #include <fstream>
 #include <thread>
-#include "Utils.h"
 
 namespace aidl {
 namespace android {

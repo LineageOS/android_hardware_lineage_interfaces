@@ -3,13 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "BacklightDevice.h"
+#include <devices/BacklightDevice.h>
 
 #define LOG_TAG "BacklightDevice"
 
+#include <Utils.h>
+
 #include <android-base/logging.h>
 #include <fstream>
-#include "Utils.h"
 
 namespace aidl {
 namespace android {

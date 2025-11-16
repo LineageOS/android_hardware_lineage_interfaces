@@ -3,12 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "Lights.h"
+#include <Lights.h>
 
 #define LOG_TAG "Lights"
 
+#include <Utils.h>
+
 #include <android-base/logging.h>
-#include "Utils.h"
 
 namespace aidl {
 namespace android {
@@ -38,7 +39,7 @@ Lights::Lights() {
 }
 
 ndk::ScopedAStatus Lights::setLightState(int32_t id, const HwLightState& state) {
-    rgb color(state.color);
+    Color color(state.color);
 
     LightType type = static_cast<LightType>(id);
     switch (type) {
@@ -99,16 +100,16 @@ binder_status_t Lights::dump(int fd, const char** /*args*/, uint32_t /*numArgs*/
 void Lights::updateNotificationColor() {
     std::lock_guard<std::mutex> lock(mLedMutex);
 
-    bool isBatteryLit = rgb(mLastBatteryState.color).isLit();
-    bool isAttentionLit = rgb(mLastAttentionState.color).isLit();
-    bool isNotificationsLit = rgb(mLastNotificationsState.color).isLit();
+    bool isBatteryLit = Color(mLastBatteryState.color).isLit();
+    bool isAttentionLit = Color(mLastAttentionState.color).isLit();
+    bool isNotificationsLit = Color(mLastNotificationsState.color).isLit();
 
     const HwLightState state = isNotificationsLit ? mLastNotificationsState
                                : isAttentionLit   ? mLastAttentionState
                                : isBatteryLit     ? mLastBatteryState
                                                   : HwLightState();
 
-    rgb color(state.color);
+    Color color(state.color);
 
     LightMode lightMode;
     switch (state.flashMode) {

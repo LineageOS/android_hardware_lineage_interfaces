@@ -5,9 +5,9 @@
 
 #pragma once
 
-#include "IDumpable.h"
-#include "LedDevice.h"
-#include "Utils.h"
+#include <devices/LedDevice.h>
+#include <models/Color.h>
+#include <models/IDumpable.h>
 
 namespace aidl {
 namespace android {
@@ -75,12 +75,12 @@ class RgbLedDevice : public IDumpable {
      * @param mode The mode to set
      * @return bool true if the brightness was set successfully, false otherwise
      */
-    bool setBrightness(rgb color, LightMode mode = LightMode::STATIC, uint32_t flashOnMs = 0,
+    bool setBrightness(Color color, LightMode mode = LightMode::STATIC, uint32_t flashOnMs = 0,
                        uint32_t flashOffMs = 0);
 
     void dump(int fd) const override;
 
-    enum Color {
+    enum Role {
         NONE = 0,
         RED = 1 << 0,
         GREEN = 1 << 1,
@@ -94,7 +94,7 @@ class RgbLedDevice : public IDumpable {
     LedDevice mBlue;
     std::string mRgbSyncNode;
 
-    int mColors;
+    int mRoles;
 };
 
 }  // namespace light

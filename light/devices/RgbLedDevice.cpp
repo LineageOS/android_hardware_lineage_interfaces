@@ -3,12 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "RgbLedDevice.h"
+#include <devices/RgbLedDevice.h>
 
 #define LOG_TAG "RgbLedDevice"
 
+#include <Utils.h>
+
 #include <android-base/logging.h>
-#include "Utils.h"
 
 namespace aidl {
 namespace android {
@@ -16,15 +17,15 @@ namespace hardware {
 namespace light {
 
 RgbLedDevice::RgbLedDevice(LedDevice red, LedDevice green, LedDevice blue, std::string rgbSyncNode)
-    : mRed(red), mGreen(green), mBlue(blue), mRgbSyncNode(rgbSyncNode), mColors(Color::NONE) {
+    : mRed(red), mGreen(green), mBlue(blue), mRgbSyncNode(rgbSyncNode), mRoles(Role::NONE) {
     if (mRed.exists()) {
-        mColors |= Color::RED;
+        mRoles |= Role::RED;
     }
     if (mGreen.exists()) {
-        mColors |= Color::GREEN;
+        mRoles |= Role::GREEN;
     }
     if (mBlue.exists()) {
-        mColors |= Color::BLUE;
+        mRoles |= Role::BLUE;
     }
     mRed.setIdx(0);
     mGreen.setIdx(1);
@@ -32,7 +33,7 @@ RgbLedDevice::RgbLedDevice(LedDevice red, LedDevice green, LedDevice blue, std::
 }
 
 bool RgbLedDevice::exists() const {
-    return mColors != Color::NONE;
+    return mRoles != Role::NONE;
 }
 
 bool RgbLedDevice::supportsBreath() const {
@@ -51,11 +52,11 @@ bool RgbLedDevice::supportsRgbSync() const {
     return std::ifstream(mRgbSyncNode).good();
 }
 
-bool RgbLedDevice::setBrightness(rgb color, LightMode mode, uint32_t flashOnMs,
+bool RgbLedDevice::setBrightness(Color color, LightMode mode, uint32_t flashOnMs,
                                  uint32_t flashOffMs) {
     bool rc = true;
 
-    if (mColors == Color::NONE) {
+    if (mRoles == Role::NONE) {
         LOG(ERROR) << "No LEDs found";
         return false;
     }
@@ -74,31 +75,31 @@ bool RgbLedDevice::setBrightness(rgb color, LightMode mode, uint32_t flashOnMs,
         rc &= writeToFile(mRgbSyncNode, 0);
     }
 
-    if (mColors == Color::ALL) {
+    if (mRoles == Role::ALL) {
         rc &= mRed.setBrightness(color.red, mode, flashOnMs, flashOffMs);
         rc &= mGreen.setBrightness(color.green, mode, flashOnMs, flashOffMs);
         rc &= mBlue.setBrightness(color.blue, mode, flashOnMs, flashOffMs);
     } else {
         // Check if we have only one LED
-        if (mColors == Color::RED) {
+        if (mRoles == Role::RED) {
             rc &= mRed.setBrightness(color.toBrightness(), mode, flashOnMs, flashOffMs);
-        } else if (mColors == Color::GREEN) {
+        } else if (mRoles == Role::GREEN) {
             rc &= mGreen.setBrightness(color.toBrightness(), mode, flashOnMs, flashOffMs);
-        } else if (mColors == Color::BLUE) {
+        } else if (mRoles == Role::BLUE) {
             rc &= mBlue.setBrightness(color.toBrightness(), mode, flashOnMs, flashOffMs);
         } else {
             // We only have two LEDs, blend the missing color in the other two
-            if ((mColors & Color::RED) == Color::NONE) {
+            if ((mRoles & Role::RED) == Role::NONE) {
                 rc &= mBlue.setBrightness((color.blue + color.red) / 2, mode, flashOnMs,
                                           flashOffMs);
                 rc &= mGreen.setBrightness((color.green + color.red) / 2, mode, flashOnMs,
                                            flashOffMs);
-            } else if ((mColors & Color::GREEN) == Color::NONE) {
+            } else if ((mRoles & Role::GREEN) == Role::NONE) {
                 rc &= mRed.setBrightness((color.red + color.green) / 2, mode, flashOnMs,
                                          flashOffMs);
                 rc &= mBlue.setBrightness((color.blue + color.green) / 2, mode, flashOnMs,
                                           flashOffMs);
-            } else if ((mColors & Color::BLUE) == Color::NONE) {
+            } else if ((mRoles & Role::BLUE) == Role::NONE) {
                 rc &= mRed.setBrightness((color.red + color.blue) / 2, mode, flashOnMs, flashOffMs);
                 rc &= mGreen.setBrightness((color.green + color.blue) / 2, mode, flashOnMs,
                                            flashOffMs);
@@ -118,17 +119,17 @@ void RgbLedDevice::dump(int fd) const {
     dprintf(fd, ", supports breath: %d", supportsBreath());
     dprintf(fd, ", supports timed: %d", supportsTimed());
     dprintf(fd, ", supports RGB sync: %d", supportsRgbSync());
-    dprintf(fd, ", colors:");
-    if (mColors != Color::NONE) {
-        if (mColors & Color::RED) {
+    dprintf(fd, ", roles:");
+    if (mRoles != Role::NONE) {
+        if (mRoles & Role::RED) {
             dprintf(fd, "\nRed: ");
             mRed.dump(fd);
         }
-        if (mColors & Color::GREEN) {
+        if (mRoles & Role::GREEN) {
             dprintf(fd, "\nGreen: ");
             mGreen.dump(fd);
         }
-        if (mColors & Color::BLUE) {
+        if (mRoles & Role::BLUE) {
             dprintf(fd, "\nBlue: ");
             mBlue.dump(fd);
         }

@@ -5,8 +5,12 @@
 
 #pragma once
 
+#include <models/State.h>
+
+#include <aidl/android/hardware/light/HwLightState.h>
 #include <cstdint>
 #include <fstream>
+#include <limits>
 #include <string>
 
 namespace aidl {
@@ -14,20 +18,12 @@ namespace android {
 namespace hardware {
 namespace light {
 
-struct rgb {
-    rgb();
-    rgb(uint8_t r, uint8_t g, uint8_t b);
-    rgb(uint32_t color);
+State fromAidl(const HwLightState& value);
 
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-
-    bool isLit();
-    uint8_t toBrightness();
-};
-
-uint32_t scaleBrightness(uint8_t brightness, uint32_t maxBrightness);
+template <typename S, typename D>
+D scaleBrightness(S brightness, D maxBrightness) {
+    return brightness * maxBrightness / std::numeric_limits<S>::max();
+}
 
 template <typename T>
 bool readFromFile(const std::string& file, T& content) {

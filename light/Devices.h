@@ -5,12 +5,14 @@
 
 #pragma once
 
+#include <Utils.h>
+#include <devices/BacklightDevice.h>
+#include <devices/LedDevice.h>
+#include <devices/RgbLedDevice.h>
+#include <models/Color.h>
+#include <models/IDumpable.h>
+
 #include <vector>
-#include "BacklightDevice.h"
-#include "IDumpable.h"
-#include "LedDevice.h"
-#include "RgbLedDevice.h"
-#include "Utils.h"
 
 namespace aidl {
 namespace android {
@@ -26,11 +28,11 @@ class Devices : public IDumpable {
     bool hasKeyboardDevices() const;
     bool hasNotificationDevices() const;
 
-    void setBacklightColor(rgb color);
-    void setButtonsColor(rgb color);
-    void setKeyboardColor(rgb color);
-    void setNotificationColor(rgb color, LightMode mode = LightMode::STATIC, uint32_t flashOnMs = 0,
-                              uint32_t flashOffMs = 0);
+    void setBacklightColor(Color color);
+    void setButtonsColor(Color color);
+    void setKeyboardColor(Color color);
+    void setNotificationColor(Color color, LightMode mode = LightMode::STATIC,
+                              uint32_t flashOnMs = 0, uint32_t flashOffMs = 0);
 
     void dump(int fd) const override;
 

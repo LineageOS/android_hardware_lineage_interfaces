@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "Devices.h"
+#include <Devices.h>
 
 #define LOG_TAG "Devices"
 
@@ -212,7 +212,7 @@ bool Devices::hasNotificationDevices() const {
     return !mNotificationRgbLedDevices.empty() || !mNotificationLedDevices.empty();
 }
 
-void Devices::setBacklightColor(rgb color) {
+void Devices::setBacklightColor(Color color) {
     for (auto& device : mBacklightDevices) {
         device.setBrightness(color.toBrightness());
     }
@@ -221,19 +221,19 @@ void Devices::setBacklightColor(rgb color) {
     }
 }
 
-void Devices::setButtonsColor(rgb color) {
+void Devices::setButtonsColor(Color color) {
     for (auto& device : mButtonLedDevices) {
         device.setBrightness(color.toBrightness());
     }
 }
 
-void Devices::setKeyboardColor(rgb color) {
+void Devices::setKeyboardColor(Color color) {
     for (auto& device : mKeyboardLedDevices) {
         device.setBrightness(color.toBrightness());
     }
 }
 
-void Devices::setNotificationColor(rgb color, LightMode mode, uint32_t flashOnMs,
+void Devices::setNotificationColor(Color color, LightMode mode, uint32_t flashOnMs,
                                    uint32_t flashOffMs) {
     for (auto& device : mNotificationRgbLedDevices) {
         device.setBrightness(color, mode, flashOnMs, flashOffMs);

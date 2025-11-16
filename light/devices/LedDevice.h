@@ -5,9 +5,10 @@
 
 #pragma once
 
+#include <models/IDumpable.h>
+
 #include <cstdint>
 #include <string>
-#include "IDumpable.h"
 
 namespace aidl {
 namespace android {
