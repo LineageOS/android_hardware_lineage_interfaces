@@ -16,8 +16,7 @@ namespace android {
 namespace hardware {
 namespace light {
 
-#define AutoHwLight(light) \
-    { .id = static_cast<int32_t>(light), .ordinal = 0, .type = light }
+#define AutoHwLight(light) {.id = static_cast<int32_t>(light), .ordinal = 0, .type = light}
 
 Lights::Lights() {
     if (mDevices.hasBacklightDevices()) {
