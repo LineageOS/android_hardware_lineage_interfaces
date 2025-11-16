@@ -3,13 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "BacklightDevice.h"
+#include <devices/BacklightDevice.h>
 
 #define LOG_TAG "BacklightDevice"
 
+#include <Utils.h>
+
 #include <android-base/logging.h>
 #include <fstream>
-#include "Utils.h"
 
 namespace aidl {
 namespace android {
@@ -29,12 +30,16 @@ BacklightDevice::BacklightDevice(std::string name)
     }
 };
 
-std::string BacklightDevice::getName() const {
-    return mName;
+bool BacklightDevice::isOk() const {
+    return std::ifstream(mBasePath + kBrightnessNode).good();
 }
 
-bool BacklightDevice::exists() const {
-    return std::ifstream(mBasePath + kBrightnessNode).good();
+bool BacklightDevice::setState(const State& state) {
+    return setBrightness(state.color.toBrightness());
+}
+
+std::string BacklightDevice::getName() const {
+    return mName;
 }
 
 bool BacklightDevice::setBrightness(uint8_t value) {
@@ -43,7 +48,7 @@ bool BacklightDevice::setBrightness(uint8_t value) {
 
 void BacklightDevice::dump(int fd) const {
     dprintf(fd, "Name: %s", mName.c_str());
-    dprintf(fd, ", exists: %d", exists());
+    dprintf(fd, ", is ok: %d", isOk());
     dprintf(fd, ", base path: %s", mBasePath.c_str());
     dprintf(fd, ", max brightness: %u", mMaxBrightness);
 }

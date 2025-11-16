@@ -5,27 +5,42 @@
 
 #pragma once
 
+#include <models/IDevice.h>
+
 #include <cstdint>
 #include <string>
-#include "IDumpable.h"
 
 namespace aidl {
 namespace android {
 namespace hardware {
 namespace light {
 
-enum LightMode {
-    STATIC,
-    BREATH,
-    TIMED,
-};
-
 /**
  * A Linux LED device.
  * @see https://docs.kernel.org/leds/leds-class.html
  */
-class LedDevice : public IDumpable {
+class LedDevice : public IDevice {
   public:
+    /**
+     * LED light mode.
+     */
+    enum LightMode {
+        /**
+         * Static steady light.
+         */
+        STATIC,
+
+        /**
+         * Hardware specific breathing effect.
+         */
+        BREATH,
+
+        /**
+         * Timed blinking.
+         */
+        TIMED,
+    };
+
     LedDevice() = delete;
 
     /**
@@ -35,6 +50,10 @@ class LedDevice : public IDumpable {
      */
     LedDevice(std::string name);
 
+    bool isOk() const override;
+    bool setState(const State& state) override;
+    void dump(int fd) const override;
+
     /**
      * Get the name of the LED device.
      *
@@ -43,29 +62,12 @@ class LedDevice : public IDumpable {
     std::string getName() const;
 
     /**
-     * Return whether this LED device exists.
+     * Return whether this LED device supports the given light mode.
      *
-     * @return bool true if the LED device exists, false otherwise
+     * @param mode The light mode to check
+     * @return bool true if the LED device supports the given mode, false otherwise
      */
-    bool exists() const;
-
-    /**
-     * Return whether this LED device supports breathing.
-     * When it doesn't, calling setBrightness with LightMode::BREATH will behave like
-     * LightMode::STATIC.
-     *
-     * @return bool true if the LED device supports breathing, false otherwise
-     */
-    bool supportsBreath() const;
-
-    /**
-     * Return whether this LED device supports timed mode.
-     * When it doesn't, calling setBrightness with LightMode::TIMED will behave like
-     * LightMode::BREATH.
-     *
-     * @return bool true if the LED device supports timed mode, false otherwise
-     */
-    bool supportsTimed() const;
+    bool supportsMode(LightMode mode) const;
 
     /**
      * Set the brightness of the LED device.
@@ -83,8 +85,6 @@ class LedDevice : public IDumpable {
      * @param idx The index to set
      */
     void setIdx(int idx);
-
-    void dump(int fd) const override;
 
   private:
     std::string mName;
