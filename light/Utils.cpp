@@ -13,7 +13,7 @@ namespace light {
 
 rgb::rgb() : red(0), green(0), blue(0) {}
 
-rgb::rgb(uint8_t r, uint8_t g, uint8_t b) : red(r), green(g), blue(b){};
+rgb::rgb(uint8_t r, uint8_t g, uint8_t b) : red(r), green(g), blue(b) {};
 
 rgb::rgb(uint32_t color) {
     // Extract brightness from AARRGGBB.
