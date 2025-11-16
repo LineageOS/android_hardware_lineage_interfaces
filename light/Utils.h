@@ -5,6 +5,9 @@
 
 #pragma once
 
+#include <models/State.h>
+
+#include <aidl/android/hardware/light/HwLightState.h>
 #include <cstdint>
 #include <fstream>
 #include <string>
@@ -14,18 +17,7 @@ namespace android {
 namespace hardware {
 namespace light {
 
-struct rgb {
-    rgb();
-    rgb(uint8_t r, uint8_t g, uint8_t b);
-    rgb(uint32_t color);
-
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-
-    bool isLit();
-    uint8_t toBrightness();
-};
+State fromAidl(const HwLightState& value);
 
 uint32_t scaleBrightness(uint8_t brightness, uint32_t maxBrightness);
 

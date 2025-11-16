@@ -3,44 +3,43 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "Utils.h"
+#include <Utils.h>
+
+#define LOG_TAG "Utils"
+
+#include <aidl/android/hardware/light/FlashMode.h>
+#include <android-base/logging.h>
 
 namespace aidl {
 namespace android {
 namespace hardware {
 namespace light {
 
-rgb::rgb() : red(0), green(0), blue(0) {}
+State fromAidl(const HwLightState& value) {
+    Effect effect;
 
-rgb::rgb(uint8_t r, uint8_t g, uint8_t b) : red(r), green(g), blue(b) {};
-
-rgb::rgb(uint32_t color) {
-    // Extract brightness from AARRGGBB.
-    uint8_t alpha = (color >> 24) & 0xFF;
-
-    // Retrieve each of the RGB colors
-    red = (color >> 16) & 0xFF;
-    green = (color >> 8) & 0xFF;
-    blue = color & 0xFF;
-
-    // Scale RGB colors if a brightness has been applied by the user
-    if (alpha > 0 && alpha < 0xFF) {
-        red = red * alpha / 0xFF;
-        green = green * alpha / 0xFF;
-        blue = blue * alpha / 0xFF;
+    switch (value.flashMode) {
+        case FlashMode::NONE:
+            effect.type = Effect::Type::FIXED;
+            break;
+        case FlashMode::TIMED:
+            effect.type = Effect::Type::TIMED;
+            effect.timed.onMs = value.flashOnMs;
+            effect.timed.offMs = value.flashOffMs;
+            break;
+        case FlashMode::HARDWARE:
+            effect.type = Effect::Type::HARDWARE;
+            break;
+        default:
+            LOG(ERROR) << "Unknown flash mode: " << static_cast<int>(value.flashMode);
+            effect.type = Effect::Type::FIXED;
+            break;
     }
-}
 
-bool rgb::isLit() {
-    return !!red || !!green || !!blue;
-}
-
-static constexpr uint8_t kRedWeight = 77;
-static constexpr uint8_t kGreenWeight = 150;
-static constexpr uint8_t kBlueWeight = 29;
-
-uint8_t rgb::toBrightness() {
-    return (kRedWeight * red + kGreenWeight * green + kBlueWeight * blue) >> 8;
+    return State{
+            .color = Color(value.color),
+            .effect = effect,
+    };
 }
 
 uint32_t scaleBrightness(uint8_t brightness, uint32_t maxBrightness) {
