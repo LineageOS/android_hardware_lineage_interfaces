@@ -160,13 +160,22 @@ static std::string getScaledDutyPercent(uint8_t brightness) {
 bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                               uint32_t flashOffMs) {
     // Disable current blinking
-    if (supportsMode(LightMode::TIMED_QCOM)) {
+    if (mode != LightMode::TIMED_QCOM && supportsMode(LightMode::TIMED_QCOM)) {
         writeToFile(mBasePath + kBlinkNode, 0);
-    } else {
+    }
+    if (mode != LightMode::TIMED_UPSTREAM && supportsMode(LightMode::TIMED_UPSTREAM)) {
         writeToFile(mBasePath + kTriggerNode, "none");
     }
-    if (supportsMode(LightMode::BREATH)) {
+    if (mode != LightMode::BREATH && supportsMode(LightMode::BREATH)) {
         writeToFile(mBasePath + mBreathNode, 0);
+    }
+    if (mode != LightMode::STATIC) {
+        writeToFile(mBasePath + kBrightnessNode, 0);
+    }
+
+    // Short circuit if we're turning the light off
+    if (value == 0) {
+        return true;
     }
 
     switch (mode) {
@@ -207,7 +216,7 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
             break;
         }
         case LightMode::BREATH: {
-            return writeToFile(mBasePath + mBreathNode, value > 0 ? 1 : 0);
+            return writeToFile(mBasePath + mBreathNode, 1);
             break;
         }
         case LightMode::STATIC: {
