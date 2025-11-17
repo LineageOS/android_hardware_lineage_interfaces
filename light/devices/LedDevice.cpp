@@ -160,13 +160,17 @@ static std::string getScaledDutyPercent(uint8_t brightness) {
 bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                               uint32_t flashOffMs) {
     // Disable current blinking
-    if (supportsMode(LightMode::TIMED_QCOM)) {
+    if (mode != LightMode::TIMED_QCOM && supportsMode(LightMode::TIMED_QCOM)) {
         writeToFile(mBasePath + kBlinkNode, 0);
-    } else {
+    }
+    if (mode != LightMode::TIMED_UPSTREAM && supportsMode(LightMode::TIMED_UPSTREAM)) {
         writeToFile(mBasePath + kTriggerNode, "none");
     }
-    if (supportsMode(LightMode::BREATH)) {
+    if (mode != LightMode::BREATH && supportsMode(LightMode::BREATH)) {
         writeToFile(mBasePath + mBreathNode, 0);
+    }
+    if (mode != LightMode::STATIC && supportsMode(LightMode::STATIC)) {
+        writeToFile(mBasePath + kBrightnessNode, 0);
     }
 
     switch (mode) {
@@ -185,12 +189,12 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
                    writeToFile(mBasePath + kPauseLoNode, pauseLo) &&
                    writeToFile(mBasePath + kPauseHiNode, pauseHi) &&
                    writeToFile(mBasePath + kRampStepMsNode, stepDuration) &&
-                   writeToFile(mBasePath + kBlinkNode, 1);
+                   writeToFile(mBasePath + kBlinkNode, value > 0 ? 1 : 0);
             break;
         }
         case LightMode::TIMED_UPSTREAM: {
-            bool ok = writeToFile(mBasePath + kTriggerNode, "timer");
-            if (ok) {
+            bool ok = writeToFile(mBasePath + kTriggerNode, value > 0 ? "timer" : "none");
+            if (ok && value > 0) {
                 using namespace std::chrono_literals;
                 auto retries = 20;
                 while (retries--) {
