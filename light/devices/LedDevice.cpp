@@ -167,6 +167,7 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
         writeToFile(mBasePath + kTriggerNode, "none");
     }
     if (mode != LightMode::BREATH && supportsMode(LightMode::BREATH)) {
+        writeToFile(mBasePath + kBrightnessNode, 0);
         writeToFile(mBasePath + mBreathNode, 0);
     }
     if (mode != LightMode::STATIC && supportsMode(LightMode::STATIC)) {
@@ -211,7 +212,9 @@ bool LedDevice::setBrightness(uint8_t value, LightMode mode, uint32_t flashOnMs,
             break;
         }
         case LightMode::BREATH: {
-            return writeToFile(mBasePath + mBreathNode, value > 0 ? 1 : 0);
+            return writeToFile(mBasePath + kBrightnessNode,
+                               scaleBrightness(value, mMaxBrightness)) &&
+                   writeToFile(mBasePath + mBreathNode, value > 0 ? 1 : 0);
             break;
         }
         case LightMode::STATIC: {
