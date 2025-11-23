@@ -37,17 +37,17 @@ cc_binary {
     relative_install_path: "hw",
     init_rc: ["vendor.lineage.livedisplay-service.sdm.rc"],
     vintf_fragments: select(soong_config_variable("livedisplay_sdm", "enable_dm"), {
-        "false": [],
+        false: [],
         default: ["vendor.lineage.livedisplay-service.sdm-dm.xml"],
     }) + select(soong_config_variable("livedisplay_sdm", "enable_pa"), {
-        "false": [],
+        false: [],
         default: ["vendor.lineage.livedisplay-service.sdm-pa.xml"],
     }),
     cflags: select(soong_config_variable("livedisplay_sdm", "enable_dm"), {
-        "false": ["-DENABLE_DM=false"],
+        false: ["-DENABLE_DM=false"],
         default: ["-DENABLE_DM=true"],
     }) + select(soong_config_variable("livedisplay_sdm", "enable_pa"), {
-        "false": ["-DENABLE_PA=false"],
+        false: ["-DENABLE_PA=false"],
         default: ["-DENABLE_PA=true"],
     }),
     srcs: [
