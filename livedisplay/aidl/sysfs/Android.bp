@@ -29,47 +29,47 @@ cc_binary {
     relative_install_path: "hw",
     init_rc: ["vendor.lineage.livedisplay-service.sysfs.rc"],
     vintf_fragments: select(soong_config_variable("livedisplay_sysfs", "enable_ab"), {
-        "true": ["vendor.lineage.livedisplay-service.sysfs-ab.xml"],
+        true: ["vendor.lineage.livedisplay-service.sysfs-ab.xml"],
         default: [],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_ac"), {
-        "true": ["vendor.lineage.livedisplay-service.sysfs-ac.xml"],
+        true: ["vendor.lineage.livedisplay-service.sysfs-ac.xml"],
         default: [],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_af"), {
-        "true": ["vendor.lineage.livedisplay-service.sysfs-af.xml"],
+        true: ["vendor.lineage.livedisplay-service.sysfs-af.xml"],
         default: [],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_ce"), {
-        "true": ["vendor.lineage.livedisplay-service.sysfs-ce.xml"],
+        true: ["vendor.lineage.livedisplay-service.sysfs-ce.xml"],
         default: [],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_dcc"), {
-        "true": ["vendor.lineage.livedisplay-service.sysfs-dcc.xml"],
+        true: ["vendor.lineage.livedisplay-service.sysfs-dcc.xml"],
         default: [],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_re"), {
-        "true": ["vendor.lineage.livedisplay-service.sysfs-re.xml"],
+        true: ["vendor.lineage.livedisplay-service.sysfs-re.xml"],
         default: [],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_se"), {
-        "true": ["vendor.lineage.livedisplay-service.sysfs-se.xml"],
+        true: ["vendor.lineage.livedisplay-service.sysfs-se.xml"],
         default: [],
     }),
     cflags: select(soong_config_variable("livedisplay_sysfs", "enable_ab"), {
-        "true": ["-DENABLE_AB=true"],
+        true: ["-DENABLE_AB=true"],
         default: ["-DENABLE_AB=false"],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_ac"), {
-        "true": ["-DENABLE_AC=true"],
+        true: ["-DENABLE_AC=true"],
         default: ["-DENABLE_AC=false"],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_af"), {
-        "true": ["-DENABLE_AF=true"],
+        true: ["-DENABLE_AF=true"],
         default: ["-DENABLE_AF=false"],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_ce"), {
-        "true": ["-DENABLE_CE=true"],
+        true: ["-DENABLE_CE=true"],
         default: ["-DENABLE_CE=false"],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_dcc"), {
-        "true": ["-DENABLE_DCC=true"],
+        true: ["-DENABLE_DCC=true"],
         default: ["-DENABLE_DCC=false"],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_re"), {
-        "true": ["-DENABLE_RE=true"],
+        true: ["-DENABLE_RE=true"],
         default: ["-DENABLE_RE=false"],
     }) + select(soong_config_variable("livedisplay_sysfs", "enable_se"), {
-        "true": ["-DENABLE_SE=true"],
+        true: ["-DENABLE_SE=true"],
         default: ["-DENABLE_SE=false"],
     }) + select(soong_config_variable("livedisplay_sysfs", "se_path"), {
         any @ flag_val: ["-DSE_PATH=\"" + flag_val + "\""],
