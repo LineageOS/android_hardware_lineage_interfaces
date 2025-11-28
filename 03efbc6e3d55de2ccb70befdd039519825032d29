@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bc9e6e_b69778f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-11-28T08:25:25Z",
+      "side": 1,
+      "message": "I don\u0027t like seeing redbull in the commit message... So, make your own change, add copyrights to Android.bp and set the type ( see: https://source.android.com/docs/core/architecture/vintf/comp-matrices ). If you check AOSP interfaces repository they also set a type.",
+      "revId": "03efbc6e3d55de2ccb70befdd039519825032d29",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
