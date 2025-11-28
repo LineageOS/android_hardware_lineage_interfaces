@@ -16,6 +16,24 @@
       "message": "I don\u0027t like seeing redbull in the commit message... So, make your own change, add copyrights to Android.bp and set the type ( see: https://source.android.com/docs/core/architecture/vintf/comp-matrices ). If you check AOSP interfaces repository they also set a type.",
       "revId": "03efbc6e3d55de2ccb70befdd039519825032d29",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71814d3_30bb82e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19979
+      },
+      "writtenOn": "2025-11-28T12:56:58Z",
+      "side": 1,
+      "message": "Attribute type can only be set for module under `hardware/interfaces/compatibility_matrices`",
+      "parentUuid": "77bc9e6e_b69778f6",
+      "revId": "03efbc6e3d55de2ccb70befdd039519825032d29",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
