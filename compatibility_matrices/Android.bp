@@ -9,4 +9,5 @@ vintf_compatibility_matrix {
     srcs: [
         "compatibility_matrix.lineage.xml",
     ],
+    product_specific: true,
 }
