@@ -15,4 +15,5 @@ cc_library_static {
     srcs: ["UdfpsHandler.cpp"],
     vendor: true,
     header_libs: ["libudfpshandler_headers"],
+    shared_libs: ["libbase"],
 }
