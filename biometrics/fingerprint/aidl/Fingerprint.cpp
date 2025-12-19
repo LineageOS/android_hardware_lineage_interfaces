@@ -34,7 +34,13 @@ Fingerprint::Fingerprint(std::shared_ptr<FingerprintConfig> config)
     sInstance = this;  // keep track of the most recent instance
 
     std::string sensorTypeProp = mConfig->get<std::string>("type");
-    if (sensorTypeProp == "side") {
+    if (sensorTypeProp == "udfps" || sensorTypeProp == "udfps_optical") {
+        if (sensorTypeProp == "udfps") {
+            mSensorType = FingerprintSensorType::UNDER_DISPLAY_ULTRASONIC;
+        } else {
+            mSensorType = FingerprintSensorType::UNDER_DISPLAY_OPTICAL;
+        }
+    } else if (sensorTypeProp == "side") {
         mSensorType = FingerprintSensorType::POWER_BUTTON;
     } else if (sensorTypeProp == "home") {
         mSensorType = FingerprintSensorType::HOME_BUTTON;
@@ -157,6 +163,8 @@ ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
     auto sensorStrength = mConfig->get<std::int32_t>("sensor_strength");
     auto navigationGuesture = mConfig->get<bool>("navigation_gesture");
     auto detectInteraction = mConfig->get<bool>("detect_interaction");
+    auto displayTouch = mConfig->get<bool>("display_touch");
+    auto controlIllumination = mConfig->get<bool>("control_illumination");
 
     common::CommonProps commonProps = {sensorId, (common::SensorStrength)sensorStrength,
                                        MAX_ENROLLMENTS_PER_USER, componentInfo};
@@ -173,7 +181,7 @@ ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
           ::android::base::Join(sensorLocationStrings, ", ").c_str());
 
     *out = {{commonProps, mSensorType, sensorLocations, navigationGuesture, detectInteraction,
-             false, false, std::nullopt}};
+             displayTouch, controlIllumination, std::nullopt}};
     return ndk::ScopedAStatus::ok();
 }
 

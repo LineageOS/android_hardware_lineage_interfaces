@@ -60,3 +60,20 @@ prop {
     api_name: "detect_interaction"
 }
 
+# whether support display touch by hal (default: false)
+prop {
+    prop_name: "persist.vendor.fingerprint.udfps.display_touch"
+    type: Boolean
+    scope: Internal
+    access: ReadWrite
+    api_name: "display_touch"
+}
+
+# whether support illumination control by hal (default: false)
+prop {
+    prop_name: "persist.vendor.fingerprint.udfps.control_illumination"
+    type: Boolean
+    scope: Internal
+    access: ReadWrite
+    api_name: "control_illumination"
+}
