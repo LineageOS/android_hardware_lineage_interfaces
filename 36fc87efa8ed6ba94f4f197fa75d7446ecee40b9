@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4ed589_127f98b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-01-01T16:10:32Z",
+      "side": 1,
+      "message": "I don\u0027t see the point and would rather not do this. Most of our .rc scripts and vintf fragments are not copyrighted.",
+      "revId": "36fc87efa8ed6ba94f4f197fa75d7446ecee40b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
