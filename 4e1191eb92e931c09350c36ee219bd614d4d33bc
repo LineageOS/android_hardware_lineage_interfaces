@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361987e5_42751aea",
+        "filename": "light/models/Effect.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-01-15T16:52:53Z",
+      "side": 1,
+      "message": "union with single struct?",
+      "revId": "4e1191eb92e931c09350c36ee219bd614d4d33bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
