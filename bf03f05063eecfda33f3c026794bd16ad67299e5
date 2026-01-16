@@ -16,6 +16,23 @@
       "message": "@mkbestas@lineageos.org: Should we start doing something like this? I\u0027m used to `reuse lint` in our apps, maybe it won\u0027t hurt?",
       "revId": "bf03f05063eecfda33f3c026794bd16ad67299e5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ec4549_e7349267",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2026-01-16T17:31:24Z",
+      "side": 1,
+      "message": "We don\u0027t have copyright in any other hal, neither does AOSP, so I\u0027m not sure whether it makes sense. If anything, it should be a repository-wide change",
+      "revId": "bf03f05063eecfda33f3c026794bd16ad67299e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
