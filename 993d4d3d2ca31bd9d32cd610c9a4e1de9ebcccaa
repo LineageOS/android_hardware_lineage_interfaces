@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "317d30c1_0067e2e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32674
+      },
+      "writtenOn": "2026-01-27T10:07:47Z",
+      "side": 1,
+      "message": "This also fixes light blinking on pdx223/224.",
+      "revId": "993d4d3d2ca31bd9d32cd610c9a4e1de9ebcccaa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
