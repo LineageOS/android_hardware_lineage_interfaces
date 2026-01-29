@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dcf336b_74387d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 36578
+      },
+      "writtenOn": "2026-01-29T13:39:58Z",
+      "side": 1,
+      "message": "LineageOS samssamsung galaxy tablet a7",
+      "revId": "16960713e9caf855910d4cea79a57bda917ef8ad",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
