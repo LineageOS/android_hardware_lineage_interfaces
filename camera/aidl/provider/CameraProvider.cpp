@@ -21,6 +21,7 @@
 
 namespace {
 constexpr const char* CAMERA_REMAP_IDS_PROPERTY = "vendor.camera.remapid";
+constexpr const char* CAMERA_SKIP_FAILED_IDS_PROPERTY = "vendor.camera.skip_failed_ids";
 };  // namespace
 
 namespace android {
@@ -220,10 +221,10 @@ bool CameraProvider::initialize() {
 
     // Get camera IDs map
     auto cameraIdMap = getLegacyCameraIdMap(mNumberOfLegacyCameras);
+    const bool skipFailedProp = base::GetBoolProperty(CAMERA_SKIP_FAILED_IDS_PROPERTY, false);
 
     for (int n = 0; n < mNumberOfLegacyCameras; n++) {
         int i = cameraIdMap[n];
-        mLegacyCameras.insert(i);
 
         if (n != i) {
             ALOGI("%s: Camera %d ID remapped to %d", __func__, n, i);
@@ -233,9 +234,14 @@ bool CameraProvider::initialize() {
         auto rc = mModule->getCameraInfo(i, &info);
         if (rc != NO_ERROR) {
             ALOGE("%s: Camera info query failed!", __func__);
+            if (skipFailedProp) {
+                continue;
+            }
             mModule.clear();
             return true;
         }
+
+        mLegacyCameras.insert(i);
 
         if (checkCameraVersion(i, info) != OK) {
             ALOGE("%s: Camera version check failed!", __func__);
