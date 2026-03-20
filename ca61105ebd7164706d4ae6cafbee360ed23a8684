@@ -33,6 +33,24 @@
       "message": "Just to iterate, I\u0027d be fine having this on by default, but I gathered this is a problem only because of the remap right in the case the HAL isn\u0027t aware of the change?",
       "revId": "ca61105ebd7164706d4ae6cafbee360ed23a8684",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a38ada57_aab0657b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32253
+      },
+      "writtenOn": "2026-03-20T09:49:19Z",
+      "side": 1,
+      "message": "exactly, which is why i initially guarded it against the remapid prop. I should reword the commit msg a bit to make that part clear :\"D",
+      "parentUuid": "8de4315c_2c994139",
+      "revId": "ca61105ebd7164706d4ae6cafbee360ed23a8684",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
