@@ -51,6 +51,24 @@
       "parentUuid": "8de4315c_2c994139",
       "revId": "ca61105ebd7164706d4ae6cafbee360ed23a8684",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11438eb_a1d97f90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-03-20T09:51:11Z",
+      "side": 1,
+      "message": "Yeah... it wasn\u0027t clear.\nI still don\u0027t know if that\u0027s proper to do, as in case the HAL is aware of it like on Xiaomi then we probably loose properly wired handling of those failures :(",
+      "parentUuid": "a38ada57_aab0657b",
+      "revId": "ca61105ebd7164706d4ae6cafbee360ed23a8684",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
