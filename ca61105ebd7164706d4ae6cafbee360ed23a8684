@@ -16,6 +16,23 @@
       "message": "for picking",
       "revId": "ca61105ebd7164706d4ae6cafbee360ed23a8684",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de4315c_2c994139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-03-20T09:39:44Z",
+      "side": 1,
+      "message": "Just to iterate, I\u0027d be fine having this on by default, but I gathered this is a problem only because of the remap right in the case the HAL isn\u0027t aware of the change?",
+      "revId": "ca61105ebd7164706d4ae6cafbee360ed23a8684",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
