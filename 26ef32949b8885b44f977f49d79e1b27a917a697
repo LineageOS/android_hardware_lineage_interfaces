@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d50a1dc_b7a0a538",
+        "filename": "light/devices/LedDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 32674
+      },
+      "writtenOn": "2026-04-04T07:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8beab0b3_33e41826",
+      "revId": "26ef32949b8885b44f977f49d79e1b27a917a697",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cccbddcb_73631e7c",
@@ -31,6 +49,24 @@
       "writtenOn": "2026-01-15T16:55:55Z",
       "side": 1,
       "message": "ditto here, it\u0027s confusing",
+      "revId": "26ef32949b8885b44f977f49d79e1b27a917a697",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8938f22c_8a43dc32",
+        "filename": "light/devices/RgbLedDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 32674
+      },
+      "writtenOn": "2026-04-04T07:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cccbddcb_73631e7c",
       "revId": "26ef32949b8885b44f977f49d79e1b27a917a697",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
