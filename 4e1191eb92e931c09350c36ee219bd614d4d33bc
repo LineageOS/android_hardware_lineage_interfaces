@@ -16,6 +16,24 @@
       "message": "union with single struct?",
       "revId": "4e1191eb92e931c09350c36ee219bd614d4d33bc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58879338_cbf866bb",
+        "filename": "light/models/Effect.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 32674
+      },
+      "writtenOn": "2026-04-04T07:52:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361987e5_42751aea",
+      "revId": "4e1191eb92e931c09350c36ee219bd614d4d33bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
