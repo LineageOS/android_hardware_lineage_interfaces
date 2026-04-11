@@ -33,6 +33,24 @@
       "message": "@priv.luk@gmail.com shall we also forward this to 23? Or wait until a device needs it",
       "revId": "3466aa530ace6de0760c12a68cf81b31e8d3807b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadb484b_743cadaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-04-11T02:20:43Z",
+      "side": 1,
+      "message": "I see no reason to not forward to 23.",
+      "parentUuid": "becf9c39_c9dc1406",
+      "revId": "3466aa530ace6de0760c12a68cf81b31e8d3807b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": [
