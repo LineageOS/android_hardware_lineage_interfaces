@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4bc84b_5e6b021c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32674
+      },
+      "writtenOn": "2026-04-13T11:58:53Z",
+      "side": 1,
+      "message": "Verified on PDX223/224, which uses upstream qti-tri-led driver.",
+      "revId": "cdb27071866e2bf045d5bc27493a8b15a8e2de6a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
