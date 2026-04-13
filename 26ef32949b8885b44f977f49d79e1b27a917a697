@@ -36,6 +36,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c99683_0fc56a0a",
+        "filename": "light/devices/LedDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 32674
+      },
+      "writtenOn": "2026-04-13T06:24:05Z",
+      "side": 1,
+      "message": "It\u0027s used by the enum, removing it will cause -Wswitch-enum. I tried removing it and it fails to compile, so I restored the old patchset.",
+      "parentUuid": "4d50a1dc_b7a0a538",
+      "revId": "26ef32949b8885b44f977f49d79e1b27a917a697",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cccbddcb_73631e7c",
