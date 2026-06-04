@@ -13,6 +13,9 @@ cc_binary {
     cflags: select(soong_config_variable("lineagelight", "scan_for_backlight_devices"), {
         true: ["-DSCAN_FOR_BACKLIGHT_DEVICES"],
         default: [],
+    }) + select(soong_config_variable("lineagelight", "snap_rgb_to_pure"), {
+        true: ["-DSNAP_RGB_TO_PURE"],
+        default: [],
     }),
     srcs: [
         "devices/BacklightDevice.cpp",
