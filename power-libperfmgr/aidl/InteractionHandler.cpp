@@ -31,6 +31,8 @@
 #include <array>
 #include <memory>
 
+#include "HintManagerQti.h"
+
 #define MAX_LENGTH 64
 
 #define MSINSEC 1000L
@@ -290,6 +292,7 @@ void InteractionHandler<HintManagerT>::Routine() {
 }
 
 template class InteractionHandler<>;
+template class InteractionHandler<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>;
 
 }  // namespace pixel
 }  // namespace impl

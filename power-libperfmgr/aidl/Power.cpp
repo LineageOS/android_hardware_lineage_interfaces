@@ -34,6 +34,7 @@
 
 #include "AdpfTypes.h"
 #include "ChannelManager.h"
+#include "HintManagerQti.h"
 #include "PowerHintSession.h"
 #include "PowerSessionManager.h"
 #include "SupportManager.h"
@@ -305,6 +306,7 @@ ndk::ScopedAStatus Power<HintManagerT>::sendCompositionUpdate(const CompositionU
 }
 
 template class Power<>;
+template class Power<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>;
 
 }  // namespace pixel
 }  // namespace impl

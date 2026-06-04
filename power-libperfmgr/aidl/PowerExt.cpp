@@ -27,6 +27,7 @@
 #include <utils/Log.h>
 #include <utils/Trace.h>
 
+#include "HintManagerQti.h"
 #include "PowerSessionManager.h"
 
 namespace aidl {
@@ -95,6 +96,7 @@ ndk::ScopedAStatus PowerExt<HintManagerT>::isBoostSupported(const std::string &b
 }
 
 template class PowerExt<>;
+template class PowerExt<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>;
 
 }  // namespace pixel
 }  // namespace impl

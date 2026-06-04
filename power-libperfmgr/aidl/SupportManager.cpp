@@ -23,6 +23,7 @@
 #include <type_traits>
 
 #include "AdpfTypes.h"
+#include "HintManagerQti.h"
 
 namespace aidl::google::hardware::power::impl::pixel {
 using ::android::perfmgr::HintManager;
@@ -238,5 +239,6 @@ bool SupportManager<HintManagerT>::sessionTagSupported(SessionTag type) {
 }
 
 template class SupportManager<>;
+template class SupportManager<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>;
 
 }  // namespace aidl::google::hardware::power::impl::pixel
