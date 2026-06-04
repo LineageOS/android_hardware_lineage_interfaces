@@ -30,6 +30,7 @@
 
 #include "AdpfTypes.h"
 #include "ChannelManager.h"
+#include "HintManagerQti.h"
 #include "log/log_main.h"
 #include "tests/mocks/MockPowerHintSession.h"
 #include "tests/mocks/MockPowerSessionManager.h"
@@ -217,6 +218,9 @@ void ChannelGroup<PowerSessionManagerT, PowerHintSessionT>::runChannelGroup() {
 
 template class ChannelGroup<PowerSessionManager<::android::perfmgr::HintManager>,
                             PowerHintSession<::android::perfmgr::HintManager>>;
+template class ChannelGroup<
+        PowerSessionManager<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>,
+        PowerHintSession<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>>;
 template class ChannelGroup<testing::NiceMock<mock::pixel::MockPowerSessionManager>,
                             testing::NiceMock<mock::pixel::MockPowerHintSession>>;
 

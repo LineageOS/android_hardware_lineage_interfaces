@@ -33,6 +33,7 @@
 #include <atomic>
 
 #include "GpuCalculationHelpers.h"
+#include "HintManagerQti.h"
 #include "tests/mocks/MockHintManager.h"
 #include "tests/mocks/MockPowerSessionManager.h"
 #include "utils/TgidTypeChecker.h"
@@ -746,6 +747,7 @@ bool PowerHintSession<HintManagerT, PowerSessionManagerT>::isTimeout() {
 }
 
 template class PowerHintSession<::android::perfmgr::HintManager>;
+template class PowerHintSession<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>;
 template class PowerHintSession<testing::NiceMock<mock::pixel::MockHintManager>,
                                 testing::NiceMock<mock::pixel::MockPowerSessionManager>>;
 template class PowerHintSession<

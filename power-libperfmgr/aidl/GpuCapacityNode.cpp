@@ -24,6 +24,7 @@
 
 #include <charconv>
 
+#include "HintManagerQti.h"
 #include "perfmgr/HintManager.h"
 
 namespace aidl {
@@ -139,6 +140,8 @@ std::optional<std::unique_ptr<GpuCapacityNode>> createGpuCapacityNode() {
 
 template std::optional<std::unique_ptr<GpuCapacityNode>>
 createGpuCapacityNode<::android::perfmgr::HintManager>();
+template std::optional<std::unique_ptr<GpuCapacityNode>>
+createGpuCapacityNode<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>();
 
 }  // namespace pixel
 }  // namespace impl

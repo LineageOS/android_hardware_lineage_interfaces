@@ -21,6 +21,7 @@
 
 #include <inttypes.h>
 
+#include "HintManagerQti.h"
 #include "tests/mocks/MockChannelGroup.h"
 #include "tests/mocks/MockPowerHintSession.h"
 #include "tests/mocks/MockPowerSessionManager.h"
@@ -122,6 +123,8 @@ ChannelManager<ChannelGroupT> *ChannelManager<ChannelGroupT>::getInstance() {
 }
 
 template class ChannelManager<ChannelGroupFor<::android::perfmgr::HintManager>>;
+template class ChannelManager<
+        ChannelGroupFor<::aidl::lineage::hardware::power::impl::qti::HintManagerQti>>;
 template class ChannelManager<testing::NiceMock<mock::pixel::MockChannelGroup>>;
 template class ChannelManager<ChannelGroup<testing::NiceMock<mock::pixel::MockPowerSessionManager>,
                                            testing::NiceMock<mock::pixel::MockPowerHintSession>>>;

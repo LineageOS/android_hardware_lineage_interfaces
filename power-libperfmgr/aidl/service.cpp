@@ -26,6 +26,7 @@
 
 #include <thread>
 
+#include "HintManagerQti.h"
 #include "MetricUploader.h"
 #include "Power.h"
 #include "PowerExt.h"
@@ -36,15 +37,16 @@ using aidl::google::hardware::power::impl::pixel::MetricUploader;
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
 using aidl::google::hardware::power::impl::pixel::ThermalStateListener;
+using ::aidl::lineage::hardware::power::impl::qti::HintManagerQti;
 using ::android::perfmgr::HintManager;
 
 constexpr std::string_view kPowerHalInitProp("vendor.powerhal.init");
+constexpr std::string_view kPowerHalBackendProp("ro.vendor.powerhal.backend");
 
-int main() {
-    android::base::SetDefaultTag(LOG_TAG);
-    android::base::SetMinimumLogSeverity(android::base::INFO);
+template <class HintManagerT>
+int RunService() {
     // Parse config but do not start the looper
-    HintManager *hm = HintManager::GetInstance();
+    HintManagerT *hm = HintManagerT::GetInstance();
     if (!hm) {
         LOG(FATAL) << "HintManager Init failed";
     }
@@ -58,12 +60,12 @@ int main() {
     ABinderProcess_setThreadPoolMaxThreadCount(0);
 
     // core service
-    auto pw = ndk::SharedRefBase::make<Power<HintManager>>();
+    auto pw = ndk::SharedRefBase::make<Power<HintManagerT>>();
     ndk::SpAIBinder pwBinder = pw->asBinder();
     AIBinder_setMinSchedulerPolicy(pwBinder.get(), SCHED_NORMAL, -20);
 
     // extension service
-    auto pwExt = ndk::SharedRefBase::make<PowerExt<HintManager>>();
+    auto pwExt = ndk::SharedRefBase::make<PowerExt<HintManagerT>>();
     auto pwExtBinder = pwExt->asBinder();
     AIBinder_setMinSchedulerPolicy(pwExtBinder.get(), SCHED_NORMAL, -20);
 
@@ -77,7 +79,7 @@ int main() {
 
     std::thread initThread([&]() {
         ::android::base::WaitForProperty(kPowerHalInitProp.data(), "1");
-        HintManager::GetInstance()->Start();
+        HintManagerT::GetInstance()->Start();
         MetricUploader::getInstance()->init();
         ThermalStateListener::getInstance()->init();
     });
@@ -88,4 +90,15 @@ int main() {
     // should not reach
     LOG(ERROR) << "Lineage Power HAL AIDL Service with Extension just died.";
     return EXIT_FAILURE;
+}
+
+int main() {
+    android::base::SetDefaultTag(LOG_TAG);
+    android::base::SetMinimumLogSeverity(android::base::INFO);
+
+    const std::string backend = ::android::base::GetProperty(kPowerHalBackendProp.data(), "");
+    if (backend == "qti") {
+        return RunService<HintManagerQti>();
+    }
+    return RunService<HintManager>();
 }
