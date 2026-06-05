@@ -16,6 +16,24 @@
       "message": "Is this an issue on pixels as well?",
       "revId": "d1390b1fc96bb6d1c298be154a8e7b4ac702ebc4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6e252b_a032969e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2026-06-05T10:10:49Z",
+      "side": 1,
+      "message": "No, it\u0027s introduced when porting from pixel hal",
+      "parentUuid": "8727946e_873496b0",
+      "revId": "d1390b1fc96bb6d1c298be154a8e7b4ac702ebc4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
