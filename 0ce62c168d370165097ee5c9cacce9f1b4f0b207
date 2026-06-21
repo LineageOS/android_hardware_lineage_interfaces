@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d79e28c5_bdf53774",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2026-06-21T22:38:28Z",
+      "side": 1,
+      "message": "Either:\n\n- Add brackets\n- Use short circuits\n\nI prefer the latter, but up to you",
+      "revId": "0ce62c168d370165097ee5c9cacce9f1b4f0b207",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
