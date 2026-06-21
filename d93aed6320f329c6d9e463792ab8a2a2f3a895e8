@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02931294_9aa7f295",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2026-06-21T04:22:40Z",
+      "side": 1,
+      "message": "Verified on odin2_ack that VtsHalLightTargetTest Lights/LightsAidl#TestInvalidLightIdUnsupported/0_android_hardware_light_ILights_default passes.",
+      "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
