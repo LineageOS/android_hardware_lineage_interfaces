@@ -41,6 +41,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b139f4fd_5fbb1178",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2026-06-21T20:26:26Z",
+      "side": 1,
+      "message": "Derp, vim bit me.",
+      "parentUuid": "d5a728a1_050899c4",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19840971_11b35096",
@@ -64,6 +88,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f25d1db_3f304e46",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2026-06-21T20:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19840971_11b35096",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eae8dcb7_94699fa4",
@@ -77,6 +125,30 @@
       "writtenOn": "2026-06-21T10:13:21Z",
       "side": 1,
       "message": "no tabs",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50fd6876_ff513743",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2026-06-21T20:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eae8dcb7_94699fa4",
       "range": {
         "startLine": 82,
         "startChar": 0,
