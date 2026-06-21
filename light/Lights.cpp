@@ -44,25 +44,49 @@ ndk::ScopedAStatus Lights::setLightState(int32_t id, const HwLightState& hwLight
     LightType type = static_cast<LightType>(id);
     switch (type) {
         case LightType::BACKLIGHT:
-            mDevices.setBacklightState(state);
+            if (mDevices.hasBacklightDevices()) {
+                mDevices.setBacklightState(state);
+            } else {
+                return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+            }
             break;
         case LightType::KEYBOARD:
-            mDevices.setKeyboardState(state);
+            if (mDevices.hasKeyboardDevices()) {
+                mDevices.setKeyboardState(state);
+            } else {
+                return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+            }
             break;
         case LightType::BUTTONS:
-            mDevices.setButtonsState(state);
+            if (mDevices.hasButtonDevices()) {
+                mDevices.setButtonsState(state);
+            } else {
+                return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+            }
             break;
         case LightType::BATTERY:
-            mLastBatteryState = state;
-            updateNotificationColor();
+            if (mDevices.hasNotificationDevices()) {
+                mLastBatteryState = state;
+                updateNotificationColor();
+            } else {
+                return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+            }
             break;
         case LightType::NOTIFICATIONS:
-            mLastNotificationsState = state;
-            updateNotificationColor();
+            if (mDevices.hasNotificationDevices()) {
+                mLastNotificationsState = state;
+                updateNotificationColor();
+            } else {
+                return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+            }
             break;
         case LightType::ATTENTION:
-            mLastAttentionState = state;
-            updateNotificationColor();
+            if (mDevices.hasNotificationDevices()) {
+                mLastAttentionState = state;
+                updateNotificationColor();
+            } else {
+                return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+            }
             break;
         default:
             return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
