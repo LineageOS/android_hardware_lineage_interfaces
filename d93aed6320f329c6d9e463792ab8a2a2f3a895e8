@@ -16,6 +16,75 @@
       "message": "Verified on odin2_ack that VtsHalLightTargetTest Lights/LightsAidl#TestInvalidLightIdUnsupported/0_android_hardware_light_ILights_default passes.",
       "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a728a1_050899c4",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-06-21T10:13:21Z",
+      "side": 1,
+      "message": "no tabs",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19840971_11b35096",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-06-21T10:13:21Z",
+      "side": 1,
+      "message": "no tabs",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae8dcb7_94699fa4",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-06-21T10:13:21Z",
+      "side": 1,
+      "message": "no tabs",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "d93aed6320f329c6d9e463792ab8a2a2f3a895e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
