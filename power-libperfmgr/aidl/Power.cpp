@@ -128,6 +128,8 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
             [[fallthrough]];
         case Mode::GAME_LOADING:
             [[fallthrough]];
+        case Mode::LOW_POWER:
+            [[fallthrough]];
         default:
             if (enabled) {
                 HintManager::GetInstance()->DoHint(toString(type));
