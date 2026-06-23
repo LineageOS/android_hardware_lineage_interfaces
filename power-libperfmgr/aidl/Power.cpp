@@ -98,6 +98,13 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     }
 
     switch (type) {
+        case Mode::LOW_POWER:
+            if (enabled) {
+                HintManager::GetInstance()->DoHint(toString(type));
+            } else {
+                HintManager::GetInstance()->EndHint(toString(type));
+            }
+            break;
         case Mode::SUSTAINED_PERFORMANCE:
             if (enabled && !mSustainedPerfModeOn) {
                 HintManager::GetInstance()->DoHint("SUSTAINED_PERFORMANCE");
