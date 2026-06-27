@@ -16,6 +16,29 @@
       "message": "Tested and verified on Cepheus and Raphael with I287fe0cdbaa30abc67ca4c77d673bbd8783b211f",
       "revId": "39a79a620c0b10473a3fdc03e3d2bf58a4635f75",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd079a5e_0031312a",
+        "filename": "power-libperfmgr/aidl/Power.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-06-27T19:48:00Z",
+      "side": 1,
+      "message": "just add Mode::LOW_POWER after GAME_LOADING, you\u0027re just duping logic here",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "39a79a620c0b10473a3fdc03e3d2bf58a4635f75",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
