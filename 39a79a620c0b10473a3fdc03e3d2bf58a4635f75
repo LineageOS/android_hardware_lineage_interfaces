@@ -39,6 +39,30 @@
       },
       "revId": "39a79a620c0b10473a3fdc03e3d2bf58a4635f75",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d8c8fa5_6e0ae7d6",
+        "filename": "power-libperfmgr/aidl/Power.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 34612
+      },
+      "writtenOn": "2026-06-27T20:14:59Z",
+      "side": 1,
+      "message": "I did it intentionally to match upstream, but since that\u0027s no longer getting updates, I agree it\u0027s better to clean it up.",
+      "parentUuid": "dd079a5e_0031312a",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "39a79a620c0b10473a3fdc03e3d2bf58a4635f75",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
