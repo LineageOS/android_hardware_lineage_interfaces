@@ -16,6 +16,24 @@
       "message": "Isn\u0027t it already in the default path?",
       "revId": "b13584f2684a9d5fc77f5717ff8d2e3c7620725c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8b4e5d_be38dcc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34612
+      },
+      "writtenOn": "2026-06-28T07:11:58Z",
+      "side": 1,
+      "message": "Ah, you are right. It does fall through to default anyway, so this isn\u0027t strictly needed.",
+      "parentUuid": "b563e655_62ba4813",
+      "revId": "b13584f2684a9d5fc77f5717ff8d2e3c7620725c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
