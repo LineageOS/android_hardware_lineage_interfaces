@@ -33,6 +33,8 @@ class Lights : public BnLights {
     State mLastBatteryState;
     State mLastNotificationsState;
     State mLastAttentionState;
+    State mLastMicrophoneState;
+    State mLastCameraState;
     std::mutex mLedMutex;
 
     void updateNotificationColor();

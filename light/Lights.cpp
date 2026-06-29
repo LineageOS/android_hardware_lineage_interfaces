@@ -35,6 +35,8 @@ Lights::Lights() {
         mLights.push_back(AutoHwLight(LightType::BATTERY));
         mLights.push_back(AutoHwLight(LightType::NOTIFICATIONS));
         mLights.push_back(AutoHwLight(LightType::ATTENTION));
+        mLights.push_back(AutoHwLight(LightType::MICROPHONE));
+        mLights.push_back(AutoHwLight(LightType::CAMERA));
     }
 }
 
@@ -62,6 +64,14 @@ ndk::ScopedAStatus Lights::setLightState(int32_t id, const HwLightState& hwLight
             break;
         case LightType::ATTENTION:
             mLastAttentionState = state;
+            updateNotificationColor();
+            break;
+        case LightType::MICROPHONE:
+            mLastMicrophoneState = state;
+            updateNotificationColor();
+            break;
+        case LightType::CAMERA:
+            mLastCameraState = state;
             updateNotificationColor();
             break;
         default:
@@ -100,10 +110,12 @@ binder_status_t Lights::dump(int fd, const char** /*args*/, uint32_t /*numArgs*/
 void Lights::updateNotificationColor() {
     std::lock_guard<std::mutex> lock(mLedMutex);
 
-    const State state = mLastNotificationsState.isLit() ? mLastNotificationsState
-                        : mLastAttentionState.isLit()   ? mLastAttentionState
-                        : mLastBatteryState.isLit()     ? mLastBatteryState
-                                                        : State();
+    const State state = mLastCameraState.isLit()          ? mLastCameraState
+                        : mLastMicrophoneState.isLit()    ? mLastMicrophoneState
+                        : mLastNotificationsState.isLit() ? mLastNotificationsState
+                        : mLastAttentionState.isLit()     ? mLastAttentionState
+                        : mLastBatteryState.isLit()       ? mLastBatteryState
+                                                          : State();
 
     mDevices.setNotificationState(state);
 
