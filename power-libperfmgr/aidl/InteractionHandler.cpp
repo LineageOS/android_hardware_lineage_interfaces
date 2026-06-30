@@ -186,10 +186,12 @@ void InteractionHandler::Acquire(int32_t duration) {
 
     ALOGV("%s: input: %d final duration: %d", __func__, duration, finalDuration);
 
-    if (mState == INTERACTION_STATE_WAITING)
+    if (mState == INTERACTION_STATE_WAITING) {
         AbortWaitLocked();
-    else if (mState == INTERACTION_STATE_IDLE)
         PerfLock();
+    } else if (mState == INTERACTION_STATE_IDLE) {
+        PerfLock();
+    }
 
     mState = INTERACTION_STATE_INTERACTION;
     mCond.notify_one();
