@@ -51,6 +51,24 @@
       "message": "Either:\n\n- Add brackets\n- Use short circuits\n\nI prefer the latter, but up to you",
       "revId": "0ce62c168d370165097ee5c9cacce9f1b4f0b207",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0d1854_3cb78a22",
+        "filename": "light/Lights.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2026-07-03T19:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d79e28c5_bdf53774",
+      "revId": "0ce62c168d370165097ee5c9cacce9f1b4f0b207",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
