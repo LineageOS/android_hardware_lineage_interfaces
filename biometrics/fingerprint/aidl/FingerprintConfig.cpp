@@ -34,6 +34,7 @@ CREATE_GETTER_SETTER_WRAPPER(navigation_gesture, OptBool)
 CREATE_GETTER_SETTER_WRAPPER(detect_interaction, OptBool)
 CREATE_GETTER_SETTER_WRAPPER(display_touch, OptBool)
 CREATE_GETTER_SETTER_WRAPPER(control_illumination, OptBool)
+CREATE_GETTER_SETTER_WRAPPER(backend, OptString)
 
 // Name, Getter, Setter, Parser and default value
 #define NGS(_NAME_) #_NAME_, _NAME_##Getter, _NAME_##Setter
@@ -46,6 +47,7 @@ static Config::Data configData[] = {
         {NGS(detect_interaction), &Config::parseBool, "false"},
         {NGS(display_touch), &Config::parseBool, "false"},
         {NGS(control_illumination), &Config::parseBool, "false"},
+        {NGS(backend), &Config::parseString, "hardware"},
 };
 
 Config::Data* FingerprintConfig::getConfigData(int* size) {

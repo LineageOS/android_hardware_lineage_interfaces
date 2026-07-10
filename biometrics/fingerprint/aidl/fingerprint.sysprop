@@ -77,3 +77,13 @@ prop {
     access: ReadWrite
     api_name: "control_illumination"
 }
+
+# type of fingerprint sensor backend (default: none)
+prop {
+    prop_name: "persist.vendor.fingerprint.backend"
+    type: String
+    scope: Internal
+    access: ReadWrite
+    enum_values: "hardware"
+    api_name: "backend"
+}
