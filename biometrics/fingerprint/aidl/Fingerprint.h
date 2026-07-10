@@ -11,6 +11,7 @@
 
 #include "FingerprintConfig.h"
 #include "FingerprintEngine.h"
+#include "FingerprintEngineHidl.h"
 #include "FingerprintEngineHw.h"
 #include "Session.h"
 

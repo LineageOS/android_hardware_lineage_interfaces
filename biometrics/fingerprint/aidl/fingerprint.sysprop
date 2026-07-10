@@ -84,6 +84,6 @@ prop {
     type: String
     scope: Internal
     access: ReadWrite
-    enum_values: "hardware"
+    enum_values: "hardware|hidl"
     api_name: "backend"
 }

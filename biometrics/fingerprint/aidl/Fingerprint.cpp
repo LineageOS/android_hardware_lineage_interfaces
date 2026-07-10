@@ -32,6 +32,8 @@ Fingerprint::Fingerprint(std::shared_ptr<FingerprintConfig> config)
     std::string backendTypeProp = mConfig->get<std::string>("backend");
     if (backendTypeProp == "hardware") {
         mEngine = std::make_unique<FingerprintEngineHw>(config);
+    } else if (backendTypeProp == "hidl") {
+        mEngine = std::make_unique<FingerprintEngineHidl>(config);
     } else {
         mEngine = std::make_unique<FingerprintEngine>(config);
     }
