@@ -86,7 +86,7 @@ constexpr SupportList<SessionMode> kSessionModeEarliestVersion = {
   {SessionMode::GRAPHICS_PIPELINE, 6},
   {SessionMode::AUTO_CPU, 6},
   {SessionMode::AUTO_GPU, 6},
-  {SessionMode::AUDIO_PERFORMANCE, 6},
+  {SessionMode::AUDIO_PERFORMANCE, 7},
 };
 
 constexpr SupportList<SessionTag> kSessionTagEarliestVersion {
