@@ -5,8 +5,8 @@ package {
 }
 
 hidl_interface {
-    name: "android.frameworks.displayservice@1.0",
-    root: "android.frameworks",
+    name: "lineage.frameworks.displayservice@1.0",
+    root: "lineage.frameworks",
     srcs: [
         "types.hal",
         "IDisplayEventReceiver.hal",

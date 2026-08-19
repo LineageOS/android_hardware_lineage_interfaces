@@ -3,5 +3,6 @@ package {
 }
 
 hidl_package_root {
-    name: "android.frameworks",
+    name: "lineage.frameworks",
+    path: "hardware/lineage/interfaces/_frameworks",
 }
