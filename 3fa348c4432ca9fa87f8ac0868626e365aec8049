@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adc63f3_9ee77d98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-08-19T17:59:30Z",
+      "side": 1,
+      "message": "No one knows what \"with the revert\" means. Would be better if you import an older tag and partially update it, if it even has relevant updates.",
+      "revId": "3fa348c4432ca9fa87f8ac0868626e365aec8049",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
