@@ -5,8 +5,8 @@ package {
 }
 
 hidl_interface {
-    name: "android.frameworks.stats@1.0",
-    root: "android.frameworks",
+    name: "lineage.frameworks.stats@1.0",
+    root: "lineage.frameworks",
     srcs: [
         "types.hal",
         "IStats.hal",

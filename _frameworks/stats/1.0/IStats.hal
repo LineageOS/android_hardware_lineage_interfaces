@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.frameworks.stats@1.0;
+package lineage.frameworks.stats@1.0;
 
 /**
  * IStats is an interface that allows clients to report specific hardware
