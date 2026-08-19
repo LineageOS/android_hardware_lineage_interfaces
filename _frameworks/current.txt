@@ -1,0 +1,10 @@
+# Do not change this file except to add new interfaces. Changing
+# pre-existing interfaces will fail VTS and break framework-only OTAs
+
+# Framework HALs released in Android O MR1
+6061e127a7e6b09d5b241485f2b37d0ea51d6fbfcc9cb905ef708db50100d0d2 android.frameworks.displayservice@1.0::IDisplayEventReceiver
+a5dab2e6528095ccf4e9ae7e54e6e36ffe3dc0e1133fa3f9197f0b36216e09eb android.frameworks.displayservice@1.0::IDisplayService
+5d4901c7f86a9e198b8d14e6e1de2fd819804db482b881dcf6230050f1dfdf34 android.frameworks.displayservice@1.0::IEventCallback
+d80cdd518a48e1ff49f4776c7ea407b9be8d451510ff2cb8e57b2286f623496e android.frameworks.displayservice@1.0::types
+
+# There should be no more HIDL HALs - please use AIDL instead.
