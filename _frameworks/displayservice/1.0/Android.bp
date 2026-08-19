@@ -18,3 +18,11 @@ hidl_interface {
     ],
     gen_java: true,
 }
+
+prebuilt_etc_xml {
+    name: "lineage.frameworks.displayservice@1.0.xml",
+    owner: "lineage",
+    src: "lineage.frameworks.displayservice@1.0.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+}
