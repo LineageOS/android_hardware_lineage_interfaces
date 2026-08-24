@@ -1,0 +1,7 @@
+service vendor.usb-default /vendor/bin/hw/android.hardware.usb-service.basic
+    interface aidl android.hardware.usb.IUsb/default
+    class hal
+    user root
+    group root
+
+# Note: Running as root user is required for writing to /proc/sys/kernel/deny_new_usb
