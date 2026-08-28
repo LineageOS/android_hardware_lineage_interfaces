@@ -7,4 +7,8 @@ a5dab2e6528095ccf4e9ae7e54e6e36ffe3dc0e1133fa3f9197f0b36216e09eb android.framewo
 5d4901c7f86a9e198b8d14e6e1de2fd819804db482b881dcf6230050f1dfdf34 android.frameworks.displayservice@1.0::IEventCallback
 d80cdd518a48e1ff49f4776c7ea407b9be8d451510ff2cb8e57b2286f623496e android.frameworks.displayservice@1.0::types
 
+# Framework HALs released in Android Q
+d9c951c12923ae3962e6947fe008f4c372f117182a4c3aaf483d9b3748af0bcc android.frameworks.stats@1.0::types
+f4173a30f4d36e12871fe5072197dc1b9ca705f8c99b031186ca24f68bb84594 android.frameworks.stats@1.0::IStats
+
 # There should be no more HIDL HALs - please use AIDL instead.
