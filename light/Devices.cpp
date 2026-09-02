@@ -9,6 +9,9 @@
 
 #include <android-base/logging.h>
 #include <filesystem>
+#include <light.sysprop.h>
+
+using namespace ::vendor::lineage::light;
 
 namespace aidl {
 namespace android {
@@ -44,6 +47,11 @@ static const std::string kBacklightDevices[] = {
 static std::vector<BacklightDevice> getBacklightDevices() {
     std::vector<BacklightDevice> devices;
 
+    if (LightProperties::BacklightDisable()) {
+        LOG(INFO) << "Backlight control is disabled per sysprop.";
+        return devices;
+    }
+
     for (const auto& device : kBacklightDevices) {
         BacklightDevice backlight(device);
         if (backlight.isOk()) {
@@ -76,6 +84,11 @@ static const std::string kLedBacklightDevices[] = {
 
 static std::vector<LedDevice> getBacklightLedDevices() {
     std::vector<LedDevice> devices;
+
+    if (LightProperties::BacklightDisable()) {
+        LOG(INFO) << "Backlight control is disabled per sysprop.";
+        return devices;
+    }
 
     for (const auto& device : kLedBacklightDevices) {
         LedDevice backlight(device);

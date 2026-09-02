@@ -34,4 +34,14 @@ cc_binary {
         "libbinder_ndk",
         "android.hardware.light-V2-ndk",
     ],
+    static_libs: [
+        "libvendor.lineage.light.Props",
+    ],
+}
+
+sysprop_library {
+    name: "vendor.lineage.light.Props",
+    srcs: ["light.sysprop"],
+    property_owner: "Vendor",
+    vendor: true,
 }
