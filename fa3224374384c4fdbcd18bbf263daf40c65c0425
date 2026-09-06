@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d05b7acd_d12c408d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2026-09-06T19:12:46Z",
+      "side": 1,
+      "message": "Can this be a build time guard just like the scan feature?",
+      "revId": "fa3224374384c4fdbcd18bbf263daf40c65c0425",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
