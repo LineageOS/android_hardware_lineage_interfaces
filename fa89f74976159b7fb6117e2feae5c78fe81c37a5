@@ -16,6 +16,24 @@
       "message": "Guard this as well",
       "revId": "fa89f74976159b7fb6117e2feae5c78fe81c37a5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "652a1d2e_271f9da3",
+        "filename": "light/Devices.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2026-09-07T20:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ec201a_affa8ad7",
+      "revId": "fa89f74976159b7fb6117e2feae5c78fe81c37a5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
