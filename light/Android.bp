@@ -10,7 +10,10 @@ cc_binary {
     relative_install_path: "hw",
     init_rc: ["android.hardware.light-service.lineage.rc"],
     vintf_fragments: ["android.hardware.light-service.lineage.xml"],
-    cflags: select(soong_config_variable("lineagelight", "scan_for_backlight_devices"), {
+    cflags: select(soong_config_variable("lineagelight", "disable_backlight_control"), {
+        true: ["-DDISABLE_BACKLIGHT_CONTROL"],
+        default: [],
+    }) + select(soong_config_variable("lineagelight", "scan_for_backlight_devices"), {
         true: ["-DSCAN_FOR_BACKLIGHT_DEVICES"],
         default: [],
     }) + select(soong_config_variable("lineagelight", "snap_rgb_to_pure"), {
@@ -18,7 +21,6 @@ cc_binary {
         default: [],
     }),
     srcs: [
-        "devices/BacklightDevice.cpp",
         "devices/LedDevice.cpp",
         "devices/RgbLedDevice.cpp",
         "models/Color.cpp",
@@ -27,7 +29,10 @@ cc_binary {
         "Lights.cpp",
         "Utils.cpp",
         "service.cpp",
-    ],
+    ] + select(soong_config_variable("lineagelight", "disable_backlight_control"), {
+        true: [],
+        default: ["devices/BacklightDevice.cpp"],
+    }),
     local_include_dirs: ["."],
     shared_libs: [
         "libbase",

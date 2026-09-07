@@ -5,7 +5,9 @@
 
 #pragma once
 
+#ifndef DISABLE_BACKLIGHT_CONTROL
 #include <devices/BacklightDevice.h>
+#endif
 #include <devices/LedDevice.h>
 #include <devices/RgbLedDevice.h>
 #include <models/IDumpable.h>
@@ -24,20 +26,26 @@ class Devices : public IDumpable {
 
     void dump(int fd) const override;
 
+#ifndef DISABLE_BACKLIGHT_CONTROL
     bool hasBacklightDevices() const;
+#endif
     bool hasButtonDevices() const;
     bool hasKeyboardDevices() const;
     bool hasNotificationDevices() const;
 
+#ifndef DISABLE_BACKLIGHT_CONTROL
     void setBacklightState(const State& state);
+#endif
     void setButtonsState(const State& state);
     void setKeyboardState(const State& state);
     void setNotificationState(const State& state);
 
   private:
     // Backlight
+#ifndef DISABLE_BACKLIGHT_CONTROL
     std::vector<BacklightDevice> mBacklightDevices;
     std::vector<LedDevice> mBacklightLedDevices;
+#endif
 
     // Buttons
     std::vector<LedDevice> mButtonLedDevices;

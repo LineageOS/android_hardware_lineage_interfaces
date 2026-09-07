@@ -34,6 +34,8 @@ std::vector<std::string> getSubDirs(const std::string& path) {
 
 }  // namespace
 
+#ifndef DISABLE_BACKLIGHT_CONTROL
+
 static const std::string kBacklightDevices[] = {
         "backlight",
         "panel0-backlight",
@@ -87,6 +89,8 @@ static std::vector<LedDevice> getBacklightLedDevices() {
 
     return devices;
 }
+
+#endif
 
 static const std::string kButtonLedDevices[] = {
         "button-backlight",
@@ -170,15 +174,21 @@ static std::vector<LedDevice> getNotificationLedDevices() {
 }
 
 Devices::Devices()
-    : mBacklightDevices(getBacklightDevices()),
+    :
+#ifndef DISABLE_BACKLIGHT_CONTROL
+      mBacklightDevices(getBacklightDevices()),
       mBacklightLedDevices(getBacklightLedDevices()),
+#endif
       mButtonLedDevices(getButtonLedDevices()),
       mKeyboardLedDevices(getKeyboardLedDevices()),
       mNotificationRgbLedDevices(getNotificationRgbLedDevices()),
       mNotificationLedDevices(getNotificationLedDevices()) {
+
+#ifndef DISABLE_BACKLIGHT_CONTROL
     if (!hasBacklightDevices()) {
         LOG(INFO) << "No backlight devices found";
     }
+#endif
 
     if (!hasButtonDevices()) {
         LOG(INFO) << "No button devices found";
@@ -193,9 +203,11 @@ Devices::Devices()
     }
 }
 
+#ifndef DISABLE_BACKLIGHT_CONTROL
 bool Devices::hasBacklightDevices() const {
     return !mBacklightDevices.empty() || !mBacklightLedDevices.empty();
 }
+#endif
 
 bool Devices::hasButtonDevices() const {
     return !mButtonLedDevices.empty();
@@ -209,6 +221,7 @@ bool Devices::hasNotificationDevices() const {
     return !mNotificationRgbLedDevices.empty() || !mNotificationLedDevices.empty();
 }
 
+#ifndef DISABLE_BACKLIGHT_CONTROL
 void Devices::setBacklightState(const State& state) {
     for (auto& device : mBacklightDevices) {
         device.setState(state);
@@ -217,6 +230,7 @@ void Devices::setBacklightState(const State& state) {
         device.setState(state);
     }
 }
+#endif
 
 void Devices::setButtonsState(const State& state) {
     for (auto& device : mButtonLedDevices) {
@@ -241,6 +255,7 @@ void Devices::setNotificationState(const State& state) {
 }
 
 void Devices::dump(int fd) const {
+#ifndef DISABLE_BACKLIGHT_CONTROL
     dprintf(fd, "Backlight devices:\n");
     for (const auto& device : mBacklightDevices) {
         dprintf(fd, "- ");
@@ -256,6 +271,7 @@ void Devices::dump(int fd) const {
         dprintf(fd, "\n");
     }
     dprintf(fd, "\n");
+#endif
 
     dprintf(fd, "Button LED devices:\n");
     for (const auto& device : mButtonLedDevices) {

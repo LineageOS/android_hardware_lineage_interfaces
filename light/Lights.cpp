@@ -19,9 +19,11 @@ namespace light {
 #define AutoHwLight(light) {.id = static_cast<int32_t>(light), .ordinal = 0, .type = light}
 
 Lights::Lights() {
+#ifndef DISABLE_BACKLIGHT_CONTROL
     if (mDevices.hasBacklightDevices()) {
         mLights.push_back(AutoHwLight(LightType::BACKLIGHT));
     }
+#endif
 
     if (mDevices.hasButtonDevices()) {
         mLights.push_back(AutoHwLight(LightType::BUTTONS));
@@ -45,6 +47,7 @@ ndk::ScopedAStatus Lights::setLightState(int32_t id, const HwLightState& hwLight
 
     LightType type = static_cast<LightType>(id);
     switch (type) {
+#ifndef DISABLE_BACKLIGHT_CONTROL
         case LightType::BACKLIGHT:
             if (mDevices.hasBacklightDevices()) {
                 mDevices.setBacklightState(state);
@@ -52,6 +55,7 @@ ndk::ScopedAStatus Lights::setLightState(int32_t id, const HwLightState& hwLight
                 return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
             }
             break;
+#endif
         case LightType::KEYBOARD:
             if (mDevices.hasKeyboardDevices()) {
                 mDevices.setKeyboardState(state);
