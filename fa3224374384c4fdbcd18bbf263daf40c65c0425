@@ -52,6 +52,24 @@
       "parentUuid": "e8cbc861_25640601",
       "revId": "fa3224374384c4fdbcd18bbf263daf40c65c0425",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a713944_92f99c0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-12T15:48:47Z",
+      "side": 1,
+      "message": "that looks... nasty. I\u0027d rather the prop...",
+      "parentUuid": "b28bff55_44aedc2c",
+      "revId": "fa3224374384c4fdbcd18bbf263daf40c65c0425",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
