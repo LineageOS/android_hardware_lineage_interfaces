@@ -16,6 +16,24 @@
       "message": "Is this actually needed? The service already runs as root, and I don\u0027t see readproc in the latest pixel dump either.",
       "revId": "8e74530186f555d7f4802a579e901535d9f0968f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8f08a4_00ef1e0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 38083
+      },
+      "writtenOn": "2026-10-04T11:34:13Z",
+      "side": 1,
+      "message": "While the service starts as root, android mounts /proc with hidepid\u003d2. This strictly restricts access to other processes nodes unless the caller has CAP_SYS_PTRACE or is in the readproc group. relying on CAP_SYS_PTRACE isn\u0027t viable here as it would trigger SELinux neverallow denials for the HAL. as for pixels, they likely use a different approach for thread tracking in their specific kernels and devices, which wouldn\u0027t be the same case for our devices.",
+      "parentUuid": "9b9c4734_1082ef50",
+      "revId": "8e74530186f555d7f4802a579e901535d9f0968f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": [
