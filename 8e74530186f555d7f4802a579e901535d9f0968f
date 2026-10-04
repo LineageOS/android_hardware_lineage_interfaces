@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9c4734_1082ef50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34612
+      },
+      "writtenOn": "2026-10-04T11:09:44Z",
+      "side": 1,
+      "message": "Is this actually needed? The service already runs as root, and I don\u0027t see readproc in the latest pixel dump either.",
+      "revId": "8e74530186f555d7f4802a579e901535d9f0968f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
