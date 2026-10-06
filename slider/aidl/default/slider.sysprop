@@ -1,0 +1,60 @@
+#
+# SPDX-FileCopyrightText: 2026 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+module: "vendor.lineage.slider.SliderProperties"
+owner: Vendor
+
+# Names of the input device the slider reports on, in the order they are
+# tried, so that one device tree can name several.
+prop {
+    api_name: "input_name"
+    type: StringList
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.input_name"
+}
+
+# The absolute axis the slider reports its position on, as the decimal
+# value of an EV_ABS code.
+prop {
+    api_name: "code"
+    type: Integer
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.code"
+}
+
+# The display edge the slider sits beside. Leaving this out, or leaving
+# out the offset, leaves an indicator to place itself.
+prop {
+    api_name: "edge"
+    type: Enum
+    enum_values: "left|top|right|bottom"
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.edge"
+}
+
+# Where along that edge the middle of the slider's travel is, in pixels
+# from the origin of the display in its natural orientation, at the
+# largest resolution the display reports as supported.
+prop {
+    api_name: "offset_pixels"
+    type: Integer
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.offset_pixels"
+}
+
+# The display the offset is measured on, as
+# android.view.Display#getUniqueId reports it. Left out, it is the
+# default display.
+prop {
+    api_name: "display"
+    type: String
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.display"
+}

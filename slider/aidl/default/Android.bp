@@ -1,0 +1,35 @@
+/*
+ * SPDX-FileCopyrightText: 2026 The LineageOS Project
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+cc_binary {
+    name: "vendor.lineage.slider-service.default",
+    vendor: true,
+    relative_install_path: "hw",
+    init_rc: ["vendor.lineage.slider-service.default.rc"],
+    vintf_fragments: ["vendor.lineage.slider-service.default.xml"],
+    srcs: [
+        "service.cpp",
+        "Slider.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "vendor.lineage.slider-V1-ndk",
+    ],
+    static_libs: [
+        "libvendor.lineage.slider.Props",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
+
+sysprop_library {
+    name: "vendor.lineage.slider.Props",
+    srcs: ["slider.sysprop"],
+    property_owner: "Vendor",
+    vendor: true,
+}
