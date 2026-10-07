@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d8d674_7015636a",
+        "filename": "slider/aidl/default/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-10-07T14:04:33Z",
+      "side": 1,
+      "message": "may I introduce you to sysprops, you can have enums of them\n\nhttps://cs.android.com/android/platform/superproject/+/android-latest-release:system/libsysprop/srcs/android/sysprop/MediaProperties.sysprop;l\u003d52?q\u003dsysprop%20enum\u0026ss\u003dandroid%2Fplatform%2Fsuperproject\n\nno idea if you really care much, but maybe you can add all props here and it could help with documentation",
+      "revId": "82056e50ff1ac1bf7c688208b1ed823616135f14",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32856db1_68fec3eb",
+        "filename": "slider/aidl/vendor/lineage/slider/SliderInfo.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-10-07T14:04:33Z",
+      "side": 1,
+      "message": "Not exactly fond of this in writing.\nI\u0027d just remove it, and let users decide",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "82056e50ff1ac1bf7c688208b1ed823616135f14",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
