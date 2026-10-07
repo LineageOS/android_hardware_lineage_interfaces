@@ -6,6 +6,18 @@
 module: "vendor.lineage.slider.SliderProperties"
 owner: Vendor
 
+# Where the position is read from. An axis takes it from the input device
+# itself, while a node takes it from a file the device reports changes to
+# without saying what they are. Left out, it is the axis.
+prop {
+    api_name: "backend"
+    type: Enum
+    enum_values: "axis|node"
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.backend"
+}
+
 # Names of the input device the slider reports on, in the order they are
 # tried, so that one device tree can name several.
 prop {
@@ -24,6 +36,27 @@ prop {
     scope: Internal
     access: Readonly
     prop_name: "ro.vendor.slider.code"
+}
+
+# The file holding the position, for the node backend. The HAL's own
+# policy cannot name this file's label, so a device adding one adds the
+# rule that lets the HAL read it.
+prop {
+    api_name: "node"
+    type: String
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.node"
+}
+
+# What that file holds at each position, in travel order, so the first is
+# the off end and the count is how many positions there are.
+prop {
+    api_name: "node_values"
+    type: IntegerList
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.node_values"
 }
 
 # The display edge the slider sits beside. Leaving this out, or leaving
