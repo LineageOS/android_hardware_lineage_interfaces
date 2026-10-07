@@ -25,7 +25,8 @@ struct DeathCookie {
 };
 }  // namespace
 
-Slider::Slider(std::unique_ptr<Source> source) : mSource(std::move(source)) {
+Slider::Slider(std::unique_ptr<Source> source, const std::optional<SliderLocation>& location)
+    : mSource(std::move(source)), mLocation(location) {
     mDeathRecipient =
             ndk::ScopedAIBinder_DeathRecipient(AIBinder_DeathRecipient_new(&onCallbackDied));
     AIBinder_DeathRecipient_setOnUnlinked(mDeathRecipient.get(), &onCookieUnlinked);
@@ -161,6 +162,7 @@ void Slider::notify(int position) {
 
 ndk::ScopedAStatus Slider::getSliderInfo(SliderInfo* _aidl_return) {
     _aidl_return->positionCount = mCount;
+    _aidl_return->location = mLocation;
     return ndk::ScopedAStatus::ok();
 }
 

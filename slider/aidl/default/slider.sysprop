@@ -25,3 +25,48 @@ prop {
     access: Readonly
     prop_name: "ro.vendor.slider.code"
 }
+
+# The display edge the slider sits beside. Leaving this out, or leaving
+# out the offset, leaves an indicator to place itself.
+prop {
+    api_name: "edge"
+    type: Enum
+    enum_values: "left|top|right|bottom"
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.edge"
+}
+
+# The way the slider travels as the position index rises. It runs along
+# the edge the slider sits beside, so left or right carries up or down,
+# and top or bottom carries left or right.
+prop {
+    api_name: "direction"
+    type: Enum
+    enum_values: "up|right|down|left"
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.direction"
+}
+
+# Where along that edge the middle of the slider's travel is, in pixels
+# from the origin of the display in its natural orientation, at the
+# largest resolution the display reports as supported.
+prop {
+    api_name: "offset_pixels"
+    type: Integer
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.offset_pixels"
+}
+
+# The display the offset is measured on, as
+# android.view.Display#getUniqueId reports it. Left out, it is the
+# default display.
+prop {
+    api_name: "display"
+    type: String
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.display"
+}
