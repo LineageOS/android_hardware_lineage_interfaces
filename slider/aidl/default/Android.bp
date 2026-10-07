@@ -12,6 +12,7 @@ cc_binary {
     srcs: [
         "AxisSource.cpp",
         "InputDevice.cpp",
+        "NodeSource.cpp",
         "service.cpp",
         "Slider.cpp",
     ],
