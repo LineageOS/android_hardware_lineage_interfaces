@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: 2026 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+module: "vendor.lineage.slider.SliderProperties"
+owner: Vendor
+
+# Names of the input device the slider reports on, in the order they are
+# tried, so that one device tree can name several.
+prop {
+    api_name: "input_name"
+    type: StringList
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.input_name"
+}
+
+# The absolute axis the slider reports its position on, as the decimal
+# value of an EV_ABS code.
+prop {
+    api_name: "code"
+    type: Integer
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.code"
+}
