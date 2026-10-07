@@ -11,6 +11,7 @@
 #include <atomic>
 #include <memory>
 #include <mutex>
+#include <optional>
 #include <thread>
 #include <vector>
 
@@ -23,7 +24,7 @@ namespace slider {
 
 class Slider : public BnSlider {
   public:
-    explicit Slider(std::unique_ptr<Source> source);
+    Slider(std::unique_ptr<Source> source, const std::optional<SliderLocation>& location);
     ~Slider();
 
     bool start(bool verbose);
@@ -50,6 +51,7 @@ class Slider : public BnSlider {
     static void onCookieUnlinked(void* cookie);
 
     const std::unique_ptr<Source> mSource;
+    const std::optional<SliderLocation> mLocation;
     int mCount = 0;
     std::atomic<int> mPosition{0};
 
