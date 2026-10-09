@@ -168,12 +168,7 @@ PowerHintSession<HintManagerT, PowerSessionManagerT>::PowerHintSession(
               HintManager::GetInstance()->GetOtherConfigs().enableMetricCollection.value_or(false)),
       mOnAdpfUpdate(
               [this](const std::shared_ptr<AdpfConfig> config) { this->setAdpfProfile(config); }),
-      mSessionRecords(getAdpfProfile()->mHeuristicBoostOn.has_value() &&
-                                      getAdpfProfile()->mHeuristicBoostOn.value()
-                              ? std::make_unique<SessionRecords>(
-                                        getAdpfProfile()->mMaxRecordsNum.value(),
-                                        getAdpfProfile()->mJankCheckTimeFactor.value())
-                              : nullptr) {
+      mSessionRecords(makeSessionRecords(*getAdpfProfile())) {
     ATRACE_CALL();
     ATRACE_INT(mAppDescriptorTrace->trace_target.c_str(), mDescriptor->targetNs.count());
     ATRACE_INT(mAppDescriptorTrace->trace_active.c_str(), mDescriptor->is_active.load());
@@ -723,7 +718,26 @@ void PowerHintSession<HintManagerT, PowerSessionManagerT>::setAdpfProfile(
         const std::shared_ptr<AdpfConfig> profile) {
     // Must prevent profile from being changed in a binder call duration.
     std::scoped_lock lock{mPowerHintSessionLock};
+    if (profile == mAdpfProfile) {
+        return;
+    }
     mAdpfProfile = profile;
+    // The profile can be switched while the session is alive (e.g. by game mode), so keep the
+    // heuristic boost state consistent with it: reportActualWorkDuration() relies on
+    // mSessionRecords being set whenever the active profile enables heuristic boost.
+    mSessionRecords = makeSessionRecords(*profile);
+    mJankyLevel = SessionJankyLevel::LIGHT;
+    mJankyFrameNum = 0;
+}
+
+template <class HintManagerT, class PowerSessionManagerT>
+std::unique_ptr<SessionRecords>
+PowerHintSession<HintManagerT, PowerSessionManagerT>::makeSessionRecords(const AdpfConfig &config) {
+    if (!config.mHeuristicBoostOn.has_value() || !config.mHeuristicBoostOn.value()) {
+        return nullptr;
+    }
+    return std::make_unique<SessionRecords>(config.mMaxRecordsNum.value(),
+                                            config.mJankCheckTimeFactor.value());
 }
 
 std::string AppHintDesc::toString() const {
