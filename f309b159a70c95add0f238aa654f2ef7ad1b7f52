@@ -33,6 +33,29 @@
       "message": "Also, commit message seems longer than needed for this sort of change.",
       "revId": "f309b159a70c95add0f238aa654f2ef7ad1b7f52",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5286ccdf_ddf6775e",
+        "filename": "power-libperfmgr/aidl/PowerHintSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-10-11T23:01:29Z",
+      "side": 1,
+      "message": "This does not seem to be properly indented.",
+      "range": {
+        "startLine": 734,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 100
+      },
+      "revId": "f309b159a70c95add0f238aa654f2ef7ad1b7f52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
