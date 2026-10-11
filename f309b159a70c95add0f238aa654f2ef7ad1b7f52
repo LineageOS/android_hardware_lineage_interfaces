@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d70705_4bb32d0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-10-11T22:59:46Z",
+      "side": 1,
+      "message": "Please mark as Assisted-by: LLM if applicable.\n\nThis smells a bit like AI usage.",
+      "revId": "f309b159a70c95add0f238aa654f2ef7ad1b7f52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
