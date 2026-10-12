@@ -35,6 +35,42 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fbc648_825fad09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 38083
+      },
+      "writtenOn": "2026-10-12T02:34:36Z",
+      "side": 1,
+      "message": "Yes, I used an LLM to help draft parts of this.",
+      "parentUuid": "e6d70705_4bb32d0d",
+      "revId": "f309b159a70c95add0f238aa654f2ef7ad1b7f52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40893dc_34802ff7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 38083
+      },
+      "writtenOn": "2026-10-12T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ab0383_e8108b60",
+      "revId": "f309b159a70c95add0f238aa654f2ef7ad1b7f52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5286ccdf_ddf6775e",
@@ -48,6 +84,30 @@
       "writtenOn": "2026-10-11T23:01:29Z",
       "side": 1,
       "message": "This does not seem to be properly indented.",
+      "range": {
+        "startLine": 734,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 100
+      },
+      "revId": "f309b159a70c95add0f238aa654f2ef7ad1b7f52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9b1a41_002ae151",
+        "filename": "power-libperfmgr/aidl/PowerHintSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 38083
+      },
+      "writtenOn": "2026-10-12T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5286ccdf_ddf6775e",
       "range": {
         "startLine": 734,
         "startChar": 0,
