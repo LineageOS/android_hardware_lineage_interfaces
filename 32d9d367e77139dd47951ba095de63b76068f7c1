@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4694c29_bed0b229",
+        "filename": "power-libperfmgr/aidl/PowerSessionManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 38083
+      },
+      "writtenOn": "2026-10-12T18:19:58Z",
+      "side": 1,
+      "message": "This is a direct cherry-pick of Klozz\u0027s commit, so I\u0027ve left it as is. The blank lines separate the lock block and the profile loops, similar to how removePowerSession() is laid out in this file. If you still want,I will clean it.",
+      "parentUuid": "fef1ffd4_d0159eab",
+      "revId": "32d9d367e77139dd47951ba095de63b76068f7c1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0942ea2_0712d8ce",
