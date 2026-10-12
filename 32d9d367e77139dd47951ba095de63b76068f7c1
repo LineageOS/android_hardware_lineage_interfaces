@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef1ffd4_d0159eab",
+        "filename": "power-libperfmgr/aidl/PowerSessionManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-10-12T17:52:56Z",
+      "side": 1,
+      "message": "unnecessary newline",
+      "revId": "32d9d367e77139dd47951ba095de63b76068f7c1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0942ea2_0712d8ce",
+        "filename": "power-libperfmgr/aidl/PowerSessionManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-10-12T17:52:56Z",
+      "side": 1,
+      "message": "unnecessary newline",
+      "revId": "32d9d367e77139dd47951ba095de63b76068f7c1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f070eb3_7c4eda1e",
+        "filename": "power-libperfmgr/aidl/PowerSessionManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-10-12T17:52:56Z",
+      "side": 1,
+      "message": "unnecessary newline",
+      "revId": "32d9d367e77139dd47951ba095de63b76068f7c1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
