@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1385a32_2a5ade51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-10-12T15:31:08Z",
+      "side": 1,
+      "message": "if this is the case and it\u0027s a direct cherry-pick, just use the OG commit message/date/author and drop this line.",
+      "revId": "95ad3939dc0eaf901c5e1dbca31dad20b84d1872",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3013dd4c_f1c49fbf",
