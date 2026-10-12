@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3013dd4c_f1c49fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 38083
+      },
+      "writtenOn": "2026-10-12T08:32:41Z",
+      "side": 1,
+      "message": "No more logs spamming every 10 seconds.",
+      "revId": "95ad3939dc0eaf901c5e1dbca31dad20b84d1872",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
