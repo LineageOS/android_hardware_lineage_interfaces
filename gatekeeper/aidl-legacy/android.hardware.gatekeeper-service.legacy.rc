@@ -1,0 +1,4 @@
+service vendor.gatekeeper-legacy /vendor/bin/hw/android.hardware.gatekeeper-service.legacy
+    class hal
+    user system
+    group system

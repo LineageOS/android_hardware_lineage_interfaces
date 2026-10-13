@@ -1,0 +1,26 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "android.hardware.gatekeeper-service.legacy",
+    relative_install_path: "hw",
+    init_rc: ["android.hardware.gatekeeper-service.legacy.rc"],
+    vintf_fragments: ["android.hardware.gatekeeper-service.legacy.xml"],
+    srcs: [
+        "Gatekeeper.cpp",
+        "main.cpp"
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "libcutils",
+        "libgatekeeper",
+        "liblog",
+        "libutils",
+        "libhardware",
+        "android.hardware.gatekeeper-V1-ndk"
+    ],
+    vendor: true,
+}
