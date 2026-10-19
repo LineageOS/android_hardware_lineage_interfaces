@@ -31,13 +31,17 @@ Fingerprint::Fingerprint(std::shared_ptr<FingerprintConfig> config)
 
     std::string backendTypeProp = mConfig->get<std::string>("backend");
     if (backendTypeProp == "hardware") {
-        mEngine = std::make_unique<FingerprintEngineHw>(config);
+        mEngine = FingerprintEngineHw::create(mConfig);
     } else if (backendTypeProp == "hidl") {
-        mEngine = std::make_unique<FingerprintEngineHidl>(config);
+        mEngine = FingerprintEngineHidl::create(mConfig);
     } else {
-        mEngine = std::make_unique<FingerprintEngine>(config);
+        mEngine = FingerprintEngine::create(mConfig);
     }
     ALOGI("backendTypeProp: %s", backendTypeProp.c_str());
+
+    if (mEngine == nullptr) {
+        ALOGE("Failed to set up fingerprint engine for backend: %s", backendTypeProp.c_str());
+    }
 
     std::string sensorTypeProp = mConfig->get<std::string>("type");
     if (sensorTypeProp == "udfps" || sensorTypeProp == "udfps_optical") {
@@ -95,6 +99,12 @@ std::vector<SensorLocation> Fingerprint::getSensorLocations() {
 }
 
 ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
+    if (mEngine == nullptr) {
+        // Don't advertise a sensor we can't drive.
+        *out = {};
+        return ndk::ScopedAStatus::ok();
+    }
+
     std::vector<common::ComponentInfo> componentInfo = {
             {HW_COMPONENT_ID, HW_VERSION, FW_VERSION, SERIAL_NUMBER, "" /* softwareVersion */},
             {SW_COMPONENT_ID, "" /* hardwareVersion */, "" /* firmwareVersion */,
@@ -128,6 +138,11 @@ ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
 ndk::ScopedAStatus Fingerprint::createSession(int32_t /*sensorId*/, int32_t userId,
                                               const std::shared_ptr<ISessionCallback>& cb,
                                               std::shared_ptr<ISession>* out) {
+    if (mEngine == nullptr) {
+        ALOGE("Can't create session: fingerprint engine is unavailable");
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+
     CHECK(mSession == nullptr || mSession->isClosed()) << "Open session already exists!";
 
     mSession = SharedRefBase::make<Session>(mEngine, userId, cb);

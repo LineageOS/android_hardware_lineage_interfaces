@@ -37,6 +37,8 @@ class FingerprintEngineHidl : public FingerprintEngine,
   public:
     FingerprintEngineHidl(std::shared_ptr<FingerprintConfig> config);
 
+    static std::shared_ptr<FingerprintEngine> create(std::shared_ptr<FingerprintConfig> config);
+
     void startSession(std::shared_ptr<ISessionCallback> cb, int userId) override;
     void endSession() override;
     ndk::ScopedAStatus generateChallengeImpl() override;

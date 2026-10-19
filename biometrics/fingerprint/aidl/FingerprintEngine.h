@@ -23,6 +23,8 @@ class FingerprintEngine {
     FingerprintEngine(std::shared_ptr<FingerprintConfig> config);
     virtual ~FingerprintEngine();
 
+    static std::shared_ptr<FingerprintEngine> create(std::shared_ptr<FingerprintConfig> config);
+
     virtual void startSession(std::shared_ptr<ISessionCallback> cb, int userId);
     virtual void endSession();
     virtual ndk::ScopedAStatus generateChallengeImpl() { return ndk::ScopedAStatus::ok(); };

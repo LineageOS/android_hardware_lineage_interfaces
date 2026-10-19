@@ -17,6 +17,16 @@ FingerprintEngineHw::FingerprintEngineHw(std::shared_ptr<FingerprintConfig> conf
     sInstance = this;
 }
 
+std::shared_ptr<FingerprintEngine> FingerprintEngineHw::create(
+        std::shared_ptr<FingerprintConfig> config) {
+    auto engine = std::make_shared<FingerprintEngineHw>(std::move(config));
+    if (engine->mDevice == nullptr) {
+        ALOGE("Failed to set up fingerprint hardware engine");
+        return nullptr;
+    }
+    return engine;
+}
+
 FingerprintEngineHw::~FingerprintEngineHw() {
     sInstance = nullptr;
 

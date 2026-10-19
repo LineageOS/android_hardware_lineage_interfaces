@@ -22,6 +22,16 @@ FingerprintEngineHidl::FingerprintEngineHidl(std::shared_ptr<FingerprintConfig> 
     }
 }
 
+std::shared_ptr<FingerprintEngine> FingerprintEngineHidl::create(
+        std::shared_ptr<FingerprintConfig> config) {
+    auto engine = std::make_shared<FingerprintEngineHidl>(std::move(config));
+    if (engine->mService == nullptr) {
+        ALOGE("Failed to set up fingerprint HIDL engine");
+        return nullptr;
+    }
+    return engine;
+}
+
 void FingerprintEngineHidl::startSession(std::shared_ptr<ISessionCallback> cb, int userId) {
     mCb = std::move(cb);
     mUserId = userId;

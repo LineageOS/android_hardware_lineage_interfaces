@@ -12,6 +12,11 @@ FingerprintEngine::FingerprintEngine(std::shared_ptr<FingerprintConfig> config)
     ALOGV("FingerprintEngine()");
 }
 
+std::shared_ptr<FingerprintEngine> FingerprintEngine::create(
+        std::shared_ptr<FingerprintConfig> config) {
+    return std::make_shared<FingerprintEngine>(std::move(config));
+}
+
 FingerprintEngine::~FingerprintEngine() {
     ALOGV("~FingerprintEngine()");
 }
