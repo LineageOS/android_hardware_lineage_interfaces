@@ -24,7 +24,6 @@ package vendor.lineage.accessories;
 @VintfStability
 enum AccessoryStatus {
   DISCONNECTED,
-  CHARGING,
   DISABLED,
   ENABLED,
 }

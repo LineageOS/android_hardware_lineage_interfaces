@@ -30,4 +30,6 @@ parcelable AccessoryInfo {
   String displayId = "";
   boolean supportsToggling;
   boolean supportsBatteryQuerying;
+  boolean isCharging;
+  @nullable vendor.lineage.accessories.DataLinkInfo dataLink;
 }

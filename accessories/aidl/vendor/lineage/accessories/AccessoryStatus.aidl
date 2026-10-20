@@ -19,14 +19,6 @@ enum AccessoryStatus {
     DISCONNECTED,
 
     /**
-     * The accessory, while technically connected to the device, is not in a state where it can be
-     * used. Instead it is currently charging.
-     * This is the case for an active pen physically connected to the device.
-     * The accessory should be able to provide battery information.
-     */
-    CHARGING,
-
-    /**
      * The device is connected but disabled.
      */
     DISABLED,

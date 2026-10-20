@@ -7,6 +7,7 @@ package vendor.lineage.accessories;
 
 import vendor.lineage.accessories.AccessoryType;
 import vendor.lineage.accessories.BatteryInfo;
+import vendor.lineage.accessories.DataLinkInfo;
 
 /**
  * Information about an accessory.
@@ -62,4 +63,17 @@ parcelable AccessoryInfo {
      * mode.
      */
     boolean supportsBatteryQuerying;
+
+    /**
+     * Whether the accessory is currently being charged by the device.
+     * This is the case for an active pen physically attached to the device.
+     */
+    boolean isCharging;
+
+    /**
+     * The link used to exchange data with the accessory, if known.
+     * If it's a Bluetooth link, the framework will pair the accessory as soon as it's charging and
+     * AccessoryStatus.ENABLED, if it isn't already paired and Bluetooth is enabled.
+     */
+    @nullable DataLinkInfo dataLink;
 }
