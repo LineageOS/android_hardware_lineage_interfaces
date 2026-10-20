@@ -168,7 +168,8 @@ ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
                    std::back_inserter(sensorLocationStrings),
                    [](const SensorLocation& obj) { return obj.toString(); });
 
-    ALOGI("sensor type: %s, location: %s", ::android::internal::ToString(mSensorType).c_str(),
+    ALOGI("sensor id: %d, type: %s, location: %s", sensorId,
+          ::android::internal::ToString(mSensorType).c_str(),
           ::android::base::Join(sensorLocationStrings, ", ").c_str());
 
     *out = {{commonProps, mSensorType, sensorLocations, navigationGuesture, detectInteraction,
