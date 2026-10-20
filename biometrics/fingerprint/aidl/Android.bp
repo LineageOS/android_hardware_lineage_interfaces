@@ -42,6 +42,10 @@ cc_binary {
         "Session.cpp",
         "service.cpp",
     ],
+    cflags: select(soong_config_variable("lineage_hardware_biometrics", "fpdata_path"), {
+        any @ flag_val: ["-DFPDATA_PATH=\"" + flag_val + "\""],
+        default: ["-DFPDATA_PATH=\"/data/vendor_de/{}/fpdata/\""],
+    }),
     local_include_dirs: [
         "include",
     ],
