@@ -1,0 +1,5 @@
+service vendor.slider-default /vendor/bin/hw/vendor.lineage.slider-service.default
+    class hal
+    interface aidl vendor.lineage.slider.ISlider/default
+    user system
+    group system input
