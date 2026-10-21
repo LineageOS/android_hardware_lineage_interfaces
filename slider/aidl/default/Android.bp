@@ -16,6 +16,7 @@ cc_binary {
         "NodeSource.cpp",
         "service.cpp",
         "Slider.cpp",
+        "SwitchSource.cpp",
     ],
     shared_libs: [
         "libbase",

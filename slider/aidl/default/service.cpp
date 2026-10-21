@@ -20,6 +20,7 @@
 #include "NodeSource.h"
 #include "Slider.h"
 #include "Source.h"
+#include "SwitchSource.h"
 
 using ::aidl::vendor::lineage::slider::AxisSource;
 using ::aidl::vendor::lineage::slider::Direction;
@@ -28,6 +29,7 @@ using ::aidl::vendor::lineage::slider::NodeSource;
 using ::aidl::vendor::lineage::slider::Slider;
 using ::aidl::vendor::lineage::slider::SliderLocation;
 using ::aidl::vendor::lineage::slider::Source;
+using ::aidl::vendor::lineage::slider::SwitchSource;
 
 namespace properties = ::vendor::lineage::slider::SliderProperties;
 
@@ -137,10 +139,29 @@ std::unique_ptr<Source> nodeSource(const std::vector<std::string>& inputNames) {
     return std::make_unique<NodeSource>(inputNames, node, values);
 }
 
+std::unique_ptr<Source> switchSource(const std::vector<std::string>& inputNames) {
+    std::vector<int> codes;
+    for (const std::optional<std::int32_t>& code : properties::switch_codes()) {
+        if (code.has_value()) {
+            codes.push_back(*code);
+        }
+    }
+
+    if (codes.empty()) {
+        LOG(ERROR) << "ro.vendor.slider.switch_codes must hold a switch code per position, "
+                      "or one for a slider whose single gpio has two";
+        return nullptr;
+    }
+
+    return std::make_unique<SwitchSource>(inputNames, codes);
+}
+
 std::unique_ptr<Source> sourceFrom(const std::vector<std::string>& inputNames) {
     switch (properties::backend().value_or(properties::backend_values::AXIS)) {
         case properties::backend_values::NODE:
             return nodeSource(inputNames);
+        case properties::backend_values::SWITCH:
+            return switchSource(inputNames);
         case properties::backend_values::AXIS:
             break;
     }

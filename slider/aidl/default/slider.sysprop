@@ -12,7 +12,7 @@ owner: Vendor
 prop {
     api_name: "backend"
     type: Enum
-    enum_values: "axis|node"
+    enum_values: "axis|node|switch"
     scope: Internal
     access: Readonly
     prop_name: "ro.vendor.slider.backend"
@@ -58,6 +58,20 @@ prop {
     scope: Internal
     access: Readonly
     prop_name: "ro.vendor.slider.node_values"
+}
+
+# The switch codes the slider sets, one per position, in the order the
+# positions are numbered. A switch carries one bit, so a slider whose
+# single gpio has two positions names one code, set at the second.
+#
+# A code the framework acts on is refused, since a slider that mutes the
+# microphone is worse than one that does nothing.
+prop {
+    api_name: "switch_codes"
+    type: IntegerList
+    scope: Internal
+    access: Readonly
+    prop_name: "ro.vendor.slider.switch_codes"
 }
 
 # The display edge the slider sits beside. Leaving this out, or leaving
