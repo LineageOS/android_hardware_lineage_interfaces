@@ -17,12 +17,14 @@
 #include <vector>
 
 #include "AxisSource.h"
+#include "NodeSource.h"
 #include "Slider.h"
 #include "Source.h"
 
 using ::aidl::vendor::lineage::slider::AxisSource;
 using ::aidl::vendor::lineage::slider::Direction;
 using ::aidl::vendor::lineage::slider::Edge;
+using ::aidl::vendor::lineage::slider::NodeSource;
 using ::aidl::vendor::lineage::slider::Slider;
 using ::aidl::vendor::lineage::slider::SliderLocation;
 using ::aidl::vendor::lineage::slider::Source;
@@ -112,6 +114,39 @@ std::unique_ptr<Source> axisSource(const std::vector<std::string>& inputNames) {
 
     return std::make_unique<AxisSource>(inputNames, absCode);
 }
+
+std::unique_ptr<Source> nodeSource(const std::vector<std::string>& inputNames) {
+    std::string node = properties::node().value_or("");
+    if (node.empty()) {
+        LOG(ERROR) << "ro.vendor.slider.node must name the file holding the position";
+        return nullptr;
+    }
+
+    std::vector<int> values;
+    for (const std::optional<std::int32_t>& value : properties::node_values()) {
+        if (value.has_value()) {
+            values.push_back(*value);
+        }
+    }
+
+    if (values.size() < 2) {
+        LOG(ERROR) << "ro.vendor.slider.node_values must hold a value per position";
+        return nullptr;
+    }
+
+    return std::make_unique<NodeSource>(inputNames, node, values);
+}
+
+std::unique_ptr<Source> sourceFrom(const std::vector<std::string>& inputNames) {
+    switch (properties::backend().value_or(properties::backend_values::AXIS)) {
+        case properties::backend_values::NODE:
+            return nodeSource(inputNames);
+        case properties::backend_values::AXIS:
+            break;
+    }
+
+    return axisSource(inputNames);
+}
 }  // namespace
 
 int main() {
@@ -127,7 +162,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    std::unique_ptr<Source> source = axisSource(inputNames);
+    std::unique_ptr<Source> source = sourceFrom(inputNames);
     if (source == nullptr) {
         return EXIT_FAILURE;
     }
