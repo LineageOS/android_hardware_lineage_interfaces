@@ -11,6 +11,7 @@
 #include <slider.sysprop.h>
 #include <unistd.h>
 
+#include <algorithm>
 #include <cstdlib>
 #include <memory>
 #include <optional>
@@ -22,6 +23,7 @@
 #include "NodeSource.h"
 #include "Slider.h"
 #include "Source.h"
+#include "SwitchSource.h"
 
 using ::aidl::vendor::lineage::slider::AxisSource;
 using ::aidl::vendor::lineage::slider::Direction;
@@ -30,10 +32,26 @@ using ::aidl::vendor::lineage::slider::NodeSource;
 using ::aidl::vendor::lineage::slider::Slider;
 using ::aidl::vendor::lineage::slider::SliderLocation;
 using ::aidl::vendor::lineage::slider::Source;
+using ::aidl::vendor::lineage::slider::SwitchSource;
 
 namespace properties = ::vendor::lineage::slider::SliderProperties;
 
 namespace {
+// Switches the framework acts on, which InputManagerService answers in
+// notifySwitch().
+constexpr int kClaimedSwitches[] = {
+        SW_LID,
+        SW_TABLET_MODE,
+        SW_HEADPHONE_INSERT,
+        SW_MICROPHONE_INSERT,
+        SW_LINEOUT_INSERT,
+        SW_JACK_PHYSICAL_INSERT,
+        SW_VIDEOOUT_INSERT,
+        SW_CAMERA_LENS_COVER,
+        SW_KEYPAD_SLIDE,
+        SW_MUTE_DEVICE,
+};
+
 constexpr int kWaitAttempts = 60;
 constexpr int kWaitLogInterval = 30;
 
@@ -146,6 +164,50 @@ std::unique_ptr<Source> nodeSource(const std::vector<std::string>& inputNames) {
     return std::make_unique<NodeSource>(inputNames, node, values);
 }
 
+std::unique_ptr<Source> switchSource(const std::vector<std::string>& inputNames) {
+    std::vector<int> codes;
+    for (const std::optional<std::int32_t>& code : properties::switch_codes()) {
+        // The place in the list is the position, so a hole cannot be skipped
+        // without renumbering every position after it.
+        if (!code.has_value()) {
+            LOG(ERROR) << "ro.vendor.slider.switch_codes holds something that is not a code";
+            return nullptr;
+        }
+        codes.push_back(*code);
+    }
+
+    if (codes.empty()) {
+        LOG(ERROR) << "ro.vendor.slider.switch_codes must hold a switch code per position, "
+                      "or one for a slider whose single gpio has two";
+        return nullptr;
+    }
+
+    for (int code : codes) {
+        if (code < 0 || code >= SW_CNT) {
+            LOG(ERROR) << "ro.vendor.slider.switch_codes names " << code << ", not a switch";
+            return nullptr;
+        }
+
+        // A switch the framework acts on would mute the microphone or cover
+        // the camera rather than select a mode.
+        if (std::find(std::begin(kClaimedSwitches), std::end(kClaimedSwitches), code) !=
+            std::end(kClaimedSwitches)) {
+            LOG(ERROR) << "ro.vendor.slider.switch_codes names " << code
+                       << ", which the framework acts on";
+            return nullptr;
+        }
+
+        // A code twice over leaves one of its positions unreachable, since an
+        // event only ever resolves to the first of them.
+        if (std::count(codes.begin(), codes.end(), code) > 1) {
+            LOG(ERROR) << "ro.vendor.slider.switch_codes names " << code << " more than once";
+            return nullptr;
+        }
+    }
+
+    return std::make_unique<SwitchSource>(inputNames, codes);
+}
+
 std::unique_ptr<Source> sourceFrom(const std::vector<std::string>& inputNames) {
     std::optional<properties::backend_values> backend = properties::backend();
 
@@ -160,6 +222,8 @@ std::unique_ptr<Source> sourceFrom(const std::vector<std::string>& inputNames) {
     switch (backend.value_or(properties::backend_values::AXIS)) {
         case properties::backend_values::NODE:
             return nodeSource(inputNames);
+        case properties::backend_values::SWITCH:
+            return switchSource(inputNames);
         case properties::backend_values::AXIS:
             break;
     }
