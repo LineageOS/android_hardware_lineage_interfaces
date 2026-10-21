@@ -107,4 +107,13 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <!-- Slider -->
+    <hal format="aidl" optional="true">
+        <name>vendor.lineage.slider</name>
+        <version>1</version>
+        <interface>
+            <name>ISlider</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
