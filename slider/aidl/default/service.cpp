@@ -4,6 +4,7 @@
  */
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
 #include <linux/input.h>
@@ -18,12 +19,14 @@
 #include <vector>
 
 #include "AxisSource.h"
+#include "NodeSource.h"
 #include "Slider.h"
 #include "Source.h"
 
 using ::aidl::vendor::lineage::slider::AxisSource;
 using ::aidl::vendor::lineage::slider::Direction;
 using ::aidl::vendor::lineage::slider::Edge;
+using ::aidl::vendor::lineage::slider::NodeSource;
 using ::aidl::vendor::lineage::slider::Slider;
 using ::aidl::vendor::lineage::slider::SliderLocation;
 using ::aidl::vendor::lineage::slider::Source;
@@ -116,6 +119,53 @@ std::unique_ptr<Source> axisSource(const std::vector<std::string>& inputNames) {
 
     return std::make_unique<AxisSource>(inputNames, absCode);
 }
+
+std::unique_ptr<Source> nodeSource(const std::vector<std::string>& inputNames) {
+    std::string node = properties::node().value_or("");
+    if (node.empty()) {
+        LOG(ERROR) << "ro.vendor.slider.node must name the file holding the position";
+        return nullptr;
+    }
+
+    std::vector<int> values;
+    for (const std::optional<std::int32_t>& value : properties::node_values()) {
+        // The place in the list is the position, so a hole cannot be skipped
+        // without renumbering every position after it.
+        if (!value.has_value()) {
+            LOG(ERROR) << "ro.vendor.slider.node_values holds something that is not a value";
+            return nullptr;
+        }
+        values.push_back(*value);
+    }
+
+    if (values.size() < 2) {
+        LOG(ERROR) << "ro.vendor.slider.node_values must hold a value per position";
+        return nullptr;
+    }
+
+    return std::make_unique<NodeSource>(inputNames, node, values);
+}
+
+std::unique_ptr<Source> sourceFrom(const std::vector<std::string>& inputNames) {
+    std::optional<properties::backend_values> backend = properties::backend();
+
+    // An unparseable property reads the same as an absent one, and a device
+    // that misspelled its backend is not asking for the default.
+    if (!backend.has_value() &&
+        !::android::base::GetProperty("ro.vendor.slider.backend", "").empty()) {
+        LOG(ERROR) << "ro.vendor.slider.backend names no backend this HAL has";
+        return nullptr;
+    }
+
+    switch (backend.value_or(properties::backend_values::AXIS)) {
+        case properties::backend_values::NODE:
+            return nodeSource(inputNames);
+        case properties::backend_values::AXIS:
+            break;
+    }
+
+    return axisSource(inputNames);
+}
 }  // namespace
 
 int main() {
@@ -131,7 +181,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    std::unique_ptr<Source> source = axisSource(inputNames);
+    std::unique_ptr<Source> source = sourceFrom(inputNames);
     if (source == nullptr) {
         return EXIT_FAILURE;
     }

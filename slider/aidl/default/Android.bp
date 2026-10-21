@@ -13,6 +13,7 @@ cc_binary {
         "AxisSource.cpp",
         "InputDevice.cpp",
         "InputSource.cpp",
+        "NodeSource.cpp",
         "service.cpp",
         "Slider.cpp",
     ],
