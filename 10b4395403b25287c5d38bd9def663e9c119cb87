@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43082444_9290234d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19979
+      },
+      "writtenOn": "2026-10-29T15:25:14Z",
+      "side": 1,
+      "message": "@arian.kulmer@web.de let me know if this is not something you are interested in moving to for hardware/xiaomi so I can rename accordingly.",
+      "revId": "10b4395403b25287c5d38bd9def663e9c119cb87",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
