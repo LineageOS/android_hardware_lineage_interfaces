@@ -52,6 +52,24 @@
       "parentUuid": "f6a278ac_a8b46182",
       "revId": "10b4395403b25287c5d38bd9def663e9c119cb87",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22878e00_c2acd5fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19979
+      },
+      "writtenOn": "2026-10-29T17:01:21Z",
+      "side": 1,
+      "message": "I739ae664dec42792d98254352177a74afac98e4f is the only thing I didn\u0027t add into this chain. Then it should be a drop in replacement for Xiaomi devices",
+      "parentUuid": "11075412_c3388ad4",
+      "revId": "10b4395403b25287c5d38bd9def663e9c119cb87",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
