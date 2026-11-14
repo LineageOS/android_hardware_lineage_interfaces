@@ -38,7 +38,7 @@ Vibrator::Vibrator() {
 
 ndk::ScopedAStatus Vibrator::getCapabilities(int32_t* _aidl_return) {
     ALOGV("Vibrator reporting capabilities");
-    *_aidl_return = IVibrator::CAP_ON_CALLBACK;
+    *_aidl_return = 0;
     return ndk::ScopedAStatus::ok();
 }
 
