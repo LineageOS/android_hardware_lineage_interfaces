@@ -23,6 +23,7 @@
 #include <type_traits>
 
 #include "AdpfTypes.h"
+#include "Headroom.h"
 
 namespace aidl::google::hardware::power::impl::pixel {
 using ::android::perfmgr::HintManager;
@@ -158,11 +159,17 @@ SupportInfo SupportManager::makeSupportInfo() {
             .maxBatchSize = 1,
             .alwaysBatch = false,
     };
+    auto &headroom = Headroom::getInstance();
     out.headroom = {
-        .isCpuSupported = false,
-        .isGpuSupported = false,
-        .cpuMinIntervalMillis = 0,
-        .gpuMinIntervalMillis = 0,
+        .isCpuSupported = headroom.cpuSupported(),
+        .isGpuSupported = headroom.gpuSupported(),
+        .cpuMinIntervalMillis = Headroom::kSampleMillis,
+        .gpuMinIntervalMillis = Headroom::kSampleMillis,
+        .cpuMinCalculationWindowMillis = Headroom::kMinWindowMillis,
+        .cpuMaxCalculationWindowMillis = Headroom::kMaxWindowMillis,
+        .gpuMinCalculationWindowMillis = Headroom::kMinWindowMillis,
+        .gpuMaxCalculationWindowMillis = Headroom::kMaxWindowMillis,
+        .cpuMaxTidCount = Headroom::kMaxTids,
     };
 
     return out;

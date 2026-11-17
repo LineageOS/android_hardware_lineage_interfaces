@@ -30,11 +30,13 @@
 #include <utils/Trace.h>
 
 #include <cstdint>
+#include <limits>
 #include <memory>
 #include <optional>
 
 #include "AdpfTypes.h"
 #include "ChannelManager.h"
+#include "Headroom.h"
 #include "PowerHintSession.h"
 #include "PowerSessionManager.h"
 #include "SupportManager.h"
@@ -211,12 +213,41 @@ binder_status_t Power::dump(int fd, const char **, uint32_t) {
     return STATUS_OK;
 }
 
-ndk::ScopedAStatus Power::getCpuHeadroom(const CpuHeadroomParams &_, CpuHeadroomResult *) {
-    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+ndk::ScopedAStatus Power::getCpuHeadroom(const CpuHeadroomParams &params,
+                                         CpuHeadroomResult *_aidl_return) {
+    auto &headroom = Headroom::getInstance();
+    if (!headroom.cpuSupported()) {
+        return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+    }
+    if (params.calculationWindowMillis < Headroom::kMinWindowMillis ||
+        params.calculationWindowMillis > Headroom::kMaxWindowMillis ||
+        params.tids.size() > static_cast<size_t>(Headroom::kMaxTids)) {
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
+    }
+    auto value = headroom.getCpuHeadroom(
+            params.tids, params.calculationWindowMillis,
+            params.calculationType == CpuHeadroomParams::CalculationType::AVERAGE);
+    *_aidl_return = CpuHeadroomResult::make<CpuHeadroomResult::globalHeadroom>(
+            value.value_or(std::numeric_limits<float>::quiet_NaN()));
+    return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus Power::getGpuHeadroom(const GpuHeadroomParams &_, GpuHeadroomResult *) {
-    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+ndk::ScopedAStatus Power::getGpuHeadroom(const GpuHeadroomParams &params,
+                                         GpuHeadroomResult *_aidl_return) {
+    auto &headroom = Headroom::getInstance();
+    if (!headroom.gpuSupported()) {
+        return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+    }
+    if (params.calculationWindowMillis < Headroom::kMinWindowMillis ||
+        params.calculationWindowMillis > Headroom::kMaxWindowMillis) {
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
+    }
+    auto value = headroom.getGpuHeadroom(
+            params.calculationWindowMillis,
+            params.calculationType == GpuHeadroomParams::CalculationType::AVERAGE);
+    *_aidl_return = GpuHeadroomResult::make<GpuHeadroomResult::globalHeadroom>(
+            value.value_or(std::numeric_limits<float>::quiet_NaN()));
+    return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,

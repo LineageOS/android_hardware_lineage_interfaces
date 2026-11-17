@@ -54,6 +54,7 @@ cc_binary {
         "aidl/ChannelManager.cpp",
         "aidl/GpuCalculationHelpers.cpp",
         "aidl/GpuCapacityNode.cpp",
+        "aidl/Headroom.cpp",
         "aidl/service.cpp",
         "aidl/InteractionHandler.cpp",
         "aidl/Power.cpp",
