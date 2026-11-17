@@ -564,7 +564,7 @@ void PowerSessionManager<HintManagerT>::applyGpuVotesLocked(
         return;
     }
 
-    auto const gpuVotingOn = HintManagerT::GetInstance()->GetAdpfProfile()->mGpuBoostOn;
+    auto const gpuVotingOn = HintManagerT::GetInstance()->GetAdpfProfile()->mGpuBoostOn.value_or(false);
     if (mGpuCapacityNode && gpuVotingOn) {
         auto const capacity = mSessionTaskMap.getSessionsGpuCapacity(timePoint);
         (*mGpuCapacityNode)->set_gpu_capacity(capacity);
