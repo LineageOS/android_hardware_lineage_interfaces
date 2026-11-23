@@ -16,6 +16,24 @@
       "message": "While at it, convert all license headers to SPDX + remove the year",
       "revId": "4df596ab5f97447a1d776de61967848e3121dd84",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f210de8_0ce84244",
+        "filename": "accessories/aidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 26349
+      },
+      "writtenOn": "2026-11-23T06:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c33172a_7e45b6fc",
+      "revId": "4df596ab5f97447a1d776de61967848e3121dd84",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
