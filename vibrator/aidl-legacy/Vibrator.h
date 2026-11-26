@@ -54,7 +54,7 @@ public:
     ndk::ScopedAStatus composePwle(const std::vector<PrimitivePwle> &composite, const std::shared_ptr<IVibratorCallback> &callback) override;
 
 private:
-    vibrator_device_t *mDevice;
+    vibrator_device_t *mDevice = nullptr;
 };
 
 } // namespace vibrator

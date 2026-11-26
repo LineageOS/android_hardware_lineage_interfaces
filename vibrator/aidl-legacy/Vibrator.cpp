@@ -43,6 +43,10 @@ ndk::ScopedAStatus Vibrator::getCapabilities(int32_t* _aidl_return) {
 }
 
 ndk::ScopedAStatus Vibrator::off() {
+    if (mDevice == nullptr) {
+        ALOGE("off: vibrator device not opened");
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
     int32_t ret = mDevice->vibrator_off(mDevice);
     if (ret != 0) {
         ALOGE("off command failed : %s", strerror(-ret));
@@ -52,6 +56,10 @@ ndk::ScopedAStatus Vibrator::off() {
 }
 
 ndk::ScopedAStatus Vibrator::on(int32_t timeoutMs, const std::shared_ptr<IVibratorCallback>& /*callback*/) {
+    if (mDevice == nullptr) {
+        ALOGE("on: vibrator device not opened");
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
     int32_t ret = mDevice->vibrator_on(mDevice, timeoutMs);
     if (ret != 0) {
         ALOGE("on command failed : %s", strerror(-ret));
