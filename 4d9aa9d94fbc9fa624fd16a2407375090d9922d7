@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04dda11c_f634f122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-11-27T17:44:02Z",
+      "side": 1,
+      "message": "find by me, but squash this into the interface addition, avoid touching frozen interfaces (even if unused)",
+      "revId": "4d9aa9d94fbc9fa624fd16a2407375090d9922d7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
