@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74f2e9f_39940bfd",
+        "filename": "accessories/aidl/support/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-11-27T17:42:34Z",
+      "side": 1,
+      "message": "I\u0027m confused...\nMerge this target into the cc_defaults, make it all shared, and inline ACCESSORIES_NDK_LIB",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "e2dbf720f9cc64cc12bd34b3bf82419c2a2b5582",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
